@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+    
+    <definition extends="layout.default" name="admin.jpaltofw.page.widget.altoWidget.config" >
+        <put-attribute name="title" value="title.pageManagement" />
+        <put-attribute name="body" value="/WEB-INF/plugins/jpaltofw/apsadmin/jsp/portal/specialwidget/configAltoWidget.jsp" />
+    </definition>
+
+    <definition extends="layout.default" name="admin.jpaltofw.AltoConfig.entrySender" >
+        <put-attribute name="title" value="title.pageManagement" />
+        <put-attribute name="body" value="/WEB-INF/plugins/jpaltofw/apsadmin/jsp/config/config-entry.jsp" />
+    </definition>
+    
+</tiles-definitions>
+

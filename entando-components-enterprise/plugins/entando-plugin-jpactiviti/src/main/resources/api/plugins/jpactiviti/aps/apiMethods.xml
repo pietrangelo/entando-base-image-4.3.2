@@ -1,0 +1,41 @@
+<apiMethodDefinitions>
+    
+        
+    <resource name="activitiUserDetails" namespace="jpactiviti">
+        <description>The representation of the user details for activiti connector</description>
+        <source pluginCode="jpactiviti">plugins</source>
+        <method httpMethod="GET" active="true">
+            <description>Return a public user detail</description>
+            <springBean name="ActivitiApiUserProfileInterface" method="getUserDetails" />
+            <parameters>
+                <parameter key="username" required="true">
+                    <description>The username of the profile to return</description>
+                </parameter>
+            </parameters>
+        </method>
+    </resource>
+    
+    <resource name="activitiUserDetailsByUsernameAndPassword" namespace="jpactiviti">
+        <description>The representation of the user details for activiti connector</description>
+        <source pluginCode="jpactiviti">plugins</source>
+        <method httpMethod="GET" active="true">
+            <description>Return a public user detail</description>
+            <springBean name="ActivitiApiUserProfileInterface" method="getUserDetailsByUsernameAndPassword" />
+              
+            <parameters>
+                <parameter key="username" required="true">
+                    <description>The username of the profile to return</description>
+                </parameter>
+                <parameter key="password" required="true">
+                    <description>The password of the profile to match</description>
+                </parameter>
+            </parameters>
+            
+        </method>
+    </resource>
+    
+  
+    
+    
+    
+</apiMethodDefinitions>

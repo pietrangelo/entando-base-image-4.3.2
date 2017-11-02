@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+    <package name="jpsubsite_do/FrontEnd/jpsubsite/SubSite" namespace="/do/FrontEnd/jpsubsite/SubSite" extends="entando-front-default">
+
+    	<global-results>
+            <result name="failure">/WEB-INF/plugins/jpsubsite/aps/jsp/internalservlet/subsite/frontend-subSite-error.jsp</result>
+    	</global-results>
+
+    	<action name="list" class="jpsubsiteSubSiteFinderFrontEndAction">
+    		<result type="dispatcher">/WEB-INF/plugins/jpsubsite/aps/jsp/internalservlet/subsite/frontend-subSite-list.jsp</result>
+			<interceptor-ref name="entandoFrontEndFreeStack"></interceptor-ref>
+        </action>
+        
+        <action name="search" class="jpsubsiteSubSiteFinderFrontEndAction">
+            <result type="dispatcher">/WEB-INF/plugins/jpsubsite/aps/jsp/internalservlet/subsite/frontend-subSite-list.jsp</result>
+        	<interceptor-ref name="entandoFrontEndFreeStack"></interceptor-ref>
+        </action>
+    	
+        <action name="new" class="jpsubsiteSubSiteFrontEndAction" method="newSubSite">
+            <result type="dispatcher">/WEB-INF/plugins/jpsubsite/aps/jsp/internalservlet/subsite/frontend-subSite-entry.jsp</result>
+        	<interceptor-ref name="entandoFrontEndFreeStack"></interceptor-ref>
+        </action>
+    	
+    	<action name="edit" class="jpsubsiteSubSiteFrontEndAction" method="edit">
+            <result type="dispatcher">/WEB-INF/plugins/jpsubsite/aps/jsp/internalservlet/subsite/frontend-subSite-entry.jsp</result>
+        	<result name="input" type="frontRedirectAction">
+				<param name="actionName">list</param>
+			</result>
+        	<interceptor-ref name="entandoFrontEndFreeStack"></interceptor-ref>
+        </action>
+        
+    	<action name="save" class="jpsubsiteSubSiteFrontEndAction" method="save">
+        	<result name="input" type="dispatcher">/WEB-INF/plugins/jpsubsite/aps/jsp/internalservlet/subsite/frontend-subSite-entry.jsp</result>
+        	<result type="frontRedirectAction">
+				<param name="actionName">list</param>
+			</result>
+        	<interceptor-ref name="entandoFrontEndFreeValidationStack"></interceptor-ref>
+        </action>
+        
+    	<action name="trash" class="jpsubsiteSubSiteFrontEndAction" method="trash">
+            <result type="dispatcher">/WEB-INF/plugins/jpsubsite/aps/jsp/internalservlet/subsite/frontend-subSite-trash.jsp</result>
+        	<result name="input" type="frontRedirectAction">
+				<param name="actionName">list</param>
+			</result>
+        	<interceptor-ref name="entandoFrontEndFreeStack"></interceptor-ref>
+        </action>
+        
+    	<action name="delete" class="jpsubsiteSubSiteFrontEndAction" method="delete">
+        	<result type="frontRedirectAction">
+				<param name="actionName">list</param>
+			</result>
+        	<interceptor-ref name="entandoFrontEndFreeStack"></interceptor-ref>
+        </action>
+    	
+    </package>
+   
+</struts>

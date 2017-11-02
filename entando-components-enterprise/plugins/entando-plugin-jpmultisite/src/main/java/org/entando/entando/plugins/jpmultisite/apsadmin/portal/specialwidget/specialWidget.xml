@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+    <package name="jpmultisite_do/Page/SpecialWidget" namespace="/do/jpmultisite/Page/SpecialWidget" extends="jacms_do/Page/SpecialWidget">
+
+    	<!-- ##### WIDGET CONTENT VIEWER **** ENTRY POINT ##### -->
+    	<action name="viewerConfig" class="jacmsContentViewerWidgetAction" method="init">
+        	<result type="tiles">multisite.admin.jacms.page.widget.contentViewer.config</result>
+            <interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">managePages</param></interceptor-ref>
+        </action>
+
+    	<!-- ##### WIDGET CONTENT LIST VIEWER **** ENTRY POINT ##### -->
+    	<action name="listViewerConfig" class="jacmsContentListViewerWidgetAction" method="init">
+        	<result type="tiles">multisite.admin.jacms.page.widget.contentListViewer.config</result>
+            <interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">managePages</param></interceptor-ref>
+        </action>
+
+    </package>
+
+	<package name="jpmultisite_do/jpmultisite/Page/SpecialWidget/Viewer" namespace="/do/jpmultisite/Page/SpecialWidget/Viewer" extends="jacms_do/jacms/Page/SpecialWidget/Viewer">
+
+		<global-results>
+    		<result name="pageTree" type="chain">
+    			<param name="namespace">/do/jpmultisite/Page</param>
+    			<param name="actionName">viewTree</param>
+    		</result>
+    		<result name="configure" type="chain">
+            	<param name="namespace">/do/jpmultisite/Page</param>
+    			<param name="actionName">configure</param>
+            </result>
+		</global-results>
+
+		<action name="searchContents" class="jacmsContentFinderViewerWidgetAction">
+            <result name="input" type="tiles">multisite.admin.jacms.page.widget.contentViewer.searchContents</result>
+        	<result type="tiles">multisite.admin.jacms.page.widget.contentViewer.searchContents</result>
+        	<interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">managePages</param></interceptor-ref>
+        </action>
+
+        <action name="changeContentListOrder" class="jacmsContentFinderViewerWidgetAction" method="changeOrder">
+            <result type="tiles">multisite.admin.jacms.page.widget.contentViewer.searchContents</result>
+        	<interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">managePages</param></interceptor-ref>
+        </action>
+
+		<action name="joinContent" class="jacmsContentFinderViewerWidgetAction" method="joinContent">
+			<result type="tiles" name="input">multisite.admin.jacms.page.widget.contentViewer.searchContents</result>
+            <result type="chain">executeJoinContent</result>
+        	<interceptor-ref name="entandoValidationStack"><param name="requestAuth.requiredPermission">managePages</param></interceptor-ref>
+        </action>
+
+		<action name="executeJoinContent" class="jacmsContentViewerWidgetAction" method="joinContent">
+        	<result type="tiles" name="input">multisite.admin.jacms.page.widget.contentViewer.searchContents</result>
+            <result type="tiles">multisite.admin.jacms.page.widget.contentViewer.config</result>
+        	<interceptor-ref name="entandoValidationStack"><param name="requestAuth.requiredPermission">managePages</param></interceptor-ref>
+        </action>
+
+		<action name="saveViewerConfig" class="jacmsContentViewerWidgetAction" method="save">
+    		<result type="tiles" name="input">multisite.admin.jacms.page.widget.contentViewer.config</result>
+        	<interceptor-ref name="entandoActionLogger" />
+            <interceptor-ref name="entandoValidationStack"><param name="requestAuth.requiredPermission">managePages</param></interceptor-ref>
+        </action>
+
+	</package>
+
+	<package name="jpmultisite_do/jpmultisite/Page/SpecialWidget/ListViewer" namespace="/do/jpmultisite/Page/SpecialWidget/ListViewer" extends="jacms_do/jacms/Page/SpecialWidget/ListViewer">
+
+		<global-results>
+    		<result name="pageTree" type="chain">
+    			<param name="namespace">/do/jpmultisite/Page</param>
+    			<param name="actionName">viewTree</param>
+    		</result>
+    		<result name="configure" type="chain">
+            	<param name="namespace">/do/jpmultisite/Page</param>
+    			<param name="actionName">configure</param>
+            </result>
+		</global-results>
+
+		<action name="configListViewer" class="jacmsContentListViewerWidgetAction" method="configContentType">
+        	<result name="input" type="tiles">multisite.admin.jacms.page.widget.contentListViewer.config</result>
+            <result type="tiles">multisite.admin.jacms.page.widget.contentListViewer.config</result>
+            <interceptor-ref name="entandoValidationStack"><param name="requestAuth.requiredPermission">managePages</param></interceptor-ref>
+        </action>
+
+        <action name="changeContentType" class="jacmsContentListViewerWidgetAction" method="changeContentType">
+        	<result type="tiles">multisite.admin.jacms.page.widget.contentListViewer.config</result>
+            <interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">managePages</param></interceptor-ref>
+        </action>
+
+		<action name="addCategory" class="jacmsContentListViewerWidgetAction" method="addCategory">
+        	<result type="tiles">multisite.admin.jacms.page.widget.contentListViewer.config</result>
+            <interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">managePages</param></interceptor-ref>
+        </action>
+
+		<action name="removeCategory*" class="jacmsContentListViewerWidgetAction" method="removeCategory">
+        	<result type="tiles">multisite.admin.jacms.page.widget.contentListViewer.config</result>
+            <interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">managePages</param></interceptor-ref>
+        </action>
+
+		<action name="removeUserFilter*" class="jacmsContentListViewerWidgetAction" method="removeUserFilter">
+        	<result type="tiles">multisite.admin.jacms.page.widget.contentListViewer.config</result>
+            <interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">managePages</param></interceptor-ref>
+        </action>
+
+		<action name="moveUserFilter*" class="jacmsContentListViewerWidgetAction" method="moveUserFilter">
+        	<result type="tiles">multisite.admin.jacms.page.widget.contentListViewer.config</result>
+            <interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">managePages</param></interceptor-ref>
+        </action>
+
+		<action name="addUserFilter" class="jacmsContentListViewerWidgetAction" method="addUserFilter">
+        	<result name="input" type="tiles">multisite.admin.jacms.page.widget.contentListViewer.config</result>
+            <result type="tiles">multisite.admin.jacms.page.widget.contentListViewer.config</result>
+            <result name="userfiltercategory" type="tiles">multisite.admin.jacms.page.widget.contentListViewer.config.userfilter.category</result>
+            <interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">managePages</param></interceptor-ref>
+        </action>
+
+		<action name="removeFilter*" class="jacmsContentListViewerWidgetAction" method="removeFilter">
+        	<result type="tiles">multisite.admin.jacms.page.widget.contentListViewer.config</result>
+            <interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">managePages</param></interceptor-ref>
+        </action>
+
+		<action name="moveFilter*" class="jacmsContentListViewerWidgetAction" method="moveFilter">
+        	<result type="tiles">multisite.admin.jacms.page.widget.contentListViewer.config</result>
+            <interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">managePages</param></interceptor-ref>
+        </action>
+
+		<action name="saveListViewerConfig" class="jacmsContentListViewerWidgetAction" method="save">
+        	<result name="input" type="tiles">multisite.admin.jacms.page.widget.contentListViewer.config</result>
+            <interceptor-ref name="entandoActionLogger" />
+            <interceptor-ref name="entandoValidationStack"><param name="requestAuth.requiredPermission">managePages</param></interceptor-ref>
+        </action>
+
+		<action name="newFilter" class="jacmsContentListFilterAction" method="newFilter">
+        	<result type="tiles">multisite.admin.jacms.page.widget.contentListViewer.entryFilter</result>
+            <interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">managePages</param></interceptor-ref>
+        </action>
+
+		<action name="setFilterType" class="jacmsContentListFilterAction" method="setFilterType">
+        	<result type="tiles">multisite.admin.jacms.page.widget.contentListViewer.entryFilter</result>
+            <interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">managePages</param></interceptor-ref>
+        </action>
+
+		<action name="setFilterOption" class="jacmsContentListFilterAction" method="setFilterOption">
+        	<result type="tiles">multisite.admin.jacms.page.widget.contentListViewer.entryFilter</result>
+			<result name="addFilter" type="chain">addFilter</result>
+            <interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">managePages</param></interceptor-ref>
+        </action>
+
+		<action name="saveFilter" class="jacmsContentListFilterAction" method="saveFilter">
+        	<result name="input" type="tiles">multisite.admin.jacms.page.widget.contentListViewer.entryFilter</result>
+            <result type="chain">addFilter</result>
+            <interceptor-ref name="entandoValidationStack"><param name="requestAuth.requiredPermission">managePages</param></interceptor-ref>
+        </action>
+
+		<action name="saveTextFilter" class="jacmsContentListTextFilterAction" method="saveFilter">
+        	<result name="input" type="tiles">multisite.admin.jacms.page.widget.contentListViewer.entryFilter</result>
+            <result type="chain">addFilter</result>
+            <interceptor-ref name="entandoValidationStack"><param name="requestAuth.requiredPermission">managePages</param></interceptor-ref>
+        </action>
+
+		<action name="saveNumberFilter" class="jacmsContentListNumberFilterAction" method="saveFilter">
+        	<result name="input" type="tiles">multisite.admin.jacms.page.widget.contentListViewer.entryFilter</result>
+            <result type="chain">addFilter</result>
+            <interceptor-ref name="entandoValidationStack"><param name="requestAuth.requiredPermission">managePages</param></interceptor-ref>
+        </action>
+
+		<action name="saveBooleanFilter" class="jacmsContentListBooleanFilterAction" method="saveFilter">
+        	<result name="input" type="tiles">multisite.admin.jacms.page.widget.contentListViewer.entryFilter</result>
+            <result type="chain">addFilter</result>
+            <interceptor-ref name="entandoValidationStack"><param name="requestAuth.requiredPermission">managePages</param></interceptor-ref>
+        </action>
+
+		<action name="saveDateFilter" class="jacmsContentListDateFilterAction" method="saveFilter">
+        	<result name="input" type="tiles">multisite.admin.jacms.page.widget.contentListViewer.entryFilter</result>
+            <result type="chain">addFilter</result>
+            <interceptor-ref name="entandoValidationStack"><param name="requestAuth.requiredPermission">managePages</param></interceptor-ref>
+        </action>
+
+		<action name="addFilter" class="jacmsContentListViewerWidgetAction" method="addFilter">
+        	<result type="tiles">multisite.admin.jacms.page.widget.contentListViewer.config</result>
+            <interceptor-ref name="entandoDefaultStack">
+            	<param name="requestAuth.requiredPermission">managePages</param>
+            	<param name="chain.includeParameters">newFilter</param>
+            </interceptor-ref>
+        </action>
+
+	</package>
+
+</struts>

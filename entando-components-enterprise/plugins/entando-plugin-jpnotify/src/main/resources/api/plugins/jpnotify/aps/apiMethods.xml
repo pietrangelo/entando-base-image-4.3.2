@@ -1,0 +1,51 @@
+<apiMethodDefinitions>
+
+	<resource name="notifys">
+        <description>Return the notify list</description>
+        <source pluginCode="jpnotify">plugins</source>
+		<method httpMethod="GET" active="true" canSpawnOthers="true">
+			<description>Return the notifys list</description>
+			<springBean name="jpnotifyNotifyManager" method="getNotifysForApi" />
+			<responseClass>org.entando.entando.plugins.jpnotify.aps.system.services.notify.api.NotifyListResponse</responseClass>
+			<!-- 
+			<parameters>
+			</parameters>
+			-->
+		</method>
+	</resource>
+  
+    <resource name="notify">
+        <description>The notify</description>
+        <source pluginCode="jpnotify">plugins</source>
+        <method httpMethod="GET" active="true" canSpawnOthers="true">
+            <description>Return a notify by id</description>
+            <springBean name="jpnotifyNotifyManager" method="getNotifyForApi" />
+            <responseClass>org.entando.entando.plugins.jpnotify.aps.system.services.notify.api.NotifyResponse</responseClass>
+            <parameters>
+                <parameter key="id" required="true">
+                    <description>The id of the notify to return</description>
+                </parameter>
+            </parameters>
+        </method>
+        <method httpMethod="POST" active="true" requiredAuth="true" requiredPermission="superuser">
+            <description>Add a notify</description>
+            <springBean name="jpnotifyNotifyManager" method="addNotifyForApi" />
+            <expectedType>org.entando.entando.plugins.jpnotify.aps.system.services.notify.api.JAXBNotify</expectedType>
+        </method>
+        <method httpMethod="PUT" active="true" requiredAuth="true" requiredPermission="superuser">
+            <description>Update a notify</description>
+            <springBean name="jpnotifyNotifyManager" method="updateNotifyForApi" />
+            <expectedType>org.entando.entando.plugins.jpnotify.aps.system.services.notify.api.JAXBNotify</expectedType>
+        </method>
+        <method httpMethod="DELETE" active="true" requiredAuth="true" requiredPermission="superuser">
+            <description>Delete a notify by id</description>
+            <springBean name="jpnotifyNotifyManager" method="deleteNotifyForApi" />
+            <parameters>
+                <parameter key="id" required="true">
+                    <description>The id of the notify to delete</description>
+                </parameter>
+            </parameters>
+        </method>
+    </resource>
+	
+</apiMethodDefinitions>

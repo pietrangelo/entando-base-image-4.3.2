@@ -1,0 +1,53 @@
+<apiMethodDefinitions>
+<!-- 
+	<resource name="cards">
+        <description>Return the cards</description>
+        <source>portalexample</source>
+		<method httpMethod="GET" active="true" canSpawnOthers="false">
+			<source>portalexample</source>
+			<description>Return the cards by holder</description>
+			<springBean name="CardManager" method="getCardsForApi" />
+			<responseClass>org.entando.entando.portalexample.aps.system.services.card.api.CardsResponse</responseClass>
+			<parameters>
+				<parameter key="holder" required="false">
+					<description>The holder</description>
+				</parameter>
+			</parameters>
+		</method>
+	</resource>
+-->   
+    <resource name="socialPost">
+        <description>The socialPost</description>
+        <source pluginCode="jpsocial">plugins</source>
+        <method httpMethod="GET" active="true" canSpawnOthers="true">
+            <description>Return a socialPost by id</description>
+            <springBean name="jpsocialSocialPostManager" method="getSocialPostForApi" />
+            <responseClass>org.entando.entando.plugins.jpsocial.aps.system.services.socialpost.api.SocialPostResponse</responseClass>
+            <parameters>
+                <parameter key="id" required="true">
+                    <description>The id of the socialPost to return</description>
+                </parameter>
+            </parameters>
+        </method>
+        <method httpMethod="POST" active="true" requiredAuth="true" requiredPermission="superuser">
+            <description>Add a socialPost</description>
+            <springBean name="jpsocialSocialPostManager" method="addSocialPostForApi" />
+            <expectedType>org.entando.entando.plugins.jpsocial.aps.system.services.socialpost.api.JAXBSocialPost</expectedType>
+        </method>
+        <method httpMethod="PUT" active="true" requiredAuth="true" requiredPermission="superuser">
+            <description>Update a socialPost</description>
+            <springBean name="jpsocialSocialPostManager" method="updateSocialPostForApi" />
+            <expectedType>org.entando.entando.plugins.jpsocial.aps.system.services.socialpost.api.JAXBSocialPost</expectedType>
+        </method>
+        <method httpMethod="DELETE" active="true" requiredAuth="true" requiredPermission="superuser">
+            <description>Delete a socialPost by id</description>
+            <springBean name="jpsocialSocialPostManager" method="deleteSocialPostForApi" />
+            <parameters>
+                <parameter key="id" required="true">
+                    <description>The id of the socialPost to delete</description>
+                </parameter>
+            </parameters>
+        </method>
+    </resource>
+	
+</apiMethodDefinitions>

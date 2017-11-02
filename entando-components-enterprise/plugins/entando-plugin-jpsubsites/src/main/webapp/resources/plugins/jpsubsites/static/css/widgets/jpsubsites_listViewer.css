@@ -1,0 +1,16 @@
+.jpsubsites_listViewer ul {
+	list-style-type: none;
+	margin: 0;
+	/* flottante per contenere qualsiasi flottante interno */
+	padding: 1em 0; 
+	float: left;
+	width: 100%;
+}
+
+.jpsubsites_listViewer ul li {
+	/* flottante per contenere qualsiasi flottante interno */
+	margin: 0.5em 0;
+	border-bottom: 2px solid #f0f0f0;
+	float: left;
+	width: 100%;
+}

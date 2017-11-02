@@ -1,0 +1,20 @@
+{
+"h1" : "Titolo1",
+"h2" : "Titolo2",
+"h3" : "Titolo3",
+"code" : "Codice",
+"bold" : "Grassetto",
+"italic" : "Corsivo",
+"underline" : "Sottolinea",
+"link" : "Link",
+"img" : "Immagine",
+"quote" : "Cita",
+"small" : "Testo Piccolo",
+"big": "Testo Grande",
+"red": "Rosso",
+"green": "Verde",
+"blue": "Blu",
+"ul" : "Lista",
+"ol" : "Lista Numerata",
+"br" : "A Capo"
+}

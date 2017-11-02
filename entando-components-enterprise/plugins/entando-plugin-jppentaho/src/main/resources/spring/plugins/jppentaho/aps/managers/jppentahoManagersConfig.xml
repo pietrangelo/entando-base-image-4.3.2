@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xmlns:context="http://www.springframework.org/schema/context"
+		xmlns:jee="http://www.springframework.org/schema/jee"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+			http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.0.xsd">
+	
+        <bean id="jppentahoPentahoConfigManager" class="com.agiletec.plugins.jppentaho.aps.system.services.config.PentahoConfigManager" 
+			parent="abstractService" >
+		<property name="configManager" ref="BaseConfigManager" />
+	</bean>
+        
+	<bean id="jppentahoPentahoWebService" class="com.agiletec.plugins.jppentaho.aps.ws.PentahoWebService" />
+	
+	<bean id="jppentahoPentahoDynamicReport" class="com.agiletec.plugins.jppentaho.aps.system.services.report.PentahoDynamicReportManager" 
+			parent="abstractService" >
+		<property name="configManager" ref="BaseConfigManager" />
+		<property name="langManager" ref="LangManager" />
+		<property name="pentahoWebService" ref="jppentahoPentahoWebService" />
+		<property name="configDAO" ref="jppentahoPentahoConfigDAO" />
+		<property name="widgetTypeManager" ref="WidgetTypeManager" />
+                <property name="pentahoConfigManager" ref="jppentahoPentahoConfigManager" />
+                <property name="cacheManager" ref="CacheManager" />
+	</bean>
+	
+	<bean id="jppentahoPentahoConfigDAO" class="com.agiletec.plugins.jppentaho.aps.system.services.report.PentahoReportUserConfigDAO" >
+		<property name="dataSource" ref="servDataSource" />
+	</bean>
+	
+	<bean id="jppentahoDataIntegrationManager" class="com.agiletec.plugins.jppentaho.aps.system.services.dataintegration.DataIntegrationManager" >
+		<property name="pentahoConfigManager" ref="jppentahoPentahoConfigManager" />
+	</bean>
+	
+	<bean id="jppentahoCacheWrapperManager" 
+                class="com.agiletec.plugins.jppentaho.aps.system.services.cache.CacheWrapperManager" 
+                parent="abstractService" >
+            <property name="cacheManager" ref="CacheManager" />
+	</bean>
+	
+</beans>

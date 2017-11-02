@@ -1,0 +1,9 @@
+Sotto "src/man/config" sono presenti i seguenti file:
+	* jppentahoManagersConfig.xml : spring modificati per il plugin "a tempo"
+	* PentahoDynamicReportManager.java : Manager modificato per il plugin "a tempo"
+modificati appositamente per la versione "a tempo".
+Occorre tenerli allineati con gli originali.
+
+Per generare la versione "a tempo" del plugin jppentaho è sufficiente eseguire il task di ant di default.
+
+Il plugin avrà come dipendenza "jplicense", per cui occorrerà eseguire nel progetto di destinazione, anche le query di quel plugin.

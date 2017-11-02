@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	
+	<!-- ### entando-plugin-jpforum ### -->
+	<include file="com/agiletec/plugins/jpforum/aps/internalservlet/jpforum-struts-plugin.xml"/>
+	<include file="com/agiletec/plugins/jpforum/apsadmin/section/section.xml"/>
+	<include file="com/agiletec/plugins/jpforum/apsadmin/rss/forumRss.xml"/>
+	<include file="com/agiletec/plugins/jpforum/aps/internalservlet/actions/section/sectionBrowse.xml"/>
+	<include file="com/agiletec/plugins/jpforum/aps/internalservlet/actions/thread/thread.xml"/>
+	<include file="com/agiletec/plugins/jpforum/aps/internalservlet/actions/post/post.xml"/>
+	<include file="com/agiletec/plugins/jpforum/aps/internalservlet/actions/user/forumUser.xml"/>	
+	<include file="com/agiletec/plugins/jpforum/aps/internalservlet/actions/message/message.xml"/>
+	<include file="com/agiletec/plugins/jpforum/aps/internalservlet/actions/sanction/sanction.xml"/>
+	<include file="com/agiletec/plugins/jpforum/aps/internalservlet/actions/attach/attach.xml"/>
+	<include file="com/agiletec/plugins/jpforum/aps/internalservlet/actions/search/search.xml"/>
+	<include file="com/agiletec/plugins/jpforum/apsadmin/config/config.xml"/>
+	
+</struts>

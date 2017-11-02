@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+	<package name="jpsalesforce_do/jpsalesforce/Message/Config"
+		namespace="/do/jpsalesforce/Message/Config" extends="entando-default">
+
+		<!-- ######### INIT OPERATIONS FOR MESSAGES TYPES CONFIGURATION ######### -->
+
+		<action name="save" class="jpsalesforceformNotifierConfigAction" method="save">
+			<result name="wrongType" type="chain">admin.jpwebdynamicform.Message.Config.edit</result>
+			<result name="input" type="tiles">admin.jpwebdynamicform.Message.Config.edit</result>
+			<result type="redirectAction">
+				<param name="namespace">/do/Page</param>
+				<param name="actionName">configure</param>
+				<param name="pageCode">${pageCode}</param>
+				<param name="frame">${frame}</param>
+				<param name="widgetTypeCode">${widgetTypeCode}</param>
+			</result>
+			<interceptor-ref name="entandoValidationStack">
+				<param name="requestAuth.requiredPermission">superuser</param>
+			</interceptor-ref>
+		</action>
+
+		<action name="edit" class="jpsalesforceformNotifierConfigAction" method="edit">
+			<result name="wrongType" type="tiles">admin.jpwebdynamicform.Message.Config.edit</result>
+			<result type="tiles">admin.jpwebdynamicform.Message.Config.edit</result>
+			<interceptor-ref name="entandoDefaultStack">
+				<param name="requestAuth.requiredPermission">superuser</param>
+			</interceptor-ref>
+		</action>
+
+		<action name="addAddress" class="jpsalesforceformNotifierConfigAction" method="addAddress">
+			<result name="input" type="tiles">admin.jpwebdynamicform.Message.Config.edit</result>
+			<result type="tiles">admin.jpwebdynamicform.Message.Config.edit</result>
+			<interceptor-ref name="entandoDefaultStack">
+				<param name="requestAuth.requiredPermission">superuser</param>
+			</interceptor-ref>
+		</action>
+
+		<action name="removeAddress*" class="jpsalesforceformNotifierConfigAction" method="removeAddress">
+			<result type="tiles">admin.jpwebdynamicform.Message.Config.edit</result>
+			<interceptor-ref name="entandoDefaultStack">
+				<param name="requestAuth.requiredPermission">superuser</param>
+			</interceptor-ref>
+		</action>
+
+		<action name="backToBinding" class="jpsalesforceformNotifierConfigAction">
+			<result type="redirectAction">
+				<param name="namespace">/do/Page/SpecialWidget</param>
+				<param name="actionName">configure</param>
+				<param name="pageCode">${pageCode}</param>
+				<param name="frame">${frame}</param>
+				<param name="widgetTypeCode">${widgetTypeCode}</param>
+				<param name="campaignId">${campaignId}</param>
+				<param name="profileId">${profileId}</param>
+			</result>
+			<interceptor-ref name="entandoDefaultStack">
+				<param name="requestAuth.requiredPermission">superuser</param>
+			</interceptor-ref>
+		</action>
+
+		<!-- ######### END OPERATIONS FOR MESSAGES TYPES CONFIGURATION ######### -->
+
+	</package>
+
+</struts>

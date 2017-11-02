@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+	<!-- Widget configuration // start -->
+
+	<definition extends="layout.default"
+		name="admin.jpsalesforce.Page.Widget.intro.config">
+		<put-attribute name="title" value="title.pageManagement" />
+		<put-attribute name="body"
+			value="/WEB-INF/plugins/jpsalesforce/apsadmin/jsp/portal/specialwidget/saleforcesFormIntroConfig.jsp" />
+	</definition>
+
+	<definition extends="layout.default"
+		name="admin.jpsalesforce.Page.Widget.publication.intro.config">
+		<put-attribute name="title" value="title.pageManagement" />
+		<put-attribute name="body"
+			value="/WEB-INF/plugins/jpsalesforce/apsadmin/jsp/portal/specialwidget/SalesformPublicationIntroConfig.jsp" />
+	</definition>
+
+	<definition extends="layout.default"
+		name="admin.jpsalesforce.Page.Widget.publication.config">
+		<put-attribute name="title" value="title.pageManagement" />
+		<put-attribute name="body"
+			value="/WEB-INF/plugins/jpsalesforce/apsadmin/jsp/portal/specialwidget/SalesformPublicationConfig.jsp" />
+	</definition>
+
+	<definition extends="layout.default"
+		name="admin.jpsalesforce.Page.Widget.form.config">
+		<put-attribute name="title" value="title.pageManagement" />
+		<put-attribute name="body"
+			value="/WEB-INF/plugins/jpsalesforce/apsadmin/jsp/portal/specialwidget/saleforcesFormConfig.jsp" />
+	</definition>
+
+	<!-- Widget configuration // end -->
+
+
+	<!-- Lead management // start -->
+
+	<definition extends="layout.default" name="admin.jpsalesforce.Lead.list">
+		<put-attribute name="title" value="title.lead.management" />
+		<put-attribute name="body"
+			value="/WEB-INF/plugins/jpsalesforce/apsadmin/jsp/lead/finder.jsp" />
+	</definition>
+
+	<definition extends="layout.default" name="admin.jpsalesforce.Lead.intro">
+		<put-attribute name="title" value="title.lead.management" />
+		<put-attribute name="body"
+			value="/WEB-INF/plugins/jpsalesforce/apsadmin/jsp/lead/finder.jsp" />
+	</definition>
+
+	<!-- Lead management // end -->
+
+	<!-- Salesforce configuration // start-->
+	
+	<definition extends="main.layout" name="admin.jpsalesforce.Config.entry">
+		<put-attribute name="title" value="title.jpsalesforce.config" />
+		<put-attribute name="body"
+			value="/WEB-INF/plugins/jpsalesforce/apsadmin/jsp/config/entryConfig.jsp" />
+	</definition>
+
+	<definition extends="main.layout"
+		name="admin.jpsalesforce.Config.savedConfirmation">
+		<put-attribute name="title" value="title.jpsalesforce.config" />
+		<put-attribute name="body"
+			value="/WEB-INF/plugins/jpsalesforce/apsadmin/jsp/config/savedConfirmation.jsp" />
+	</definition>
+	<!-- Salesforce configuration // end -->
+
+</tiles-definitions>

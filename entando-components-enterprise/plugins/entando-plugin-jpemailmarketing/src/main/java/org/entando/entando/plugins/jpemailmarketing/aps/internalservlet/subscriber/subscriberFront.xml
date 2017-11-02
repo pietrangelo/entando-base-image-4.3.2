@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+    <package name="jpemailmarketing_do/FrontEnd/jpemailmarketing/Subscriber" namespace="/do/FrontEnd/jpemailmarketing/Subscriber" extends="entando-front-default">
+
+    	<global-results>
+            <result name="failure">/WEB-INF/plugins/jpemailmarketing/aps/jsp/internalservlet/subscriber/frontend-subscriber-error.jsp</result>
+    	</global-results>
+
+
+		<!-- 
+			the course is activated when the subscriber downloads the incentive attach
+		 -->
+    	<action name="activate" class="jpemailmarketingSubscriberManageFrontAction" method="viewFileAndActivateCourse">
+            <result type="stream">
+            	<param name="inputName">downloadInputStream</param>
+            	<param name="contentType">downloadContentType</param>
+            	<param name="contentDisposition">attachment;filename="${downloadFileName}"</param> -->
+            </result>
+        	<interceptor-ref name="fileUpload"/>
+        	<interceptor-ref name="entandoFrontEndFreeStack"></interceptor-ref>
+        </action>
+
+    	<action name="unsubscribe" class="jpemailmarketingSubscriberManageFrontAction" method="unsubscribe">
+            <result type="redirect">${redirectURL}</result>
+        	<interceptor-ref name="entandoFrontEndFreeStack"></interceptor-ref>
+        </action>
+        
+    </package>
+   
+</struts>

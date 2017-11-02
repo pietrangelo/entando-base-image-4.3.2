@@ -1,0 +1,202 @@
+<apiMethodDefinitions>
+
+	<resource name="courses" namespace="jpemailmarketing">
+		<description>Return the course list</description>
+		<source pluginCode="jpemailmarketing">plugins</source>
+		<method httpMethod="GET" active="true" canSpawnOthers="true" requiredAuth="true" requiredPermission="superuser">
+			<description>Return the courses list</description>
+			<springBean name="jpemailmarketingCourseManager" method="getCoursesForApi" />
+			<responseClass>org.entando.entando.plugins.jpemailmarketing.aps.system.services.course.api.CourseListResponse</responseClass>
+			<!-- <parameters> </parameters> -->
+		</method>
+	</resource>
+
+	<resource name="course" namespace="jpemailmarketing">
+		<description>The course</description>
+		<source pluginCode="jpemailmarketing">plugins</source>
+		<method httpMethod="GET" active="true" canSpawnOthers="true" requiredAuth="true" requiredPermission="superuser">
+			<description>Return a course by id</description>
+			<springBean name="jpemailmarketingCourseManager" method="getCourseForApi" />
+			<responseClass>org.entando.entando.plugins.jpemailmarketing.aps.system.services.course.api.CourseResponse</responseClass>
+			<parameters>
+				<parameter key="id" required="true">
+					<description>The id of the course to return</description>
+				</parameter>
+			</parameters>
+		</method>
+		<!-- 
+		<method httpMethod="POST" active="true" requiredAuth="true" requiredPermission="superuser">
+			<description>Add a course</description>
+			<springBean name="jpemailmarketingCourseManager" method="addCourseForApi" />
+			<expectedType>org.entando.entando.plugins.jpemailmarketing.aps.system.services.course.api.JAXBCourse</expectedType>
+		</method>
+		<method httpMethod="PUT" active="true" requiredAuth="true" requiredPermission="superuser">
+			<description>Update a course</description>
+			<springBean name="jpemailmarketingCourseManager" method="updateCourseForApi" />
+			<expectedType>org.entando.entando.plugins.jpemailmarketing.aps.system.services.course.api.JAXBCourse</expectedType>
+		</method>
+		<method httpMethod="DELETE" active="true" requiredAuth="true" requiredPermission="superuser">
+			<description>Delete a course by id</description>
+			<springBean name="jpemailmarketingCourseManager" method="deleteCourseForApi" />
+			<parameters>
+				<parameter key="id" required="true">
+					<description>The id of the course to delete</description>
+				</parameter>
+			</parameters>
+		</method>
+		 -->
+	</resource>
+	
+
+	<resource name="forms" namespace="jpemailmarketing">
+        <description>Return the form list</description>
+        <source pluginCode="jpemailmarketing">plugins</source>
+		<method httpMethod="GET" active="true" canSpawnOthers="true" requiredAuth="true" requiredPermission="superuser">
+			<description>Return the forms list</description>
+			<springBean name="jpemailmarketingFormManager" method="getFormsForApi" />
+			<responseClass>org.entando.entando.plugins.jpemailmarketing.aps.system.services.form.api.FormListResponse</responseClass>
+			<!-- 
+			<parameters>
+			</parameters>
+			-->
+		</method>
+	</resource>
+  
+    <resource name="form" namespace="jpemailmarketing">
+        <description>The form</description>
+        <source pluginCode="jpemailmarketing">plugins</source>
+        <method httpMethod="GET" active="true" canSpawnOthers="true" requiredAuth="true" requiredPermission="superuser">
+			<description>Return a form by courseId</description>
+            <springBean name="jpemailmarketingFormManager" method="getFormForApi" />
+            <responseClass>org.entando.entando.plugins.jpemailmarketing.aps.system.services.form.api.FormResponse</responseClass>
+            <parameters>
+				<parameter key="courseId" required="true">
+					<description>The courseId of the form to return</description>
+                </parameter>
+            </parameters>
+        </method>
+        <!-- 
+        <method httpMethod="POST" active="true" requiredAuth="true" requiredPermission="superuser">
+            <description>Add a form</description>
+            <springBean name="jpemailmarketingFormManager" method="addFormForApi" />
+            <expectedType>org.entando.entando.plugins.jpemailmarketing.aps.system.services.form.api.JAXBForm</expectedType>
+        </method>
+        <method httpMethod="PUT" active="true" requiredAuth="true" requiredPermission="superuser">
+            <description>Update a form</description>
+            <springBean name="jpemailmarketingFormManager" method="updateFormForApi" />
+            <expectedType>org.entando.entando.plugins.jpemailmarketing.aps.system.services.form.api.JAXBForm</expectedType>
+        </method>
+		<method httpMethod="DELETE" active="true" requiredAuth="true"
+			requiredPermission="superuser">
+			<description>Delete a form by courseId</description>
+            <springBean name="jpemailmarketingFormManager" method="deleteFormForApi" />
+			<parameters>
+				<parameter key="courseId" required="true">
+					<description>The courseId of the form to delete</description>
+				</parameter>
+			</parameters>
+        </method>
+         -->
+    </resource>
+
+	<resource name="courseMails" namespace="jpemailmarketing">
+        <description>Return the courseMail list</description>
+        <source pluginCode="jpemailmarketing">plugins</source>
+		<method httpMethod="GET" active="true" canSpawnOthers="true">
+			<description>Return the courseMails list</description>
+			<springBean name="jpemailmarketingCourseMailManager" method="getCourseMailsForApi" />
+			<responseClass>org.entando.entando.plugins.jpemailmarketing.aps.system.services.coursemail.api.CourseMailListResponse</responseClass>
+			<!-- 
+			<parameters>
+			</parameters>
+			 -->
+		</method>
+	</resource>
+  
+    <resource name="courseMail" namespace="jpemailmarketing">
+        <description>The courseMail</description>
+        <source pluginCode="jpemailmarketing">plugins</source>
+        <method httpMethod="GET" active="true" canSpawnOthers="true">
+            <description>Return a courseMail by id</description>
+            <springBean name="jpemailmarketingCourseMailManager" method="getCourseMailForApi" />
+            <responseClass>org.entando.entando.plugins.jpemailmarketing.aps.system.services.coursemail.api.CourseMailResponse</responseClass>
+            <parameters>
+                <parameter key="id" required="true">
+                    <description>The id of the courseMail to return</description>
+                </parameter>
+            </parameters>
+        </method>
+        <!-- 
+        <method httpMethod="POST" active="true" requiredAuth="true" requiredPermission="superuser">
+            <description>Add a courseMail</description>
+            <springBean name="jpemailmarketingCourseMailManager" method="addCourseMailForApi" />
+            <expectedType>org.entando.entando.plugins.jpemailmarketing.aps.system.services.coursemail.api.JAXBCourseMail</expectedType>
+        </method>
+        <method httpMethod="PUT" active="true" requiredAuth="true" requiredPermission="superuser">
+            <description>Update a courseMail</description>
+            <springBean name="jpemailmarketingCourseMailManager" method="updateCourseMailForApi" />
+            <expectedType>org.entando.entando.plugins.jpemailmarketing.aps.system.services.coursemail.api.JAXBCourseMail</expectedType>
+        </method>
+        <method httpMethod="DELETE" active="true" requiredAuth="true" requiredPermission="superuser">
+            <description>Delete a courseMail by id</description>
+            <springBean name="jpemailmarketingCourseMailManager" method="deleteCourseMailForApi" />
+            <parameters>
+                <parameter key="id" required="true">
+                    <description>The id of the courseMail to delete</description>
+                </parameter>
+            </parameters>
+        </method>
+         -->
+    </resource>
+
+	<resource name="subscribers" namespace="jpemailmarketing">
+        <description>Return the subscriber list</description>
+        <source pluginCode="jpemailmarketing">plugins</source>
+		<method httpMethod="GET" active="true" canSpawnOthers="true">
+			<description>Return the subscribers list</description>
+			<springBean name="jpemailmarketingSubscriberManager" method="getSubscribersForApi" />
+			<responseClass>org.entando.entando.plugins.jpemailmarketing.aps.system.services.subscriber.api.SubscriberListResponse</responseClass>
+			<!-- 
+			<parameters>
+			</parameters>
+			-->
+		</method>
+	</resource>
+  
+    <resource name="subscriber" namespace="jpemailmarketing">
+        <description>The subscriber</description>
+        <source pluginCode="jpemailmarketing">plugins</source>
+        <method httpMethod="GET" active="true" canSpawnOthers="true">
+            <description>Return a subscriber by id</description>
+            <springBean name="jpemailmarketingSubscriberManager" method="getSubscriberForApi" />
+            <responseClass>org.entando.entando.plugins.jpemailmarketing.aps.system.services.subscriber.api.SubscriberResponse</responseClass>
+            <parameters>
+                <parameter key="id" required="true">
+                    <description>The id of the subscriber to return</description>
+                </parameter>
+            </parameters>
+        </method>
+        <!-- 
+        <method httpMethod="POST" active="true" requiredAuth="true" requiredPermission="superuser">
+            <description>Add a subscriber</description>
+            <springBean name="jpemailmarketingSubscriberManager" method="addSubscriberForApi" />
+            <expectedType>org.entando.entando.plugins.jpemailmarketing.aps.system.services.subscriber.api.JAXBSubscriber</expectedType>
+        </method>
+        <method httpMethod="PUT" active="true" requiredAuth="true" requiredPermission="superuser">
+            <description>Update a subscriber</description>
+            <springBean name="jpemailmarketingSubscriberManager" method="updateSubscriberForApi" />
+            <expectedType>org.entando.entando.plugins.jpemailmarketing.aps.system.services.subscriber.api.JAXBSubscriber</expectedType>
+        </method>
+        <method httpMethod="DELETE" active="true" requiredAuth="true" requiredPermission="superuser">
+            <description>Delete a subscriber by id</description>
+            <springBean name="jpemailmarketingSubscriberManager" method="deleteSubscriberForApi" />
+            <parameters>
+                <parameter key="id" required="true">
+                    <description>The id of the subscriber to delete</description>
+                </parameter>
+            </parameters>
+        </method>
+         -->
+    </resource>
+
+</apiMethodDefinitions>

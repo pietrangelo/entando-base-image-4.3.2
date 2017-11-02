@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	
+    <package name="jpmultisite_do/jpmultisite/Resource" namespace="/do/jpmultisite/Resource" extends="jacms_do/jacms/Resource">
+    	
+		<action name="intro" class="jpmultisiteResourceAction">
+			<result type="tiles">multisite.admin.jacms.resource.${resourceTypeCode}.intro</result>
+			<interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">manageResources</param></interceptor-ref>
+        </action>
+		
+    	<!-- ######### INIZIO OPERAZIONI IN INTERFACCIA LISTA RISORSE ######### -->
+    	
+    	<action name="list" class="jpmultisiteResourceFinderAction">
+            <result type="tiles">multisite.admin.jacms.resource.${resourceTypeCode}.list</result>
+        	<interceptor-ref name="entandoDefaultStack">
+        		<param name="chain.includeParameters">fieldErrors,actionErrors,actionMessages</param>
+        		<param name="requestAuth.requiredPermission">manageResources</param>
+        	</interceptor-ref>
+        </action>
+        
+        <action name="openCloseCategoryTreeNodeOnResourceFinding*" class="jpmultisiteResourceFinderAction" method="buildTree">
+    		<result type="tiles">multisite.admin.jacms.resource.${resourceTypeCode}.list</result>
+        	<interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">manageResources</param></interceptor-ref>
+        </action>
+        
+        <action name="search" class="jpmultisiteResourceFinderAction">
+            <result type="tiles">multisite.admin.jacms.resource.${resourceTypeCode}.list</result>
+        	<interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">manageResources</param></interceptor-ref>
+        </action>
+        
+        <!-- ######### FINE OPERAZIONI IN INTERFACCIA LISTA RISORSE ######### -->
+    	
+    	
+    	<!-- ######### INIZIO OPERAZIONI DI AGGIUNTA/MODIFICA RISORSE ######### -->
+    	
+        <action name="new" class="jpmultisiteResourceAction" method="newResource">
+            <result type="tiles">multisite.admin.jacms.resource.entry</result>
+        	<interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">manageResources</param></interceptor-ref>
+        </action>
+    	
+    	<action name="edit" class="jpmultisiteResourceAction" method="edit">
+            <result type="tiles">multisite.admin.jacms.resource.entry</result>
+        	<interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">manageResources</param></interceptor-ref>
+        </action>
+    	
+        <action name="openCloseCategoryTreeNodeOnEntryResource*" class="jpmultisiteResourceAction" method="buildTree">
+    		<result type="tiles">multisite.admin.jacms.resource.entry</result>
+        	<interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">manageResources</param></interceptor-ref>
+        </action>
+        
+    	<action name="joinCategory*" class="jpmultisiteResourceAction" method="joinCategory">
+            <result type="tiles">multisite.admin.jacms.resource.entry</result>
+        	<interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">manageResources</param></interceptor-ref>
+        </action>
+    	
+    	<action name="removeCategory*" class="jpmultisiteResourceAction" method="removeCategory">
+            <result type="tiles">multisite.admin.jacms.resource.entry</result>
+        	<interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">manageResources</param></interceptor-ref>
+        </action>
+        
+    	<action name="save" class="jpmultisiteResourceAction" method="save">
+            <result type="tiles" name="input">multisite.admin.jacms.resource.entry</result>
+			<result type="redirectAction">
+		   		<param name="actionName">list</param>
+			    <param name="resourceTypeCode">${resourceTypeCode}</param>
+			</result>
+        	<!-- <interceptor-ref name="fileUpload"><param name="maximumSize">10485760</param></interceptor-ref> --><!-- maximun Size = 10 Mb -->
+			<interceptor-ref name="apsFileUpload" />
+			<interceptor-ref name="entandoValidationStack"><param name="requestAuth.requiredPermission">manageResources</param></interceptor-ref>
+        </action>
+    	
+    	<!-- ######### FINE OPERAZIONI DI AGGIUNTA/MODIFICA RISORSE ######### -->
+    	
+    	<!-- ######### INIZIO OPERAZIONI DI CANCELLAZIONE RISORSE ######### -->
+    	
+    	<action name="trash" class="jpmultisiteResourceAction" method="trash">
+            <result name="references" type="tiles">multisite.admin.jacms.resource.references</result>
+        	<result name="input" type="chain">list</result>
+			<result type="tiles">multisite.admin.jacms.resource.trash</result>
+        	<interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">manageResources</param></interceptor-ref>
+        </action>
+    	
+    	<action name="delete" class="jpmultisiteResourceAction" method="delete">
+    		<result name="references" type="tiles">multisite.admin.jacms.resource.references</result>
+    		<result name="input" type="chain">list</result>
+            <result type="chain">list</result>
+        	<interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">manageResources</param></interceptor-ref>
+        </action>
+    	
+    	<!-- ######### FINE OPERAZIONI DI CANCELLAZIONE RISORSE ######### -->
+    	
+    </package>
+    
+    <package name="jpmultisite_do/jpmultisite/Resource/Admin" namespace="/do/jpmultisite/Resource/Admin" extends="jacms_do/jacms/Resource/Admin">
+    	
+    	<action name="openAdminProspect" class="jacmsResourceAdminAction" >
+    		<result type="dispatcher">/WEB-INF/plugins/jacms/apsadmin/jsp/resource/adminFunctions.jsp</result>
+        	<interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">superuser</param></interceptor-ref>
+        </action>
+        
+    	<action name="refreshResourcesInstances" class="jacmsResourceAdminAction" method="refreshResourcesInstances" >
+            <result type="redirectAction">
+		   		<param name="namespace">/do/jpmultisite/Resource</param>
+		   		<param name="actionName">list</param>
+			    <param name="resourceTypeCode">${resourceTypeCode}</param>
+			</result>
+        	<interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">superuser</param></interceptor-ref>
+        </action>
+        
+    </package>
+    
+    <package name="jacms_do/jacms/Resource/Porting22" namespace="/do/jacms/Resource/Porting22" extends="entando-default">
+    	
+    	<action name="intro" class="jacmsPortingResource22Action" method="showResources">
+            <result type="tiles">multisite.admin.jacms.resource.porting22.intro</result>
+        	<interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">superuser</param></interceptor-ref>
+        </action>
+        
+    	<action name="executeRefresh" class="jacmsPortingResource22Action" method="executeRefresh">
+            <result type="tiles">multisite.admin.jacms.resource.porting22.execute</result>
+        	<interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">superuser</param></interceptor-ref>
+        </action>
+        
+	</package>
+    
+</struts>

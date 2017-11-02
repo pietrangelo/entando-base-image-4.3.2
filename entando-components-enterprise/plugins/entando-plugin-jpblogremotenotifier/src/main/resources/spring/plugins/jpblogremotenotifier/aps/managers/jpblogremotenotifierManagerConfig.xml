@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:jee="http://www.springframework.org/schema/jee"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+                                http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+                                http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+                                http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.0.xsd">
+
+	<aop:aspectj-autoproxy />
+
+
+	<bean id="jpblogRemoteNotifyManager"
+		class="org.entando.entando.plugins.jpblogremotenotifier.aps.system.services.remotenotify.BlogRemoteNotifier"
+		parent="jpremotenotifierRemoteNotifyManager">
+		<property name="multisiteManager" ref="jpremotenotifierMultisiteManager" />
+		<property name="eventTypes">
+			<props merge="true">
+				<prop key="15">org.entando.entando.plugins.jpblogremotenotifier.aps.system.services.blog.event.RemoteBlogChangingEvent</prop>
+			</props>
+		</property>
+		<property name="configManager" ref="BaseConfigManager" />
+		<property name="mailManager" ref="jpmailMailManager" />
+	</bean>
+
+	<bean id="jpblogChangingNotifierManager"
+		class="org.entando.entando.plugins.jpblogremotenotifier.aps.system.services.blog.BlogChangingNotifierManager"
+		parent="abstractService">
+		<property name="remoteNotifyManager" ref="jpblogRemoteNotifyManager" />
+		<property name="blogManager" ref="jpblogBlogManager" />
+	</bean>
+
+</beans>

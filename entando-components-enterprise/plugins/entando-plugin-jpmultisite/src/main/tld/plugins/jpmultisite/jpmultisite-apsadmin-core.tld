@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd">
+  <description><![CDATA["jpmultisite core tag library"]]></description>
+  <display-name>"jpmultisite core tag library"</display-name>
+  <tlib-version>1.0</tlib-version>
+  <short-name>jpmultisite-apsadmin-core</short-name>
+  <uri>/jpmultisite-apsadmin-core</uri>
+  
+  
+	<tag>
+		<description>
+			<![CDATA[Return the list (of integer) for the activity stream of the current user.]]>
+		</description>
+		<name>activityStream</name>
+		<tag-class>org.entando.entando.plugins.jpmultisite.apsadmin.tags.MultisiteActivityStreamTag</tag-class>
+		<body-content>empty</body-content>
+		<attribute>
+			<description><![CDATA[Name used to reference the list (of integer) for the activity stream of the current user.]]></description>
+			<name>var</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+	
+	<!--  INFO TAG DEFINITION - START -->
+	<tag>
+		<description>Loads and returns the list of the SharedContents available in the system.</description>
+		<name>sharedContents</name>
+		<tag-class>org.entando.entando.plugins.jpmultisite.aps.tags.SharedContentListTag</tag-class>
+		<body-content>empty</body-content>
+		<attribute>
+			<description>The name of the variable setted in the pagecontext.</description>
+			<name>var</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+	<tag>
+		<description>Loads and returns an SharedContent given a key.</description>
+		<name>sharedContent</name>
+		<tag-class>org.entando.entando.plugins.jpmultisite.aps.tags.SharedContentTag</tag-class>
+		<body-content>empty</body-content>
+		<attribute>
+			<description>Identifier of the SharedContent to load</description>
+			<name>key</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<description>The name of the variable setted in the pagecontext.</description>
+			<name>var</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+	
+	<tag>
+		<description>
+			<![CDATA[list all multisites. This will populate or print a list of multisite titles in the current language]]>
+		</description>
+		<name>multisiteList</name>
+		<tag-class>org.entando.entando.plugins.jpmultisite.apsadmin.tags.MultisiteListTag</tag-class>
+		<body-content>empty</body-content>
+		<attribute>
+			<description><![CDATA[Name used to reference the page (or one of its property) pushed into the Value Stack. If not specified, the tag will print the returned value.]]></description>
+			<name>var</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+	<tag>
+		<description>
+			<![CDATA[Current multisite]]>
+		</description>
+		<name>currentMultisite</name>
+		<tag-class>org.entando.entando.plugins.jpmultisite.apsadmin.tags.MultisiteCurrentTag</tag-class>
+		<body-content>empty</body-content>
+		<attribute>
+			<description><![CDATA[Name used to reference the page (or one of its property) pushed into the Value Stack. If not specified, the tag will print the returned value.]]></description>
+			<name>var</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+	<tag>
+		<description>
+			<![CDATA[Multisite by code]]>
+		</description>
+		<name>multisite</name>
+		<tag-class>org.entando.entando.plugins.jpmultisite.apsadmin.tags.MultisiteTag</tag-class>
+		<body-content>empty</body-content>
+		<attribute>
+			<description><![CDATA[Multisite code of the multisite that you want retrieve]]></description>
+			<name>code</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<description><![CDATA[key can be: home, title, descr, img, css ]]></description>
+			<name>key</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<description><![CDATA[insert lang code if you need title or description]]></description>
+			<name>lang</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<description><![CDATA[Name used to reference the page (or one of its property) pushed into the Value Stack. If not specified, the tag will print the returned value.]]></description>
+			<name>var</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+</taglib>

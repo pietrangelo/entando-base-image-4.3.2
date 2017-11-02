@@ -1,0 +1,98 @@
+/*******************/ /* Post */ /*******************/
+.jpforum .jpforum_post_container { /* post container */
+	margin-bottom: 4em;
+	float: left;
+	width: 100%;
+}
+
+.jpforum .jpforum_post_container .title_level3 { /* title */
+	text-align: center;
+	margin-bottom: 1em;
+	border: 0;
+	border-bottom: 0;
+}
+
+
+.jpforum .jpforum_entryPost textarea, .jpforum .jpforum_entryPost input[type=text]  { /* form */
+	width: 90%;
+} 
+
+.jpforum .jpforum_post_container .jpforum_tools_container { /* tools */
+	text-align: center;
+	margin: 0.5em 0 0 0;
+	padding: 0;
+	float: left;
+	width: 100%;
+}
+
+.jpforum .jpforum_post_container .jpforum_post_body_col_sx {
+	float: left;
+	width: 140px;
+	text-align: center;
+	padding: 1em 0;
+}
+
+.jpforum .jpforum_post_container .jpforum_post_body_col_dx {
+	margin-left: 140px;
+	padding: 1em 0;
+}
+
+.jpforum .jpforum_post_container .jpforum_post_body_col_dx .title_level4 /* post title */
+	{
+	margin-top: 0;
+}
+
+.jpforum .jpforum_post_container .jpforum_post_body_col_dx .jpforum_post_body_text_container
+	{
+	padding: 0 1em;
+}
+
+.jpforum .jpforum_post_body .jpforum_post_body_attaches_container {
+	border-top: 1px dashed #73B4DC;
+	padding: 1em 0 0 0;
+	margin: 1em 0 0 0;
+}
+
+.jpforum .jpforum_post_container .jpforum_post_body {
+	border-top: 1px dashed #73B4DC;
+	border-right: 1px solid #73B4DC;
+	border-bottom: 0.5em solid #73B4DC;
+	border-left: 1px solid #73B4DC;
+	float: left;
+	width: 100%;
+	background-image: url(../../img/icons/post_background.png);
+	background-repeat: repeat-y;
+	background-position: left top;
+}
+
+/* editor */
+.jpforum .jpforum_editor {
+	font-size: 1em;
+	background-color: #fff;
+	border-top: 1px dashed #73B4DC;
+	border-bottom: 1px dashed #73B4DC;
+	margin: 0;
+	padding: 1em 0;
+	float: left; 
+}
+.jpforum .jpforum_editor a {
+	white-space: nowrap;
+	margin: 0 0.5em 0.5em 0;
+	border: 1px solid;
+	float: left;
+	background-color: #73B4DC;
+	color: #000;
+	padding: 0 0.25em;
+	text-decoration: none;
+}
+.jpforum .jpforum_editor a:hover {
+	background-color: #fff;
+	text-decoration: none;
+}
+.jpforum .jpforum_editor .hoofed_separator {
+	position: absolute;
+	top: -1000em;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+}

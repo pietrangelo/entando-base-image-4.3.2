@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	
+	<!-- ### entando-plugin-jpjasper ### -->
+	<include file="org/entando/entando/plugins/jpjasper/aps/internalservlet/redirect.xml" />
+	
+	<include file="org/entando/entando/plugins/jpjasper/apsadmin/config/jasperConfig.xml" />
+	<include file="org/entando/entando/plugins/jpjasper/apsadmin/portal/specialwidget/specialWidget.xml" />
+	<include file="org/entando/entando/plugins/jpjasper/aps/internalservlet/jasperDownload.xml" />
+
+</struts>

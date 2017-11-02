@@ -1,0 +1,104 @@
+.jpforum {
+	color: 000000;
+	line-height: 1.5em;
+	font-family: Arial;
+}
+.jpforum p {
+	line-height: 1.5em;
+	font-size: 0.85em;
+	margin: 0 0 0.5em 0;
+}
+.jpforum_block {
+	margin: 0 0 1.5em 0;
+	float: left;
+	width: 99%;
+}
+
+.jpforum .noscreen,.jpforum hr,.jpforum .thread_info dt {
+	position: absolute;
+	top: -1000em;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+}
+
+.jpforum img.linkedImg {
+	border: 0;
+	vertical-align: bottom;
+}
+
+/*******************/ /* Welcome */ /*******************/
+.jpforum .jpforum_welcom_user {
+	line-height: 170%;
+}
+
+/*******************/ /* Text Formatting */ /*******************/
+.jpforum .title_level1 {
+	border-bottom: 0.2em solid #D6D9DE;
+	font-size: 2em;
+	margin: 1em 0 0.5em 0;
+	padding: 0;
+}
+
+.jpforum .title_level2 {
+	font-size: 0.8em;
+	margin: 0 0 0.5em 0;
+	padding: 0;
+	background-color: #E6E6E6;
+	font-weight: bold;
+}
+
+.jpforum .title_level3 {
+	margin: 0 0 0.5em 0;
+	font-size: 0.85em;
+	font-weight: normal;
+	border-bottom: 3px solid #E6E6E6;
+}
+
+.jpforum .title_level4 {
+	margin: 0 0 0.5em 0;
+}
+
+.jpforum .title_level5 {
+	margin: 0 0 0.5em 0;
+}
+
+/*******************/ /* Tables */ /*******************/
+.jpforum .jpforum_table_generic {
+	width: 100%;
+	border: 0.1em solid #000000;
+	background-color: #ffffff;
+	font-size: 1em;
+	margin: 0 0 1.5em 0;
+}
+
+.jpforum .jpforum_table_generic caption {
+	text-align: center;
+	font-size: 0.85em;
+}
+
+.jpforum .jpforum_table_generic th,.jpforum .jpforum_table_generic td {
+	padding: 0.5em;
+	border-bottom: 0.1em solid #ababab;
+}
+
+.jpforum .jpforum_table_generic td {
+	font-size: 0.85em;
+}
+
+.jpforum .jpforum_table_generic td * {
+	font-size: 1em;
+}
+
+.jpforum jpforum_table_generic th,.jpforum th {
+	background-color: #E5ECFA;
+	padding: 0.5em;
+}
+
+/*******************/ /* General Tools */ /*******************/
+.jpforum .jpforum_tools_container a { /* general tools */
+	background-repeat: no-repeat;
+	background-position: left center;
+	padding: 0.5em 0.5em 0.5em 26px;
+	line-height: 175%;
+}

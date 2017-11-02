@@ -1,0 +1,28 @@
+<!DOCTYPE validators PUBLIC
+        "-//Apache Struts//XWork Validator 1.0.2//EN"
+        "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+        
+<validators>
+
+	<field name="campaignId">
+		<field-validator type="required">
+			<message key="jpsalesforce.error.field.required" />
+		</field-validator>
+	</field>
+	<field name="profileId">
+		<field-validator type="required">
+			<message key="jpsalesforce.error.field.required" />
+		</field-validator>
+	</field>
+	<field name="formDescription">
+		<field-validator type="requiredstring">
+			<message key="requiredstring" />
+		</field-validator>
+	</field>
+	<field name="formProtectionType">
+		<field-validator type="required">
+			<message key="jpsalesforce.error.field.required" />
+		</field-validator>
+	</field>
+
+</validators>

@@ -1,0 +1,22 @@
+#header {
+	border-top: 6px solid orange;
+	border-bottom: 6px solid orange;
+}
+
+#header_2 {
+	width: 100%;
+	overflow: hidden;
+	height: 200px;
+}
+
+#header_1_3 h2 {
+	font-size: 1.8em;
+}
+
+#header_1_3 p.slogan {
+	font-size: 0.8em;
+}
+
+#footer {
+	border-top: 2px solid orange;
+}

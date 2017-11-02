@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	
+    <package name="jpforum_do/jpforum/Config" namespace="/do/jpforum/Config" extends="japs-default">
+    	
+        <action name="view" class="jpforumConfigAction" method="edit">
+            <result type="tiles">jpforum.admin.config.view</result>
+            <interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">superuser</param></interceptor-ref>
+        </action>
+		
+        <action name="edit" class="jpforumConfigAction" method="edit">
+            <result type="tiles">jpforum.admin.config.entry</result>
+            <interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">superuser</param></interceptor-ref>
+        </action>
+		
+        <action name="save" class="jpforumConfigAction" method="save">
+            <result name="input" type="tiles">jpforum.admin.config.entry</result>
+            <result type="chain">view</result>
+            <interceptor-ref name="entandoValidationStack"><param name="requestAuth.requiredPermission">superuser</param></interceptor-ref>
+        </action>
+		
+    </package>
+    
+</struts>

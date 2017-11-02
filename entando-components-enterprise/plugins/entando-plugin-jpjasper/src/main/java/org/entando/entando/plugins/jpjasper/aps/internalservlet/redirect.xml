@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<!-- 
+VERIFICARE SE SI DEVE ELIMINARE
+-->
+
+<struts>
+    <package name="jpjasper_do/jpjasper" namespace="/do/jpjasper" extends="entando-front-default">
+    	
+        <action name="introRedirect" class="jpjasperRedirectAction">
+            <result>/WEB-INF/plugins/jpjasper/aps/jsp/internalservlet/redirect_intro.jsp</result>
+            <interceptor-ref name="entandoFrontEndFreeStack" />
+        </action>
+        
+        <action name="executeRedirect" class="jpjasperRedirectAction" method="executeRedirect">
+            <result name="failure">/WEB-INF/plugins/jpjasper/aps/jsp/internalservlet/reportviewer.jsp</result>
+            <result type="redirect">${jasperRedirectUrl}</result>
+            <interceptor-ref name="entandoFrontEndFreeStack" />
+        </action>
+    </package>
+    
+</struts>

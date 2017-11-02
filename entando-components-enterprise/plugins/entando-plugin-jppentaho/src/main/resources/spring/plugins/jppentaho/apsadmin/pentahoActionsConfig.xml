@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xmlns:context="http://www.springframework.org/schema/context"
+		xmlns:jee="http://www.springframework.org/schema/jee"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+			http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.0.xsd">
+	
+	<bean id="jppentahoSubMenu" class="com.agiletec.apsadmin.system.plugin.PluginSubMenuContainer" >
+		<property name="subMenuFilePath"><value>/WEB-INF/plugins/jppentaho/apsadmin/jsp/common/template/subMenu.jsp</value></property>
+	</bean>
+	
+        <bean id="jppentahoPentahoConfigAction" scope="prototype" 
+			class="com.agiletec.plugins.jppentaho.apsadmin.config.PentahoConfigAction" parent="abstractBaseAction" >
+		<property name="pentahoConfigManager" ref="jppentahoPentahoConfigManager" />
+	</bean>
+        
+	<bean id="jppentahoOutputGeneration" scope="prototype" 
+			class="com.agiletec.plugins.jppentaho.apsadmin.pentaho.PentahoOutputGenerationAction" parent="abstractBaseAction" >
+		<property name="dynamicReportManager" ref="jppentahoPentahoDynamicReport" />
+		<property name="widgetTypeManager" ref="WidgetTypeManager" />
+	</bean>
+	
+	<bean id="jppentahoConfigDynamicReports" scope="prototype" 
+			class="com.agiletec.plugins.jppentaho.apsadmin.pentaho.PentahoConfigAction" parent="abstractBaseAction" >
+		<property name="dynamicReportManager" ref="jppentahoPentahoDynamicReport" />
+	</bean>
+	
+	<bean id="jppentahoReportViewAction" scope="prototype" 
+			class="com.agiletec.plugins.jppentaho.apsadmin.pentaho.ReportViewAction" parent="abstractBaseAction" >
+		<property name="dynamicReportManager" ref="jppentahoPentahoDynamicReport" />
+		<property name="widgetTypeManager" ref="WidgetTypeManager" />
+	</bean>
+	
+	
+	<bean id="jppentahoDataIntegrationProcessFinderAction" scope="prototype" 
+			class="com.agiletec.plugins.jppentaho.apsadmin.dataintegration.DataIntegrationProcessFinderAction" parent="abstractBaseAction" >
+		<property name="dataIntegrationManager" ref="jppentahoDataIntegrationManager" />
+	</bean>
+	
+	<bean id="jppentahoDataIntegrationProcessAction" scope="prototype" 
+			class="com.agiletec.plugins.jppentaho.apsadmin.dataintegration.DataIntegrationProcessAction" parent="abstractBaseAction" >
+		<property name="dataIntegrationManager" ref="jppentahoDataIntegrationManager" />
+	</bean>
+	
+</beans>

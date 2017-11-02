@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+    
+       
+      <definition extends="layout.default" name="apsadmin.jsp.controlPanel">
+     <put-attribute name="title" value="title.jpconstantcontact.controlPanel" />
+     <put-attribute name="body" value="/WEB-INF/plugins/jpconstantcontact/apsadmin/jsp/jpconstantcontactControlPanel.jsp" />
+    </definition>
+    
+    <definition extends="layout.default" name="aps.Ctct.errorConnection">
+     <put-attribute name="title" value="title.jpcpnstantcontact.ctctManagement" />
+     <put-attribute name="body" value="/WEB-INF/plugins/jpconstantcontact/aps/jsp/internalservlet/constantContactWidgetError.jsp" />
+    </definition>
+
+     <definition extends="layout.default" name="aps.Ctct.errorAutenticate">
+     <put-attribute name="title" value="title.jpcpnstantcontact.ctctManagement" />
+     <put-attribute name="body" value="/WEB-INF/plugins/jpconstantcontact/aps/jsp/internalservlet/constantContactWidgetLogin.jsp" />
+    </definition>
+ 
+
+</tiles-definitions>

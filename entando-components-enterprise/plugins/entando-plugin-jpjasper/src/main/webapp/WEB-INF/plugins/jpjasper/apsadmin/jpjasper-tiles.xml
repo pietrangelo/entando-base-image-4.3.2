@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+    <!-- ********* START Report Preview Viewer Widget Action  ********* -->
+
+	<definition extends="layout.default" name="admin.jpjasper.page.widget.reportPreview.entryReport">
+		<put-attribute name="title" value="title.pageManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jpjasper/apsadmin/jsp/portal/specialwidget/reportpreview/reportpreview_entrypoint.jsp" />
+	</definition>
+
+	<definition extends="layout.default" name="admin.jpjasper.page.widget.reportPreview.configReport">
+		<put-attribute name="title" value="title.pageManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jpjasper/apsadmin/jsp/portal/specialwidget/reportpreview/reportpreview_configReport.jsp" />
+		<put-attribute name="extraResources" value="/WEB-INF/plugins/jpjasper/apsadmin/jsp/common/layouts/assets-more/configReport-extras.jsp" />
+	</definition>
+
+	<definition extends="layout.default" name="admin.jpjasper.page.widget.reportPreview.deleteDetail">
+		<put-attribute name="title" value="title.pageManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jpjasper/apsadmin/jsp/portal/specialwidget/reportpreview/reportpreview_deleteDetail.jsp" />
+	</definition>
+
+    <!-- ********* END Report Preview Widget Action  ********* -->
+
+
+    <!-- ********* START Report Viewer Widget Action  ********* -->
+
+	<definition extends="layout.default" name="admin.jpjasper.page.widget.reportView.entryReport">
+		<put-attribute name="title" value="title.pageManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jpjasper/apsadmin/jsp/portal/specialwidget/reportviewer/entryReport.jsp" />
+	</definition>
+
+	<definition extends="layout.default" name="admin.jpjasper.page.widget.reportView.searchReport">
+		<put-attribute name="title" value="title.pageManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jpjasper/apsadmin/jsp/portal/specialwidget/reportviewer/searchReports.jsp" />
+	</definition>
+
+	<definition extends="layout.default" name="admin.jpjasper.page.widget.reportView.configReport">
+		<put-attribute name="title" value="title.pageManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jpjasper/apsadmin/jsp/portal/specialwidget/reportviewer/configReport.jsp" />
+		<put-attribute name="extraResources" value="/WEB-INF/plugins/jpjasper/apsadmin/jsp/common/layouts/assets-more/configReport-extras.jsp" />
+	</definition>
+
+    <!-- ********* END Report Viewer Widget Action  ********* -->
+
+    <!-- ********* START Report List Viewer Widget Action  ********* -->
+
+	<definition extends="layout.default" name="admin.jpjasper.page.widget.reportListView.entry">
+		<put-attribute name="title" value="title.pageManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jpjasper/apsadmin/jsp/portal/specialwidget/reportlistviewer/config.jsp" />
+	</definition>
+
+    <!-- ********* END Report List Viewer Widget Action  ********* -->
+
+    <!-- ********* START embedded Config Widget Action  ********* -->
+
+	<definition extends="layout.default" name="admin.jpjasper.page.widget.embeddedConfig.entryConfig">
+		<put-attribute name="title" value="title.pageManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jpjasper/apsadmin/jsp/portal/specialwidget/embedded/configuration/config.jsp" />
+	</definition>
+	<definition extends="layout.default" name="admin.jpjasper.page.widget.embeddedNewReport.entryConfig">
+		<put-attribute name="title" value="title.pageManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jpjasper/apsadmin/jsp/portal/specialwidget/embedded/newreport/config.jsp" />
+	</definition>
+
+	<definition extends="layout.default" name="admin.jpjasper.page.widget.embeddedDashboard.entryConfig">
+		<put-attribute name="title" value="title.pageManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jpjasper/apsadmin/jsp/portal/specialwidget/embedded/dashboard/dashboard_config.jsp" />
+	</definition>
+
+    <!-- ********* END Report List Viewer Widget Action  ********* -->
+
+
+
+
+    <!-- ********* START Config Action  ********* -->
+
+	<definition extends="layout.default" name="admin.jpjasper.config.entry">
+		<put-attribute name="title" value="jpjasper.connector.configuration.title" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jpjasper/apsadmin/jsp/config/jpjasper_config.jsp" />
+	</definition>
+
+    <!-- ********* END Config Action  ********* -->
+
+</tiles-definitions>

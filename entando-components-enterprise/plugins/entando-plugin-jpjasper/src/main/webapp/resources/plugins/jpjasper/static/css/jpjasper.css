@@ -1,0 +1,50 @@
+/* preview block */
+.jpjasper-report-preview {
+
+}
+
+/* preview iframe */
+.jpjasper-iframe-preview {
+	float: left;
+	width: 100%;
+	clear: both;
+	height: 100%;
+	min-height: 300px;
+	border: 0;
+}
+
+/* full report block */
+.jpjasper-report {
+	float: left;
+	width: 100%;
+}
+
+
+/* full report iframe */
+.jpjasper-iframe-detail {
+	float: left;
+	width: 100%;
+	clear: both;
+	height: 100%;
+	min-height: 450px;
+	border: 0;
+}
+
+/* the container of the formats list */
+.jpjasper-download-formats {
+
+}
+
+/* report not found block */
+.jpjasper-report-not-found {}
+
+/* report list */
+.jpjasper-report-list {}
+
+/* report form input control block */
+.jpjasper-report-input {}
+
+.jpjasper-report-input label,
+.jpjasper-report-input .label {}
+
+.jpjasper-report-input .title {}

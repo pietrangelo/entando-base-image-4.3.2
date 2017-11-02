@@ -1,0 +1,20 @@
+{
+"h1" : "Title1",
+"h2" : "Title2",
+"h3" : "Title3",
+"code" : "CodeBlock",
+"bold" : "Bold",
+"italic" : "Italic",
+"underline" : "Underline",
+"link" : "Link",
+"img" : "Image",
+"quote" : "Quote",
+"small" : "Small Text",
+"big": "Big Text",
+"red": "Red",
+"green": "Green",
+"blue": "Blue",
+"ul": "List",
+"ol": "Ordered List",
+"br": "Break Line"
+}

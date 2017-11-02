@@ -1,0 +1,39 @@
+.news_latest {
+	float: left;
+	width: 100%;
+}
+
+.news_latest ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;	
+}
+
+.news_latest ul li {
+	margin: 0;
+	padding: 0;	
+}
+
+.news_latest h4 {
+	margin: 0;
+}
+
+.news_latest p {
+	margin: 0 0 0.5em 0;
+}
+
+.news_latest img {
+	margin-right: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.news_latest h4.archive {
+	text-align: right;
+	margin-bottom: 1em;
+}
+
+.news_latest .new {
+	border-bottom: 2px solid #f0f0f0;
+	min-height: 90px;
+	margin: 0.5em 0;
+}

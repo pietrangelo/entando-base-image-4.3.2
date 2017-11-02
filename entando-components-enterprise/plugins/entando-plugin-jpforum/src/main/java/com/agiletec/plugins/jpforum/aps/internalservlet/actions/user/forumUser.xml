@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	
+    <package name="jpforum_do/jpforum/Front/User" namespace="/do/jpforum/Front/User" extends="jpforum-default">
+    	
+    	<action name="viewUser" class="jpforumForumUserAction" method="viewUser">
+            <result name="input" type="dispatcher">/WEB-INF/plugins/jpforum/aps/jsp/internalservlet/user/viewUser.jsp</result>
+            <result type="dispatcher">/WEB-INF/plugins/jpforum/aps/jsp/internalservlet/user/viewUser.jsp</result>
+        	<interceptor-ref name="jpforumDefaultStack"><param name="jpforumRequestAuth.requiredPermission">jpforum_forumUser</param></interceptor-ref>
+        </action>
+
+    	<action name="viewUserPosts" class="jpforumForumUserAction" method="viewUser">
+    		<result name="input" type="dispatcher">/WEB-INF/plugins/jpforum/aps/jsp/internalservlet/user/viewUser.jsp</result>
+            <result type="dispatcher">/WEB-INF/plugins/jpforum/aps/jsp/internalservlet/user/inc/userPosts.jsp</result>
+        	<interceptor-ref name="jpforumDefaultStack"><param name="jpforumRequestAuth.requiredPermission">jpforum_forumUser</param></interceptor-ref>
+        </action>
+
+    	<action name="viewUserThreads" class="jpforumForumUserAction" method="viewUser">
+    		<result name="input" type="dispatcher">/WEB-INF/plugins/jpforum/aps/jsp/internalservlet/user/viewUser.jsp</result>
+            <result type="dispatcher">/WEB-INF/plugins/jpforum/aps/jsp/internalservlet/user/inc/userThreads.jsp</result>
+        	<interceptor-ref name="jpforumDefaultStack"><param name="jpforumRequestAuth.requiredPermission">jpforum_forumUser</param></interceptor-ref>
+        </action>
+
+    	<action name="viewUserAttachs" class="jpforumForumUserAction" method="viewUser">
+    		<result name="input" type="dispatcher">/WEB-INF/plugins/jpforum/aps/jsp/internalservlet/user/viewUser.jsp</result>
+            <result type="dispatcher">/WEB-INF/plugins/jpforum/aps/jsp/internalservlet/user/inc/userAttachs.jsp</result>
+        	<interceptor-ref name="jpforumDefaultStack"><param name="jpforumRequestAuth.requiredPermission">jpforum_forumUser</param></interceptor-ref>
+        </action>
+        
+    	<action name="viewMessages" class="jpforumForumUserAction" method="viewPrivateMessages">
+    		<result name="input" type="dispatcher">/WEB-INF/plugins/jpforum/aps/jsp/internalservlet/user/viewUser.jsp</result>
+            <result type="dispatcher">/WEB-INF/plugins/jpforum/aps/jsp/internalservlet/user/inc/userMessages.jsp</result>
+        	<interceptor-ref name="jpforumDefaultStack"><param name="jpforumRequestAuth.requiredPermission">jpforum_forumUser</param></interceptor-ref>
+        </action>
+    	<action name="viewWarns" class="jpforumForumUserAction" method="viewPrivateMessages">
+    		<result name="input" type="dispatcher">/WEB-INF/plugins/jpforum/aps/jsp/internalservlet/user/viewUser.jsp</result>
+            <result type="dispatcher">/WEB-INF/plugins/jpforum/aps/jsp/internalservlet/user/inc/userWarns.jsp</result>
+        	<interceptor-ref name="jpforumDefaultStack"><param name="jpforumRequestAuth.requiredPermission">jpforum_forumUser</param></interceptor-ref>
+        </action>
+        
+    </package>
+	
+	<package name="jpforum_do/jpforum/Front/User/Attach" namespace="/do/jpforum/Front/User/Attach" extends="jpforum-default">
+	
+    	<action name="trashAttach" class="jpforumAttachAction" method="trashAttach">
+			<result type="dispatcher">/WEB-INF/plugins/jpforum/aps/jsp/internalservlet/user/inc/userTrashAttach.jsp</result>
+        	<interceptor-ref name="jpforumDefaultStack"><param name="jpforumRequestAuth.requiredPermission">jpforum_forumUser</param></interceptor-ref>
+        </action>
+
+    	<action name="deleteAttach" class="jpforumAttachAction" method="deleteAttach">
+    		<result type="chain">
+    			<param name="namespace">/do/jpforum/Front/User</param>
+    			<param name="actionName">viewUserAttachs</param>
+    			<param name="username">${username}</param>
+    		</result>
+        	<interceptor-ref name="jpforumDefaultStack"><param name="jpforumRequestAuth.requiredPermission">jpforum_forumUser</param></interceptor-ref>
+        </action>
+        
+	</package>
+
+	<package name="jpforum_do/jpforum/Front/User/Search" namespace="/do/jpforum/Front/User/Search" extends="jpforum-default">
+
+    	<action name="search" class="jpforumUserFinderAction">
+			<result type="dispatcher">/WEB-INF/plugins/jpforum/aps/jsp/internalservlet/user/userslist.jsp</result>
+        	<interceptor-ref name="jpforumDefaultStack"><param name="jpforumRequestAuth.requiredPermission">jpforum_forumUser</param></interceptor-ref>
+        </action>
+
+	</package>
+
+</struts>

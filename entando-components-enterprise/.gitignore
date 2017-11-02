@@ -1,0 +1,15 @@
+nb-configuration.xml
+target
+derby.log
+plugins/entando-plugin-*/target/
+plugins/entando-plugin-*/nb-configuration.xml
+plugins/entando-plugin-*/derby.log
+*.iml
+plugins/entando-plugin-jpremotenotifier/overlays/
+overlays
+.idea
+.project
+.settings/
+plugins/.project
+plugins/.settings/
+

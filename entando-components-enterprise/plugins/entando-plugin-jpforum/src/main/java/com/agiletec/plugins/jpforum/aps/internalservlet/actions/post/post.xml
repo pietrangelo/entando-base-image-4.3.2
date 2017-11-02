@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	
+    <package name="jpforum_do/jpforum/Front/Post" namespace="/do/jpforum/Front/Post" extends="jpforum-default">
+
+    	<action name="viewPost" class="jpforumPostAction" method="viewPost">
+			<result name="success"  type="dispatcher">/WEB-INF/plugins/jpforum/aps/jsp/internalservlet/thread/viewThread.jsp</result>
+    		<result name="input" type="chain">
+        		<param name="actionName">viewThread</param>
+        		<param name="thread">${thread}</param>
+        		<param name="post">${post}</param>
+        	</result>
+        	<interceptor-ref name="jpforumFrontFreeStack" />
+        </action>
+    	
+    	<action name="replyPost" class="jpforumPostAction" method="replyPost">
+            <result name="input" type="chain">viewThread</result>
+			<result type="dispatcher">/WEB-INF/plugins/jpforum/aps/jsp/internalservlet/thread/entryThread.jsp</result>
+        	<interceptor-ref name="jpforumDefaultStack"><param name="jpforumRequestAuth.requiredPermission">jpforum_forumUser</param></interceptor-ref>
+        </action>
+
+    	<action name="savePost" class="jpforumPostAction" method="savePost">
+            <result name="input" type="dispatcher">/WEB-INF/plugins/jpforum/aps/jsp/internalservlet/thread/entryThread.jsp</result>
+			<result  type="dispatcher">/WEB-INF/plugins/jpforum/aps/jsp/internalservlet/thread/viewThread.jsp</result>
+			<result name="invalid.token" type="chain">viewThread</result>
+			<interceptor-ref name="jpforumTokenInterceptor"><param name="typeMessages">none</param></interceptor-ref>
+			<interceptor-ref name="fileUpload"/>
+        	<interceptor-ref name="jpforumValidationStack"><param name="jpforumRequestAuth.requiredPermission">jpforum_forumUser</param></interceptor-ref>
+        </action>
+
+    	<action name="editPost" class="jpforumPostAction" method="editPost">
+			<result name="input" type="chain">viewThread</result>
+            <result type="dispatcher">/WEB-INF/plugins/jpforum/aps/jsp/internalservlet/thread/entryThread.jsp</result>
+        	<interceptor-ref name="jpforumDefaultStack"><param name="jpforumRequestAuth.requiredPermission">jpforum_forumUser</param></interceptor-ref>
+        </action>
+        
+    	<action name="trashPost" class="jpforumPostAction" method="trashPost">
+			<result name="input" type="chain">viewThread</result>
+            <result type="dispatcher">/WEB-INF/plugins/jpforum/aps/jsp/internalservlet/post/trashPost.jsp</result>
+        	<interceptor-ref name="jpforumDefaultStack"><param name="jpforumRequestAuth.requiredPermission">jpforum_sectionModerator</param></interceptor-ref>
+        </action>
+
+    	<action name="deletePost" class="jpforumPostAction" method="deletePost">
+			<result name="input" type="dispatcher">/WEB-INF/plugins/jpforum/aps/jsp/internalservlet/post/trashPost.jsp</result>
+            <result  type="chain">viewThread</result>
+        	<interceptor-ref name="jpforumDefaultStack"><param name="jpforumRequestAuth.requiredPermission">jpforum_sectionModerator</param></interceptor-ref>
+        </action>
+
+    	<action name="viewThread" class="jpforumPostAction" method="viewThread">
+            <result name="input" type="chain">
+				<param name="actionName">viewSection</param>
+				<param name="namespace">/do/jpforum/Front/Browse</param>
+				<param name="method">viewSection</param>
+            </result>
+			<result  type="dispatcher">/WEB-INF/plugins/jpforum/aps/jsp/internalservlet/thread/viewThread.jsp</result>
+        	<interceptor-ref name="jpforumFrontFreeStack" />
+        </action>
+
+    </package>
+    
+    <package name="jpforum_do/jpforum/Front/Post/Attach" namespace="/do/jpforum/Front/Post/Attach" extends="jpforum-default">
+
+    	<action name="trashAttach" class="jpforumAttachAction" method="trashAttach">
+			<result type="dispatcher">/WEB-INF/plugins/jpforum/aps/jsp/internalservlet/thread/postTrashAttach.jsp</result>
+        	<interceptor-ref name="jpforumDefaultStack"><param name="jpforumRequestAuth.requiredPermission">jpforum_forumUser</param></interceptor-ref>
+        </action>
+
+    	<action name="deleteAttach" class="jpforumAttachAction" method="deleteAttach">
+    		<result type="chain">
+    			<param name="namespace">/do/jpforum/Front/Post</param>
+    			<param name="actionName">editPost</param>
+    			<param name="username">${post}</param>
+    		</result>
+        	<interceptor-ref name="jpforumDefaultStack"><param name="jpforumRequestAuth.requiredPermission">jpforum_forumUser</param></interceptor-ref>
+        </action>
+        
+    </package>
+</struts>

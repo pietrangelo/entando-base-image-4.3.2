@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	
+    <package name="jpforum_do/jpforum/Front/Thread" namespace="/do/jpforum/Front/Thread" extends="jpforum-default">
+    	
+    	<action name="newThread" class="jpforumThreadAction" method="newThread">
+            <result name="input" type="chain">
+				<param name="actionName">viewSection</param>
+				<param name="namespace">/do/jpforum/Front/Browse</param>
+				<param name="code">${section}</param>
+            </result>
+            <result type="dispatcher">/WEB-INF/plugins/jpforum/aps/jsp/internalservlet/thread/entryThread.jsp</result>
+        	<interceptor-ref name="jpforumDefaultStack"><param name="jpforumRequestAuth.requiredPermission">jpforum_forumUser</param></interceptor-ref>
+        </action>
+
+        
+    	<action name="trashThread" class="jpforumThreadAction" method="trashThread">
+            <result name="input" type="chain">viewThread</result>
+			<result type="dispatcher">/WEB-INF/plugins/jpforum/aps/jsp/internalservlet/thread/trashThread.jsp</result>
+        	<interceptor-ref name="jpforumDefaultStack"><param name="jpforumRequestAuth.requiredPermission">jpforum_sectionModerator</param></interceptor-ref>
+        </action>
+        
+    	<action name="deleteThread" class="jpforumThreadAction" method="deleteThread">
+            <result name="input" type="chain">viewThread</result>
+            <result type="chain">
+				<param name="actionName">viewSection</param>
+				<param name="namespace">/do/jpforum/Front/Browse</param>
+				<param name="method">viewSection</param>
+				<param name="section">${section}</param>
+            </result>
+        	<interceptor-ref name="jpforumDefaultStack"><param name="jpforumRequestAuth.requiredPermission">jpforum_sectionModerator</param></interceptor-ref>
+        </action>
+
+    	<action name="viewThread" class="jpforumThreadAction" method="viewThread">
+            <result name="input" type="chain">
+				<param name="actionName">viewSection</param>
+				<param name="namespace">/do/jpforum/Front/Browse</param>
+				<param name="method">viewSection</param>
+            </result>
+			<result  type="dispatcher">/WEB-INF/plugins/jpforum/aps/jsp/internalservlet/thread/viewThread.jsp</result>
+        	<interceptor-ref name="jpforumFrontFreeStack" />
+        </action>
+
+    	<action name="changePin" class="jpforumThreadAction" method="changePin">
+            <result name="input" type="chain">viewThread</result>
+            <result type="chain">viewThread</result>
+        	<interceptor-ref name="jpforumDefaultStack"><param name="jpforumRequestAuth.requiredPermission">jpforum_sectionModerator</param></interceptor-ref>
+        </action>
+
+    	<action name="changeStatus" class="jpforumThreadAction" method="changeStatus">
+            <result name="input" type="chain">viewThread</result>
+            <result type="chain">viewThread</result>
+        	<interceptor-ref name="jpforumDefaultStack"><param name="jpforumRequestAuth.requiredPermission">jpforum_sectionModerator</param></interceptor-ref>
+        </action>
+
+    </package>
+    
+</struts>

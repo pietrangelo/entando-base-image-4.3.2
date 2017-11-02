@@ -1,0 +1,1 @@
+[quote]testo[/quote] [color=red]ciao [size=10]mondo[/size][/color]

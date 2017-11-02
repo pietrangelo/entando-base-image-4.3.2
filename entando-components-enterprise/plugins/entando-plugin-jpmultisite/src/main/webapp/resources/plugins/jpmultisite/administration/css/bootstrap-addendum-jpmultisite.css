@@ -1,0 +1,12 @@
+#nav-brand {
+	width: 95%;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+@media (max-width: 768px) {
+	#nav-brand {
+		width: 75%;
+	}
+}

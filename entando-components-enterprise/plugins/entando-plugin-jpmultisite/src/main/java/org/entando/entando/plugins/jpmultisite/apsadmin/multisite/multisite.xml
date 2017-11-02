@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	
+    <package name="jpmultisite_do/jpmultisite/Multisite" namespace="/do/jpmultisite/Multisite" extends="entando-default">
+    	
+    	<action name="list" class="jpmultisiteMultisiteFinderAction">
+            <result type="tiles">jpmultisite.admin.Multisite.list</result>
+        	<interceptor-ref name="entandoDefaultStack">
+        		<param name="chain.includeParameters">fieldErrors,actionErrors,actionMessages</param>
+        		<param name="requestAuth.requiredPermission">superuser</param>
+        	</interceptor-ref>
+        </action>
+        
+        <action name="search" class="jpmultisiteMultisiteFinderAction">
+            <result type="tiles">jpmultisite.admin.Multisite.list</result>
+        	<interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">superuser</param></interceptor-ref>
+        </action>
+    	
+        <action name="new" class="jpmultisiteMultisiteAction" method="newMultisite">
+            <result type="tiles">jpmultisite.admin.Multisite.entry</result>
+        	<interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">superuser</param></interceptor-ref>
+        </action>
+    	
+    	<action name="edit" class="jpmultisiteMultisiteAction" method="edit">
+            <result type="tiles">jpmultisite.admin.Multisite.entry</result>
+            <result name="input" type="redirectAction">list</result>
+			<interceptor-ref name="apsFileUpload" />
+        	<interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">superuser</param></interceptor-ref>
+        </action>
+		
+    	<action name="entryClone" class="jpmultisiteMultisiteAction" method="entryClone">
+            <result type="tiles">jpmultisite.admin.Multisite.entry</result>
+            <result name="input" type="redirectAction">list</result>
+			<interceptor-ref name="apsFileUpload" />
+        	<interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">superuser</param></interceptor-ref>
+        </action>
+        
+    	<action name="clone" class="jpmultisiteMultisiteAction" method="clone">
+        	<result name="input" type="tiles">jpmultisite.admin.Multisite.entry</result>
+        	<result type="redirectAction">list</result>
+			<interceptor-ref name="apsFileUpload" />
+        	<interceptor-ref name="entandoValidationStack"><param name="requestAuth.requiredPermission">superuser</param></interceptor-ref>
+        </action>
+		
+    	<action name="save" class="jpmultisiteMultisiteAction" method="save">
+        	<result name="input" type="tiles">jpmultisite.admin.Multisite.entry</result>
+        	<result type="redirectAction">list</result>
+			<interceptor-ref name="apsFileUpload" />
+        	<interceptor-ref name="entandoValidationStack"><param name="requestAuth.requiredPermission">superuser</param></interceptor-ref>
+        </action>
+        
+    	<action name="trash" class="jpmultisiteMultisiteAction" method="trash">
+            <result type="tiles">jpmultisite.admin.Multisite.trash</result>
+        	<result name="input" type="redirectAction">list</result>
+        	<interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">superuser</param></interceptor-ref>
+        </action>
+        
+    	<action name="delete" class="jpmultisiteMultisiteAction" method="delete">
+        	<result type="redirectAction">list</result>
+        	<interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">superuser</param></interceptor-ref>
+        </action>
+    	
+    </package>
+   
+</struts>

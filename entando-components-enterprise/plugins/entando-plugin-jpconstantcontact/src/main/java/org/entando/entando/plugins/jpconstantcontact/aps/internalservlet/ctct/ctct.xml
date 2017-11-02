@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    <package name="jpconstantcontact_do/FrontEnd/Ctct" namespace="/do/FrontEnd/Ctct" extends="entando-front-default">
+        <global-results>
+            <result name="errorConnection"  type="dispatcher">/WEB-INF/plugins/jpconstantcontact/aps/jsp/internalservlet/constantContactWidgetError.jsp</result>
+            <result name="noLogged" type="dispatcher" >/WEB-INF/plugins/jpconstantcontact/aps/jsp/internalservlet/constantContactWidgetLogin.jsp</result>        
+            <result name="generalError"  type="dispatcher" >/WEB-INF/plugins/jpconstantcontact/aps/jsp/internalservlet/constantContactWidgetGeneralError.jsp</result>        
+        </global-results>
+
+        <!--LISTS-->
+        <action name="list" class="ctctList" method="control">
+            <result name="success" type="dispatcher">/WEB-INF/plugins/jpconstantcontact/aps/jsp/internalservlet/list/constantContactWidgetPrincipalLists.jsp</result>        
+            <interceptor-ref name="entandoFrontEndFreeStack"></interceptor-ref>
+        </action>
+        <action name="view" class="ctctList" method="control">
+            <result name="success" type="dispatcher" >/WEB-INF/plugins/jpconstantcontact/aps/jsp/internalservlet/list/constantContactWidgetListDetail.jsp</result>                                 
+            <interceptor-ref name="entandoFrontEndFreeStack"></interceptor-ref>
+        </action> 
+        <action name="newList" class="ctctList" method="control">
+            <result name="success" type="dispatcher">/WEB-INF/plugins/jpconstantcontact/aps/jsp/internalservlet/list/ctctWidgetNewList.jsp</result>                                    
+            <interceptor-ref name="entandoFrontEndFreeStack"></interceptor-ref>
+        </action>
+        <action name="saveList" class="ctctList" method="addList">           
+            <result name="success" type="frontRedirectAction">
+                <param name="actionName">list</param>
+            </result> 
+            <result name="errorField" type="dispatcher">/WEB-INF/plugins/jpconstantcontact/aps/jsp/internalservlet/list/ctctWidgetNewList.jsp</result>                                    
+            <interceptor-ref name="entandoFrontEndFreeStack"></interceptor-ref>     
+        </action>
+        <action name="removeList" class="ctctList" method="deleteList">
+            <result name="success" type="frontRedirectAction">
+                <param name="actionName">list</param>
+            </result>         
+            <interceptor-ref name="entandoFrontEndFreeStack"></interceptor-ref>
+        </action>
+    
+
+        <!--CONTACTS--> 
+        <action name="newContact" class="ctctContact"  method="control">
+            <result name="success" type="dispatcher">/WEB-INF/plugins/jpconstantcontact/aps/jsp/internalservlet/contact/ctctWidgetNewContact.jsp</result>                                    
+            <interceptor-ref name="entandoFrontEndFreeStack"></interceptor-ref>
+        </action>
+        <action name="viewContact" class="ctctContact" method="control">
+            <result name="success" type="dispatcher">/WEB-INF/plugins/jpconstantcontact/aps/jsp/internalservlet/contact/ctctWidgetContactDetails.jsp</result>                                    
+            <interceptor-ref name="entandoFrontEndFreeStack"></interceptor-ref>
+        </action>
+        <action name="saveContact" class="ctctContact" method="addSimpleContact">  
+            <result name="success" type="frontRedirectAction">
+                <param name="actionName">list</param>
+            </result>   
+            <result name="errorField" type="dispatcher">/WEB-INF/plugins/jpconstantcontact/aps/jsp/internalservlet/contact/ctctWidgetNewContact.jsp</result>                                    
+            <interceptor-ref name="entandoFrontEndFreeStack"></interceptor-ref>
+        </action>
+        <action name="listContacts" class="ctctContact" method="control">
+            <result name="success" type="dispatcher" >/WEB-INF/plugins/jpconstantcontact/aps/jsp/internalservlet/contact/constantContactWidgetContactsList.jsp</result>                                 
+            <interceptor-ref name="entandoFrontEndFreeStack"></interceptor-ref>
+        </action> 
+        <action name="removeContactFromAllLists" class="ctctContact" method="deleteContactFromAlLLists">
+            <result name="success" type="frontRedirectAction">
+                <param name="actionName">listContacts</param>
+            </result> 
+            <result name="errorFields" type="frontRedirectAction">
+                <param name="actionName">listContacts</param>
+            </result>
+            <!--add alert when is in errorFields--> 
+            <interceptor-ref name="entandoFrontEndFreeStack"></interceptor-ref>
+        </action>
+        <action name="removeContactFromAList" class="ctctContact" method="deleteContactFromAList">
+            <result name="success" type="frontRedirectAction">
+                <param name="actionName">list</param>
+            </result>
+            <result name="errorFields" type="frontRedirectAction">
+                <param name="actionName">list</param>
+            </result>
+            <!--add alert when is in errorFields-->
+            <interceptor-ref name="entandoFrontEndFreeStack"></interceptor-ref>
+        </action> 
+        <!--<action name="removeContactFromAList2" class="ctctContact" method="deleteContactFromAList2">
+            <result name="success" type="frontRedirectAction"><param name="actionName">list</param></result>
+            <result  type="redirectAction">listContacts</result>
+            <interceptor-ref name="entandoFrontEndFreeStack"></interceptor-ref>
+        </action> -->
+        <action name="updateAContact" class="ctctContact" method="updateContact">  
+            <!--<result name="success" type="chain">list</result>-->    
+            <result name="success" type="dispatcher">/WEB-INF/plugins/jpconstantcontact/aps/jsp/internalservlet/contact/ctctWidgetContactDetails.jsp</result> 
+           <result name="list" type="frontRedirectAction">
+                <param name="actionName">list</param>
+            </result>                                          
+            <result name="errorField" type="dispatcher">/WEB-INF/plugins/jpconstantcontact/aps/jsp/internalservlet/contact/ctctWidgetContactDetails.jsp</result>                                             
+            <interceptor-ref name="entandoFrontEndFreeStack"></interceptor-ref>
+        </action>
+        
+        <!--CAMPAIGNS--> 
+
+        <action name="listCampaigns" class="ctctCampaign" method="control">
+            <result name="success" type="dispatcher" >/WEB-INF/plugins/jpconstantcontact/aps/jsp/internalservlet/campaign/constantContactWidgetPrincipalCampaigns.jsp</result>                                 
+            <interceptor-ref name="entandoFrontEndFreeStack"></interceptor-ref>
+        </action>      
+        <action name="newCampaign" class="ctctCampaign" method="control">
+            <result name="success" type="dispatcher" >/WEB-INF/plugins/jpconstantcontact/aps/jsp/internalservlet/campaign/ctctWidgetNewCampaign.jsp</result>                                 
+            <interceptor-ref name="entandoFrontEndFreeStack"></interceptor-ref>
+        </action>
+        <!--        <action name="saveCampaing" class="ctctCampaign" method="addSimpleCampaign">
+            <result name="success" type="frontRedirectAction"><param name="actionName">listCampaigns</param></result>
+             <result name="errorField" type="dispatcher">/WEB-INF/plugins/jpconstantcontact/aps/jsp/internalservlet/campaign/ctctWidgetNewCampaign.jsp</result>                                                
+            <interceptor-ref name="entandoFrontEndFreeStack"></interceptor-ref>
+        </action>-->
+        <action name="send" class="ctctCampaign" method="scheduleCampaign">
+            <result name="success" type="frontRedirectAction">
+                <param name="actionName">listCampaigns</param>
+            </result>
+            <result name="errorField" >/WEB-INF/plugins/jpconstantcontact/aps/jsp/internalservlet/campaign/ctctCampaignComplexDetails.jsp</result>    
+            <interceptor-ref name="entandoFrontEndFreeStack"></interceptor-ref>
+        </action>
+        <action name="viewCampaign" class="ctctCampaign" method="control">
+            <result name="success" type="dispatcher" >/WEB-INF/plugins/jpconstantcontact/aps/jsp/internalservlet/campaign/ctctWidgetCampaignDetails.jsp</result>                                 
+            <interceptor-ref name="entandoFrontEndFreeStack"></interceptor-ref>
+        </action>
+        <action name="removeCampaign" class="ctctCampaign" method="deleteACampaign">
+            <result name="success" type="frontRedirectAction">
+                <param name="actionName">listCampaigns</param>
+            </result>
+            <result name="errorFields" type="frontRedirectAction">
+                <param name="actionName">listCampaigns</param>
+            </result>  
+            <!--add alert when is in errorFields-->
+            <interceptor-ref name="entandoFrontEndFreeStack"></interceptor-ref>
+        </action>
+        <action name="updateACampaign" class="ctctCampaign" method="emailCampaignUpdate">  
+            <result name="success" type="frontRedirectAction">
+                <param name="actionName">listCampaigns</param>
+            </result>
+            <result name="errorField" type="dispatcher">/WEB-INF/plugins/jpconstantcontact/aps/jsp/internalservlet/campaign/ctctWidgetCampaignDetails.jsp</result>                                             
+            <interceptor-ref name="entandoFrontEndFreeStack"></interceptor-ref>
+        </action>
+        <action name="reports" class="ctctCampaign" method="control">
+            <result name="success" type="dispatcher" >/WEB-INF/plugins/jpconstantcontact/aps/jsp/internalservlet/campaign/ctctWidgetReport.jsp</result>                                 
+            <interceptor-ref name="entandoFrontEndFreeStack"></interceptor-ref>
+        </action>  
+      
+        <action name="viewComplexCampaign" class="ctctCampaign" method="control">                                         
+            <result name="success" type="dispatcher" >/WEB-INF/plugins/jpconstantcontact/aps/jsp/internalservlet/campaign/ctctCampaignComplexDetails.jsp</result>                                 
+            <interceptor-ref name="entandoFrontEndFreeStack"></interceptor-ref>
+        </action>
+        <action name="updateComplexCampaign" class="ctctCampaign" method="emailComplexCampaignUpdate">  
+            <!--           <result name="success" type="chain">listCampaigns</result>                                      -->
+            <result name="success" type="dispatcher">/WEB-INF/plugins/jpconstantcontact/aps/jsp/internalservlet/campaign/ctctCampaignComplexDetails.jsp</result>                                             
+            <result name="errorField" type="dispatcher">/WEB-INF/plugins/jpconstantcontact/aps/jsp/internalservlet/campaign/ctctCampaignComplexDetails.jsp</result>                                             
+            <interceptor-ref name="entandoFrontEndFreeStack"></interceptor-ref>
+        </action> 
+        <action name="schedulateCampaign" class="ctctCampaign" method="schedulate">  
+            <result name="success" type="frontRedirectAction">
+                <param name="actionName">listCampaigns</param>
+            </result>
+            <result name="errorField" type="dispatcher">/WEB-INF/plugins/jpconstantcontact/aps/jsp/internalservlet/campaign/ctctCampaignComplexDetails.jsp</result>                                             
+            <interceptor-ref name="entandoFrontEndFreeStack"></interceptor-ref>
+        </action> 
+        
+        
+        <!-- EVENTS-->
+        <action name="listEvents" class="ctctEvent" method="control">
+            <result name="success" type="dispatcher" >/WEB-INF/plugins/jpconstantcontact/aps/jsp/internalservlet/event/ctctWidgetPrincipalEvents.jsp</result>                                 
+            <interceptor-ref name="entandoFrontEndFreeStack"></interceptor-ref>
+        </action>  
+        <action name="newEvent" class="ctctEvent" method="control">
+            <result name="success" type="dispatcher" >/WEB-INF/plugins/jpconstantcontact/aps/jsp/internalservlet/event/ctctWidgetNewEvent.jsp</result>                                 
+            <interceptor-ref name="entandoFrontEndFreeStack"></interceptor-ref>
+        </action>
+        <action name="saveEvent" class="ctctEvent" method="addEvent">
+            <result name="success" type="frontRedirectAction">
+                <param name="actionName">listEvents</param>
+            </result>
+            <result name="errorFields" type="dispatcher">/WEB-INF/plugins/jpconstantcontact/aps/jsp/internalservlet/event/ctctWidgetNewEvent.jsp</result>     
+            <interceptor-ref name="entandoFrontEndFreeStack"></interceptor-ref>
+        </action>
+        <action name="updateEventStatus" class="ctctEvent" method="updateStatus">
+            <result name="success"  type="dispatcher" >/WEB-INF/plugins/jpconstantcontact/aps/jsp/internalservlet/event/ctctContactWidgetEventDetail.jsp</result>                           
+            <result name="errorFields"  type="dispatcher" >/WEB-INF/plugins/jpconstantcontact/aps/jsp/internalservlet/event/ctctContactWidgetEventDetail.jsp</result>                                 
+            <interceptor-ref name="entandoFrontEndFreeStack"></interceptor-ref>
+        </action>
+        <action name="viewEvent" class="ctctEvent">
+            <result type="dispatcher" >/WEB-INF/plugins/jpconstantcontact/aps/jsp/internalservlet/event/ctctContactWidgetEventDetail.jsp</result>                                 
+            <interceptor-ref name="entandoFrontEndFreeStack"></interceptor-ref>
+        </action>
+        <action name="updateEvent" class="ctctEvent" method="update">  
+            <result name="success"  type="dispatcher" >/WEB-INF/plugins/jpconstantcontact/aps/jsp/internalservlet/event/ctctContactWidgetEventDetail.jsp</result>                           
+            <result name="errorFields"  type="dispatcher" >/WEB-INF/plugins/jpconstantcontact/aps/jsp/internalservlet/event/ctctContactWidgetEventDetail.jsp</result> 
+            <interceptor-ref name="entandoFrontEndFreeStack"></interceptor-ref>
+        </action>
+       
+        <action name="eventReports" class="ctctEvent" method="control">
+            <result name="success" type="dispatcher" >/WEB-INF/plugins/jpconstantcontact/aps/jsp/internalservlet/event/constantContactEventReports.jsp</result>                                 
+            <interceptor-ref name="entandoFrontEndFreeStack"></interceptor-ref>
+        </action>  
+             
+    </package>
+    
+
+    <package name="jpconstantcontact_do/ConstantContact" namespace="/do/ConstantContact" extends="entando-default">
+        <global-results>
+            <result name="error" type="tiles">apsadmin.jsp.controlPanel</result> 
+        </global-results>
+        
+        <!--Control panel -->
+        <action name="controlPanel" class="ctctAction">
+            <result type="tiles">apsadmin.jsp.controlPanel</result>
+            <interceptor-ref name="entandoDefaultStack">
+                <param name="requestAuth.requiredPermission">superuser</param>
+            </interceptor-ref>
+        </action>
+        
+        <action name="saveConfig" class="ctctAction" method="saveConfiguration">  
+            <result name="success" type="tiles">apsadmin.jsp.controlPanel</result>  
+            <interceptor-ref name="entandoDefaultStack">
+                <param name="requestAuth.requiredPermission">superuser</param>
+            </interceptor-ref>
+        </action>
+    </package>
+</struts>

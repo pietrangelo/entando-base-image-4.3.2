@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	
+    <package name="jpforum_do/jpforum/Front/Sanction" namespace="/do/jpforum/Front/Sanction" extends="jpforum-default">
+    	
+    	<action name="newSanction" class="jpforumSanctionAction" method="newSanction">
+            <result type="dispatcher">/WEB-INF/plugins/jpforum/aps/jsp/internalservlet/sanction/entrySanction.jsp</result>
+        	<interceptor-ref name="jpforumDefaultStack"><param name="jpforumRequestAuth.requiredPermission">jpforum_superuser</param></interceptor-ref>
+        </action>
+
+    	<action name="saveSanction" class="jpforumSanctionAction" method="saveSanction">
+            <result name="input" type="dispatcher">/WEB-INF/plugins/jpforum/aps/jsp/internalservlet/sanction/entrySanction.jsp</result>
+            <result type="chain">
+				<param name="actionName">viewUser</param>
+				<param name="namespace">/do/jpforum/Front/User</param>
+				<param name="username">${username}</param>
+            </result>
+            <result name="invalid.token" type="chain">
+				<param name="actionName">viewUser</param>
+				<param name="namespace">/do/jpforum/Front/User</param>
+				<param name="username">${username}</param>
+            </result>
+            <interceptor-ref name="jpforumTokenInterceptor"><param name="typeMessages">none</param></interceptor-ref>
+        	<interceptor-ref name="jpforumValidationStack"><param name="jpforumRequestAuth.requiredPermission">jpforum_superuser</param></interceptor-ref>
+        </action>
+
+    	<action name="trashSanction" class="jpforumSanctionAction" method="trashSanction">
+            <result name="input" type="chain">
+				<param name="actionName">viewUser</param>
+				<param name="namespace">/do/jpforum/Front/User</param>
+				<param name="username">${username}</param>
+            </result>
+  			<result type="dispatcher">/WEB-INF/plugins/jpforum/aps/jsp/internalservlet/sanction/trashSanction.jsp</result>
+        	<interceptor-ref name="jpforumDefaultStack"><param name="jpforumRequestAuth.requiredPermission">jpforum_superuser</param></interceptor-ref>
+        </action>
+
+    	<action name="deleteSanction" class="jpforumSanctionAction" method="deleteSanction">
+            <result type="chain">
+				<param name="actionName">viewUser</param>
+				<param name="namespace">/do/jpforum/Front/User</param>
+				<param name="username">${username}</param>
+            </result>
+        	<interceptor-ref name="jpforumDefaultStack"><param name="jpforumRequestAuth.requiredPermission">jpforum_superuser</param></interceptor-ref>
+        </action>
+		
+    </package>
+    
+</struts>

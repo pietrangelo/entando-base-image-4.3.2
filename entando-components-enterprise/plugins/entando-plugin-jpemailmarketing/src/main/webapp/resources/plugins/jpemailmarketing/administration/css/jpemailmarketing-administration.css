@@ -1,0 +1,9 @@
+.progress.thick,
+.progress.thick .progress-bar {
+	height: 34px !important;
+	line-height: 34px !important;
+}
+
+.progress .progress-bar-darkgray {
+	background-color: #707070;
+}

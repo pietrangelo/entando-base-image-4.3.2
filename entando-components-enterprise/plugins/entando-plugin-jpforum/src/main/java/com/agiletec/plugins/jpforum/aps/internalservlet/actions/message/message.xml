@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	
+    <package name="jpforum_do/jpforum/Front/Message" namespace="/do/jpforum/Front/Message" extends="jpforum-default">
+
+    	<action name="newMessage" class="jpforumMessageAction" method="newMessage">
+			<result type="dispatcher">/WEB-INF/plugins/jpforum/aps/jsp/internalservlet/message/entryMessage.jsp</result>
+        	<interceptor-ref name="jpforumDefaultStack"><param name="jpforumRequestAuth.requiredPermission">jpforum_forumUser</param></interceptor-ref>
+        </action>
+
+    	<action name="newMessage" class="jpforumMessageAction" method="newMessage">
+			<result type="dispatcher">/WEB-INF/plugins/jpforum/aps/jsp/internalservlet/message/entryMessage.jsp</result>
+        	<interceptor-ref name="jpforumDefaultStack"><param name="jpforumRequestAuth.requiredPermission">jpforum_forumUser</param></interceptor-ref>
+        </action>
+
+    	<action name="newWarn" class="jpforumMessageAction" method="newWarn">
+			<result type="dispatcher">/WEB-INF/plugins/jpforum/aps/jsp/internalservlet/message/entryMessage.jsp</result>
+        	<interceptor-ref name="jpforumDefaultStack"><param name="jpforumRequestAuth.requiredPermission">jpforum_superuser</param></interceptor-ref>
+        </action>
+
+    	<action name="saveMessage" class="jpforumMessageAction" method="saveMessage">
+			<result name="input" type="dispatcher">/WEB-INF/plugins/jpforum/aps/jsp/internalservlet/message/entryMessage.jsp</result>
+			 <result type="chain">sendedMessage</result>
+            <result name="invalid.token" type="chain">sendedMessage</result>
+			 <interceptor-ref name="jpforumTokenInterceptor"><param name="typeMessages">none</param></interceptor-ref>
+        	<interceptor-ref name="jpforumValidationStack"><param name="jpforumRequestAuth.requiredPermission">jpforum_forumUser</param></interceptor-ref>
+        </action>
+
+    	<action name="readMessage" class="jpforumMessageAction" method="readMessage">
+			 <result name="input" type="chain">viewMessages</result>
+			<result type="dispatcher">/WEB-INF/plugins/jpforum/aps/jsp/internalservlet/message/viewMessage.jsp</result>
+        	<interceptor-ref name="jpforumDefaultStack"><param name="jpforumRequestAuth.requiredPermission">jpforum_forumUser</param></interceptor-ref>
+        </action>
+
+    	<action name="sendedMessage" class="jpforumMessageAction" >
+			 <result type="dispatcher">/WEB-INF/plugins/jpforum/aps/jsp/internalservlet/message/sendedMessage.jsp</result>
+        	<interceptor-ref name="jpforumDefaultStack"><param name="jpforumRequestAuth.requiredPermission">jpforum_forumUser</param></interceptor-ref>
+        </action>
+
+    	<action name="removeMessage" class="jpforumMessageAction" method="removeMessage">
+			 <result name="input" type="chain">viewMessages</result>
+			<result type="dispatcher">/WEB-INF/plugins/jpforum/aps/jsp/internalservlet/message/removeMessage.jsp</result>
+        	<interceptor-ref name="jpforumDefaultStack"><param name="jpforumRequestAuth.requiredPermission">jpforum_forumUser</param></interceptor-ref>
+        </action>
+    	<action name="doRemoveMessage" class="jpforumMessageAction" method="doRemoveMessage">
+			 <result  type="chain">deletedMessage</result>
+        	<interceptor-ref name="jpforumDefaultStack"><param name="jpforumRequestAuth.requiredPermission">jpforum_forumUser</param></interceptor-ref>
+        </action>
+
+    	<action name="deletedMessage" class="jpforumMessageAction">
+			 <result type="chain">viewMessages</result>
+        	<interceptor-ref name="jpforumDefaultStack"><param name="jpforumRequestAuth.requiredPermission">jpforum_forumUser</param></interceptor-ref>
+        </action>
+        
+        
+    	<action name="viewMessages" class="jpforumForumUserAction" method="viewPrivateMessages">
+    		<result name="input" type="dispatcher">/WEB-INF/plugins/jpforum/aps/jsp/internalservlet/user/viewUser.jsp</result>
+            <result type="dispatcher">/WEB-INF/plugins/jpforum/aps/jsp/internalservlet/user/inc/userMessages.jsp</result>
+        	<interceptor-ref name="jpforumDefaultStack"><param name="jpforumRequestAuth.requiredPermission">jpforum_forumUser</param></interceptor-ref>
+        </action>
+        
+        
+    </package>
+    
+</struts>

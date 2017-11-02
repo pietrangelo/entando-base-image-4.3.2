@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+    <package name="jppentaho5Config_do/Page/SpecialWidget"
+                 namespace="/do/Page/SpecialWidget" extends="entando-default">
+		
+        <global-results>
+            <result name="pageTree" type="chain">
+                <param name="namespace">/do/Page</param>
+                <param name="actionName">viewTree</param>
+            </result>
+            <result name="configure" type="chain">
+                <param name="namespace">/do/Page</param>
+                <param name="actionName">configure</param>
+            </result>
+        </global-results>
+		
+
+        <action name="legacyReportConfig" class="jppentaho5LegacyReportConfigAction" method="init" >
+            <result type="tiles">admin.jppentaho5.simpleReportConfig</result>
+            <interceptor-ref name="entandoDefaultStack">
+                <param name="requestAuth.requiredPermission">managePages</param>
+            </interceptor-ref>
+        </action>
+		
+        <!-- entry for the publish report -->
+        <action name="reportConfig" class="jppentaho5reportConfigAction" method="init" >
+            <result type="tiles">admin.jppentaho5.reportConfig</result>
+            <interceptor-ref name="entandoDefaultStack">
+                <param name="requestAuth.requiredPermission">managePages</param>
+            </interceptor-ref>
+        </action>
+		
+        <!-- entry for download report -->
+        <action name="downloadReportConfig" class="jppentaho5reportDownloadConfigAction" method="init" >
+            <result type="tiles">admin.jppentaho5.downloadReportConfig</result>
+            <interceptor-ref name="entandoDefaultStack">
+                <param name="requestAuth.requiredPermission">managePages</param>
+            </interceptor-ref>
+        </action>
+		
+        <!-- entry for report-form-only widget -->
+        <action name="formReportConfig" class="jppentaho5reportConfigAction" method="init" >
+            <result type="tiles">admin.jppentaho5.formReportConfig</result>
+            <interceptor-ref name="entandoDefaultStack">
+                <param name="requestAuth.requiredPermission">managePages</param>
+            </interceptor-ref>
+        </action>
+		
+        <!-- entry for display report only widget -->
+        <action name="displayReportConfig" class="jppentaho5reportConfigAction" method="init" >
+            <result type="tiles">admin.jppentaho5.displayReportConfig</result>
+            <interceptor-ref name="entandoDefaultStack">
+                <param name="requestAuth.requiredPermission">managePages</param>
+            </interceptor-ref>
+        </action>
+		
+    </package>
+
+    <package name="jppentaho5Config_do/jppentaho5/Page/SpecialWidget/simpleReportConf"
+                 namespace="/do/jppentaho5/Page/SpecialWidget/simpleReportConf" extends="entando-default">
+
+        <global-results>
+            <result name="pageTree" type="chain">
+                <param name="namespace">/do/Page</param>
+                <param name="actionName">viewTree</param>
+            </result>
+            <result name="configure" type="chain">
+                <param name="namespace">/do/Page</param>
+                <param name="actionName">configure</param>
+            </result>
+        </global-results>
+
+        <action name="saveConfig" class="jppentaho5LegacyReportConfigAction" method="save">
+            <result type="tiles" name="input">admin.jppentaho5.simpleReportConfig</result>
+            <interceptor-ref name="entandoValidationStack">
+                <param name="requestAuth.requiredPermission">managePages</param>
+            </interceptor-ref>
+        </action>
+
+    </package>
+	
+    <!-- Publish report widget -->
+    <package name="jppentaho5Config_do/jppentaho5/Page/SpecialWidget/reportConf"
+                 namespace="/do/jppentaho5/Page/SpecialWidget/reportConf" extends="entando-default">
+
+        <global-results>
+            <result name="pageTree" type="chain">
+                <param name="namespace">/do/Page</param>
+                <param name="actionName">viewTree</param>
+            </result>
+            <result name="configure" type="chain">
+                <param name="namespace">/do/Page</param>
+                <param name="actionName">configure</param>
+            </result>
+        </global-results>
+
+        <action name="saveConfig" class="jppentaho5reportConfigAction" method="save">
+            <result type="tiles" name="input">admin.jppentaho5.reportConfig</result>
+            <interceptor-ref name="entandoValidationStack">
+                <param name="requestAuth.requiredPermission">managePages</param>
+            </interceptor-ref>
+        </action>
+
+    </package>
+	
+    <!-- Download widget -->
+    <package name="jppentaho5Config_do/jppentaho5/Page/SpecialWidget/downloadReportConf"
+                 namespace="/do/jppentaho5/Page/SpecialWidget/downloadReportConf" extends="entando-default">
+
+        <global-results>
+            <result name="pageTree" type="chain">
+                <param name="namespace">/do/Page</param>
+                <param name="actionName">viewTree</param>
+            </result>
+            <result name="configure" type="chain">
+                <param name="namespace">/do/Page</param>
+                <param name="actionName">configure</param>
+            </result>
+        </global-results>
+
+        <action name="saveConfig" class="jppentaho5reportDownloadConfigAction" method="save">
+            <result type="tiles" name="input">admin.jppentaho5.downloadReportConfig</result>
+            <interceptor-ref name="entandoValidationStack">
+                <param name="requestAuth.requiredPermission">managePages</param>
+            </interceptor-ref>
+        </action>
+		
+    </package>
+	
+    <!-- Report form only widget -->
+    <package name="jppentaho5Config_do/jppentaho5/Page/SpecialWidget/formReportConf"
+                 namespace="/do/jppentaho5/Page/SpecialWidget/formReportConf" extends="entando-default">
+
+        <global-results>
+            <result name="pageTree" type="chain">
+                <param name="namespace">/do/Page</param>
+                <param name="actionName">viewTree</param>
+            </result>
+            <result name="configure" type="chain">
+                <param name="namespace">/do/Page</param>
+                <param name="actionName">configure</param>
+            </result>
+        </global-results>
+
+        <action name="saveConfig" class="jppentaho5reportConfigAction" method="save">
+            <result type="tiles" name="input">admin.jppentaho5.formReportConfig</result>
+            <interceptor-ref name="entandoValidationStack">
+                <param name="requestAuth.requiredPermission">managePages</param>
+            </interceptor-ref>
+        </action>
+		
+    </package>
+
+    <!-- Display form only widget -->
+    <package name="jppentaho5Config_do/jppentaho5/Page/SpecialWidget/displayReportConf"
+                 namespace="/do/jppentaho5/Page/SpecialWidget/displayReportConf" extends="entando-default">
+
+        <global-results>
+            <result name="pageTree" type="chain">
+                <param name="namespace">/do/Page</param>
+                <param name="actionName">viewTree</param>
+            </result>
+            <result name="configure" type="chain">
+                <param name="namespace">/do/Page</param>
+                <param name="actionName">configure</param>
+            </result>
+        </global-results>
+
+        <action name="saveConfig" class="jppentaho5reportConfigAction" method="save">
+            <result type="tiles" name="input">admin.jppentaho5.displayReportConfig"</result>
+            <interceptor-ref name="entandoValidationStack">
+                <param name="requestAuth.requiredPermission">managePages</param>
+            </interceptor-ref>
+        </action>
+		
+    </package>	
+
+</struts>

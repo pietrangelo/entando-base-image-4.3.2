@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xmlns:context="http://www.springframework.org/schema/context"
+		xmlns:aop="http://www.springframework.org/schema/aop"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
+    
+	<aop:aspectj-autoproxy />
+	<aop:config proxy-target-class="true" />
+    
+	<bean id="jpsocialConfigSystemParamsHookPoint" class="com.agiletec.apsadmin.system.plugin.HookPointElementContainer" >
+		<property name="filePath"><value>/WEB-INF/plugins/jpsocial/apsadmin/jsp/admin/configSystemParams-jack.jsp</value></property>
+		<property name="hookPointKey"><value>core.configSystemParams</value></property>
+	</bean>
+	
+	<bean id="jpsocialcmsHypertextAttributeEntryContentHookPoint" class="com.agiletec.apsadmin.system.plugin.HookPointElementContainer" >
+		<property name="filePath"><value>/WEB-INF/plugins/jpsocial/apsadmin/jsp/content/entryContent-attribute-jack.jsp</value></property>
+		<property name="hookPointKey"><value>jacms.entryContent.attributeExtra</value></property>
+	</bean>
+	
+	<bean id="jpsocialcmsHypertextAttributeEntryContentHookPointExtras" class="com.agiletec.apsadmin.system.plugin.HookPointElementContainer" >
+		<property name="filePath"><value>/WEB-INF/plugins/jpsocial/apsadmin/jsp/content/extraresource/entryContent-extraResources-attribute-jack.jsp</value></property>
+		<property name="hookPointKey"><value>jacms.entryContent.extraResources</value></property>
+	</bean>
+	
+	<bean id="jpsocialcmsSharecontentAction" class="com.agiletec.apsadmin.system.plugin.HookPointElementContainer" >
+		<property name="filePath"><value>/WEB-INF/plugins/jpsocial/apsadmin/jsp/content/entryContent-action-attribute-jack.jsp</value></property>
+		<property name="hookPointKey"><value>jacms.entryContent.actions</value></property>
+	</bean>
+	
+	<bean id="jpsocialcmsSharecontentListAction" class="com.agiletec.apsadmin.system.plugin.HookPointElementContainer" >
+		<property name="filePath"><value>/WEB-INF/plugins/jpsocial/apsadmin/jsp/content/contentFindig-action-jack.jsp</value></property>
+		<property name="hookPointKey"><value>jacms.contentFinding.contentRow.actions</value></property>
+	</bean>
+	
+	<bean id="jpsocialSocialAction" 
+			class="org.entando.entando.plugins.jpsocial.apsadmin.social.SocialAction" scope="prototype"
+			parent="jacmsAbstractContentAction" >
+		<property name="twitterManager" ref="jpsocialTwitterManager" />
+		<property name="linkedInManager" ref="jpsocialLinkedinManager" />
+		<property name="facebookManager" ref="jpsocialFacebookManager" />
+		<property name="youtubeManager" ref="jpsocialYoutubeManager" />
+		<property name="bitLyManager" ref="jpsocialBitLyManager" />
+		<property name="categoryManager" ref="CategoryManager"/>
+		<property name="pageManager" ref="PageManager" />
+		<property name="configManager" ref="BaseConfigManager" />
+		<property name="resourceIconUtil" ref="jacmsResourceIconUtil" />
+		<property name="urlManager" ref="URLManager" />		
+		<property name="storageManager" ref="StorageManager" />	
+		<property name="socialPostManager" ref="jpsocialSocialPostManager" />	
+	</bean>
+	
+	<bean id="jpsocialSocialShareAction" 
+			class="org.entando.entando.plugins.jpsocial.aps.internalservlet.post.SocialShareAction" scope="prototype"
+			parent="abstractBaseAction" >
+		<property name="configManager" ref="BaseConfigManager" />
+		<property name="socialManager" ref="jpsocialSocialManager" />	
+		<property name="socialPostManager" ref="jpsocialSocialPostManager" />
+		<property name="twitterManager" ref="jpsocialTwitterManager" />
+		<property name="facebookManager" ref="jpsocialFacebookManager" />	
+	</bean>
+	
+	<bean id="jpsocialIntroContentActionAspect" scope="prototype"
+		  class="org.entando.entando.plugins.jpsocial.apsadmin.content.IntroContentActionAspect" />
+	
+	<bean id="jpsocialLogoutActionAspect" scope="prototype"
+		  class="org.entando.entando.plugins.jpsocial.apsadmin.common.LogoutActionAspect" />
+	
+	<bean id="jpsocialFrontAction" class="org.entando.entando.plugins.jpsocial.aps.internalservlet.post.SocialFrontAction"
+			parent="abstractBaseAction" scope="prototype" >
+		<property name="twitterManager" ref="jpsocialTwitterManager" />
+		<property name="facebookManager" ref="jpsocialFacebookManager" /> 
+		<property name="pageManager" ref="PageManager" />
+		<property name="urlManager" ref="URLManager" />
+		<property name="socialPostManager" ref="jpsocialSocialPostManager" />
+	</bean>
+	
+</beans>

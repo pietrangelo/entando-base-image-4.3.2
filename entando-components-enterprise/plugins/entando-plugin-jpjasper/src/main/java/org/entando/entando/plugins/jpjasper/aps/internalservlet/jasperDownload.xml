@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+	<package name="jpjasper_do/jpjasper/FrontEnd/Report" namespace="/do/jpjasper/FrontEnd/Report" extends="entando-front-default">
+	
+    	<action name="renderReport*" class="jpjasperFrontReportAction" method="renderReport">
+            <result type="dispatcher">/WEB-INF/plugins/jpjasper/aps/jsp/internalservlet/report/view_report.jsp</result>
+            <result type="dispatcher" name="input_control_form">/WEB-INF/plugins/jpjasper/aps/jsp/internalservlet/report/input_controls.jsp</result>
+            <result type="dispatcher" name="no_report">/WEB-INF/plugins/jpjasper/aps/jsp/internalservlet/report/null_report.jsp</result>
+        	<interceptor-ref name="entandoFrontEndStack"></interceptor-ref>
+        </action>
+
+
+    	<action name="renderReportPreview" class="jpjasperFrontReportAction" method="renderReport">
+            <result type="dispatcher">/WEB-INF/plugins/jpjasper/aps/jsp/internalservlet/report/view_report_preview.jsp</result>
+            <result type="dispatcher" name="input_control_form">/WEB-INF/plugins/jpjasper/aps/jsp/internalservlet/report/input_controls.jsp</result>
+            <result type="dispatcher" name="no_report">/WEB-INF/plugins/jpjasper/aps/jsp/internalservlet/report/null_report.jsp</result>
+        	<interceptor-ref name="entandoFrontEndStack"></interceptor-ref>
+        </action>
+
+	
+	</package>
+	
+	<package name="jpjasper_do/jpjasper/FrontEnd/Report/Download" namespace="/do/jpjasper/FrontEnd/Report/Download" extends="entando-front-default">
+
+    	<action name="downloadReport" class="jpjasperFrontReportDownloadAction" method="downloadReport">
+            <result name="input" type="redirectAction">intro</result>
+            <result type="stream">
+            	<param name="inputName">inputStream</param>
+            	<param name="contentDisposition">attachment;filename="${fileName}"</param>
+            </result>
+        	<interceptor-ref name="fileUpload"/>
+        	<interceptor-ref name="entandoFrontEndStack"></interceptor-ref>
+        </action>
+
+    	<action name="getHtmlReport" class="jpjasperFrontReportDownloadAction" method="getHtml">
+    		<!-- GESTIRE INPUT -->
+            <result name="input" type="redirectAction">intro</result>
+            <result type="stream">
+            	<param name="contentType">${contentType}</param>
+            	<param name="inputName">inputStream</param>
+            </result>
+        	<interceptor-ref name="fileUpload"/>
+        	<interceptor-ref name="entandoFrontEndStack"></interceptor-ref>
+        </action>
+
+		<!-- 
+    	<action name="getReportImage" class="jpjasperFrontReportDownloadAction" method="getImage">
+            <result name="input" type="redirectAction">intro</result>
+            <result type="stream">
+            	<param name="inputName">inputStream2</param>
+            </result>
+        	<interceptor-ref name="fileUpload"/>
+        	<interceptor-ref name="entandoFrontEndStack"></interceptor-ref>
+        </action>
+		 -->
+
+    	<action name="getReportImageV2" class="jpjasperFrontReportDownloadAction" method="getImageV2">
+            <result name="input" type="redirectAction">intro</result>
+            <result type="stream">
+            	<param name="inputName">inputStream2</param>
+            </result>
+        	<interceptor-ref name="fileUpload"/>
+        	<interceptor-ref name="entandoFrontEndStack"></interceptor-ref>
+        </action>
+        
+        
+        
+	</package>
+    
+</struts>
+

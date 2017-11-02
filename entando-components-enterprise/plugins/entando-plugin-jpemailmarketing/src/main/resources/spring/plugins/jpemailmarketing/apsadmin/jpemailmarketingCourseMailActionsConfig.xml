@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xmlns:context="http://www.springframework.org/schema/context"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+	
+	<!-- 
+	<bean id="jpemailmarketingCourseMailFinderAction" scope="prototype" 
+			class="org.entando.entando.plugins.jpemailmarketing.apsadmin.coursemail.CourseMailFinderAction" 
+			parent="abstractBaseAction" >
+		<property name="courseMailManager" ref="jpemailmarketingCourseMailManager" />
+	</bean>
+	-->
+
+	<bean id="jpemailmarketingCourseMailAction" scope="prototype" 
+			class="org.entando.entando.plugins.jpemailmarketing.apsadmin.coursemail.CourseMailAction" 
+			parent="abstractBaseAction" >
+		<property name="courseMailManager" ref="jpemailmarketingCourseMailManager" />
+		<property name="courseManager" ref="jpemailmarketingCourseManager" />
+	</bean>
+
+</beans>

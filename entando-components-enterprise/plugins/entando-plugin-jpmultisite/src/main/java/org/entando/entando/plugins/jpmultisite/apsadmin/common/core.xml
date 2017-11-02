@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	
+	<package name="core_multisite_do" namespace="/do" extends="core_do">
+		
+		<interceptors>
+			<interceptor name="multisiteCode" class="org.entando.entando.plugins.jpmultisite.apsadmin.multisite.interceptor.MultisiteInterceptor" />
+			<interceptor name="multisiteAuth" class="org.entando.entando.plugins.jpmultisite.apsadmin.multisite.interceptor.MultisiteAuthorizationInterceptor" />
+			<interceptor-stack name="multisiteStack">
+				<interceptor-ref name="multisiteCode" />
+				<interceptor-ref name="multisiteAuth" />
+			</interceptor-stack>
+		</interceptors>
+		
+		<action name="login">
+			<result>/WEB-INF/plugins/jpmultisite/apsadmin/jsp/common/login.jsp</result>
+			<interceptor-ref name="multisiteCode" />
+		</action>
+		
+		<action name="doLogin" class="dispatchAction" method="doLogin">
+			<result name="input">/WEB-INF/apsadmin/jsp/common/login.jsp</result>
+			<result name="multisite" type="redirectAction">
+				<param name="actionName">mainMultisite</param>
+				<param name="namespace">/do/jpmultisite</param>
+			</result>
+			<result type="redirectAction">main</result>
+			<interceptor-ref name="entandoLoginStack" />
+			<interceptor-ref name="multisiteStack" />
+		</action>
+		
+	</package>
+	
+	
+	<package name="core_multisite_login_do" namespace="/do/jpmultisite" extends="core_multisite_do">
+		
+		<action name="mainMultisite" class="myShortcutConfigAction">
+			<result type="tiles">multisite.admin.intro</result>
+			<interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">enterBackend</param></interceptor-ref>
+			<interceptor-ref name="multisiteAuth" />
+		</action>
+		
+		<action name="switchMultisite*" class="jpMultisiteSwitchAction" method="switchMultisite">
+			<result name="multisite" type="redirectAction">mainMultisite</result>
+			<result type="redirectAction">
+				<param name="actionName">main</param>
+				<param name="namespace">/do</param>
+				main
+			</result>
+			<interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">enterBackend</param></interceptor-ref>
+			<interceptor-ref name="multisiteAuth" />
+		</action>
+		
+	</package>
+	
+</struts>

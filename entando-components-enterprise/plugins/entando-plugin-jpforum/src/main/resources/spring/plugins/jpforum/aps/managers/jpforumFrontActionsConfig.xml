@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xmlns:context="http://www.springframework.org/schema/context"
+		xmlns:jee="http://www.springframework.org/schema/jee"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+			http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.0.xsd">
+	
+	<bean id="jpforumAbstractForumAction" abstract="true" class="com.agiletec.plugins.jpforum.aps.internalservlet.actions.AbstractForumAction"	
+			parent="abstractBaseAction"  scope="prototype">
+		<property name="helper" ref="jpforumForumActionHelper" />
+		<property name="sectionManager" ref="jpforumSectionManager" />
+		<property name="threadManager" ref="jpforumThreadManager" />
+		<property name="statisticManager" ref="jpforumStatisticManager" />
+		<property name="markupParser" ref="jpforumMarkupParser" />
+		<property name="attachManager" ref="jpforumAttachManager" />
+		<property name="sanctionManager" ref="jpforumSanctionManager" />
+		<property name="userManager" ref="UserManager" />
+		<property name="forumConfigManager" ref="jpforumConfigManager" />
+		<property name="messageManager" ref="jpforumMessageManager" />
+	</bean>
+
+	<bean id="jpforumForumActionHelper" class="com.agiletec.plugins.jpforum.aps.internalservlet.helper.ForumApsActionHelper"	
+			parent="abstractBaseActionHelper"  scope="prototype">
+		<property name="sectionManager" ref="jpforumSectionManager" />
+	</bean>
+
+	<bean id="jpforumSectionBrowseAction" class="com.agiletec.plugins.jpforum.aps.internalservlet.actions.section.SectionBrowseAction"	
+			parent="jpforumAbstractForumAction"  scope="prototype">
+	</bean>
+
+	<bean id="jpforumThreadAction" class="com.agiletec.plugins.jpforum.aps.internalservlet.actions.thread.ThreadAction"	
+			parent="jpforumAbstractForumAction"  scope="prototype">
+	</bean>
+
+	<bean id="jpforumPostAction" class="com.agiletec.plugins.jpforum.aps.internalservlet.actions.post.PostAction"	
+			parent="jpforumAbstractForumAction"  scope="prototype">
+	</bean>
+
+	<bean id="jpforumForumUserAction" class="com.agiletec.plugins.jpforum.aps.internalservlet.actions.user.ForumUserAction"	
+			parent="jpforumAbstractForumAction"  scope="prototype">
+		<property name="messageManager" ref="jpforumMessageManager" />
+	</bean>
+
+	<bean id="jpforumMessageAction" class="com.agiletec.plugins.jpforum.aps.internalservlet.actions.message.MessageAction"	
+			parent="jpforumAbstractForumAction"  scope="prototype">
+		<property name="authenticationProviderManager" ref="AuthenticationProviderManager" />
+	</bean>
+
+	<bean id="jpforumSanctionAction" class="com.agiletec.plugins.jpforum.aps.internalservlet.actions.sanction.SanctionAction"	
+			parent="jpforumAbstractForumAction"  scope="prototype">
+		<property name="authenticationProviderManager" ref="AuthenticationProviderManager" />
+	</bean>
+
+	<bean id="jpforumAttachAction" class="com.agiletec.plugins.jpforum.aps.internalservlet.actions.attach.AttachAction"	
+			parent="jpforumAbstractForumAction"  scope="prototype">
+		<property name="urlManager" ref="URLManager" />
+		<property name="pageManager" ref="PageManager" />
+	</bean>
+
+	<bean id="jpforumSearchAction" class="com.agiletec.plugins.jpforum.aps.internalservlet.actions.search.SearchAction"	
+			parent="jpforumAbstractForumAction"  scope="prototype">
+		<property name="groupManager" ref="GroupManager" />
+		<property name="searchManager" ref="jpforumSearchManager" />
+	</bean>
+
+	<bean id="jpforumUserFinderAction" class="com.agiletec.plugins.jpforum.aps.internalservlet.actions.user.ForumUserFinderAction"	
+			parent="jpforumAbstractForumAction"  scope="prototype">
+		<property name="userProfileManager" ref="UserProfileManager" />
+	</bean>
+	
+	<!-- classe utilizzata per l'erogazione in frontend delle sezioni del forum. -->
+	<bean id="jpforumSectionTreeFrontAction" class="com.agiletec.plugins.jpforum.aps.internalservlet.actions.section.SectionTreeFrontAction"	
+			parent="jpforumSectionTreeAction"  scope="prototype">
+	</bean>
+	
+</beans>

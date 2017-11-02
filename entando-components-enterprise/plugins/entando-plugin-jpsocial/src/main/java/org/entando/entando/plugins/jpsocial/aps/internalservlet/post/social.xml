@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	 
+	<package name="jpsocial_do/Front/Post" namespace="/do/jpsocial/Front/Post" extends="entando-front-default">   
+		
+		<action name="tweetStart" class="jpsocialFrontAction" method="tweetStart">
+			<result type="dispatcher">/WEB-INF/plugins/jpsocial/aps/jsp/internalservlet/tweet_post.jsp</result>
+			<interceptor-ref name="entandoFrontEndFreeStack" >
+				<param name="chain.includeParameters">fieldErrors,actionErrors,actionMessages</param>
+			</interceptor-ref>
+		</action>
+
+		<action name="facebookStart" class="jpsocialFrontAction" method="facebookStart">
+			<result type="dispatcher">/WEB-INF/plugins/jpsocial/aps/jsp/internalservlet/facebook_post.jsp</result>
+			<interceptor-ref name="entandoFrontEndFreeStack" >
+				<param name="chain.includeParameters">fieldErrors,actionErrors,actionMessages</param>
+			</interceptor-ref>
+		</action>
+   
+		<action name="tweet" class="jpsocialFrontAction" method="tweet">
+			<result type="chain">tweetStart</result>
+			<result name="input" type="chain">tweetStart</result>
+			<interceptor-ref name="entandoFrontEndFreeStack"/>
+		</action>
+   
+		<action name="postFacebook" class="jpsocialFrontAction" method="postFacebook">
+			<result type="dispatcher">/WEB-INF/plugins/jpsocial/aps/jsp/internalservlet/facebook_post.jsp</result>
+			<result name="input" type="dispatcher">/WEB-INF/plugins/jpsocial/aps/jsp/internalservlet/facebook_post.jsp</result>
+			<interceptor-ref name="fileUpload">
+				<param name="maximumSize">524288</param>
+				<param name="allowedTypes"> image/jpeg,image/gif,image/png</param>
+			</interceptor-ref>
+			<interceptor-ref name="entandoFrontEndFreeStack" />
+		</action>
+    
+		<action name="socialLogout*" class="jpsocialFrontAction" method="socialLogout">
+			<result type="redirect">${redirectUrl}</result>
+			<interceptor-ref name="entandoFrontEndFreeStack" />
+		</action>
+	
+	
+
+	</package>
+  
+	<package name="jpsocial_do/Front/Share" namespace="/do/jpsocial/Front/Share" extends="entando-front-default">   
+	  
+		<action name="intro" class="jpsocialSocialShareAction" method="intro">
+			<result type="dispatcher">/WEB-INF/plugins/jpsocial/aps/jsp/internalservlet/share_intro.jsp</result>
+			<interceptor-ref name="entandoFrontEndValidationStack">
+				<param name="params.excludeParams">struts.token,struts.token.name</param>
+			</interceptor-ref>
+		</action>
+		
+		<action name="post*" class="jpsocialSocialShareAction" method="post">
+			<result type="redirect">${redirectUrl}</result>
+			<result name="input" type="dispatcher">/WEB-INF/plugins/jpsocial/aps/jsp/internalservlet/share_intro.jsp</result>
+			<interceptor-ref name="entandoFrontEndValidationStack">
+				<param name="params.excludeParams">struts.token,struts.token.name</param>
+			</interceptor-ref>
+		</action>
+		
+		<action name="cancel" class="jpsocialSocialShareAction" method="cancel">
+			<result type="redirect">${redirectUrl}</result>
+			<interceptor-ref name="entandoFrontEndFreeStack" />
+			<interceptor-ref name="entandoFrontEndFreeStack" />
+		</action>
+		
+	  
+	</package>
+
+</struts>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+    <definition extends="main.layout" name="admin.jpactiviti.Page.Widget.activiti.config">
+		<put-attribute name="title" value="title.pageManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jpactiviti/apsadmin/jsp/portal/specialwidget/iframeActivitiConfig.jsp" />
+	</definition>
+	
+    <!-- 
+    <definition extends="main.layout" name="admin.jpactiviti.Page.Widget.activiti.task.config">
+		<put-attribute name="title" value="title.pageManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jpactiviti/apsadmin/jsp/portal/specialwidget/taskActivitiConfig.jsp" />
+	</definition>
+	 -->
+
+    <definition extends="main.layout" name="admin.jpactiviti.config.entry">
+		<put-attribute name="title" value="title.pageManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jpactiviti/apsadmin/jsp/config/activiti-config.jsp" />
+	</definition>
+
+</tiles-definitions>

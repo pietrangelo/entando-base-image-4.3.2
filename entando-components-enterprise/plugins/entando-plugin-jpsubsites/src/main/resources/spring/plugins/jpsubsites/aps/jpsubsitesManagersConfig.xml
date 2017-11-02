@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+    
+    <bean id="jpsubsitesSubsiteManager" class="org.entando.entando.plugins.jpsubsites.aps.system.services.subsite.SubsiteManager" 
+          parent="abstractService" >
+        <property name="subsiteDAO" >
+            <bean class="org.entando.entando.plugins.jpsubsites.aps.system.services.subsite.SubsiteDAO">
+                <property name="dataSource" ref="portDataSource" />
+            </bean>
+        </property>
+        <property name="configManager" ref="BaseConfigManager" />
+        <property name="categoryManager" ref="CategoryManager" />
+        <property name="pageManager" ref="PageManager" />
+        <property name="groupManager" ref="GroupManager" />
+        <property name="pageModelManager" ref="PageModelManager" />
+        <property name="resourceManager" ref="jacmsResourceManager" /> 
+        <property name="contentManager" ref="jacmsContentManager" />
+        
+    </bean>
+ <!-- <bean id="jpsubsiteContentManager" class="org.entando.entando.plugins.jpsubsites.aps.system.services.content.SubsiteContentManager" parent="jacmsContentManager" >
+	</bean>	 -->
+    
+    <bean id="jpsubsitesBreadcrumbsNavigatorParser" 
+              class="org.entando.entando.plugins.jpsubsites.aps.system.services.page.widget.BreadcrumbsNavigatorParser" 
+              parent="NavigatorParser" />
+    
+    <bean id="jpsubsitesContentListHelper" 
+          class="org.entando.entando.plugins.jpsubsites.aps.system.services.content.widget.SubsiteContentListHelper" 
+          parent="jacmsContentListHelper" />
+  
+</beans>

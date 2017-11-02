@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:context="http://www.springframework.org/schema/context"
+		xmlns:aop="http://www.springframework.org/schema/aop"
+		xmlns:jee="http://www.springframework.org/schema/jee"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd 
+			http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.0.xsd">
+	
+	<aop:aspectj-autoproxy />
+	
+	<bean id="jpMultisiteWidgetTypeManager" class="org.entando.entando.plugins.jpmultisite.aps.system.services.widgettype.MultisiteWidgetTypeManager" 
+			parent="WidgetTypeManager" >
+		<property name="widgetTypeDAO" >
+			<bean class="org.entando.entando.plugins.jpmultisite.aps.system.services.widgettype.MultisiteWidgetTypeDAO">
+				<property name="dataSource" ref="portDataSource" />
+				<property name="langManager" ref="LangManager"/>
+			</bean>
+		</property>
+	</bean>
+	
+	<bean id="jpMultisiteActivityStreamManager" class="org.entando.entando.plugins.jpmultisite.aps.system.services.MultisiteActivityStreamManager" 
+			parent="ActionLogManager" >
+	</bean>
+	
+	<bean id="jpmultisiteSharedContentDAO" class="org.entando.entando.plugins.jpmultisite.aps.system.services.content.SharedContentDAO">
+		<property name="dataSource" ref="portDataSource" />
+	</bean>
+
+	<bean id="jpmultisiteMultisiteDAO" class="org.entando.entando.plugins.jpmultisite.aps.system.services.multisite.MultisiteDAO">
+		<property name="dataSource" ref="portDataSource" />
+	</bean>
+	
+	<bean id="jpmultisiteSharedContentManager" class="org.entando.entando.plugins.jpmultisite.aps.system.services.content.SharedContentManager"
+		parent="abstractService">
+		<property name="keyGeneratorManager" ref="KeyGeneratorManager" />
+		<property name="sharedContentDAO" ref="jpmultisiteSharedContentDAO" />
+	</bean>
+
+	<bean id="jpmultisiteMultisiteManager" class="org.entando.entando.plugins.jpmultisite.aps.system.services.multisite.MultisiteManager"
+		parent="abstractService">
+		<property name="keyGeneratorManager" ref="KeyGeneratorManager" />
+		<property name="multisiteDAO" ref="jpmultisiteMultisiteDAO" />
+		<property name="categoryManager" ref="CategoryManager" />
+		<property name="configManager" ref="BaseConfigManager" />
+		<property name="userManager" ref="UserManager" />
+		<property name="widgetTypeManager" ref="jpMultisiteWidgetTypeManager" />
+		<property name="groupManager" ref="GroupManager" />
+		<!-- <property name="roleManager" ref="RoleManager" /> -->
+		<property name="authorizationManager" ref="AuthorizationManager" />
+		<property name="pageModelManager" ref="PageModelManager" />
+		<property name="pageManager" ref="PageManager" />
+		<property name="langManager" ref="LangManager" />
+		<property name="storageManager" ref="StorageManager" />
+		<property name="jacmsWidgetTypeManager" ref="WidgetTypeManager" />
+		<property name="multisiteCloneManager" ref="jpmultisiteMultisiteCloneManager" />
+	</bean>
+	
+	<bean id="jpmultisiteMultisiteCloneManager" class="org.entando.entando.plugins.jpmultisite.aps.system.services.multisite.MultisiteCloneManager"
+		parent="abstractService">
+		<property name="groupManager" ref="GroupManager" />
+		<property name="categoryManager" ref="CategoryManager"/>
+		<property name="widgetTypeManager" ref="jpMultisiteWidgetTypeManager" />
+		<property name="resourceManager" ref="jpmultisiteResourceManager" />
+		<property name="pageManager" ref="PageManager"/>
+		<property name="pageModelManager" ref="PageModelManager" />
+		<property name="contentManager" ref="jpmultisiteContentManager" />
+	</bean>
+	
+	
+	<bean id="jpmultisiteContentManager" class="org.entando.entando.plugins.jpmultisite.aps.system.services.content.MultisiteContentManager" 
+			parent="jacmsContentManager" >
+		<property name="entityClassName" value="org.entando.entando.plugins.jpmultisite.aps.system.services.content.model.MultisiteSharedContentWrapper"/>
+		<property name="sharedContentManager" ref="jpmultisiteSharedContentManager"/>
+    </bean>
+	
+	<bean id="jpmultisiteResourceManager" class="org.entando.entando.plugins.jpmultisite.aps.system.services.resource.MultisiteResourceManager" parent="jacmsResourceManager" >
+	</bean>
+	
+	<!--
+	<bean id="jpmultisiteResourceManager" class="org.entando.entando.plugins.jpmultisite.aps.system.services.MultisiteResourceManager" parent="jacmsResourceManager" >
+		<property name="resourceTypes">
+            <map>
+                <entry key="Attach">
+                    <ref bean="jpmultisiteAttachResource" />
+                </entry>
+                <entry key="Image">
+                    <ref bean="jpmultisiteImageResource" />
+                </entry>
+            </map>
+        </property>
+	</bean>
+	
+	<bean id="jpmultisiteAttachResource" class="org.entando.entando.plugins.jpmultisite.apsadmin.resource.model.MultisiteAttachResource" parent="jacmsAbstractResource" >
+		<property name="type" value="Attach" />
+		<property name="folder" value="cms/documents" />
+		<property name="allowedExtensions"><value>${jacms.attachResource.allowedExtensions}</value></property>
+	</bean>
+	
+	<bean id="jpmultisiteImageResource" class="org.entando.entando.plugins.jpmultisite.apsadmin.resource.model.MultisiteImageResource" parent="jacmsAbstractResource" >
+		<property name="type" value="Image" />
+		<property name="folder" value="cms/images" />
+		<property name="allowedExtensions"><value>${jacms.imageResource.allowedExtensions}</value></property>
+		<property name="imageDimensionReader" ref="jacmsImageDimensionReader" />
+		<property name="imageResizerClasses">
+		<map>
+			<entry key="DEFAULT_RESIZER"><value>com.agiletec.plugins.jacms.aps.system.services.resource.model.imageresizer.DefaultImageResizer</value></entry>
+			<entry key="png"><value>com.agiletec.plugins.jacms.aps.system.services.resource.model.imageresizer.PNGImageResizer</value></entry>
+		</map>
+		</property>
+		<property name="imageMagickEnabled"><value>${imagemagick.enabled}</value></property>
+		<property name="imageMagickWindows"><value>${imagemagick.windows}</value></property>
+		<property name="imageMagickPath"><value>${imagemagick.path}</value></property>
+	</bean>
+	
+	
+	<bean id="jacmsResourceManager" class="com.agiletec.plugins.jacms.aps.system.services.resource.ResourceManager" 
+			parent="abstractService" >
+        <property name="categoryManager" ref="CategoryManager" />
+        <property name="resourceDAO" >
+            <bean class="com.agiletec.plugins.jacms.aps.system.services.resource.ResourceDAO">
+                <property name="dataSource" ref="portDataSource" />
+            </bean>
+        </property>
+        <property name="resourceTypes">
+            <map>
+                <entry key="Attach">
+                    <ref bean="jpmultisiteAttachResource" />
+                </entry>
+                <entry key="Image">
+                    <ref bean="jpmultisiteImageResource" />
+                </entry>
+            </map>
+        </property>
+    </bean>
+	-->
+</beans>

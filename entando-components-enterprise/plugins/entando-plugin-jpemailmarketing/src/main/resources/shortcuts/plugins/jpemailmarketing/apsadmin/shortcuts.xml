@@ -1,0 +1,35 @@
+<shortcut-def>
+	<shortcuts>
+		<shortcut id="jpemailmarketing.Course.shortCut"
+			requiredPermission="superuser" menusection="plugins" source="jpemailmarketing">
+			<description key="jpemailmarketing.Course.shortCut.list.shortDesc">Course list</description>
+			<longdesc key="jpemailmarketing.Course.shortCut.list.longDesc">
+				<![CDATA[Course shortCut longDesc ]]>
+			</longdesc>
+			<url>
+				<param name="namespace">/do/jpemailmarketing/Course</param>
+				<param name="actionName">list</param>
+			</url>
+		</shortcut>
+		<shortcut id="jpemailmarketing.Form.shortCut" requiredPermission="superuser" menusection="plugins" source="jpemailmarketing">
+			<description key="jpemailmarketing.Form.shortCut.list.shortDesc">Form list</description>
+			<longdesc key="jpemailmarketing.Form.shortCut.list.longDesc">
+				<![CDATA[Form shortCut longDesc ]]>
+			</longdesc>
+			<url>
+				<param name="namespace">/do/jpemailmarketing/Form</param>
+				<param name="actionName">list</param>
+			</url>
+		</shortcut>
+		<shortcut id="jpemailmarketing.Subscriber.shortCut" requiredPermission="superuser" menusection="plugins" source="jpemailmarketing">
+			<description key="jpemailmarketing.Subscriber.shortCut.list.shortDesc">Subscriber list</description>
+			<longdesc key="jpemailmarketing.Subscriber.shortCut.list.longDesc">
+				<![CDATA[Subscriber shortCut longDesc ]]>
+			</longdesc>
+			<url>
+				<param name="namespace">/do/jpemailmarketing/Subscriber</param>
+				<param name="actionName">list</param>
+			</url>
+		</shortcut>
+	</shortcuts>
+</shortcut-def>

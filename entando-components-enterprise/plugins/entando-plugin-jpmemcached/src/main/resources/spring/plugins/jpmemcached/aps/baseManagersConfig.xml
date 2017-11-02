@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:jee="http://www.springframework.org/schema/jee"
+	   xmlns:cache="http://www.springframework.org/schema/cache"
+	   xmlns:p="http://www.springframework.org/schema/p"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+			http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.0.xsd
+			http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache-4.0.xsd">
+	
+	<cache:annotation-driven cache-manager="springCacheManager" />
+	
+	<bean name="springCacheManager" class="com.google.code.ssm.spring.SSMCacheManager">
+		<property name="caches">
+			<set>
+				<bean class="com.google.code.ssm.spring.SSMCache">
+					<constructor-arg name="cache" index="0" ref="entandoMemcachedCache" />
+					<constructor-arg name="expiration" index="1" value="300" />
+					<constructor-arg name="allowClear" index="2" value="true" />
+				</bean>
+			</set>
+		</property>
+	</bean>
+	
+	<bean name="entandoMemcachedCache" class="com.google.code.ssm.EntandoMemcachedCacheFactory">
+		<property name="cacheName" value="Entando_Cache" />
+		<property name="cacheClientFactory">
+			<bean name="cacheClientFactory" class="com.google.code.ssm.providers.xmemcached.MemcacheClientFactoryImpl" />
+		</property>
+		<property name="addressProvider">
+			<bean class="com.google.code.ssm.config.EntandoMemcachedAddressProvider" init-method="init">
+				<property name="configManager" ref="BaseConfigManager" />
+			</bean>
+		</property>
+		<property name="configuration">
+			<bean class="com.google.code.ssm.providers.CacheConfiguration">
+				<property name="consistentHashing" value="true" />
+			</bean>
+		</property>
+		<property name="defaultSerializationType"
+			  value="#{T(com.google.code.ssm.api.format.SerializationType).valueOf('JAVA')}" />
+	</bean>
+	
+</beans>

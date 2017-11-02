@@ -1,0 +1,13 @@
+<apiMethodDefinitions>
+    
+    <resource name="refreshCatalogue" namespace="jpaltofw">
+        <description>Refresh the widget catalogue</description>
+        <source pluginCode="jpaltofw">plugins</source>
+        <method httpMethod="GET" active="true">
+            <description>Refresh the widget catalogue</description>
+            <springBean name="jpaltofwInstancesManager" method="refreshCatalogue" />
+			<responseClass>org.entando.entando.aps.system.services.api.model.StringApiResponse</responseClass>
+        </method>
+    </resource>
+    
+</apiMethodDefinitions>

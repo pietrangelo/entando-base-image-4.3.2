@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	
+    <package name="jppentaho_do/Page/SpecialWidget" namespace="/do/Page/SpecialWidget" extends="core_do/Page/SpecialWidget">
+    	
+    	<action name="jppentahoConfigSimpleParameter" class="simpleWidgetAction" method="init">
+        	<result type="tiles">admin.jppentaho.Page.Widget.configSimpleParameter</result>
+            <interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">managePages</param></interceptor-ref>
+        </action>
+    	
+    </package>
+	
+</struts>

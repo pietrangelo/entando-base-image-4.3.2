@@ -1,0 +1,38 @@
+.leftMenu {
+	margin-top: 0.75em;
+	margin-bottom: 1.5em;
+	font-size: 0.9em;
+}
+
+.leftMenu ul.mainMenu {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+	background-color: #f0f0f0;
+	border: none;
+}
+
+.leftMenu ul li {
+	margin: 0.3em;
+	font-size: 0.9em;
+	padding: 0.5em 0;
+	border-bottom: 2px solid #ffffff;
+}
+
+.leftMenu ul li span.title {
+	display: block;
+	min-height: 3em;
+	line-height: 3em;
+	border-bottom: 2px solid #ffffff;
+	text-align: center;
+	font-weight: bold;
+}
+
+.leftMenu li a:link, .leftMenu li a:visited {
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.leftMenu li a:hover, .leftMenu li a:active, .leftMenu li a:focus {
+	text-decoration: underline;
+}

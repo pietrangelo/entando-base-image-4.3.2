@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+	<package name="jpsalesforce_do/salesforce" namespace="/do/salesforce" extends="entando-front-default">
+
+		<!-- WARNING: do not change the action name without updating LOGIN_ACTION_NAME in class -->
+	<action name="access*" class="jpsalesforceAction" method="access">
+		<result name="redirect" type="redirect">${redirectPage}</result>
+		<result name="error" type="dispatcher">/WEB-INF/plugins/jpsalesforce/aps/jsp/internalservlet/access_error.jsp</result>
+		<interceptor-ref name="entandoFrontEndFreeStack">
+			<param name="chain.includeParameters">fieldErrors,actionErrors,actionMessages</param>
+		</interceptor-ref>
+	</action>
+
+	<action name="intro" class="jpsalesforceAction">
+		<result type="dispatcher">/WEB-INF/plugins/jpsalesforce/aps/jsp/internalservlet/login/manned_login.jsp</result>
+		<interceptor-ref name="entandoFrontEndFreeStack">
+			<param name="chain.includeParameters">fieldErrors,actionErrors,actionMessages</param>
+		</interceptor-ref>
+	</action>
+
+	</package>
+
+</struts>

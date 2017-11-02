@@ -1,0 +1,245 @@
+****************************************************************
+
+						Edo Report		
+								
+****************************************************************
+
+=== Command Line
+
+--baseDir=/home/spuddu/entando/bitbucket/entando-plugins-enterprise/entando-plugin-jpemailmarketing --package=org.entando.entando.plugins.jpemailmarketing Campaign descr:string-r active:int createdat:date updatedat:date AND Subscriber email:string campaignId:int fullName:string-r status:string-r createdat:date updatedat:date AND Form campaignId:int fileCoverName:string fileIncentiveName:string emailSubject:string-r emailText:string-r createdat:date updatedat:date
+
+
+
+=== List of generated files that MUST be merged:
+----------------------------------------------------------------
+Total files: 0
+Total lines: 0
+
+
+=== List of generated files:
+src/main/java/org/entando/entando/plugins/jpemailmarketing/aps/internalservlet/campaign/CampaignFinderFrontEndAction.java
+src/main/java/org/entando/entando/plugins/jpemailmarketing/aps/internalservlet/campaign/CampaignFrontEndAction.java
+src/main/java/org/entando/entando/plugins/jpemailmarketing/aps/internalservlet/campaign/campaignFront.xml
+src/main/java/org/entando/entando/plugins/jpemailmarketing/aps/internalservlet/form/FormFinderFrontEndAction.java
+src/main/java/org/entando/entando/plugins/jpemailmarketing/aps/internalservlet/form/FormFrontEndAction.java
+src/main/java/org/entando/entando/plugins/jpemailmarketing/aps/internalservlet/form/formFront.xml
+src/main/java/org/entando/entando/plugins/jpemailmarketing/aps/internalservlet/subscriber/SubscriberFinderFrontEndAction.java
+src/main/java/org/entando/entando/plugins/jpemailmarketing/aps/internalservlet/subscriber/SubscriberFrontEndAction.java
+src/main/java/org/entando/entando/plugins/jpemailmarketing/aps/internalservlet/subscriber/subscriberFront.xml
+src/main/java/org/entando/entando/plugins/jpemailmarketing/aps/system/init/servdb/Campaign.java
+src/main/java/org/entando/entando/plugins/jpemailmarketing/aps/system/init/servdb/Form.java
+src/main/java/org/entando/entando/plugins/jpemailmarketing/aps/system/init/servdb/Subscriber.java
+src/main/java/org/entando/entando/plugins/jpemailmarketing/aps/system/services/campaign/Campaign.java
+src/main/java/org/entando/entando/plugins/jpemailmarketing/aps/system/services/campaign/CampaignDAO.java
+src/main/java/org/entando/entando/plugins/jpemailmarketing/aps/system/services/campaign/CampaignManager.java
+src/main/java/org/entando/entando/plugins/jpemailmarketing/aps/system/services/campaign/ICampaignDAO.java
+src/main/java/org/entando/entando/plugins/jpemailmarketing/aps/system/services/campaign/ICampaignManager.java
+src/main/java/org/entando/entando/plugins/jpemailmarketing/aps/system/services/campaign/api/CampaignListResponse.java
+src/main/java/org/entando/entando/plugins/jpemailmarketing/aps/system/services/campaign/api/CampaignListResponseResult.java
+src/main/java/org/entando/entando/plugins/jpemailmarketing/aps/system/services/campaign/api/CampaignResponse.java
+src/main/java/org/entando/entando/plugins/jpemailmarketing/aps/system/services/campaign/api/CampaignResponseResult.java
+src/main/java/org/entando/entando/plugins/jpemailmarketing/aps/system/services/campaign/api/JAXBCampaign.java
+src/main/java/org/entando/entando/plugins/jpemailmarketing/aps/system/services/campaign/event/CampaignChangedEvent.java
+src/main/java/org/entando/entando/plugins/jpemailmarketing/aps/system/services/campaign/event/CampaignChangedObserver.java
+src/main/java/org/entando/entando/plugins/jpemailmarketing/aps/system/services/form/Form.java
+src/main/java/org/entando/entando/plugins/jpemailmarketing/aps/system/services/form/FormDAO.java
+src/main/java/org/entando/entando/plugins/jpemailmarketing/aps/system/services/form/FormManager.java
+src/main/java/org/entando/entando/plugins/jpemailmarketing/aps/system/services/form/IFormDAO.java
+src/main/java/org/entando/entando/plugins/jpemailmarketing/aps/system/services/form/IFormManager.java
+src/main/java/org/entando/entando/plugins/jpemailmarketing/aps/system/services/form/api/FormListResponse.java
+src/main/java/org/entando/entando/plugins/jpemailmarketing/aps/system/services/form/api/FormListResponseResult.java
+src/main/java/org/entando/entando/plugins/jpemailmarketing/aps/system/services/form/api/FormResponse.java
+src/main/java/org/entando/entando/plugins/jpemailmarketing/aps/system/services/form/api/FormResponseResult.java
+src/main/java/org/entando/entando/plugins/jpemailmarketing/aps/system/services/form/api/JAXBForm.java
+src/main/java/org/entando/entando/plugins/jpemailmarketing/aps/system/services/form/event/FormChangedEvent.java
+src/main/java/org/entando/entando/plugins/jpemailmarketing/aps/system/services/form/event/FormChangedObserver.java
+src/main/java/org/entando/entando/plugins/jpemailmarketing/aps/system/services/subscriber/ISubscriberDAO.java
+src/main/java/org/entando/entando/plugins/jpemailmarketing/aps/system/services/subscriber/ISubscriberManager.java
+src/main/java/org/entando/entando/plugins/jpemailmarketing/aps/system/services/subscriber/Subscriber.java
+src/main/java/org/entando/entando/plugins/jpemailmarketing/aps/system/services/subscriber/SubscriberDAO.java
+src/main/java/org/entando/entando/plugins/jpemailmarketing/aps/system/services/subscriber/SubscriberManager.java
+src/main/java/org/entando/entando/plugins/jpemailmarketing/aps/system/services/subscriber/api/JAXBSubscriber.java
+src/main/java/org/entando/entando/plugins/jpemailmarketing/aps/system/services/subscriber/api/SubscriberListResponse.java
+src/main/java/org/entando/entando/plugins/jpemailmarketing/aps/system/services/subscriber/api/SubscriberListResponseResult.java
+src/main/java/org/entando/entando/plugins/jpemailmarketing/aps/system/services/subscriber/api/SubscriberResponse.java
+src/main/java/org/entando/entando/plugins/jpemailmarketing/aps/system/services/subscriber/api/SubscriberResponseResult.java
+src/main/java/org/entando/entando/plugins/jpemailmarketing/aps/system/services/subscriber/event/SubscriberChangedEvent.java
+src/main/java/org/entando/entando/plugins/jpemailmarketing/aps/system/services/subscriber/event/SubscriberChangedObserver.java
+src/main/java/org/entando/entando/plugins/jpemailmarketing/aps/tags/CampaignListTag.java
+src/main/java/org/entando/entando/plugins/jpemailmarketing/aps/tags/CampaignTag.java
+src/main/java/org/entando/entando/plugins/jpemailmarketing/aps/tags/FormListTag.java
+src/main/java/org/entando/entando/plugins/jpemailmarketing/aps/tags/FormTag.java
+src/main/java/org/entando/entando/plugins/jpemailmarketing/aps/tags/SubscriberListTag.java
+src/main/java/org/entando/entando/plugins/jpemailmarketing/aps/tags/SubscriberTag.java
+src/main/java/org/entando/entando/plugins/jpemailmarketing/apsadmin/campaign/CampaignAction-conversion.properties
+src/main/java/org/entando/entando/plugins/jpemailmarketing/apsadmin/campaign/CampaignAction-validation.xml
+src/main/java/org/entando/entando/plugins/jpemailmarketing/apsadmin/campaign/CampaignAction.java
+src/main/java/org/entando/entando/plugins/jpemailmarketing/apsadmin/campaign/CampaignFinderAction-conversion.properties
+src/main/java/org/entando/entando/plugins/jpemailmarketing/apsadmin/campaign/CampaignFinderAction.java
+src/main/java/org/entando/entando/plugins/jpemailmarketing/apsadmin/campaign/campaign.xml
+src/main/java/org/entando/entando/plugins/jpemailmarketing/apsadmin/campaign/package_en.properties
+src/main/java/org/entando/entando/plugins/jpemailmarketing/apsadmin/campaign/package_it.properties
+src/main/java/org/entando/entando/plugins/jpemailmarketing/apsadmin/form/FormAction-conversion.properties
+src/main/java/org/entando/entando/plugins/jpemailmarketing/apsadmin/form/FormAction-validation.xml
+src/main/java/org/entando/entando/plugins/jpemailmarketing/apsadmin/form/FormAction.java
+src/main/java/org/entando/entando/plugins/jpemailmarketing/apsadmin/form/FormFinderAction-conversion.properties
+src/main/java/org/entando/entando/plugins/jpemailmarketing/apsadmin/form/FormFinderAction.java
+src/main/java/org/entando/entando/plugins/jpemailmarketing/apsadmin/form/form.xml
+src/main/java/org/entando/entando/plugins/jpemailmarketing/apsadmin/form/package_en.properties
+src/main/java/org/entando/entando/plugins/jpemailmarketing/apsadmin/form/package_it.properties
+src/main/java/org/entando/entando/plugins/jpemailmarketing/apsadmin/global-messages_en.properties
+src/main/java/org/entando/entando/plugins/jpemailmarketing/apsadmin/global-messages_it.properties
+src/main/java/org/entando/entando/plugins/jpemailmarketing/apsadmin/portal/specialwidget/campaign/CampaignConfigAction.java
+src/main/java/org/entando/entando/plugins/jpemailmarketing/apsadmin/portal/specialwidget/campaign/campaignSpecialWidget.xml
+src/main/java/org/entando/entando/plugins/jpemailmarketing/apsadmin/portal/specialwidget/campaign/package_en.properties
+src/main/java/org/entando/entando/plugins/jpemailmarketing/apsadmin/portal/specialwidget/campaign/package_it.properties
+src/main/java/org/entando/entando/plugins/jpemailmarketing/apsadmin/portal/specialwidget/form/FormConfigAction.java
+src/main/java/org/entando/entando/plugins/jpemailmarketing/apsadmin/portal/specialwidget/form/formSpecialWidget.xml
+src/main/java/org/entando/entando/plugins/jpemailmarketing/apsadmin/portal/specialwidget/form/package_en.properties
+src/main/java/org/entando/entando/plugins/jpemailmarketing/apsadmin/portal/specialwidget/form/package_it.properties
+src/main/java/org/entando/entando/plugins/jpemailmarketing/apsadmin/portal/specialwidget/subscriber/SubscriberConfigAction.java
+src/main/java/org/entando/entando/plugins/jpemailmarketing/apsadmin/portal/specialwidget/subscriber/package_en.properties
+src/main/java/org/entando/entando/plugins/jpemailmarketing/apsadmin/portal/specialwidget/subscriber/package_it.properties
+src/main/java/org/entando/entando/plugins/jpemailmarketing/apsadmin/portal/specialwidget/subscriber/subscriberSpecialWidget.xml
+src/main/java/org/entando/entando/plugins/jpemailmarketing/apsadmin/subscriber/SubscriberAction-conversion.properties
+src/main/java/org/entando/entando/plugins/jpemailmarketing/apsadmin/subscriber/SubscriberAction-validation.xml
+src/main/java/org/entando/entando/plugins/jpemailmarketing/apsadmin/subscriber/SubscriberAction.java
+src/main/java/org/entando/entando/plugins/jpemailmarketing/apsadmin/subscriber/SubscriberFinderAction-conversion.properties
+src/main/java/org/entando/entando/plugins/jpemailmarketing/apsadmin/subscriber/SubscriberFinderAction.java
+src/main/java/org/entando/entando/plugins/jpemailmarketing/apsadmin/subscriber/package_en.properties
+src/main/java/org/entando/entando/plugins/jpemailmarketing/apsadmin/subscriber/package_it.properties
+src/main/java/org/entando/entando/plugins/jpemailmarketing/apsadmin/subscriber/subscriber.xml
+src/main/resources/api/plugins/jpemailmarketing/aps/apiMethods.xml
+src/main/resources/component/plugins/jpemailmarketing/component.xml
+src/main/resources/entando-struts-plugin.xml
+src/main/resources/shortcuts/plugins/jpemailmarketing/apsadmin/shortcuts.xml
+src/main/resources/spring/plugins/jpemailmarketing/aps/managers/jpemailmarketingCampaignManagersConfig.xml
+src/main/resources/spring/plugins/jpemailmarketing/aps/managers/jpemailmarketingFormManagersConfig.xml
+src/main/resources/spring/plugins/jpemailmarketing/aps/managers/jpemailmarketingSubscriberManagersConfig.xml
+src/main/resources/spring/plugins/jpemailmarketing/apsadmin/jpemailmarketingCampaignActionsConfig.xml
+src/main/resources/spring/plugins/jpemailmarketing/apsadmin/jpemailmarketingFormActionsConfig.xml
+src/main/resources/spring/plugins/jpemailmarketing/apsadmin/jpemailmarketingSubscriberActionsConfig.xml
+src/main/resources/sql/plugins/jpemailmarketing/port_data_production.sql
+src/main/resources/sql/plugins/jpemailmarketing/serv_data_production.sql
+src/main/tld/plugins/jpemailmarketing/jpemailmarketing-core.tld
+src/main/webapp/WEB-INF/plugins/jpemailmarketing/aps/jsp/internalservlet/campaign/frontend-campaign-entry.jsp
+src/main/webapp/WEB-INF/plugins/jpemailmarketing/aps/jsp/internalservlet/campaign/frontend-campaign-error.jsp
+src/main/webapp/WEB-INF/plugins/jpemailmarketing/aps/jsp/internalservlet/campaign/frontend-campaign-list.jsp
+src/main/webapp/WEB-INF/plugins/jpemailmarketing/aps/jsp/internalservlet/campaign/frontend-campaign-trash.jsp
+src/main/webapp/WEB-INF/plugins/jpemailmarketing/aps/jsp/internalservlet/form/frontend-form-entry.jsp
+src/main/webapp/WEB-INF/plugins/jpemailmarketing/aps/jsp/internalservlet/form/frontend-form-error.jsp
+src/main/webapp/WEB-INF/plugins/jpemailmarketing/aps/jsp/internalservlet/form/frontend-form-list.jsp
+src/main/webapp/WEB-INF/plugins/jpemailmarketing/aps/jsp/internalservlet/form/frontend-form-trash.jsp
+src/main/webapp/WEB-INF/plugins/jpemailmarketing/aps/jsp/internalservlet/subscriber/frontend-subscriber-entry.jsp
+src/main/webapp/WEB-INF/plugins/jpemailmarketing/aps/jsp/internalservlet/subscriber/frontend-subscriber-error.jsp
+src/main/webapp/WEB-INF/plugins/jpemailmarketing/aps/jsp/internalservlet/subscriber/frontend-subscriber-list.jsp
+src/main/webapp/WEB-INF/plugins/jpemailmarketing/aps/jsp/internalservlet/subscriber/frontend-subscriber-trash.jsp
+src/main/webapp/WEB-INF/plugins/jpemailmarketing/aps/jsp/widgets/jpemailmarketingCampaign.jsp
+src/main/webapp/WEB-INF/plugins/jpemailmarketing/aps/jsp/widgets/jpemailmarketingForm.jsp
+src/main/webapp/WEB-INF/plugins/jpemailmarketing/aps/jsp/widgets/jpemailmarketingSubscriber.jsp
+src/main/webapp/WEB-INF/plugins/jpemailmarketing/apsadmin/jpemailmarketing-tiles.xml
+src/main/webapp/WEB-INF/plugins/jpemailmarketing/apsadmin/jsp/campaign/campaign-entry.jsp
+src/main/webapp/WEB-INF/plugins/jpemailmarketing/apsadmin/jsp/campaign/campaign-list.jsp
+src/main/webapp/WEB-INF/plugins/jpemailmarketing/apsadmin/jsp/campaign/campaign-trash.jsp
+src/main/webapp/WEB-INF/plugins/jpemailmarketing/apsadmin/jsp/common/layouts/assets-more/campaign-entry-extras.jsp
+src/main/webapp/WEB-INF/plugins/jpemailmarketing/apsadmin/jsp/common/layouts/assets-more/campaign-list-extras.jsp
+src/main/webapp/WEB-INF/plugins/jpemailmarketing/apsadmin/jsp/common/layouts/assets-more/campaign-trash-extras.jsp
+src/main/webapp/WEB-INF/plugins/jpemailmarketing/apsadmin/jsp/common/layouts/assets-more/form-entry-extras.jsp
+src/main/webapp/WEB-INF/plugins/jpemailmarketing/apsadmin/jsp/common/layouts/assets-more/form-list-extras.jsp
+src/main/webapp/WEB-INF/plugins/jpemailmarketing/apsadmin/jsp/common/layouts/assets-more/form-trash-extras.jsp
+src/main/webapp/WEB-INF/plugins/jpemailmarketing/apsadmin/jsp/common/layouts/assets-more/subscriber-entry-extras.jsp
+src/main/webapp/WEB-INF/plugins/jpemailmarketing/apsadmin/jsp/common/layouts/assets-more/subscriber-list-extras.jsp
+src/main/webapp/WEB-INF/plugins/jpemailmarketing/apsadmin/jsp/common/layouts/assets-more/subscriber-trash-extras.jsp
+src/main/webapp/WEB-INF/plugins/jpemailmarketing/apsadmin/jsp/common/layouts/subMenu.jsp
+src/main/webapp/WEB-INF/plugins/jpemailmarketing/apsadmin/jsp/form/form-entry.jsp
+src/main/webapp/WEB-INF/plugins/jpemailmarketing/apsadmin/jsp/form/form-list.jsp
+src/main/webapp/WEB-INF/plugins/jpemailmarketing/apsadmin/jsp/form/form-trash.jsp
+src/main/webapp/WEB-INF/plugins/jpemailmarketing/apsadmin/jsp/portal/specialwidget/campaign/campaign-config.jsp
+src/main/webapp/WEB-INF/plugins/jpemailmarketing/apsadmin/jsp/portal/specialwidget/form/form-config.jsp
+src/main/webapp/WEB-INF/plugins/jpemailmarketing/apsadmin/jsp/portal/specialwidget/subscriber/subscriber-config.jsp
+src/main/webapp/WEB-INF/plugins/jpemailmarketing/apsadmin/jsp/subscriber/subscriber-entry.jsp
+src/main/webapp/WEB-INF/plugins/jpemailmarketing/apsadmin/jsp/subscriber/subscriber-list.jsp
+src/main/webapp/WEB-INF/plugins/jpemailmarketing/apsadmin/jsp/subscriber/subscriber-trash.jsp
+src/test/java/org/entando/entando/plugins/jpemailmarketing/JpemailmarketingConfigTestUtils.java
+src/test/java/org/entando/entando/plugins/jpemailmarketing/aps/JpemailmarketingBaseTestCase.java
+src/test/java/org/entando/entando/plugins/jpemailmarketing/aps/system/services/TestCampaignManager.java
+src/test/java/org/entando/entando/plugins/jpemailmarketing/aps/system/services/TestFormManager.java
+src/test/java/org/entando/entando/plugins/jpemailmarketing/aps/system/services/TestSubscriberManager.java
+src/test/java/org/entando/entando/plugins/jpemailmarketing/apsadmin/JpemailmarketingApsAdminBaseTestCase.java
+src/test/java/org/entando/entando/plugins/jpemailmarketing/apsadmin/campaign/TestCampaignAction.java
+src/test/java/org/entando/entando/plugins/jpemailmarketing/apsadmin/campaign/TestCampaignFinderAction.java
+src/test/java/org/entando/entando/plugins/jpemailmarketing/apsadmin/form/TestFormAction.java
+src/test/java/org/entando/entando/plugins/jpemailmarketing/apsadmin/form/TestFormFinderAction.java
+src/test/java/org/entando/entando/plugins/jpemailmarketing/apsadmin/subscriber/TestSubscriberAction.java
+src/test/java/org/entando/entando/plugins/jpemailmarketing/apsadmin/subscriber/TestSubscriberFinderAction.java
+src/test/resources/sql/plugins/jpemailmarketing/port_data_test.sql
+src/test/resources/sql/plugins/jpemailmarketing/serv_data_test.sql
+----------------------------------------------------------------
+Total files: 157
+Total lines: 9545
+
+
+
+
+
+=== Revert *port inserts
+
+DELETE FROM widgetcatalog where code = 'jpemailmarketingCampaign_list_form';
+DELETE FROM widgetcatalog where code = 'jpemailmarketingCampaign';
+DELETE FROM localstrings where keycode = 'jpemailmarketing_CAMPAIGN_ID'; 
+DELETE FROM localstrings where keycode = 'jpemailmarketing_CAMPAIGN_DESCR'; 
+DELETE FROM localstrings where keycode = 'jpemailmarketing_CAMPAIGN_ACTIVE'; 
+DELETE FROM localstrings where keycode = 'jpemailmarketing_CAMPAIGN_CREATEDAT_START'; 
+DELETE FROM localstrings where keycode = 'jpemailmarketing_CAMPAIGN_CREATEDAT_END'; 
+DELETE FROM localstrings where keycode = 'jpemailmarketing_CAMPAIGN_CREATEDAT'; 
+DELETE FROM localstrings where keycode = 'jpemailmarketing_CAMPAIGN_UPDATEDAT_START'; 
+DELETE FROM localstrings where keycode = 'jpemailmarketing_CAMPAIGN_UPDATEDAT_END'; 
+DELETE FROM localstrings where keycode = 'jpemailmarketing_CAMPAIGN_UPDATEDAT'; 
+DELETE FROM localstrings where keycode = 'jpemailmarketing_CAMPAIGN_ACTIONS'; 
+DELETE FROM localstrings where keycode = 'jpemailmarketing_CAMPAIGN_NEW'; 
+DELETE FROM localstrings where keycode = 'jpemailmarketing_CAMPAIGN_EDIT'; 
+DELETE FROM localstrings where keycode = 'jpemailmarketing_CAMPAIGN_TRASH'; 
+DELETE FROM localstrings where keycode = 'jpemailmarketing_CAMPAIGN_TRASH_CONFIRM'; 
+DELETE FROM localstrings where keycode = 'jpemailmarketing_CAMPAIGN_SEARCH_CAMPAIGN'; 
+
+DELETE FROM widgetcatalog where code = 'jpemailmarketingSubscriber_list_form';
+DELETE FROM widgetcatalog where code = 'jpemailmarketingSubscriber';
+DELETE FROM localstrings where keycode = 'jpemailmarketing_SUBSCRIBER_ID'; 
+DELETE FROM localstrings where keycode = 'jpemailmarketing_SUBSCRIBER_EMAIL'; 
+DELETE FROM localstrings where keycode = 'jpemailmarketing_SUBSCRIBER_CAMPAIGNID'; 
+DELETE FROM localstrings where keycode = 'jpemailmarketing_SUBSCRIBER_FULLNAME'; 
+DELETE FROM localstrings where keycode = 'jpemailmarketing_SUBSCRIBER_STATUS'; 
+DELETE FROM localstrings where keycode = 'jpemailmarketing_SUBSCRIBER_CREATEDAT_START'; 
+DELETE FROM localstrings where keycode = 'jpemailmarketing_SUBSCRIBER_CREATEDAT_END'; 
+DELETE FROM localstrings where keycode = 'jpemailmarketing_SUBSCRIBER_CREATEDAT'; 
+DELETE FROM localstrings where keycode = 'jpemailmarketing_SUBSCRIBER_UPDATEDAT_START'; 
+DELETE FROM localstrings where keycode = 'jpemailmarketing_SUBSCRIBER_UPDATEDAT_END'; 
+DELETE FROM localstrings where keycode = 'jpemailmarketing_SUBSCRIBER_UPDATEDAT'; 
+DELETE FROM localstrings where keycode = 'jpemailmarketing_SUBSCRIBER_ACTIONS'; 
+DELETE FROM localstrings where keycode = 'jpemailmarketing_SUBSCRIBER_NEW'; 
+DELETE FROM localstrings where keycode = 'jpemailmarketing_SUBSCRIBER_EDIT'; 
+DELETE FROM localstrings where keycode = 'jpemailmarketing_SUBSCRIBER_TRASH'; 
+DELETE FROM localstrings where keycode = 'jpemailmarketing_SUBSCRIBER_TRASH_CONFIRM'; 
+DELETE FROM localstrings where keycode = 'jpemailmarketing_SUBSCRIBER_SEARCH_SUBSCRIBER'; 
+
+DELETE FROM widgetcatalog where code = 'jpemailmarketingForm_list_form';
+DELETE FROM widgetcatalog where code = 'jpemailmarketingForm';
+DELETE FROM localstrings where keycode = 'jpemailmarketing_FORM_ID'; 
+DELETE FROM localstrings where keycode = 'jpemailmarketing_FORM_CAMPAIGNID'; 
+DELETE FROM localstrings where keycode = 'jpemailmarketing_FORM_FILECOVERNAME'; 
+DELETE FROM localstrings where keycode = 'jpemailmarketing_FORM_FILEINCENTIVENAME'; 
+DELETE FROM localstrings where keycode = 'jpemailmarketing_FORM_EMAILSUBJECT'; 
+DELETE FROM localstrings where keycode = 'jpemailmarketing_FORM_EMAILTEXT'; 
+DELETE FROM localstrings where keycode = 'jpemailmarketing_FORM_CREATEDAT_START'; 
+DELETE FROM localstrings where keycode = 'jpemailmarketing_FORM_CREATEDAT_END'; 
+DELETE FROM localstrings where keycode = 'jpemailmarketing_FORM_CREATEDAT'; 
+DELETE FROM localstrings where keycode = 'jpemailmarketing_FORM_UPDATEDAT_START'; 
+DELETE FROM localstrings where keycode = 'jpemailmarketing_FORM_UPDATEDAT_END'; 
+DELETE FROM localstrings where keycode = 'jpemailmarketing_FORM_UPDATEDAT'; 
+DELETE FROM localstrings where keycode = 'jpemailmarketing_FORM_ACTIONS'; 
+DELETE FROM localstrings where keycode = 'jpemailmarketing_FORM_NEW'; 
+DELETE FROM localstrings where keycode = 'jpemailmarketing_FORM_EDIT'; 
+DELETE FROM localstrings where keycode = 'jpemailmarketing_FORM_TRASH'; 
+DELETE FROM localstrings where keycode = 'jpemailmarketing_FORM_TRASH_CONFIRM'; 
+DELETE FROM localstrings where keycode = 'jpemailmarketing_FORM_SEARCH_FORM'; 
+

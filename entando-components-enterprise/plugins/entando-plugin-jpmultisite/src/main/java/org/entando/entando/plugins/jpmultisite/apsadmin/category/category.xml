@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+	
+<struts>
+	
+	<package name="jpmultisite_do/jpmultisite/Category" namespace="/do/jpmultisite/Category" extends="core_do/Category">
+		
+		<action name="viewTree" class="jpmultisiteCategoryAction">
+			<result type="tiles">multisite.admin.Category.viewTree</result>
+			<interceptor-ref name="entandoDefaultStack">
+				<param name="chain.includeParameters">fieldErrors,actionErrors,actionMessages</param>
+				<param name="requestAuth.requiredPermission">manageCategories</param>
+			</interceptor-ref>
+		</action>
+        
+		<action name="openCloseCategoryTree" class="jpmultisiteCategoryAction" method="buildTree">
+			<result type="tiles">multisite.admin.Category.viewTree</result>
+			<interceptor-ref name="entandoDefaultStack">
+				<param name="requestAuth.requiredPermission">manageCategories</param>
+			</interceptor-ref>
+		</action>
+        
+		<action name="new" class="jpmultisiteCategoryAction" method="add">
+			<result name="categoryTree" type="chain">viewTree</result>
+			<result type="tiles">multisite.admin.Category.entry</result>
+			<interceptor-ref name="entandoDefaultStack">
+				<param name="requestAuth.requiredPermission">manageCategories</param>
+			</interceptor-ref>
+		</action>
+        
+		<action name="edit" class="jpmultisiteCategoryAction" method="edit">
+			<result name="categoryTree" type="chain">viewTree</result>
+			<result type="tiles">multisite.admin.Category.entry</result>
+			<interceptor-ref name="entandoDefaultStack">
+				<param name="requestAuth.requiredPermission">manageCategories</param>
+			</interceptor-ref>
+		</action>
+        
+		<action name="detail" class="categoryAction" method="showDetail">
+			<result name="categoryTree" type="chain">viewTree</result>
+			<result type="tiles">multisite.admin.Category.detail</result>
+			<interceptor-ref name="entandoDefaultStack">
+				<param name="requestAuth.requiredPermission">manageCategories</param>
+			</interceptor-ref>
+		</action>
+        
+		<action name="trash" class="jpmultisiteCategoryAction" method="trash">
+			<result name="categoryTree" type="chain">viewTree</result>
+			<result name="references" type="tiles">multisite.admin.Category.references</result>
+			<result type="tiles">multisite.admin.Category.trash</result>
+			<interceptor-ref name="entandoDefaultStack">
+				<param name="requestAuth.requiredPermission">manageCategories</param>
+			</interceptor-ref>
+		</action>
+        
+		<action name="delete" class="jpmultisiteCategoryAction" method="delete">
+			<result name="categoryTree" type="chain">viewTree</result>
+			<result name="references" type="tiles">multisite.admin.Category.references</result>
+			<result type="tiles">multisite.admin.Category.viewTree</result>
+			<interceptor-ref name="entandoDefaultStack">
+				<param name="requestAuth.requiredPermission">manageCategories</param>
+			</interceptor-ref>
+		</action>
+        
+		<action name="save" class="jpmultisiteCategoryAction" method="save">
+			<result name="input" type="tiles">multisite.admin.Category.entry</result>
+			<result type="tiles">multisite.admin.Category.viewTree</result>
+			<interceptor-ref name="entandoValidationStack">
+				<param name="requestAuth.requiredPermission">manageCategories</param>
+			</interceptor-ref>
+		</action>
+		
+	</package>
+	
+</struts>

@@ -1,0 +1,124 @@
+/*
+*
+* Copyright 2013 Entando S.r.l. (http://www.entando.com) All rights reserved.
+*
+* This file is part of Entando Enterprise Edition software.
+* You can redistribute it and/or modify it
+* under the terms of the Entando's EULA
+* 
+* See the file License for the specific language governing permissions   
+* and limitations under the License
+* 
+* 
+* 
+* Copyright 2013 Entando S.r.l. (http://www.entando.com) All rights reserved.
+*
+*/
+package com.sugarcrm.www.sugarcrm;
+
+public class Get_entries_count_result  implements java.io.Serializable {
+    private int result_count;
+
+    public Get_entries_count_result() {
+    }
+
+    public Get_entries_count_result(
+           int result_count) {
+           this.result_count = result_count;
+    }
+
+
+    /**
+     * Gets the result_count value for this Get_entries_count_result.
+     * 
+     * @return result_count
+     */
+    public int getResult_count() {
+        return result_count;
+    }
+
+
+    /**
+     * Sets the result_count value for this Get_entries_count_result.
+     * 
+     * @param result_count
+     */
+    public void setResult_count(int result_count) {
+        this.result_count = result_count;
+    }
+
+    private java.lang.Object __equalsCalc = null;
+    public synchronized boolean equals(java.lang.Object obj) {
+        if (!(obj instanceof Get_entries_count_result)) return false;
+        Get_entries_count_result other = (Get_entries_count_result) obj;
+        if (obj == null) return false;
+        if (this == obj) return true;
+        if (__equalsCalc != null) {
+            return (__equalsCalc == obj);
+        }
+        __equalsCalc = obj;
+        boolean _equals;
+        _equals = true && 
+            this.result_count == other.getResult_count();
+        __equalsCalc = null;
+        return _equals;
+    }
+
+    private boolean __hashCodeCalc = false;
+    public synchronized int hashCode() {
+        if (__hashCodeCalc) {
+            return 0;
+        }
+        __hashCodeCalc = true;
+        int _hashCode = 1;
+        _hashCode += getResult_count();
+        __hashCodeCalc = false;
+        return _hashCode;
+    }
+
+    // Type metadata
+    private static org.apache.axis.description.TypeDesc typeDesc =
+        new org.apache.axis.description.TypeDesc(Get_entries_count_result.class, true);
+
+    static {
+        typeDesc.setXmlType(new javax.xml.namespace.QName("http://www.sugarcrm.com/sugarcrm", "get_entries_count_result"));
+        org.apache.axis.description.ElementDesc elemField = new org.apache.axis.description.ElementDesc();
+        elemField.setFieldName("result_count");
+        elemField.setXmlName(new javax.xml.namespace.QName("", "result_count"));
+        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "int"));
+        elemField.setNillable(false);
+        typeDesc.addFieldDesc(elemField);
+    }
+
+    /**
+     * Return type metadata object
+     */
+    public static org.apache.axis.description.TypeDesc getTypeDesc() {
+        return typeDesc;
+    }
+
+    /**
+     * Get Custom Serializer
+     */
+    public static org.apache.axis.encoding.Serializer getSerializer(
+           java.lang.String mechType, 
+           java.lang.Class _javaType,  
+           javax.xml.namespace.QName _xmlType) {
+        return 
+          new  org.apache.axis.encoding.ser.BeanSerializer(
+            _javaType, _xmlType, typeDesc);
+    }
+
+    /**
+     * Get Custom Deserializer
+     */
+    public static org.apache.axis.encoding.Deserializer getDeserializer(
+           java.lang.String mechType, 
+           java.lang.Class _javaType,  
+           javax.xml.namespace.QName _xmlType) {
+        return 
+          new  org.apache.axis.encoding.ser.BeanDeserializer(
+            _javaType, _xmlType, typeDesc);
+    }
+
+}

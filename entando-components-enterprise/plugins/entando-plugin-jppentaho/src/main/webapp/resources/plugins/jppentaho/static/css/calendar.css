@@ -1,0 +1,142 @@
+/* Calendar: a Javascript class for Mootools that adds accessible and unobtrusive date pickers to your form elements <http://electricprism.com/aeron/calendar> */
+	/* Default CSS for Calendar (navigation: 1), Copyright (c) 2007 Aeron Glemann <http://electricprism.com/aeron> */
+.calendarContainer {
+	padding: 0;
+}
+
+.calendarContainer .hidden {
+	opacity: 0;
+	visibility: hidden;
+	/*position: absolute;*/
+}
+
+.calendarContainer .visible {
+	visibility: visible;
+	opacity: 1;
+}
+
+input.calendarContainer {
+	text-align: right;
+}
+
+button.calendarContainer {
+	background-image: url("../img/calendar_button.png");
+	background-position: 0 50%;
+	background-repeat: no-repeat;
+	border: none;
+	cursor: pointer;
+	height: 24px;
+	vertical-align: middle;
+	width: 24px;
+	margin: 0 0 0 0.2em;
+	padding: 0;
+}
+
+div.calendarContainer {
+	padding: 0 0.5em;
+	text-align: center;
+}
+
+div.calendarContainer div {
+	cursor: move;
+	padding: 1em;
+	background-color: rgba(255,255,255,0.9);
+	border: 1px solid rgba(0,0,0, 0.5);
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+}
+
+table.calendar {
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	cursor: default;
+	padding: 0;
+	background-color: #fff;
+	background: -moz-linear-gradient(top, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255,0.7) 100%); 
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255, 255, 255,0.8)), color-stop(100%,rgba(255, 255, 255,0.7)));
+}
+
+table.calendar th {
+	background: -moz-linear-gradient(top, rgba(46, 95, 143,0.8) 0%, rgba(46, 95, 143,0.7) 100%); 
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(46, 95, 143,0.8)), color-stop(100%,rgba(46, 95, 143,0.7)));
+	color: rgba(255, 255, 255, 0.8);
+	padding: 0;
+}
+table.calendar td {
+	vertical-align: middle;
+	padding: 4px 8px;
+	margin: 0;
+	background-color: #fff;
+	border: 1px solid rgba(0,0,0,0);
+	/*border-right: 1px solid rgba(0,0,0,0.5);*/
+}
+
+table.calendar td.valid {
+	color: #000;
+	cursor: pointer;
+	
+}
+table.calendar td.today {
+	color: #000; 
+	border: 0;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	background: -moz-linear-gradient(top, rgba(46, 95, 143,0.4) 0%, rgba(46, 95, 143,0.1) 100%); 
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(46, 95, 143,0.4)), color-stop(100%,rgba(46, 95, 143,0.1)));
+}
+table.calendar td.active {
+	background-color: #E2E2E2;
+	color: #1B2D3E;
+}
+table.calendar td.hover {
+	border: 1px solid rgba(0,0,0,0.8);
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	background: -moz-linear-gradient(top, rgba(46, 95, 143,0.4) 0%, rgba(46, 95, 143,0.1) 100%); 
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(46, 95, 143,0.4)), color-stop(100%,rgba(46, 95, 143,0.1)));
+}
+
+table.calendar caption {
+	-moz-border-radius: 5px;
+	margin-bottom: 5px;
+	border-radius: 5px;
+	text-align: center;
+	width: 100%; /* working with ff, gc, ie7 | no ie8 */
+	padding: 0;
+	cursor: move;
+	background: -moz-linear-gradient(top, rgba(46, 95, 143,1) 0%, rgba(46, 95, 143,0.8) 100%); 
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(46, 95, 143,1)), color-stop(100%,rgba(46, 95, 143,0.8)));
+	color: rgba(255, 255, 255, 0.8);
+	padding: 0;
+	/*border-bottom: 1px solid rgba(0,0,0,0.5);*/
+}
+
+div.calendarContainer caption span.month {
+	margin-right: 0.5em;
+}
+
+div.calendarContainer caption a {
+	cursor: pointer;
+	overflow: hidden;
+	padding: 0;
+	margin: 0;
+	background-position: 0 0;
+	background-repeat: no-repeat;
+	height: 24px;
+	width: 24px;
+	display: block;
+	position: absolute;
+	top: 13px;
+}
+
+div.calendarContainer caption a.prev {
+	background-image: url("../img/calendar_previous.png");
+	left: 9%; 
+	background-position: left center;
+}
+
+div.calendarContainer caption a.next {
+	background-image: url("../img/calendar_next.png");
+	background-position: left center;
+	left: 85%;
+}

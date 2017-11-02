@@ -1,0 +1,27 @@
+LOG of a successful connection with salesforce:
+
+2014-03-06 21:50:45.112 - DEBUG -  org.entando.entando.plugins.jpsalesforce.aps.system.services.salesforce.LoginDAO - HTTP response ok, parsing results
+2014-05-13 16:18:46.265 - INFO  - org.entando.entando.plugins.jpsalesforce.aps.system.services.salesforce.SalesforceManager - Trying to load API descriptor '24.0'
+2014-05-13 16:18:46.964 - INFO  - org.entando.entando.plugins.jpsalesforce.aps.system.services.salesforce.LoginDAO - Added version 20.0:'Winter '11' to the dictionary
+2014-05-13 16:18:46.965 - INFO  - org.entando.entando.plugins.jpsalesforce.aps.system.services.salesforce.LoginDAO - Added version 21.0:'Spring '11' to the dictionary
+2014-05-13 16:18:46.965 - INFO  - org.entando.entando.plugins.jpsalesforce.aps.system.services.salesforce.LoginDAO - Added version 22.0:'Summer '11' to the dictionary
+2014-05-13 16:18:46.965 - INFO  - org.entando.entando.plugins.jpsalesforce.aps.system.services.salesforce.LoginDAO - Added version 23.0:'Winter '12' to the dictionary
+2014-05-13 16:18:46.966 - INFO  - org.entando.entando.plugins.jpsalesforce.aps.system.services.salesforce.LoginDAO - Added version 24.0:'Spring '12' to the dictionary
+2014-05-13 16:18:46.966 - INFO  - org.entando.entando.plugins.jpsalesforce.aps.system.services.salesforce.LoginDAO - Added version 25.0:'Summer '12' to the dictionary
+2014-05-13 16:18:46.966 - INFO  - org.entando.entando.plugins.jpsalesforce.aps.system.services.salesforce.LoginDAO - Added version 26.0:'Winter '13' to the dictionary
+2014-05-13 16:18:46.966 - INFO  - org.entando.entando.plugins.jpsalesforce.aps.system.services.salesforce.LoginDAO - Added version 27.0:'Spring '13' to the dictionary
+2014-05-13 16:18:46.966 - INFO  - org.entando.entando.plugins.jpsalesforce.aps.system.services.salesforce.LoginDAO - Added version 28.0:'Summer '13' to the dictionary
+2014-05-13 16:18:46.967 - INFO  - org.entando.entando.plugins.jpsalesforce.aps.system.services.salesforce.LoginDAO - Added version 29.0:'Winter '14' to the dictionary
+2014-05-13 16:18:46.967 - INFO  - org.entando.entando.plugins.jpsalesforce.aps.system.services.salesforce.LoginDAO - Added version 30.0:'Spring '14' to the dictionary
+2014-05-13 16:18:46.967 - INFO  - org.entando.entando.plugins.jpsalesforce.aps.system.services.salesforce.SalesforceManager - Using version '24.0'
+2014-03-06 21:50:45.119 - DEBUG -  org.entando.entando.plugins.jpsalesforce.aps.system.services.salesforce.LoginDAO - Qurying for the available REST resource 'https://na15.salesforce.com/services/data/v20.0'
+2014-03-06 21:50:46.381 - DEBUG -  org.entando.entando.plugins.jpsalesforce.aps.system.services.salesforce.LoginDAO - HTTP response ok, parsing results
+2014-03-06 21:50:46.383 - INFO  -  org.entando.entando.plugins.jpsalesforce.aps.system.services.salesforce.SalesforceRestResources - Available 'sobjects' REST resource in '/services/data/v20.0/sobjects'
+2014-03-06 21:50:46.383 - INFO  -  org.entando.entando.plugins.jpsalesforce.aps.system.services.salesforce.SalesforceRestResources - Available 'identity' REST resource in 'https://login.salesforce.com/id/00Di0000000jKC3EAM/005i0000002dNnmAAE'
+2014-03-06 21:50:46.383 - INFO  -  org.entando.entando.plugins.jpsalesforce.aps.system.services.salesforce.SalesforceRestResources - Available 'licensing' REST resource in '/services/data/v20.0/licensing'
+2014-03-06 21:50:46.383 - INFO  -  org.entando.entando.plugins.jpsalesforce.aps.system.services.salesforce.SalesforceRestResources - Available 'connect' REST resource in '/services/data/v20.0/connect'
+2014-03-06 21:50:46.383 - INFO  -  org.entando.entando.plugins.jpsalesforce.aps.system.services.salesforce.SalesforceRestResources - Available 'search' REST resource in '/services/data/v20.0/search'
+2014-03-06 21:50:46.383 - INFO  -  org.entando.entando.plugins.jpsalesforce.aps.system.services.salesforce.SalesforceRestResources - Available 'query' REST resource in '/services/data/v20.0/query'
+2014-03-06 21:50:46.383 - INFO  -  org.entando.entando.plugins.jpsalesforce.aps.system.services.salesforce.SalesforceRestResources - Available 'tooling' REST resource in '/services/data/v20.0/tooling'
+2014-03-06 21:50:46.383 - INFO  -  org.entando.entando.plugins.jpsalesforce.aps.system.services.salesforce.SalesforceRestResources - Available 'chatter' REST resource in '/services/data/v20.0/chatter'
+2014-03-06 21:50:46.383 - INFO  -  org.entando.entando.plugins.jpsalesforce.aps.system.services.salesforce.SalesforceRestResources - Available 'recent' REST resource in '/services/data/v20.0/recent'

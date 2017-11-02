@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+    <package name="jpemailmarketing_do/FrontEnd/jpemailmarketing/Form" namespace="/do/FrontEnd/jpemailmarketing/Form" extends="entando-front-default">
+
+    	<global-results>
+            <result name="failure">/WEB-INF/plugins/jpemailmarketing/aps/jsp/internalservlet/form/frontend-form-error.jsp</result>
+    	</global-results>
+    	
+    	<!-- this action is used in org.entando.entando.plugins.jpemailmarketing.aps.tags.FormCoverTag -->
+    	<action name="viewFile" class="jpemailmarketingFormFrontEndAction" method="viewFile">
+            <result type="stream">
+            	<param name="inputName">downloadInputStream</param>
+            	<param name="contentType">downloadContentType</param>
+            </result>
+        	<interceptor-ref name="fileUpload"/>
+        	<interceptor-ref name="entandoFrontEndFreeStack"></interceptor-ref>
+        </action>
+		
+		<!-- this action is called by InternalservletFormSubscriberTag -->
+    	<action name="intro" class="jpemailmarketingFormSubscriberAction" method="entryForm">
+            <result name="input" type="chain">failure</result>
+            <result type="dispatcher">/WEB-INF/plugins/jpemailmarketing/aps/jsp/internalservlet/form/frontend-subscribers-form.jsp</result>
+        	<interceptor-ref name="entandoFrontEndFreeStack"></interceptor-ref>
+        </action>
+
+    	<action name="signup" class="jpemailmarketingFormSubscriberAction" method="signup">
+            <result name="input" type="dispatcher">/WEB-INF/plugins/jpemailmarketing/aps/jsp/internalservlet/form/frontend-subscribers-form.jsp</result>
+            <result type="dispatcher">/WEB-INF/plugins/jpemailmarketing/aps/jsp/internalservlet/form/frontend-subscribers-form.jsp</result>
+        	<interceptor-ref name="entandoFrontEndFreeValidationStack"></interceptor-ref>
+        </action>
+
+    	<action name="unsubscribe" class="jpemailmarketingFormSubscriberAction" method="unsubscribe">
+            <result type="dispatcher">/WEB-INF/plugins/jpemailmarketing/aps/jsp/internalservlet/form/frontend-subscribers-form.jsp</result>
+        	<interceptor-ref name="entandoFrontEndFreeStack"></interceptor-ref>
+        </action>
+
+
+		<!-- 
+    	<action name="list" class="jpemailmarketingFormFinderFrontEndAction">
+    		<result type="dispatcher">/WEB-INF/plugins/jpemailmarketing/aps/jsp/internalservlet/form/frontend-form-list.jsp</result>
+			<interceptor-ref name="entandoFrontEndFreeStack"></interceptor-ref>
+        </action>
+        
+        <action name="search" class="jpemailmarketingFormFinderFrontEndAction">
+            <result type="dispatcher">/WEB-INF/plugins/jpemailmarketing/aps/jsp/internalservlet/form/frontend-form-list.jsp</result>
+        	<interceptor-ref name="entandoFrontEndFreeStack"></interceptor-ref>
+        </action>
+    	
+        <action name="new" class="jpemailmarketingFormFrontEndAction" method="newForm">
+            <result type="dispatcher">/WEB-INF/plugins/jpemailmarketing/aps/jsp/internalservlet/form/frontend-form-entry.jsp</result>
+        	<interceptor-ref name="entandoFrontEndFreeStack"></interceptor-ref>
+        </action>
+    	
+    	<action name="edit" class="jpemailmarketingFormFrontEndAction" method="edit">
+            <result type="dispatcher">/WEB-INF/plugins/jpemailmarketing/aps/jsp/internalservlet/form/frontend-form-entry.jsp</result>
+        	<result name="input" type="frontRedirectAction">
+				<param name="actionName">list</param>
+			</result>
+        	<interceptor-ref name="entandoFrontEndFreeStack"></interceptor-ref>
+        </action>
+        
+    	<action name="save" class="jpemailmarketingFormFrontEndAction" method="save">
+        	<result name="input" type="dispatcher">/WEB-INF/plugins/jpemailmarketing/aps/jsp/internalservlet/form/frontend-form-entry.jsp</result>
+        	<result type="frontRedirectAction">
+				<param name="actionName">list</param>
+			</result>
+        	<interceptor-ref name="entandoFrontEndFreeValidationStack"></interceptor-ref>
+        </action>
+        
+    	<action name="trash" class="jpemailmarketingFormFrontEndAction" method="trash">
+            <result type="dispatcher">/WEB-INF/plugins/jpemailmarketing/aps/jsp/internalservlet/form/frontend-form-trash.jsp</result>
+        	<result name="input" type="frontRedirectAction">
+				<param name="actionName">list</param>
+			</result>
+        	<interceptor-ref name="entandoFrontEndFreeStack"></interceptor-ref>
+        </action>
+        
+    	<action name="delete" class="jpemailmarketingFormFrontEndAction" method="delete">
+        	<result type="frontRedirectAction">
+				<param name="actionName">list</param>
+			</result>
+        	<interceptor-ref name="entandoFrontEndFreeStack"></interceptor-ref>
+        </action>
+		 -->
+    	
+    </package>
+   
+</struts>

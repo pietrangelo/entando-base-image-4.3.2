@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	
+    <package name="jpforum_do/jpforum/Front/Attach" namespace="/do/jpforum/Front/Attach" extends="jpforum-default">
+
+    	<action name="downloadAttach" class="jpforumAttachAction" method="downloadAttach">
+			 <result name="input" type="redirect">
+				<param name="location">${inputPage}</param>
+            </result>
+			<result name="success" type="stream">			  
+				<param name="contentType">image/jpeg</param>
+				<param name="inputName">inputStream</param>
+				<param name="contentDisposition">attachment;filename="${name}"</param>
+			</result>
+			<interceptor-ref name="fileUpload"/>
+			<interceptor-ref name="jpforumFrontFreeStack" />
+        </action>
+
+    </package>
+    
+</struts>

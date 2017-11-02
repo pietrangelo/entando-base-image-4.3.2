@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+    
+    <bean id="jpsubsitesSubMenu" class="com.agiletec.apsadmin.system.plugin.PluginSubMenuContainer" >
+        <property name="subMenuFilePath"><value>/WEB-INF/plugins/jpsubsites/apsadmin/jsp/common/layouts/subMenu.jsp</value></property>
+    </bean>
+    
+    <bean id="jpsubsitesSubsiteFinderAction" scope="prototype" 
+              class="org.entando.entando.plugins.jpsubsites.apsadmin.subsite.SubsiteFinderAction" parent="abstractBaseAction" >
+        <property name="subsiteManager" ref="jpsubsitesSubsiteManager" />
+    </bean>
+	
+	<bean id="jpsubsitesSubsiteAction" scope="prototype" 
+		  class="org.entando.entando.plugins.jpsubsites.apsadmin.subsite.SubsiteAction" parent="abstractBaseAction" >
+		<property name="subsiteManager" ref="jpsubsitesSubsiteManager" />
+		<property name="pageManager" ref="PageManager" />
+		<property name="categoryManager" ref="CategoryManager" />
+		<property name="groupManager" ref="GroupManager" />
+		<property name="storageManager" ref="StorageManager" />
+		<property name="resourceManager" ref="jacmsResourceManager" />
+		<property name="contentManager" ref="jacmsContentManager" />
+		<property name="pageActionHelper" ref="pageActionHelperDraft" />
+	</bean>
+    
+    <bean id="jpsubsitesSubsiteConfigAction" scope="prototype" 
+              class="org.entando.entando.plugins.jpsubsites.apsadmin.config.SubsiteConfigAction" parent="abstractBaseAction" >
+        <property name="subsiteManager" ref="jpsubsitesSubsiteManager" />
+        <property name="pageManager" ref="PageManager" />
+        <property name="categoryManager" ref="CategoryManager" />
+        <property name="contentManager" ref="jacmsContentManager" />
+        <property name="contentModelManager" ref="jacmsContentModelManager" />
+        <property name="pageModelManager" ref="PageModelManager" />
+        
+    </bean>
+    
+    <bean id="jpsubsitesDetailPageHookPoint" class="com.agiletec.apsadmin.system.plugin.HookPointElementContainer" >
+        <property name="filePath"><value>/WEB-INF/plugins/jpsubsites/apsadmin/jsp/portal/detailPage-jack.jsp</value></property>
+        <property name="hookPointKey"><value>core.detailPage</value></property>
+    </bean>
+    
+    <bean id="jpsubsitesPageReferencesHookPoint" class="com.agiletec.apsadmin.system.plugin.HookPointElementContainer" >
+        <property name="filePath"><value>/WEB-INF/plugins/jpsubsites/apsadmin/jsp/portal/pageReferences-jack.jsp</value></property>
+        <property name="hookPointKey"><value>core.pageReferences</value></property>
+    </bean>
+    
+    <bean id="jpsubsitesCategoryReferencesHookPoint" class="com.agiletec.apsadmin.system.plugin.HookPointElementContainer" >
+        <property name="filePath"><value>/WEB-INF/plugins/jpsubsites/apsadmin/jsp/category/categoryReferences-jack.jsp</value></property>
+        <property name="hookPointKey"><value>core.categoryReferences</value></property>
+    </bean>
+    
+    <bean id="jpsubsitesGroupReferencesHookPoint" class="com.agiletec.apsadmin.system.plugin.HookPointElementContainer" >
+        <property name="filePath"><value>/WEB-INF/plugins/jpsubsites/apsadmin/jsp/group/referencingGroups-jack.jsp</value></property>
+        <property name="hookPointKey"><value>core.groupReferences</value></property>
+    </bean>
+    
+    <bean id="jpsubsitesGroupDetailHookPoint" class="com.agiletec.apsadmin.system.plugin.HookPointElementContainer" >
+        <property name="filePath"><value>/WEB-INF/plugins/jpsubsites/apsadmin/jsp/group/referencingGroups-jack.jsp</value></property>
+        <property name="hookPointKey"><value>core.groupDetails</value></property>
+    </bean>
+    
+</beans>

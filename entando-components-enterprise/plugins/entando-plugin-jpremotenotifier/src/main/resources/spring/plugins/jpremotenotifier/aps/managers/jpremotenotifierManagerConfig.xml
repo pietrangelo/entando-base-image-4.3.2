@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:util="http://www.springframework.org/schema/util" 
+       xmlns:jee="http://www.springframework.org/schema/jee" 
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd 
+			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd 
+			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd 
+			http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd 
+			http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.0.xsd">
+    
+    <aop:aspectj-autoproxy />
+    
+    <util:map id="jpremotenotifierSequenceQueriesMap" map-class="java.util.Properties" value-type="java.util.List">
+        <entry>
+            <key><value>DERBY</value></key>
+            <value><![CDATA[SELECT nextval('uniquekey')]]></value>
+        </entry>
+        <entry>
+            <key><value>POSTGRESQL</value></key>
+            <value><![CDATA[SELECT nextval('uniquekey')]]></value>
+        </entry>
+        <entry>
+            <key><value>MYSQL</value></key>
+            <value><![CDATA[SELECT nextval('uniquekey')]]></value>
+        </entry>
+        <entry>
+            <key><value>ORACLE</value></key>
+            <value><![CDATA[SELECT uniquekey.NEXTVAL FROM DUAL]]></value>
+        </entry>
+    </util:map>
+    
+    <bean id="KeyGeneratorManager" 
+              class="org.entando.entando.plugins.jpremotenotifier.aps.system.services.keygenerator.KeyGeneratorManager" 
+              parent="abstractService">
+        <property name="keyGeneratorDAO">
+            <bean class="org.entando.entando.plugins.jpremotenotifier.aps.system.services.keygenerator.KeyGeneratorDAO">
+                <property name="dataSource" ref="portDataSource" />
+                <property name="databaseTypeDrivers" ref="databaseTypeDrivers" />
+                <property name="queries" ref="jpremotenotifierSequenceQueriesMap" />
+            </bean>
+        </property>
+    </bean>
+    
+    <bean id="jpremotenotifierMultisiteManager" 
+              class="org.entando.entando.plugins.jpremotenotifier.aps.system.services.multisite.MultisiteManager" 
+              parent="abstractService">
+        <property name="configManager" ref="BaseConfigManager" />
+        <property name="currentSiteCode"><jee:jndi-lookup jndi-name="java:comp/env/remoteNotifier.currentSiteCode" /></property>
+    </bean>
+    
+    <bean id="jpremotenotifierRemoteNotifyManager" 
+              class="org.entando.entando.plugins.jpremotenotifier.aps.system.services.remotenotify.RemoteNotifyManager" 
+              parent="abstractService">
+        <property name="multisiteManager" ref="jpremotenotifierMultisiteManager" />
+        <property name="eventTypes">
+            <props>
+                <prop key="0">org.entando.entando.plugins.jpremotenotifier.aps.system.services.baseconfig.event.RemoteBaseConfigChangingEvent</prop>
+                <prop key="1">org.entando.entando.plugins.jpremotenotifier.aps.system.services.page.event.RemotePageChangingEvent</prop>
+                <prop key="2">org.entando.entando.plugins.jpremotenotifier.aps.system.services.content.event.RemotePublicContentChangingEvent</prop>
+                <prop key="3">org.entando.entando.plugins.jpremotenotifier.aps.system.services.resource.event.RemoteResourceChangingEvent</prop>
+                <prop key="4">org.entando.entando.plugins.jpremotenotifier.aps.system.services.category.event.RemoteCategoryChangingEvent</prop>
+                <prop key="5">org.entando.entando.plugins.jpremotenotifier.aps.system.services.group.event.RemoteGroupChangingEvent</prop>
+                <prop key="6">org.entando.entando.plugins.jpremotenotifier.aps.system.services.role.event.RemoteRoleChangingEvent</prop>
+
+                <prop key="11">org.entando.entando.plugins.jpremotenotifier.aps.system.services.contentmodel.event.RemoteContentModelChangingEvent</prop>
+                <prop key="12">org.entando.entando.plugins.jpremotenotifier.aps.system.services.api.event.RemoteApiCatalogChangingEvent</prop>
+                
+                <prop key="20">org.entando.entando.plugins.jpremotenotifier.aps.system.services.i18n.event.RemoteLabelChangingEvent</prop>
+                <prop key="21">org.entando.entando.plugins.jpremotenotifier.aps.system.services.pagemodel.event.RemotePageModelChangingEvent</prop>
+                <prop key="22">org.entando.entando.plugins.jpremotenotifier.aps.system.services.guifragment.event.RemoteFragmentChangingEvent</prop>
+                <prop key="23">org.entando.entando.plugins.jpremotenotifier.aps.system.services.userprofile.event.RemoteUserProfileChangingEvent</prop>
+                <prop key="24">org.entando.entando.plugins.jpremotenotifier.aps.system.services.entity.event.RemoteEntityTypeChangingEvent</prop>
+                <prop key="25">org.entando.entando.plugins.jpremotenotifier.aps.system.services.widgettype.event.RemoteWidgetTypeChangingEvent</prop>
+                <prop key="26">org.entando.entando.plugins.jpremotenotifier.aps.system.services.searchengine.event.RemoteReloadIndexesEvent</prop>
+            </props>
+        </property>
+        <property name="configManager" ref="BaseConfigManager" />
+        <property name="mailManager" ref="jpmailMailManager" />
+    </bean>
+    
+    <bean id="jpremotenotifierCategoryChangingNotifierManager" 
+              class="org.entando.entando.plugins.jpremotenotifier.aps.system.services.category.CategoryChangingNotifierManager"
+              parent="abstractService">
+        <property name="remoteNotifyManager" ref="jpremotenotifierRemoteNotifyManager" />
+        <property name="categoryManager" ref="CategoryManager" />
+    </bean>
+    
+    <bean id="jpremotenotifierBaseConfigChangingNotifierManager" 
+              class="org.entando.entando.plugins.jpremotenotifier.aps.system.services.baseconfig.BaseConfigChangingNotifierManager"
+              parent="abstractService">
+        <property name="remoteNotifyManager" ref="jpremotenotifierRemoteNotifyManager" />
+        <property name="configManager" ref="BaseConfigManager" />
+    </bean>
+    
+    <bean id="jpremotenotifierPageChangingNotifierManager"
+              class="org.entando.entando.plugins.jpremotenotifier.aps.system.services.page.PageChangingNotifierManager"
+              parent="abstractService">
+        <property name="remoteNotifyManager" ref="jpremotenotifierRemoteNotifyManager" />
+        <property name="pageManager" ref="PageManager" />
+    </bean>
+    
+    <bean id="jpremotenotifierPublicContentChangingNotifierManager" 
+              class="org.entando.entando.plugins.jpremotenotifier.aps.system.services.content.PublicContentChangingNotifierManager"
+              parent="abstractService">
+        <property name="contentManager" ref="jacmsContentManager" />
+        <property name="cacheInfoManager" ref="CacheInfoManager" />
+        <property name="remoteNotifyManager" ref="jpremotenotifierRemoteNotifyManager" />
+    </bean>
+    
+    <bean id="jpremotenotifierResourceChangingNotifierManager" 
+              class="org.entando.entando.plugins.jpremotenotifier.aps.system.services.resource.ResourceChangingNotifierManager"
+              parent="abstractService">
+        <property name="resourceManager" ref="jacmsResourceManager" />
+        <property name="remoteNotifyManager" ref="jpremotenotifierRemoteNotifyManager" />
+        <property name="multisiteManager" ref="jpremotenotifierMultisiteManager" />
+    </bean>
+    
+    <bean id="jpremotenotifierGroupChangingNotifierManager" 
+              class="org.entando.entando.plugins.jpremotenotifier.aps.system.services.group.GroupChangingNotifierManager"
+              parent="abstractService">
+        <property name="groupManager" ref="GroupManager"></property>
+        <property name="remoteNotifyManager" ref="jpremotenotifierRemoteNotifyManager" />
+    </bean>
+    
+    <bean id="jpremotenotifierRoleChangingNotifierManager" 
+              class="org.entando.entando.plugins.jpremotenotifier.aps.system.services.role.RoleChangingNotifierManager"
+              parent="abstractService">
+        <property name="roleManager" ref="RoleManager" />
+        <property name="remoteNotifyManager" ref="jpremotenotifierRemoteNotifyManager" />
+    </bean>
+    
+    <bean id="jpremotenotifierRemoteContentModelChangingNotifierManager" 
+              class="org.entando.entando.plugins.jpremotenotifier.aps.system.services.contentmodel.RemoteContentModelChangingNotifierManager"
+              parent="abstractService">
+        <property name="contentModelManager" ref="jacmsContentModelManager" />
+        <property name="remoteNotifyManager" ref="jpremotenotifierRemoteNotifyManager" />
+    </bean>
+    
+    <bean id="jpremotenotifierRemoteApiCatalogChangingNotifierManager" 
+              class="org.entando.entando.plugins.jpremotenotifier.aps.system.services.api.ApiChangingNotifierManager" 
+              parent="abstractService">
+        <property name="catalogManager" ref="ApiCatalogManager" />
+        <property name="remoteNotifyManager" ref="jpremotenotifierRemoteNotifyManager" />
+    </bean>
+    
+    <!-- xxxxxxxxxxxxxxxxxx -->
+    
+    <bean id="jpremotenotifierRemoteLabelChangingNotifierManager" 
+              class="org.entando.entando.plugins.jpremotenotifier.aps.system.services.i18n.I18nChangingNotifierManager" 
+              parent="abstractService">
+        <property name="i18nManager" ref="I18nManager" />
+        <property name="remoteNotifyManager" ref="jpremotenotifierRemoteNotifyManager" />
+    </bean>
+    
+    <bean id="jpremotenotifierPageModelChangingNotifierManager"
+              class="org.entando.entando.plugins.jpremotenotifier.aps.system.services.pagemodel.PageModelChangingNotifierManager"
+              parent="abstractService">
+        <property name="remoteNotifyManager" ref="jpremotenotifierRemoteNotifyManager" />
+        <property name="pageManager" ref="PageManager" />
+        <property name="pageModelManager" ref="PageModelManager" />
+    </bean>
+    
+    <bean id="jpremotenotifierGuiFragmentChangingNotifierManager"
+              class="org.entando.entando.plugins.jpremotenotifier.aps.system.services.guifragment.GuiFragmentChangingNotifierManager"
+              parent="abstractService">
+        <property name="remoteNotifyManager" ref="jpremotenotifierRemoteNotifyManager" />
+        <property name="guiFragmentManager" ref="GuiFragmentManager" />
+        <property name="cacheInfoManager" ref="CacheInfoManager" />
+    </bean>
+    
+    <bean id="jpremotenotifierUserProfileChangingNotifierManager"
+              class="org.entando.entando.plugins.jpremotenotifier.aps.system.services.userprofile.UserProfileChangingNotifierManager"
+              parent="abstractService">
+        <property name="remoteNotifyManager" ref="jpremotenotifierRemoteNotifyManager" />
+        <property name="userProfileManager" ref="UserProfileManager" />
+        <property name="cacheInfoManager" ref="CacheInfoManager" />
+    </bean>
+    
+    <bean id="jpremotenotifierRemoteEntityTypeChangingNotifierManager" 
+              class="org.entando.entando.plugins.jpremotenotifier.aps.system.services.entity.EntityTypeChangingNotifierManager" 
+              parent="abstractService">
+        <property name="remoteNotifyManager" ref="jpremotenotifierRemoteNotifyManager" />
+    </bean>
+    
+    <bean id="jpremotenotifierRemoteWidgetTypeChangingNotifierManager" 
+              class="org.entando.entando.plugins.jpremotenotifier.aps.system.services.widgettype.WidgetTypeChangingNotifierManager" 
+              parent="abstractService">
+        <property name="remoteNotifyManager" ref="jpremotenotifierRemoteNotifyManager" />
+        <property name="widgetTypeManager" ref="WidgetTypeManager" />
+        <property name="pageManager" ref="PageManager" />
+    </bean>
+    
+    <bean id="jpremotenotifierReloadIndexesNotifierManager" 
+            class="org.entando.entando.plugins.jpremotenotifier.aps.system.services.searchengine.ReloadIndexesNotifierManager" 
+            parent="abstractService">
+        <property name="remoteNotifyManager" ref="jpremotenotifierRemoteNotifyManager" />
+        <property name="configManager" ref="BaseConfigManager" />
+        <property name="searchEngineManager" ref="jacmsSearchEngineManager" />
+    </bean>
+    
+</beans>

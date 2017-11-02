@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd">
+  <description><![CDATA["jpemailmarketing core tag library"]]></description>
+  <display-name>"jpemailmarketing core tag library"</display-name>
+  <tlib-version>2.2</tlib-version>
+  <short-name>jpemailmarketing</short-name>
+  <uri>/jpemailmarketing-core</uri>
+
+	<tag>
+		<description>Loads and returns the list of the Courses available in the system.</description>
+		<name>courses</name>
+		<tag-class>org.entando.entando.plugins.jpemailmarketing.aps.tags.CourseListTag</tag-class>
+		<body-content>empty</body-content>
+		<attribute>
+			<description>Name used to reference the value pushed into the PageContext.</description>
+			<name>var</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+	<tag>
+		<description>Loads and returns an Course given a key.</description>
+		<name>course</name>
+		<tag-class>org.entando.entando.plugins.jpemailmarketing.aps.tags.CourseTag</tag-class>
+		<body-content>empty</body-content>
+		<attribute>
+			<description>Identifier of the Course to load</description>
+			<name>key</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<description>Name used to reference the value pushed into the PageContext.</description>
+			<name>var</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+	<tag>
+		<description>Loads and returns the list of the Forms available in the system.</description>
+		<name>forms</name>
+		<tag-class>org.entando.entando.plugins.jpemailmarketing.aps.tags.FormListTag</tag-class>
+		<body-content>empty</body-content>
+		<attribute>
+			<description>Name used to reference the value pushed into the PageContext.</description>
+			<name>var</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+	<tag>
+		<description>Loads and returns an Form given a key.</description>
+		<name>form</name>
+		<tag-class>org.entando.entando.plugins.jpemailmarketing.aps.tags.FormTag</tag-class>
+		<body-content>empty</body-content>
+		<attribute>
+			<description>Identifier of the Form to load</description>
+			<name>key</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<description>Name used to reference the value pushed into the PageContext.</description>
+			<name>var</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+	
+	<tag>
+		<description>Returns the path of the cover file.</description>
+		<name>formCover</name>
+		<tag-class>org.entando.entando.plugins.jpemailmarketing.aps.tags.FormCoverTag</tag-class>
+		<body-content>empty</body-content>
+		<attribute>
+			<description>Identifier of the Form to load</description>
+			<name>key</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<description>Name used to reference the value pushed into the PageContext.</description>
+			<name>var</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+	<tag>
+		<description>Handles the Form in front end, used by Subscribers</description>
+		<name>formSubscribers</name>
+		<tag-class>org.entando.entando.plugins.jpemailmarketing.aps.tags.InternalservletFormSubscriberTag</tag-class>
+		<body-content>empty</body-content>
+	</tag>
+
+	<tag>
+		<description>Loads and returns the list of the Subscribers available in the system.</description>
+		<name>subscribers</name>
+		<tag-class>org.entando.entando.plugins.jpemailmarketing.aps.tags.SubscriberListTag</tag-class>
+		<body-content>empty</body-content>
+		<attribute>
+			<description>Name used to reference the value pushed into the PageContext.</description>
+			<name>var</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+	<tag>
+		<description>Loads and returns an Subscriber given a key.</description>
+		<name>subscriber</name>
+		<tag-class>org.entando.entando.plugins.jpemailmarketing.aps.tags.SubscriberTag</tag-class>
+		<body-content>empty</body-content>
+		<attribute>
+			<description>Identifier of the Subscriber to load</description>
+			<name>key</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<description>Name used to reference the value pushed into the PageContext.</description>
+			<name>var</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+</taglib>

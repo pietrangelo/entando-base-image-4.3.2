@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	
+    <package name="jpforum_do/jpforum/Section" namespace="/do/jpforum/Section" extends="japs-default">
+    	
+    	<global-results>
+    		<result name="sectionTree" type="chain">viewTree</result>
+    	</global-results>
+    	
+    	<action name="viewTree" class="jpforumSectionTreeAction">
+            <result type="tiles">jpforum.admin.section.sectionTree</result>
+            <interceptor-ref name="entandoDefaultStack">
+            	<param name="requestAuth.requiredPermission">superuser</param>
+            	<param name="chain.includeParameters">actionErrors,fieldErrors,actionMessages</param>
+            </interceptor-ref>
+        </action>
+        
+		<action name="moveUp" class="jpforumSectionTreeAction" method="moveUp">
+        	<result type="tiles">jpforum.admin.section.sectionTree</result>
+        	<interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">superuser</param></interceptor-ref>
+        </action>
+        
+        <action name="moveDown" class="jpforumSectionTreeAction" method="moveDown">
+        	<result type="tiles">jpforum.admin.section.sectionTree</result>
+        	<interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">superuser</param></interceptor-ref>
+        </action>
+
+        <action name="reloadIndex" class="jpforumSectionTreeAction" method="reloadIndex">
+        	<result type="tiles">jpforum.admin.section.sectionTree</result>
+        	<interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">superuser</param></interceptor-ref>
+        </action>
+ 
+
+        <action name="new" class="jpforumSectionAction" method="newSection">
+            <result type="tiles">jpforum.admin.section.entry</result>
+            <interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">superuser</param></interceptor-ref>
+        </action>
+        
+        <action name="edit" class="jpforumSectionAction" method="editSection">
+            <result type="tiles">jpforum.admin.section.entry</result>
+            <interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">superuser</param></interceptor-ref>
+        </action>
+
+        <action name="save" class="jpforumSectionAction" method="saveSection">
+            <result name="input" type="tiles">jpforum.admin.section.entry</result>
+            <result type="chain">viewTree</result>
+            <interceptor-ref name="entandoValidationStack"><param name="requestAuth.requiredPermission">superuser</param></interceptor-ref>
+        </action>
+        
+        <action name="trash" class="jpforumSectionAction" method="trashSection">
+        	<result name="input" type="chain">viewTree</result>
+        	<result type="tiles">jpforum.admin.section.trash</result>
+        	<interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">superuser</param></interceptor-ref>
+        </action>
+        
+        <action name="delete" class="jpforumSectionAction" method="deleteSection">
+        	<result name="input" type="chain">viewTree</result>
+        	<result type="chain">viewTree</result>
+        	<interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">superuser</param></interceptor-ref>
+        </action>
+
+		<action name="addGroup" class="jpforumSectionAction" method="addGroup">
+			<result name="input" type="tiles">jpforum.admin.section.entry</result>
+			<result type="tiles">jpforum.admin.section.entry</result>
+        	<interceptor-ref name="entandoDefaultStack">
+        		<param name="requestAuth.requiredPermission">superuser</param>
+        	</interceptor-ref>
+		</action>
+		<action name="removeGroup*" class="jpforumSectionAction" method="removeGroup">
+			<result name="input" type="tiles">jpforum.admin.section.entry</result>
+			<result type="tiles">jpforum.admin.section.entry</result>
+        	<interceptor-ref name="entandoDefaultStack">
+        		<param name="requestAuth.requiredPermission">superuser</param>
+        	</interceptor-ref>
+		</action>
+
+    </package>
+    
+</struts>

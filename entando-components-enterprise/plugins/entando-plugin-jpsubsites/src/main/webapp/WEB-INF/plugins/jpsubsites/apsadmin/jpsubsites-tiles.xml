@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC 
+	"-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+	
+    <!-- ********* START Subsite Management Area ********* -->
+    
+    <definition extends="main.layout" name="admin.jpsubsites.Subsite.list">
+        <put-attribute name="title" value="admin.jpsubsites.title.subsiteManagement" />
+        <put-attribute name="body" value="/WEB-INF/plugins/jpsubsites/apsadmin/jsp/subsite/subsiteFinding.jsp" />
+    </definition>
+    <definition extends="main.layout" name="admin.jpsubsites.Subsite.entry">
+        <put-attribute name="title" value="admin.jpsubsites.title.subsiteManagement" />
+        <put-attribute name="extraResources" value="/WEB-INF/plugins/jpsubsites/apsadmin/jsp/common/layouts/assets-more/subsite.jsp" />
+        <put-attribute name="body" value="/WEB-INF/plugins/jpsubsites/apsadmin/jsp/subsite/entrySubsite.jsp" />
+    </definition>
+    <definition extends="main.layout" name="admin.jpsubsites.Subsite.trash">
+        <put-attribute name="title" value="admin.jpsubsites.title.subsiteManagement" />
+        <put-attribute name="body" value="/WEB-INF/plugins/jpsubsites/apsadmin/jsp/subsite/trashSubsite.jsp" />
+    </definition>
+    <definition extends="main.layout" name="admin.jpsubsites.Subsite.cloneSubsite">
+        <put-attribute name="title" value="admin.jpsubsites.title.subsiteManagement" />
+        <put-attribute name="body" value="/WEB-INF/plugins/jpsubsites/apsadmin/jsp/subsite/cloneSubsite.jsp" />
+    </definition>
+    <!-- ********* END Subsite Management Area ********* -->
+    
+    <definition extends="main.layout" name="admin.jpsubsites.Config.entry">
+        <put-attribute name="title" value="admin.jpsubsites.title.subsiteManagement" />
+        <put-attribute name="body" value="/WEB-INF/plugins/jpsubsites/apsadmin/jsp/config/config-entry.jsp" />
+    </definition>
+ 
+     <definition extends="main.layout" name="admin.jpsubsites.Config.cloneSubsite">
+        <put-attribute name="title" value="admin.jpsubsites.title.subsiteManagement" />
+        <put-attribute name="body" value="/WEB-INF/plugins/jpsubsites/apsadmin/jsp/config/config-clone.jsp" />
+    </definition>
+ 
+</tiles-definitions>

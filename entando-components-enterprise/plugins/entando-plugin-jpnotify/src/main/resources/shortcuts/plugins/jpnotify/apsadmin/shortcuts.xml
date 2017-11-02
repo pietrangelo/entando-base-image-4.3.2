@@ -1,0 +1,15 @@
+<shortcut-def>
+	<shortcuts>
+		<shortcut id="jpnotify.Notify.shortCut" requiredPermission="superuser" menusection="plugins" source="jpnotify">
+			<description key="jpnotify.Notify.shortCut.list.shortDesc">Notify list</description>
+			<longdesc key="jpnotify.Notify.shortCut.list.longDesc">
+				<![CDATA[Notify shortCut longDesc ]]>
+			</longdesc>
+			<url>
+				<param name="namespace">/do/jpnotify/Notify</param>
+				<param name="actionName">list</param>
+			</url>
+		</shortcut>
+	</shortcuts>
+	
+</shortcut-def>

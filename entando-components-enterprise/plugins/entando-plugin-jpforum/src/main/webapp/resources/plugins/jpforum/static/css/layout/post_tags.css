@@ -1,0 +1,79 @@
+.jpforum .jpforum_post_container .jpforum_post_body_text {
+	font-size: 0.85em;	
+}
+
+.jpforum .jpforum_post_container .jpforum_post_body_text a {
+	text-decoration: underline;
+	cursor: pointer;	
+}
+
+.jpforum .jpforum_post_container .jpforum_post_body_text ol,
+.jpforum .jpforum_post_container .jpforum_post_body_text ol li,
+.jpforum .jpforum_post_container .jpforum_post_body_text ul li,
+.jpforum .jpforum_post_container .jpforum_post_body_text ul {
+	font-size: 1em;
+}
+
+/******************/ /* Tags */ /******************/ 
+.jpforum_post_body_text img {
+	margin: 3px 0 0 0;
+}
+
+.jpforum_post_body_text pre {
+	border-left: 1px dashed #BFBFBF;
+	border-right: 1px dashed #BFBFBF;
+	border-top: 1px solid #BFBFBF;
+	border-bottom: 1px solid #BFBFBF;
+	margin: 0.5em;
+	overflow: auto;
+	max-height: 230px;
+}
+
+.jpforum_post_body_text .post_code_title1 {
+	font-size: 2.2em;
+	font-weight: bold;
+	margin: 1em 0.5em;
+}
+
+.jpforum_post_body_text .post_code_title2 {
+	font-size: 2em;
+	font-style: italic;
+	margin: 0.6em 0.5em;
+}
+
+.jpforum_post_body_text .post_code_title3 {
+	font-size: 1.9em;
+	margin: 0.3em 0.5em;
+}
+
+.jpforum_post_body_text .citazione {
+	border: 1px solid #BFBFBF;
+	border-left: 4px solid #BFBFBF;
+	margin: 10px;
+	padding: 10px;
+}
+
+.jpforum_post_body_text .citazione .citazione {
+	border: 1px solid #BFBFBF;
+	border-left: 4px solid #808080;
+}
+
+.jpforum_post_body_text .citazione .citazione .citazione {
+	border: 1px solid #BFBFBF;
+	border-left: 4px solid #424242;
+}
+
+.jpforum_post_body_text .citazione .citazione .citazione .citazione {
+	border: 1px solid #BFBFBF;
+	border-left: 4px solid #000000;
+}
+
+.jpforum_post_body_text .citazione .citazione .citazione .citazione  .citazione {
+	border: 1px solid #BFBFBF;
+	border-left: 4px solid #BFBFBF;
+}
+
+.jpforum_post_body_text .citazione .citazione .citazione .citazione  .citazione   .citazione {
+	border: 1px solid #BFBFBF;
+	border-left: 4px solid #808080;
+}

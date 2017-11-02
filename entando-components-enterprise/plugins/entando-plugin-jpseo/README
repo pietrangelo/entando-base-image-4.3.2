@@ -1,0 +1,64 @@
+
+### MODIFICA web.xml
+
+Aggiungere, nel web.xml, il blocco
+
+    <servlet-mapping>
+        <servlet-name>ControllerServlet</servlet-name>
+        <url-pattern>/page/*</url-pattern>
+    </servlet-mapping>
+
+
+### PERSONALIZZAZIONE MODELLI DI PAGINA
+
+# Uso i tag contenuti nel TLD 
+<%@ taglib prefix="jpseo" uri="/jpseo-aps-core" %>
+
+
+# Per mostrare la description
+
+<jpseo:currentPage param="description" var="metaDescr" />
+<c:if test="${metaDescr!=null}" >
+<meta name="description" content="<c:out value="${metaDescr}" />" />
+</c:if>
+
+
+# Se si è configurata una pagina con il seguente campo "Complex parameters":
+
+<seoparameters>
+	<parameter key="author">Elia Mezzano</parameter>
+	<parameter key="keywords">
+		<property key="en">aaa,bbb,ccc,ddd,eee,fff</property>
+		<property key="it">ggg,hhh,iii,lll,mmm,nnn</property>
+	</parameter>
+</seoparameters>
+
+Si possono usare, nel modello, i tag come segue:
+
+<jpseo:seoMetaTag key="author" var="metaAuthor" />
+<c:if test="${metaAuthor!=null}" >
+<meta name="author" content="<c:out value="${metaAuthor}" />" />
+</c:if>
+
+<jpseo:seoMetaTag key="keywords" var="metaKeywords" />
+<c:if test="${metaKeywords!=null}" >
+<meta name="keywords" content="<c:out value="${metaKeywords}" />" />
+</c:if>
+
+
+### PERSONALIZZAZIONE CONTENUTI
+
+Per far si che il MAIN CONTENT influenzi la Description della pagina (vedi tag apposito nella sezione dei modelli di pagina)
+occorre modificare la jsp del WIDGET content_viewer come segue:
+
+# Aggiungere l'inclusione del TAG
+
+<%@ taglib prefix="jpseo" uri="/jpseo-aps-core" %>
+
+# Modificare la riga 
+
+<jacms:content .... />
+
+in 
+
+<jpseo:content publishExtraTitle="true" publishExtraDescription="true" />

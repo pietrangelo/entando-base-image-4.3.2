@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+    <package name="jpnotify_do/FrontEnd/jpnotify/Notify" namespace="/do/FrontEnd/jpnotify/Notify" extends="entando-front-default">
+		
+		<global-results>
+			<result name="failure" type="guiFragment">
+				<param name="code">jpnotify_is_front_Notify_error</param>
+				<param name="jspLocation">/WEB-INF/plugins/jpnotify/aps/jsp/internalservlet/notify/frontend-notify-error.jsp</param>
+			</result>
+    	</global-results>
+		
+    	<action name="list" class="jpnotifyNotifyFinderFrontEndAction">
+    		<result type="guiFragment">
+				<param name="code">jpnotify_is_front_Notify_list</param>
+				<param name="jspLocation">/WEB-INF/plugins/jpnotify/aps/jsp/internalservlet/notify/frontend-notify-list.jsp</param>
+			</result>
+			<interceptor-ref name="entandoFrontEndFreeStack"></interceptor-ref>
+        </action>
+        
+    	<action name="search" class="jpnotifyNotifyFinderFrontEndAction">
+            <result type="guiFragment">
+				<param name="code">jpnotify_is_front_Notify_list</param>
+				<param name="jspLocation">/WEB-INF/plugins/jpnotify/aps/jsp/internalservlet/notify/frontend-notify-list.jsp</param>
+			</result>
+			<interceptor-ref name="entandoFrontEndFreeStack"></interceptor-ref>
+        </action>
+    	
+        <action name="new" class="jpnotifyNotifyFrontEndAction" method="newNotify">
+            <result type="guiFragment">
+				<param name="code">jpnotify_is_front_Notify_entry</param>
+				<param name="jspLocation">/WEB-INF/plugins/jpnotify/aps/jsp/internalservlet/notify/frontend-notify-entry.jsp</param>
+			</result>
+			<interceptor-ref name="entandoFrontEndFreeStack"></interceptor-ref>
+        </action>
+    	
+        <action name="edit" class="jpnotifyNotifyFrontEndAction" method="edit">
+            <result type="guiFragment">
+				<param name="code">jpnotify_is_front_Notify_entry</param>
+				<param name="jspLocation">/WEB-INF/plugins/jpnotify/aps/jsp/internalservlet/notify/frontend-notify-entry.jsp</param>
+			</result>
+			<result name="input" type="frontRedirectAction">
+				<param name="actionName">list</param>
+			</result>
+        	<interceptor-ref name="entandoFrontEndFreeStack"></interceptor-ref>
+        </action>
+        
+        <action name="save" class="jpnotifyNotifyFrontEndAction" method="save">
+        	<result name="input" type="guiFragment">
+				<param name="code">jpnotify_is_front_Notify_entry</param>
+				<param name="jspLocation">/WEB-INF/plugins/jpnotify/aps/jsp/internalservlet/notify/frontend-notify-entry.jsp</param>
+			</result>
+			<result type="frontRedirectAction">
+				<param name="actionName">list</param>
+			</result>
+        	<interceptor-ref name="entandoFrontEndFreeValidationStack"></interceptor-ref>
+        </action>
+		
+    	<action name="trash" class="jpnotifyNotifyFrontEndAction" method="trash">
+            <result type="guiFragment">
+				<param name="code">jpnotify_is_front_Notify_trash</param>
+				<param name="jspLocation">/WEB-INF/plugins/jpnotify/aps/jsp/internalservlet/notify/frontend-notify-trash.jsp</param>
+			</result>
+			<result name="input" type="frontRedirectAction">
+				<param name="actionName">list</param>
+			</result>
+        	<interceptor-ref name="entandoFrontEndFreeStack"></interceptor-ref>
+        </action>
+        
+    	<action name="delete" class="jpnotifyNotifyFrontEndAction" method="delete">
+        	<result type="frontRedirectAction">
+				<param name="actionName">list</param>
+			</result>
+        	<interceptor-ref name="entandoFrontEndFreeStack"></interceptor-ref>
+        </action>
+    	
+    </package>
+   
+</struts>

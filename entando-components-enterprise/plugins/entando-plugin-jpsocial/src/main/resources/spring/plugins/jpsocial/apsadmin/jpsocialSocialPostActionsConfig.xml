@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:context="http://www.springframework.org/schema/context"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+				http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd" >
+
+	<bean id="jpsocialSocialPostPluginSubMenu" class="com.agiletec.apsadmin.system.plugin.PluginSubMenuContainer" >
+		<property name="subMenuFilePath"><value>/WEB-INF/plugins/jpsocial/apsadmin/jsp/common/layouts/subMenu.jsp</value></property>
+	</bean>
+
+	<bean id="jpsocialSocialPostFinderAction" scope="prototype" 
+			class="org.entando.entando.plugins.jpsocial.apsadmin.socialpost.SocialPostFinderAction" 
+			parent="abstractBaseAction" >
+		<property name="socialPostManager" ref="jpsocialSocialPostManager" />
+	</bean>
+
+	<bean id="jpsocialSocialPostAction" scope="prototype" 
+			class="org.entando.entando.plugins.jpsocial.apsadmin.socialpost.SocialPostAction" 
+			parent="abstractBaseAction" >
+		<property name="socialPostManager" ref="jpsocialSocialPostManager" />
+	</bean>
+ 	
+ 	
+</beans>

@@ -1,0 +1,2 @@
+INSERT INTO sysconfig (version, item, descr, config) values ('test', 'jpsubsites_subsiteConfig', 'Subsite Service Configuration', '<?xml version="1.0" encoding="UTF-8"?>
+<subsitesConfig rootPageCode="jpsubsites" pageModel="jpsubsites" categoryRoot="jpsubsites" />');

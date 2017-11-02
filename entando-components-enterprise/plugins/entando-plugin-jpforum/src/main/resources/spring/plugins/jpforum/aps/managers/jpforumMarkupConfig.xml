@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xmlns:context="http://www.springframework.org/schema/context"
+		xmlns:aop="http://www.springframework.org/schema/aop"
+		xmlns:jee="http://www.springframework.org/schema/jee"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+			http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.0.xsd">
+	
+	<bean id="jpforumMarkupDiodati" class="com.agiletec.plugins.jpforum.aps.system.services.markup.MarkupLanguage" >
+		<property name="tagMapping">
+			<map>
+				<entry key="code" value-ref="CodeTag"/>
+				<entry key="b" value-ref="BTag"/>
+				<entry key="i" value-ref="ITag"/>
+				<entry key="u" value-ref="UTag"/>
+				<entry key="a" value-ref="ATag"/> <!-- diodati -->
+				<entry key="img" value-ref="ImgTag"/>
+				<entry key="quote" value-ref="QuoteTag"/>
+				<entry key="size" value-ref="SizeTag"/>
+				<entry key="color" value-ref="ColorTag"/>
+				<entry key="title1" value-ref="Title1Tag"/><!-- diodati -->
+				<entry key="title2" value-ref="Title2Tag"/><!-- diodati -->
+				<entry key="title3" value-ref="Title3Tag"/><!-- diodati -->
+				<entry key="ul" value-ref="UlTag"/><!-- diodati -->
+				<entry key="ol" value-ref="OlTag"/><!-- diodati -->
+				<entry key="citato" value-ref="CitatoTag"/><!-- diodati -->
+				<entry key="c" value-ref="CTag"/><!-- diodati -->
+				<entry key="br" value-ref="BrTag"/><!-- diodati -->
+				<!-- 
+				<entry key="url" value-ref="UrlTag"/>
+				 -->
+				<entry key="url" value-ref="UrlFullTag"/>
+			</map>
+		</property>
+		<property name="defaultQuoteTag" ref="CitatoTag" />
+	</bean>	 	
+	
+	<bean id="CodeTag" class="com.agiletec.plugins.jpforum.aps.system.services.markup.tag.SimpleMarkupTag" >
+		<property name="forumXmlTag">
+			<bean class="com.agiletec.plugins.jpforum.aps.system.services.markup.tag.xml.ForumXmlTag">
+				<property name="xmlStringPattern" value="&lt;code&gt;$1&lt;/code&gt;"></property>
+			</bean>
+		</property>
+		<property name="regExp"><value><![CDATA[(?:\[code\](.*?)\[/code\])]]></value></property>
+		<property name="restoreExp"><value><![CDATA[[code]getText[/code]]]></value></property>
+	</bean>
+
+	<bean id="BTag" class="com.agiletec.plugins.jpforum.aps.system.services.markup.tag.SimpleMarkupTag" >
+		<property name="forumXmlTag">
+			<bean class="com.agiletec.plugins.jpforum.aps.system.services.markup.tag.xml.ForumXmlTag">
+				<property name="xmlStringPattern" value="&lt;b&gt;$1&lt;/b&gt;"></property>
+			</bean>
+		</property>
+		<property name="regExp"><value><![CDATA[(?:\[b\](.*?)\[/b\])]]></value></property>
+		<property name="restoreExp"><value><![CDATA[[b]getText[/b]]]></value></property>
+	</bean>
+	
+	<bean id="ITag" class="com.agiletec.plugins.jpforum.aps.system.services.markup.tag.SimpleMarkupTag" >
+		<property name="forumXmlTag">
+			<bean class="com.agiletec.plugins.jpforum.aps.system.services.markup.tag.xml.ForumXmlTag">
+				<property name="xmlStringPattern" value="&lt;i&gt;$1&lt;/i&gt;"></property>
+			</bean>
+		</property>
+		<property name="regExp"><value><![CDATA[(?:\[i\](.*?)\[/i\])]]></value></property>
+		<property name="restoreExp"><value><![CDATA[[i]getText[/i]]]></value></property>
+	</bean>
+	
+	<bean id="UTag" class="com.agiletec.plugins.jpforum.aps.system.services.markup.tag.SimpleMarkupTag" >
+		<property name="forumXmlTag">
+			<bean class="com.agiletec.plugins.jpforum.aps.system.services.markup.tag.xml.ForumXmlTag">
+				<property name="xmlStringPattern" value="&lt;u&gt;$1&lt;/u&gt;"></property>
+			</bean>
+		</property>
+		<property name="regExp"><value><![CDATA[(?:\[u\](.*?)\[/u\])]]></value></property>
+		<property name="restoreExp"><value><![CDATA[[u]getText[/u]]]></value></property>
+	</bean>
+	
+	<!-- DIODATI -->
+	<bean id="ATag" class="com.agiletec.plugins.jpforum.aps.system.services.markup.tag.SimpleMarkupTag" >
+		<property name="forumXmlTag">
+			<bean class="com.agiletec.plugins.jpforum.aps.system.services.markup.tag.xml.ForumXmlTag">
+				<property name="xmlStringPattern" value="&lt;a alias=&#34;$2&#34;&gt;$1&lt;/a&gt;"></property>
+			</bean>
+		</property>
+		<property name="regExp"><value><![CDATA[(?:\[a\] (\w.*?) \|\| (\w.*?) \[/a\])]]></value></property>
+		<property name="restoreExp"><value><![CDATA[[a] getText || getAttribute(alias) [/a]]]></value></property>
+	</bean>
+	
+	<bean id="ImgTag" class="com.agiletec.plugins.jpforum.aps.system.services.markup.tag.SimpleMarkupTag" >
+		<property name="forumXmlTag">
+			<bean class="com.agiletec.plugins.jpforum.aps.system.services.markup.tag.xml.ForumXmlTag">
+				<property name="xmlStringPattern" value="&lt;img&gt;$1&lt;/img&gt;"></property>
+			</bean>
+		</property>
+		<property name="regExp"><value><![CDATA[(?:\[img\](.*?)\[/img\])]]></value></property>
+		<property name="restoreExp"><value><![CDATA[[img]getText[/img]]]></value></property>
+	</bean>
+	
+	<bean id="QuoteTag" class="com.agiletec.plugins.jpforum.aps.system.services.markup.tag.SimpleMarkupTag" >
+		<property name="forumXmlTag">
+			<bean class="com.agiletec.plugins.jpforum.aps.system.services.markup.tag.xml.ForumXmlTag">
+				<property name="xmlStringPattern" value="&lt;quote&gt;$1&lt;/quote&gt;"></property>
+			</bean>
+		</property>
+		<property name="regExp"><value><![CDATA[(?:\[quote\](.*?)\[/quote\])]]></value></property>
+		<property name="restoreExp"><value><![CDATA[[quote]getText[/quote]]]></value></property>
+	</bean>
+	
+	<bean id="SizeTag" class="com.agiletec.plugins.jpforum.aps.system.services.markup.tag.SimpleMarkupTag" >
+		<property name="forumXmlTag">
+			<bean class="com.agiletec.plugins.jpforum.aps.system.services.markup.tag.xml.ForumXmlTag">
+				<property name="xmlStringPattern" value="&lt;size size=&#34;$1&#34;&gt;$2&lt;/size&gt;"></property>
+			</bean>
+		</property>
+		<property name="regExp"><value><![CDATA[(?:\[size=(\d*)\](.*?)\[/size\])]]></value></property>
+		<property name="restoreExp"><value><![CDATA[[size=getAttribute(size)]getText[/size]]]></value></property>
+	</bean>
+	
+	<bean id="ColorTag" class="com.agiletec.plugins.jpforum.aps.system.services.markup.tag.SimpleMarkupTag" >
+		<property name="forumXmlTag">
+			<bean class="com.agiletec.plugins.jpforum.aps.system.services.markup.tag.xml.ForumXmlTag">
+				<property name="xmlStringPattern" value="&lt;color color=&#34;$1&#34;&gt;$2&lt;/color&gt;"></property>
+			</bean>
+		</property>
+		<property name="regExp"><value><![CDATA[(?:\[color=(\w*)\](.*?)\[/color\])]]></value></property>
+		<property name="restoreExp"><value><![CDATA[[color=getAttribute(color)]getText[/color]]]></value></property>
+	</bean>
+	
+	<!-- DIODATI -->
+	<bean id="Title1Tag" class="com.agiletec.plugins.jpforum.aps.system.services.markup.tag.SimpleMarkupTag" >
+		<property name="forumXmlTag">
+			<bean class="com.agiletec.plugins.jpforum.aps.system.services.markup.tag.xml.ForumXmlTag">
+				<property name="xmlStringPattern" value="$1&lt;title1&gt;$2&lt;/title1&gt;$3"></property>
+			</bean>
+		</property>
+		<property name="regExp"><value><![CDATA[(^|#NEW_LINE#|\[c[1-4]\])\* (.*?)(#CARR_RET#)]]></value></property>
+		<property name="restoreExp"><value><![CDATA[* getText]]></value></property>
+	</bean>
+	
+	<!-- DIODATI -->
+	<bean id="Title2Tag" class="com.agiletec.plugins.jpforum.aps.system.services.markup.tag.SimpleMarkupTag" >
+		<property name="forumXmlTag">
+			<bean class="com.agiletec.plugins.jpforum.aps.system.services.markup.tag.xml.ForumXmlTag">
+				<property name="xmlStringPattern" value="$1&lt;title2&gt;$2&lt;/title2&gt;$3"></property>
+			</bean>
+		</property>
+		<property name="regExp"><value><![CDATA[(^|#NEW_LINE#|\[c[1-4]\])\*\* (.*?)(#CARR_RET#)]]></value></property>
+		<property name="restoreExp"><value><![CDATA[** getText]]></value></property>
+	</bean>
+	
+	<!-- DIODATI -->
+	<bean id="Title3Tag" class="com.agiletec.plugins.jpforum.aps.system.services.markup.tag.SimpleMarkupTag" >
+		<property name="forumXmlTag">
+			<bean class="com.agiletec.plugins.jpforum.aps.system.services.markup.tag.xml.ForumXmlTag">
+				<property name="xmlStringPattern" value="$1&lt;title3&gt;$2&lt;/title3&gt;$3"></property>
+			</bean>
+		</property>
+		<property name="regExp"><value><![CDATA[(^|#NEW_LINE#|\[c[1-4]\])\*\*\* (.*?)(#CARR_RET#)]]></value></property>
+		<property name="restoreExp"><value><![CDATA[*** getText]]></value></property>
+	</bean>
+	
+	<!-- DIODATI sub-element -->
+	<bean id="UlLiTag" class="com.agiletec.plugins.jpforum.aps.system.services.markup.tag.SimpleMarkupTag" >
+		<property name="forumXmlTag">
+			<bean class="com.agiletec.plugins.jpforum.aps.system.services.markup.tag.xml.ForumXmlTag">
+				<property name="xmlStringPattern" value="$1&lt;li&gt;$2&lt;/li&gt;"></property>
+			</bean>
+		</property>
+		<property name="regExp"><value><![CDATA[(^|#NEW_LINE#)-(.*?)(#CARR_RET#)]]></value></property>
+		<property name="restoreExp"><value><![CDATA[-getText#CARR_RET#]]></value></property>
+	</bean>
+	
+	<!-- DIODATI sub-element -->
+	<bean id="OlLiTag" class="com.agiletec.plugins.jpforum.aps.system.services.markup.tag.SimpleMarkupTag" >
+		<property name="forumXmlTag">
+			<bean class="com.agiletec.plugins.jpforum.aps.system.services.markup.tag.xml.ForumXmlTag">
+				<property name="xmlStringPattern" value="$1&lt;li&gt;$2&lt;/li&gt;"></property>
+			</bean>
+		</property>
+		<property name="regExp"><value><![CDATA[(^|#NEW_LINE#)\+(.*?)(#CARR_RET#)]]></value></property>
+		<property name="restoreExp"><value><![CDATA[+getText#CARR_RET#]]></value></property>
+	</bean>
+
+	<!-- DIODATI -->
+	<bean id="UlTag" class="com.agiletec.plugins.jpforum.aps.system.services.markup.tag.NestedMarkupTag" >
+		<property name="forumXmlTag">
+			<bean class="com.agiletec.plugins.jpforum.aps.system.services.markup.tag.xml.ForumXmlTag">
+				<property name="xmlStringPattern" value="&lt;ul&gt;#LI_PLACEHOLDER#&lt;/ul&gt;"></property>
+			</bean>
+		</property>
+		<property name="regExp"><value><![CDATA[((?:(^|#NEW_LINE#)-.*?#CARR_RET#)+)]]></value></property>
+		<property name="restoreExp"><value><![CDATA[getText]]></value></property>
+		<property name="tagElements">
+			<map>
+				<entry key="li" value-ref="UlLiTag"/>
+			</map>
+		</property>
+	</bean>
+	
+	<!-- DIODATI -->
+	<bean id="OlTag" class="com.agiletec.plugins.jpforum.aps.system.services.markup.tag.NestedMarkupTag" >
+		<property name="forumXmlTag">
+			<bean class="com.agiletec.plugins.jpforum.aps.system.services.markup.tag.xml.ForumXmlTag">
+				<property name="xmlStringPattern" value="&lt;ol&gt;#LI_PLACEHOLDER#&lt;/ol&gt;"></property>
+			</bean>
+		</property>
+		<property name="regExp"><value><![CDATA[((?:(^|#NEW_LINE#)\+.*?#CARR_RET#)+)]]></value></property>
+		<property name="restoreExp"><value><![CDATA[getText]]></value></property>
+		<property name="tagElements">
+			<map>
+				<entry key="li" value-ref="OlLiTag"/>
+			</map>
+		</property>
+	</bean>
+
+	<!-- DIODATI -->
+	<bean id="CitatoTag" class="com.agiletec.plugins.jpforum.aps.system.services.markup.tag.SimpleMarkupTag" >
+		<property name="forumXmlTag">
+			<bean class="com.agiletec.plugins.jpforum.aps.system.services.markup.tag.xml.ForumXmlTag">
+				<property name="xmlStringPattern" value="&lt;citato&gt;$1&lt;/citato&gt;"></property>
+			</bean>
+		</property>
+		<property name="regExp"><value><![CDATA[(?:\[citato\](.*?)\[/citato\])]]></value></property>
+		<property name="restoreExp"><value><![CDATA[[citato]getText[/citato]]]></value></property>
+	</bean>
+	
+	<!-- DIODATI sub-element -->
+	<bean id="C1Tag" class="com.agiletec.plugins.jpforum.aps.system.services.markup.tag.SimpleMarkupTag" >
+		<property name="forumXmlTag">
+			<bean class="com.agiletec.plugins.jpforum.aps.system.services.markup.tag.xml.ForumXmlTag">
+				<property name="xmlStringPattern" value="$1&lt;c1&gt;$2&lt;/c1&gt;"></property>
+			</bean>
+		</property>
+		<property name="regExp"><value><![CDATA[(^|#NEW_LINE#)\[c1\](.*?)#CARR_RET#]]></value></property>
+		<property name="restoreExp"><value><![CDATA[[c1]getText#CARR_RET#]]></value></property>
+	</bean>
+	
+	<!-- DIODATI sub-element -->
+	<bean id="C2Tag" class="com.agiletec.plugins.jpforum.aps.system.services.markup.tag.SimpleMarkupTag" >
+		<property name="forumXmlTag">
+			<bean class="com.agiletec.plugins.jpforum.aps.system.services.markup.tag.xml.ForumXmlTag">
+				<property name="xmlStringPattern" value="$1&lt;c2&gt;$2&lt;/c2&gt;"></property>
+			</bean>
+		</property>
+		<property name="regExp"><value><![CDATA[(^|#NEW_LINE#)\[c2\](.*?)#CARR_RET#]]></value></property>
+		<property name="restoreExp"><value><![CDATA[[c2]getText#CARR_RET#]]></value></property>
+	</bean>
+	
+	<!-- DIODATI sub-element -->
+	<bean id="C3Tag" class="com.agiletec.plugins.jpforum.aps.system.services.markup.tag.SimpleMarkupTag" >
+		<property name="forumXmlTag">
+			<bean class="com.agiletec.plugins.jpforum.aps.system.services.markup.tag.xml.ForumXmlTag">
+				<property name="xmlStringPattern" value="$1&lt;c3&gt;$2&lt;/c3&gt;"></property>
+			</bean>
+		</property>
+		<property name="regExp"><value><![CDATA[(^|#NEW_LINE#)\[c3\](.*?)#CARR_RET#]]></value></property>
+		<property name="restoreExp"><value><![CDATA[[c3]getText#CARR_RET#]]></value></property>
+	</bean>
+	
+	<!-- DIODATI sub-element -->
+	<bean id="C4Tag" class="com.agiletec.plugins.jpforum.aps.system.services.markup.tag.SimpleMarkupTag" >
+		<property name="forumXmlTag">
+			<bean class="com.agiletec.plugins.jpforum.aps.system.services.markup.tag.xml.ForumXmlTag">
+				<property name="xmlStringPattern" value="$1&lt;c4&gt;$2&lt;/c4&gt;"></property>
+			</bean>
+		</property>
+		<property name="regExp"><value><![CDATA[(^|#NEW_LINE#)\[c4\](.*?)#CARR_RET#]]></value></property>
+		<property name="restoreExp"><value><![CDATA[[c4]getText#CARR_RET#]]></value></property>
+	</bean>
+	
+	<!-- DIODATI -->
+	<bean id="CTag" class="com.agiletec.plugins.jpforum.aps.system.services.markup.tag.NestedMarkupTag" >
+		<property name="forumXmlTag">
+			<bean class="com.agiletec.plugins.jpforum.aps.system.services.markup.tag.xml.ForumXmlTag">
+				<property name="xmlStringPattern" value="&lt;c&gt;#LI_PLACEHOLDER#&lt;/c&gt;"></property>
+			</bean>
+		</property>
+		<property name="regExp"><value><![CDATA[((?:(^|#NEW_LINE#)\[c[1-4]\].*?#CARR_RET#)+)]]></value></property>
+		<property name="restoreExp"><value><![CDATA[getText]]></value></property>
+		<property name="tagElements">
+			<map>
+				<entry key="c1" value-ref="C1Tag"/>
+				<entry key="c2" value-ref="C2Tag"/>
+				<entry key="c3" value-ref="C3Tag"/>
+				<entry key="c4" value-ref="C4Tag"/>
+			</map>
+		</property>
+	</bean>	
+	
+	<!-- DIODATI  -->
+	<bean id="BrTag" class="com.agiletec.plugins.jpforum.aps.system.services.markup.tag.SimpleMarkupTag" >
+		<property name="forumXmlTag">
+			<bean class="com.agiletec.plugins.jpforum.aps.system.services.markup.tag.xml.ForumXmlTag">
+				<property name="xmlStringPattern" value="&lt;br&gt;&lt;/br&gt;"></property>
+			</bean>
+		</property>
+		<property name="regExp"><value><![CDATA[\§\§]]></value></property>
+		<property name="restoreExp"><value><![CDATA[§§]]></value></property>
+	</bean>
+	
+	<bean id="UrlFullTag" class="com.agiletec.plugins.jpforum.aps.system.services.markup.tag.SimpleMarkupTag" >
+		<property name="forumXmlTag">
+			<bean class="com.agiletec.plugins.jpforum.aps.system.services.markup.tag.xml.ForumXmlTag">
+				<property name="xmlStringPattern" value="&lt;url alias=&#34;$2&#34;&gt;$1&lt;/url&gt;"></property>
+			</bean>
+		</property>
+		<property name="regExp"><value><![CDATA[(?:\[url\=(\w.*?)](\w.*?)\[/url\])]]></value></property>
+		<property name="restoreExp"><value><![CDATA[[url=getText]getAttribute(alias)[/url]]]></value></property>
+	</bean>		
+
+</beans>

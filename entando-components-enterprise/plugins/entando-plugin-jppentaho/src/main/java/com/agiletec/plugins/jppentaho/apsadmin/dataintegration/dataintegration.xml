@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	
+	<package name="jppentaho_do/jppentaho/DataIntegration" namespace="/do/jppentaho/DataIntegration" extends="japs-default">
+    	
+		<!-- ######### INIZIO OPERAZIONI IN INTERFACCIA GESTIONE PROCESSI DATA INTEGRATION ######### -->
+    	
+		<action name="listJob" class="jppentahoDataIntegrationProcessFinderAction" >
+			<result type="tiles">admin.jppentaho.DataIntegration.Job.list</result>
+			<interceptor-ref name="entandoDefaultStack">
+				<param name="requestAuth.requiredPermission">superuser</param>
+				<param name="chain.includeParameters">fieldErrors,actionErrors,actionMessages</param>
+			</interceptor-ref>
+		</action>
+    	
+		<action name="listKtr" class="jppentahoDataIntegrationProcessFinderAction" >
+			<result type="tiles">admin.jppentaho.DataIntegration.Ktr.list</result>
+			<interceptor-ref name="entandoDefaultStack">
+				<param name="requestAuth.requiredPermission">superuser</param>
+				<param name="chain.includeParameters">fieldErrors,actionErrors,actionMessages</param>
+			</interceptor-ref>
+		</action>
+        
+		<action name="edit" class="jppentahoDataIntegrationProcessAction" method="edit" >
+			<result name="listJob" type="chain">listJob</result>
+			<result name="listKtr" type="chain">listKtr</result>
+			<result name="successJob" type="tiles">admin.jppentaho.DataIntegration.Job.entry</result>
+			<result name="successKtr" type="tiles">admin.jppentaho.DataIntegration.Ktr.entry</result>
+			<interceptor-ref name="entandoDefaultStack">
+				<param name="requestAuth.requiredPermission">superuser</param>
+			</interceptor-ref>
+		</action>
+        
+		<action name="run" class="jppentahoDataIntegrationProcessAction" method="runProcess" >
+			<result name="errorJob" type="tiles">admin.jppentaho.DataIntegration.Job.processResult</result>
+			<result name="errorKtr" type="tiles">admin.jppentaho.DataIntegration.Ktr.processResult</result>
+			<result name="successJob" type="tiles">admin.jppentaho.DataIntegration.Job.processResult</result>
+			<result name="successKtr" type="tiles">admin.jppentaho.DataIntegration.Ktr.processResult</result>
+			<interceptor-ref name="entandoDefaultStack">
+				<param name="requestAuth.requiredPermission">superuser</param>
+			</interceptor-ref>
+		</action>
+        
+		<!-- ######### FINE OPERAZIONI IN INTERFACCIA GESTIONE PROCESSI DATA INTEGRATION ######### -->
+        
+	</package>
+	
+</struts>

@@ -1,0 +1,6 @@
+PLEASE DO NOT DISTRIBUTE 
+
+- the srm/main/ test source tree
+- the src/doc directory
+
+All these directories contain private access information to be used by developers only

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+	
+	<definition extends="main.layout" name="admin.jppentaho.PentahoConfig.entryConfig">
+		<put-attribute name="title" value="jppentaho.title.pentahoManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jppentaho/apsadmin/jsp/config/config.jsp" />
+	</definition>
+
+	<definition extends="main.layout" name="admin.jppentaho.Page.Widget.configSimpleParameter">
+		<put-attribute name="title" value="jppentaho.title.pageManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jppentaho/apsadmin/jsp/portal/specialwidget/configSimpleParameter.jsp" />
+	</definition>
+
+	<definition extends="main.layout" name="admin.jppentaho.DataIntegration.Job.list">
+		<put-attribute name="title" value="jppentaho.title.dataIntegration.jobManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jppentaho/apsadmin/jsp/dataintegration/jobFinding.jsp" />
+	</definition>
+
+	<definition extends="main.layout" name="admin.jppentaho.DataIntegration.Job.entry">
+		<put-attribute name="title" value="jppentaho.title.dataIntegration.jobManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jppentaho/apsadmin/jsp/dataintegration/entryProcess.jsp" />
+	</definition>
+
+	<definition extends="main.layout" name="admin.jppentaho.DataIntegration.Job.processResult">
+		<put-attribute name="title" value="jppentaho.title.dataIntegration.jobManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jppentaho/apsadmin/jsp/dataintegration/processResult.jsp" />
+	</definition>
+
+	<definition extends="main.layout" name="admin.jppentaho.DataIntegration.Ktr.list">
+		<put-attribute name="title" value="jppentaho.title.dataIntegration.ktrManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jppentaho/apsadmin/jsp/dataintegration/ktrFinding.jsp" />
+	</definition>
+
+	<definition extends="main.layout" name="admin.jppentaho.DataIntegration.Ktr.entry">
+		<put-attribute name="title" value="jppentaho.title.dataIntegration.ktrManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jppentaho/apsadmin/jsp/dataintegration/entryProcess.jsp" />
+	</definition>
+
+	<definition extends="main.layout" name="admin.jppentaho.DataIntegration.Ktr.processResult">
+		<put-attribute name="title" value="jppentaho.title.dataIntegration.ktrManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jppentaho/apsadmin/jsp/dataintegration/processResult.jsp" />
+	</definition>
+
+</tiles-definitions>

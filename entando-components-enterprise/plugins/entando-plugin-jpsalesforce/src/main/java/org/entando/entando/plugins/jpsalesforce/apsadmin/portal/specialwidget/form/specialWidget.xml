@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+	<package name="jpsalesforce_do/Page/SpecialWidget" namespace="/do/Page/SpecialWidget"
+		extends="entando-default">
+
+		<global-results>
+			<result name="pageTree" type="chain">
+				<param name="namespace">/do/Page</param>
+				<param name="actionName">viewTree</param>
+			</result>
+			<result name="configure" type="chain">
+				<param name="namespace">/do/Page</param>
+				<param name="actionName">configure</param>
+			</result>
+		</global-results>
+
+		<!-- ##### WIDGET JPSALESFORM CREATE AND PUBLISH FORM **** ENTRY POINT ##### -->
+		<action name="salesforceFormConfig" class="jpsalesforceFormConfig" method="init">
+			<result type="tiles">admin.jpsalesforce.Page.Widget.intro.config</result>
+			<interceptor-ref name="entandoDefaultStack">
+				<param name="requestAuth.requiredPermission">managePages</param>
+				<param name="chain.includeParameters">fieldErrors,actionErrors,actionMessages</param>
+			</interceptor-ref>
+		</action>
+
+	</package>
+
+	<package name="jpsalesforce_do/jpsalesforce/Page/SpecialWidget/form"
+		namespace="/do/jpsalesforce/Page/SpecialWidget/form" extends="entando-default">
+
+		<global-results>
+			<result name="pageTree" type="chain">
+				<param name="namespace">/do/Page</param>
+				<param name="actionName">viewTree</param>
+			</result>
+			<result name="configure" type="chain">
+				<param name="namespace">/do/Page</param>
+				<param name="actionName">configure</param>
+			</result>
+		</global-results>
+
+		<action name="saveConfig" class="jpsalesforceFormConfig" method="save">
+			<result name="input" type="tiles">admin.jpsalesforce.Page.Widget.form.config</result>
+			<result name="redirectWebformConfig" type="redirectAction">
+				<param name="namespace">/do/jpsalesforce/Message/Config</param>
+				<param name="actionName">edit</param>
+				<param name="typeCode">${typeCode}</param>
+				<param name="pageCode">${pageCode}</param>
+				<param name="frame">${frame}</param>
+				<param name="widgetTypeCode">${widgetTypeCode}</param>
+				<param name="campaignId">${campaignId}</param>
+				<param name="profileId">${profileId}</param>
+			</result>
+			<interceptor-ref name="entandoValidationStack">
+				<param name="requestAuth.requiredPermission">managePages</param>
+			</interceptor-ref>
+		</action>
+
+		<action name="configure" class="jpsalesforceFormConfig" method="configure">
+			<result type="tiles">admin.jpsalesforce.Page.Widget.form.config</result>
+		<!-- 			<result name="input" type="tiles">admin.jpsalesforce.Page.Widget.intro.config</result> -->
+			<result type="chain" name="input">
+				<param name="namespace">/do/Page/SpecialWidget</param>
+				<param name="actionName">salesforceFormConfig</param>
+			</result>
+			<interceptor-ref name="entandoValidationStack">
+				<param name="requestAuth.requiredPermission">managePages</param>
+			</interceptor-ref>
+		</action>
+
+		<action name="add" class="jpsalesforceFormConfig" method="add">
+			<result type="tiles">admin.jpsalesforce.Page.Widget.form.config</result>
+			<result name="input" type="tiles">admin.jpsalesforce.Page.Widget.form.config</result>
+			<interceptor-ref name="entandoValidationStack">
+				<param name="requestAuth.requiredPermission">managePages</param>
+			</interceptor-ref>
+		</action>
+
+		<action name="delete" class="jpsalesforceFormConfig" method="delete">
+			<result type="tiles">admin.jpsalesforce.Page.Widget.form.config</result>
+			<result name="input" type="tiles">admin.jpsalesforce.Page.Widget.form.config</result>
+			<interceptor-ref name="entandoValidationStack">
+				<param name="requestAuth.requiredPermission">managePages</param>
+			</interceptor-ref>
+		</action>
+
+		<action name="up" class="jpsalesforceFormConfig" method="moveUp">
+			<result type="tiles">admin.jpsalesforce.Page.Widget.form.config</result>
+			<result name="input" type="tiles">admin.jpsalesforce.Page.Widget.form.config</result>
+			<interceptor-ref name="entandoValidationStack">
+				<param name="requestAuth.requiredPermission">managePages</param>
+			</interceptor-ref>
+		</action>
+
+		<action name="down" class="jpsalesforceFormConfig" method="moveDown">
+			<result type="tiles">admin.jpsalesforce.Page.Widget.form.config</result>
+			<result name="input" type="tiles">admin.jpsalesforce.Page.Widget.form.config</result>
+			<interceptor-ref name="entandoValidationStack">
+				<param name="requestAuth.requiredPermission">managePages</param>
+			</interceptor-ref>
+		</action>
+
+		<action name="edit" class="jpsalesforceFormConfig" method="edit">
+			<result type="tiles">admin.jpsalesforce.Page.Widget.form.config</result>
+			<result name="input" type="tiles">admin.jpsalesforce.Page.Widget.form.config</result>
+			<interceptor-ref name="entandoValidationStack">
+				<param name="requestAuth.requiredPermission">managePages</param>
+			</interceptor-ref>
+		</action>
+		
+		<action name="cancel" class="jpsalesforceFormConfig" method="cancel">
+			<result type="tiles">admin.jpsalesforce.Page.Widget.form.config</result>
+			<interceptor-ref name="entandoValidationStack">
+				<param name="requestAuth.requiredPermission">managePages</param>
+			</interceptor-ref>
+		</action>
+
+	</package>
+
+</struts>

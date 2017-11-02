@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	
+    <package name="jpmultisite_do/User" namespace="/do/jpmultisite/User" extends="core_do/User">
+		
+    	<action name="intro" class="jpmultisiteUserAction">
+            <result type="tiles">multisite.admin.User.intro</result>
+        	<interceptor-ref name="entandoDefaultStack">
+				<param name="requestAuth.requiredPermissions">viewUsers,editUsers,editUserProfile</param>
+				<param name="requestAuth.ORClause">true</param>
+			</interceptor-ref>
+        </action>
+    	
+    	<!-- ######### INIZIO OPERAZIONI IN INTERFACCIA LISTA UTENTI ######### -->
+    	
+		<action name="list" class="jpmultisiteUserFinderAction" method="list">
+			<result type="tiles">multisite.admin.User.list</result>
+			<interceptor-ref name="entandoDefaultStack">
+				<param name="chain.includeParameters">fieldErrors,actionErrors,actionMessages</param>
+				<param name="requestAuth.requiredPermissions">viewUsers,editUsers,editUserProfile</param>
+				<param name="requestAuth.ORClause">true</param>
+			</interceptor-ref>
+		</action>
+        
+		<action name="search" class="jpmultisiteUserFinderAction">
+			<result type="tiles">multisite.admin.User.list</result>
+			<interceptor-ref name="entandoDefaultStack">
+				<param name="requestAuth.requiredPermissions">viewUsers,editUsers,editUserProfile</param>
+				<param name="requestAuth.ORClause">true</param>
+			</interceptor-ref>
+		</action>
+        
+		<action name="changeProfileType" class="jpmultisiteUserFinderAction" >
+			<result type="tiles">multisite.admin.User.list</result>
+			<interceptor-ref name="entandoDefaultStack">
+				<param name="requestAuth.requiredPermissions">viewUsers,editUsers,editUserProfile</param>
+				<param name="requestAuth.ORClause">true</param>
+			</interceptor-ref>
+		</action>
+        
+		<!--
+    	<action name="list" class="jpmultisiteUserFinderAction">
+            <result type="tiles">multisite.admin.User.list</result>
+        	<interceptor-ref name="entandoDefaultStack">
+        		<param name="chain.includeParameters">fieldErrors,actionErrors,actionMessages</param>
+        		<param name="requestAuth.requiredPermission">superuser</param>
+        	</interceptor-ref>
+        </action>
+        
+        <action name="search" class="jpmultisiteUserFinderAction">
+            <result type="tiles">multisite.admin.User.list</result>
+        	<interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">superuser</param></interceptor-ref>
+        </action>
+        -->
+        <!-- ######### FINE OPERAZIONI IN INTERFACCIA LISTA UTENTI ######### -->
+    	
+    	
+    	<!-- ######### INIZIO OPERAZIONI DI AGGIUNTA/MODIFICA UTENTE ######### -->
+    	
+        <action name="new" class="jpmultisiteUserAction" method="newUser">
+            <result type="tiles">multisite.admin.User.entry</result>
+        	<interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">editUsers</param></interceptor-ref>
+        </action>
+    	
+    	<action name="edit" class="jpmultisiteUserAction" method="edit">
+            <result type="tiles">multisite.admin.User.entry</result>
+            <result name="userList" type="chain">list</result>
+        	<interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">editUsers</param></interceptor-ref>
+        </action>
+        
+    	<action name="save" class="jpmultisiteUserAction" method="save">
+        	<result name="input" type="tiles">multisite.admin.User.entry</result>
+        	<result type="redirectAction">list</result>
+        	<interceptor-ref name="entandoValidationStack"><param name="requestAuth.requiredPermission">editUsers</param></interceptor-ref>
+        </action>
+        
+    	<action name="trash" class="jpmultisiteUserAction" method="trash">
+            <result type="tiles">multisite.admin.User.trash</result>
+            <result name="userList" type="chain">list</result>
+        	<interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">editUsers</param></interceptor-ref>
+        </action>
+        
+    	<action name="delete" class="jpmultisiteUserAction" method="delete">
+        	<result type="chain">list</result>
+            <result name="userList" type="chain">list</result>
+        	<interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">editUsers</param></interceptor-ref>
+        </action>
+    	
+    	<!-- ######### FINE OPERAZIONI DI AGGIUNTA/MODIFICA UTENTE ######### -->
+    	
+    </package>
+    <!--
+    <package name="jpmultisite_do/User/Auth" namespace="/do/jpmultisite/User/Auth" extends="core_do/User/Auth">
+    	
+    	<action name="edit" class="jpmultisiteUserToAuthoritiesAction" method="edit">
+            <result name="userList" type="chain">
+            	<param name="namespace">/do/jpmultisite/User</param>
+    			<param name="actionName">list</param>
+            </result>
+        	<result type="tiles">multisite.admin.UserAuth.entry</result>
+            <interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">editUsers</param></interceptor-ref>
+        </action>
+    	
+    	<action name="backToEditAuth" class="jpmultisiteUserToAuthoritiesAction">
+            <result type="tiles">multisite.admin.UserAuth.entry</result>
+            <interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">editUsers</param></interceptor-ref>
+        </action>
+    	
+    	<action name="addGroup" class="jpmultisiteUserToAuthoritiesAction" method="addGroup">
+    		<result type="redirectActionWithAnchor">
+        		<param name="actionName">backToEditAuth</param>
+        		<param name="anchorDest">${section}</param>
+        	</result>
+        	<interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">editUsers</param></interceptor-ref>
+        </action>
+        
+    	<action name="removeGroup*" class="jpmultisiteUserToAuthoritiesAction" method="removeGroup">
+            <result type="redirectActionWithAnchor">
+        		<param name="actionName">backToEditAuth</param>
+        		<param name="anchorDest">${section}</param>
+        	</result>
+        	<interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">editUsers</param></interceptor-ref>
+        </action>
+        
+    	<action name="addRole" class="jpmultisiteUserToAuthoritiesAction" method="addRole">
+            <result type="redirectActionWithAnchor">
+        		<param name="actionName">backToEditAuth</param>
+        		<param name="anchorDest">${section}</param>
+        	</result>
+        	<interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">editUsers</param></interceptor-ref>
+        </action>
+        
+    	<action name="removeRole*" class="jpmultisiteUserToAuthoritiesAction" method="removeRole">
+            <result type="redirectActionWithAnchor">
+        		<param name="actionName">backToEditAuth</param>
+        		<param name="anchorDest">${section}</param>
+        	</result>
+        	<interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">editUsers</param></interceptor-ref>
+        </action>
+        
+    	<action name="save" class="jpmultisiteUserToAuthoritiesAction" method="save">
+        	<result name="userList" type="chain">
+            	<param name="namespace">/do/jpmultisite/User</param>
+    			<param name="actionName">list</param>
+            </result>
+        	<result type="redirectAction">
+            	<param name="namespace">/do/jpmultisite/User</param>
+    			<param name="actionName">list</param>
+            </result>
+        	<interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">editUsers</param></interceptor-ref>
+        </action>
+    	
+    </package>
+    -->
+	
+	<package name="jpmultisite_do/jpmultisite/User/Authorization" namespace="/do/jpmultisite/User/Authorization" extends="entando-default">
+    	
+		<global-results>
+			<result name="userList" type="chain">
+				<param name="namespace">/do/jpmultisite/User</param>
+				<param name="actionName">list</param>
+			</result>
+		</global-results>
+    	
+		<action name="edit" class="jpmultisiteUserAuthorizationAction" method="edit">
+			<result type="tiles">jpmultisite.admin.UserAuthorization.entry</result>
+			<interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">editUsers</param></interceptor-ref>
+		</action>
+    	
+		<action name="addAuthorization" class="jpmultisiteUserAuthorizationAction" method="addAuthorization">
+			<result name="input" type="tiles">jpmultisite.admin.UserAuthorization.entry</result>
+			<result type="tiles">jpmultisite.admin.UserAuthorization.entry</result>
+			<interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">editUsers</param></interceptor-ref>
+		</action>
+        
+		<action name="removeAuthorization*" class="jpmultisiteUserAuthorizationAction" method="removeAuthorization">
+			<result name="input" type="tiles">jpmultisite.admin.UserAuthorization.entry</result>
+			<result type="tiles">jpmultisite.admin.UserAuthorization.entry</result>
+			<interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">editUsers</param></interceptor-ref>
+		</action>
+        
+		<action name="save" class="jpmultisiteUserAuthorizationAction" method="save">
+			<result type="redirectAction">
+				<param name="namespace">/do/jpmultisite/User</param>
+				<param name="actionName">list</param>
+			</result>
+			<interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">editUsers</param></interceptor-ref>
+		</action>
+    	
+	</package>
+    
+</struts>

@@ -1,0 +1,161 @@
+.jppentaho {
+	margin-bottom: 3em;
+	float: left;
+	width: 100%;
+	overflow: hidden;
+}
+.dragdrop_box .jppentaho {
+	margin-bottom: 0em;
+}
+
+.jppentaho ol  {
+	padding: 0 0 0 30px;
+}
+.jppentaho ol li {
+	list-style-type: decimal;
+	background-image: none;
+	padding: 0 0 0 0px;
+}
+.jppentaho .subTreeToggler.noscreen {
+	top: auto;
+	left: -1000em;
+	opacity: 0;
+	position: static;
+	margin: 0;
+	padding: 0;
+	font-size: 1px;
+	display: none;
+}
+
+.jppentaho .tree_toggler_label {
+	cursor: pointer;
+}
+
+.jppentaho .exportHtml {
+	float: left;
+	width: 100%;
+	margin: 0 auto;
+	margin-bottom: 0 0 9px 0;
+	overflow: autho;
+}
+
+.jppentaho .exportHtml table {
+	border: 0;
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	border-collapse: collapse;
+}
+.jppentaho .exportHtml table th,
+.jppentaho .exportHtml table td,
+.jppentaho .exportHtml table col {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	border-collapse: collapse;
+}
+
+.dragdrop_box .jppentaho .exportHtml table th,
+.dragdrop_box .jppentaho .exportHtml table td,
+.dragdrop_box .jppentaho .exportHtml table col {
+	text-align: center;
+}
+
+
+.jppentaho .report_config_item {
+	margin: 0 0 25px 0;
+}
+
+.jppentaho .report_config_item p,
+.jppentaho .report_config_item ul {
+	margin: 0;
+}
+
+.jppentaho .report_config_item p {
+	line-height: 13px;
+}
+
+.jppentaho .report_config_item .bold {
+	font-weight: 600;
+	letter-spacing: -1px;
+}
+
+.dragdrop_content .jppentaho .exportHtml {
+	float: left;
+	text-align: center;
+	width: 100%;
+	overflow: hidden;
+}
+.dragdrop_content .jppentaho .exportHtml table {
+	margin: 0 auto;
+}
+
+.jppentaho_iframe {
+	border: 0;
+	padding: 0;
+	margin: 0;
+	float: left;
+	width: 100%;
+	height: 300%;
+	min-height: 500px;
+	overflow: auto;
+	/*overflow-y: scroll;*/
+}
+
+.jppentaho .downloadlist,
+.jppentaho .downloadlist li {
+	float: left;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+.jppentaho .downloadlist {
+	margin-top: 10px;
+}
+
+
+.jppentaho .downloadlist li {
+	margin: 0 10px 10px 10px;
+}
+.jppentaho .downloadlist .download {
+	float: left;
+}
+
+.jppentaho .downloadlist .link {
+
+}
+
+.dragdrop_box .jppentaho ul.downloadlist,
+.dragdrop_box .jppentaho ul.downloadlist li {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	float: left;
+	width: 100%;
+}
+.dragdrop_box .jppentaho ul.downloadlist {
+	margin: 0.5em 0;
+	background-image: url("../img/report.jpg");
+	background-position: top right;
+	background-repeat: no-repeat;
+	min-height: 80px;
+}
+.dragdrop_box .jppentaho ul.downloadlist li {
+	margin: 0 0 0.5em 0;
+}
+
+
+.dragdrop_box .jppentaho_reportLockedListDetails .title {
+	display:none;
+	margin: 0;
+	padding: 0;
+}
+
+.dragdrop_box .jppentaho_reportLockedListDetails ol {
+	margin: 0
+}
+
+.downloadItem .download {
+	margin-right: 6px;
+}

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC 
+	"-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+
+	<definition extends="layout.default" name="jpsocial.admin.editQueue">
+		<put-attribute name="title" value="jpsocial.title.editQueue" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jpsocial/apsadmin/jsp/deliveryQueue.jsp" />
+		<put-attribute name="extraResources" value="/WEB-INF/plugins/jpsocial/apsadmin/jsp/common/layouts/assets-more/queue-edit-extra.jsp" />
+	</definition>
+  
+	<definition extends="layout.default" name="jpsocial.admin.signedIn">
+		<put-attribute name="title" value="jpsocial.title.editQueue" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jpsocial/apsadmin/jsp/signedIn.jsp" />
+		<put-attribute name="extraResources" value="/WEB-INF/plugins/jpsocial/apsadmin/jsp/common/layouts/assets-more/queue-edit-extra.jsp" />
+	</definition>
+	
+	<definition extends="layout.default" name="jpsocial.admin.SocialPost.list">
+		<put-attribute name="title" value="jpsocial.title.socialPostManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jpsocial/apsadmin/jsp/socialpost/socialPost-list.jsp" />
+		<put-attribute name="extraResources" value="/WEB-INF/plugins/jpsocial/apsadmin/jsp/common/layouts/assets-more/socialPost-list-extras.jsp"/>
+	</definition>
+	<definition extends="layout.default" name="jpsocial.admin.SocialPost.view">
+		<put-attribute name="title" value="jpsocial.title.socialPostManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jpsocial/apsadmin/jsp/socialpost/socialPost-view.jsp" />
+		<put-attribute name="extraResources" value="/WEB-INF/plugins/jpsocial/apsadmin/jsp/common/layouts/assets-more/socialPost-view-extras.jsp"/>
+	</definition>
+	<definition extends="layout.default" name="jpsocial.admin.SocialPost.trash">
+		<put-attribute name="title" value="jpsocial.title.socialPostManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jpsocial/apsadmin/jsp/socialpost/socialPost-trash.jsp" />
+		<put-attribute name="extraResources" value="/WEB-INF/plugins/jpsocial/apsadmin/jsp/common/layouts/assets-more/socialPost-trash-extras.jsp"/>
+	</definition>
+	
+</tiles-definitions>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+
+
+	<include file="org/entando/entando/plugins/jpemailmarketing/apsadmin/course/course.xml" />
+	<!-- 
+	<include file="org/entando/entando/plugins/jpemailmarketing/apsadmin/portal/specialwidget/course/courseSpecialWidget.xml" />
+	<include file="org/entando/entando/plugins/jpemailmarketing/aps/internalservlet/course/courseFront.xml" />
+	 -->
+
+	<include file="org/entando/entando/plugins/jpemailmarketing/apsadmin/form/form.xml"/>
+	<include file="org/entando/entando/plugins/jpemailmarketing/apsadmin/portal/specialwidget/form/formSpecialWidget.xml"/>
+	<include file="org/entando/entando/plugins/jpemailmarketing/aps/internalservlet/form/formFront.xml"/>
+
+	<include file="org/entando/entando/plugins/jpemailmarketing/apsadmin/coursemail/courseMail.xml"/>
+
+	<include file="org/entando/entando/plugins/jpemailmarketing/apsadmin/subscriber/subscriber.xml"/>
+	<include file="org/entando/entando/plugins/jpemailmarketing/aps/internalservlet/subscriber/subscriberFront.xml"/>
+	<!-- 
+	<include file="org/entando/entando/plugins/jpemailmarketing/apsadmin/portal/specialwidget/subscriber/subscriberSpecialWidget.xml"/>
+	 -->
+
+	
+</struts>

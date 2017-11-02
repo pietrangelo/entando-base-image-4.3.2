@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+	<package name="jpsalesforce_do/salesforce/leads" namespace="/do/salesforce/leads" extends="entando-front-default">
+
+		<action name="intro" class="jpsalesforceLeadFinderAction">
+			<result type="dispatcher">/WEB-INF/plugins/jpsalesforce/aps/jsp/internalservlet/lead/lead_find.jsp</result>
+			<interceptor-ref name="entandoFrontEndFreeStack">
+				<param name="chain.includeParameters">fieldErrors,actionErrors,actionMessages</param>
+			</interceptor-ref>
+		</action>
+
+		<action name="search" class="jpsalesforceLeadFinderAction">
+			<result type="dispatcher">/WEB-INF/plugins/jpsalesforce/aps/jsp/internalservlet/lead/lead_find.jsp</result>
+			<interceptor-ref name="entandoFrontEndFreeStack">
+				<param name="chain.includeParameters">fieldErrors,actionErrors,actionMessages</param>
+			</interceptor-ref>
+		</action>
+
+		<action name="new" class="jpsalesforceLeadAction" method="newLead" >
+			<result name="signIn" type="dispatcher">/WEB-INF/plugins/jpsalesforce/aps/jsp/internalservlet/inc/sign-in-message.jsp</result>
+			<result type="dispatcher">/WEB-INF/plugins/jpsalesforce/aps/jsp/internalservlet/lead/lead_edit.jsp</result>
+			<result name="input" type="dispatcher">/WEB-INF/plugins/jpsalesforce/aps/jsp/internalservlet/lead/lead_find.jsp</result>
+			<interceptor-ref name="entandoFrontEndFreeValidationStack">
+				<param name="chain.includeParameters">fieldErrors,actionErrors,actionMessages</param>
+			</interceptor-ref>
+		</action>
+		
+		<action name="edit" class="jpsalesforceLeadAction" method="editLead" >
+			<result type="dispatcher">/WEB-INF/plugins/jpsalesforce/aps/jsp/internalservlet/lead/lead_edit.jsp</result>
+			<result name="input" type="dispatcher">/WEB-INF/plugins/jpsalesforce/aps/jsp/internalservlet/lead/lead_edit.jsp</result>
+			<interceptor-ref name="entandoFrontEndFreeValidationStack">
+				<param name="chain.includeParameters">fieldErrors,actionErrors,actionMessages</param>
+			</interceptor-ref>
+		</action>
+		
+		<action name="save" class="jpsalesforceLeadAction" method="saveLead" >
+			<result type="chain">search</result>
+			<result name="redirect" type="redirect">${redirectionUrl}</result>
+			<result name="input" type="dispatcher">/WEB-INF/plugins/jpsalesforce/aps/jsp/internalservlet/lead/lead_edit.jsp</result>
+			<interceptor-ref name="entandoFrontEndFreeValidationStack">
+				<param name="chain.includeParameters">fieldErrors,actionErrors,actionMessages</param>
+			</interceptor-ref>
+		</action>
+
+		<action name="trash" class="jpsalesforceLeadAction" method="trashLead" >
+			<result type="dispatcher">/WEB-INF/plugins/jpsalesforce/aps/jsp/internalservlet/lead/lead_trash.jsp</result>
+			<result name="input" type="dispatcher">/WEB-INF/plugins/jpsalesforce/aps/jsp/internalservlet/lead/lead_find.jsp</result>
+			<interceptor-ref name="entandoFrontEndFreeValidationStack">
+				<param name="chain.includeParameters">fieldErrors,actionErrors,actionMessages</param>
+			</interceptor-ref>
+		</action>
+		
+		<action name="delete" class="jpsalesforceLeadAction" method="deleteLead" >
+			<result type="chain">search</result>
+			<result name="input" type="dispatcher">/WEB-INF/plugins/jpsalesforce/aps/jsp/internalservlet/lead/lead_trash.jsp</result>
+			<interceptor-ref name="entandoFrontEndFreeValidationStack">
+				<param name="chain.includeParameters">fieldErrors,actionErrors,actionMessages</param>
+			</interceptor-ref>
+		</action>
+		
+		<action name="view" class="jpsalesforceLeadAction" method="viewLead" >
+			<result type="dispatcher">/WEB-INF/plugins/jpsalesforce/aps/jsp/internalservlet/lead/lead_details.jsp</result>
+			<result name="input" type="dispatcher">/WEB-INF/plugins/jpsalesforce/aps/jsp/internalservlet/lead/lead_trash.jsp</result>
+			<interceptor-ref name="entandoFrontEndFreeValidationStack">
+				<param name="chain.includeParameters">fieldErrors,actionErrors,actionMessages</param>
+			</interceptor-ref>
+		</action>
+
+	</package>
+
+</struts>

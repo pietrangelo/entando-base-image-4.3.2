@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:jee="http://www.springframework.org/schema/jee"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+			http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.0.xsd">
+	
+	<!--	<bean id="jacmsAttachResource" class="com.agiletec.plugins.jacms.aps.system.services.resource.model.AttachResource" parent="jacmsAbstractResource" >
+		<property name="type" value="Attach" />
+		<property name="folder" value="cms/documents" />
+		<property name="allowedExtensions" value="pdf,xls,doc,ppt,txt,rtf,sxw,sxc,odt,ods,odp,tar,gz,zip,rar,flv,swf,avi,wmv,ogg,mp3,wav,ogm,mov,iso,nrg, webm, mpeg, 3gpp, mov, mpegps," />
+	</bean>-->
+	
+	<bean id="jpsocialSocialPostDAO" class="org.entando.entando.plugins.jpsocial.aps.system.services.socialpost.SocialPostDAO">
+		<property name="dataSource" ref="servDataSource" />
+	</bean>
+
+	<bean id="jpsocialSocialPostManager" class="org.entando.entando.plugins.jpsocial.aps.system.services.socialpost.SocialPostManager"
+		parent="abstractService">
+		<property name="keyGeneratorManager" ref="KeyGeneratorManager" />
+		<property name="socialPostDAO" ref="jpsocialSocialPostDAO" />
+	</bean>
+	
+	<bean id="jpsocialTwitterCookieConsumerManager" class="org.entando.entando.plugins.jpsocial.aps.system.services.client.TwitterCookieConsumerManager"
+			parent="abstractService" >
+		<property name="configManager" ref="BaseConfigManager" />
+	</bean>
+	
+	<!-- SocialHypertext -->
+	<bean id="jpsocialHypertextAttribute" parent="jacmsHypertextAttribute" >
+		<property name="type" value="SocialHypertext" />
+	</bean>
+
+	<bean id="jpsocialHypertextAttributeWrapper" class="com.agiletec.aps.system.common.entity.loader.ExtraAttributeWrapper" >
+		<property name="attribute" ref="jpsocialHypertextAttribute" />
+		<property name="entityManagerNameDest">
+			<value>jacmsContentManager</value>
+		</property>
+	</bean>
+	
+	
+
+	<!-- SocialText -->
+	<bean id="jpsocialTextAttribute" parent="TextAttribute" >
+		<property name="type" value="SocialText" />
+	</bean>
+
+	<bean id="jpsocialTextAttributeWrapper" class="com.agiletec.aps.system.common.entity.loader.ExtraAttributeWrapper" >
+		<property name="attribute" ref="jpsocialTextAttribute" />
+		<property name="entityManagerNameDest">
+			<value>jacmsContentManager</value>
+		</property>
+	</bean>
+
+	<!-- SocialLongtext -->
+	<bean id="jpsocialLongtextAttribute" parent="LongtextAttribute" >
+		<property name="type" value="SocialLongtext" />
+	</bean>
+
+	<bean id="jpsocialLongtextAttributeWrapper" class="com.agiletec.aps.system.common.entity.loader.ExtraAttributeWrapper" >
+		<property name="attribute" ref="jpsocialLongtextAttribute" />
+		<property name="entityManagerNameDest">
+			<value>jacmsContentManager</value>
+		</property>
+	</bean>
+
+	<!-- SocialMonoTextAttribute -->
+	<bean id="jpsocialMonoTextAttribute" parent="MonoTextAttribute" >
+		<property name="type" value="SocialMonotext" />
+	</bean>
+
+	<bean id="jpsocialMonoTextAttributeWrapper" class="com.agiletec.aps.system.common.entity.loader.ExtraAttributeWrapper" >
+		<property name="attribute" ref="jpsocialMonoTextAttribute" />
+		<property name="entityManagerNameDest">
+			<value>jacmsContentManager</value>
+		</property>
+	</bean>
+
+	<!-- SocialImageAttribute -->
+	<bean id="jpsocialImageAttribute" parent="jacmsImageAttribute" >
+		<property name="type" value="SocialImage" />
+	</bean>
+
+	<bean id="jpsocialImageAttributeWrapper" class="com.agiletec.aps.system.common.entity.loader.ExtraAttributeWrapper" >
+		<property name="attribute" ref="jpsocialImageAttribute" />
+		<property name="entityManagerNameDest">
+			<value>jacmsContentManager</value>
+		</property>
+	</bean>
+
+	<!-- SocialAttachAttribute  -->
+	<bean id="jpsocialAttachAttribute" parent="jacmsAttachAttribute" >
+		<property name="type" value="SocialAttach" />
+	</bean>
+
+	<bean id="jpsocialAttachAttributeWrapper" class="com.agiletec.aps.system.common.entity.loader.ExtraAttributeWrapper" >
+		<property name="attribute" ref="jpsocialAttachAttribute" />
+		<property name="entityManagerNameDest">
+			<value>jacmsContentManager</value>
+		</property>
+	</bean>
+
+	<bean id="jpsocialTwitterManager" class="org.entando.entando.plugins.jpsocial.aps.system.services.client.TwitterManager"
+			parent="jpsocialTwitterCookieConsumerManager" >
+	</bean>
+	
+	<bean id="jpsocialFacebookManager" class="org.entando.entando.plugins.jpsocial.aps.system.services.client.FacebookManager" 
+			parent="abstractService" >
+		<property name="configManager" ref="BaseConfigManager" />
+	</bean>
+	
+	<bean id="jpsocialLinkedinManager" class="org.entando.entando.plugins.jpsocial.aps.system.services.client.LinkedInManager" 
+			parent="abstractService" >
+		<property name="configManager" ref="BaseConfigManager" />
+	</bean>
+
+	<bean id="jpsocialYoutubeManager" class="org.entando.entando.plugins.jpsocial.aps.system.services.client.YoutubeManager"
+			parent="abstractService" >
+		<property name="configManager" ref="BaseConfigManager" />
+		<!-- Youtube supported video formats as of August 2012 -->
+		<property name="ytFormats" value="webm,mpeg,3gpp,mov,avi,mpegps,wmv,flv" />
+		<!-- Youtube categories as of August 2012 -->
+		<property name="ytCategories">
+			<map>
+				<entry key="Autos">
+					<value>Autos</value>
+				</entry>
+				<entry key="Film">
+					<value>Film</value>
+				</entry>
+				<entry key="Music">
+					<value>Music</value>
+				</entry>
+				<entry key="Animals">
+					<value>Animals</value>
+				</entry>
+				<entry key="Sports">
+					<value>Sports</value>
+				</entry>
+				<entry key="Shortmov">
+					<value>Short movie</value>
+				</entry>
+				<entry key="Travel">
+					<value>Travel</value>
+				</entry>
+				<entry key="Games">
+					<value>Games</value>
+				</entry>  
+				<entry key="People">
+					<value>People</value>
+				</entry>
+				<entry key="Comedy">
+					<value>Comedy</value>
+				</entry>
+				<entry key="Entertainment">
+					<value>Entertainment</value>
+				</entry>
+				<entry key="News">
+					<value>News</value>
+				</entry>
+				<entry key="Howto">
+					<value>Howto</value>
+				</entry>
+				<entry key="Education">
+					<value>Education</value>
+				</entry>
+				<entry key="Tech">
+					<value>Tech</value>
+				</entry>
+				<entry key="Nonprofit">
+					<value>Nonprofit</value>
+				</entry>
+				<entry key="Movies">
+					<value>Movies</value>
+				</entry>
+				<entry key="Movies_anime_animation">
+					<value>Movies, anime animation</value>
+				</entry>
+				<entry key="Movies_action_adventure">
+					<value>Movies, action adventure</value>
+				</entry>
+				<entry key="Movies_classics">
+					<value>Movies, classics</value>
+				</entry>
+				<entry key="Movies_comedy">
+					<value>Movies, comedy</value>
+				</entry>
+				<entry key="Movies_documentary">
+					<value>Movies, documentary</value>
+				</entry>
+				<entry key="Movies_drama">
+					<value>Movies, drama</value>
+				</entry>
+				<entry key="Movies_family">
+					<value>Movies, family</value>
+				</entry>
+				<entry key="Movies_foreign">
+					<value>Movies, foreign</value>
+				</entry>
+				<entry key="Movies_horror">
+					<value>Movies, horror</value>
+				</entry>
+				<entry key="Movies_sci_fi_fantasy">
+					<value>Movies, sci-fi fantasy</value>
+				</entry>
+				<entry key="Movies_classics">
+					<value>Movies, classics</value>
+				</entry>
+				<entry key="Movies_thriller">
+					<value>Movies, thriller</value>
+				</entry>
+				<entry key="Movies_shorts">
+					<value>Movies, shorts</value>
+				</entry>
+				<entry key="Shows">
+					<value>Shows</value>
+				</entry>
+				<entry key="Trailers">
+					<value>Trailers</value>
+				</entry>  
+			</map>
+		</property>
+	</bean>
+
+	<bean id="jpsocialBitLyManager" class="org.entando.entando.plugins.jpsocial.aps.system.services.BitLyManager"
+			parent="abstractService" >
+		<property name="configManager" ref="BaseConfigManager" />
+	</bean>
+	
+	<bean id="jpsocialSocialManager" class="org.entando.entando.plugins.jpsocial.aps.system.services.client.SocialManager"
+			parent="abstractService" >
+		<property name="facebookManager" ref="jpsocialFacebookManager" />
+		<property name="twitterManager" ref="jpsocialTwitterManager" />
+	</bean>
+
+</beans>

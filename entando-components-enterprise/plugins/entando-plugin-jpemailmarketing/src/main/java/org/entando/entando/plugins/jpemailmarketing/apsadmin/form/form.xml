@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	
+    <package name="jpemailmarketing_do/jpemailmarketing/Form" namespace="/do/jpemailmarketing/Form" extends="entando-default">
+    	
+    	<action name="list" class="jpemailmarketingFormFinderAction">
+    		<!-- since the implementation handles only 1 element
+            <result type="tiles">jpemailmarketing.admin.Form.list</result>
+    		 -->
+			<result type="redirectAction">
+				<param name="actionName">edit</param>
+				<param name="courseId">1</param>
+			</result>
+        	<interceptor-ref name="entandoDefaultStack">
+        		<param name="chain.includeParameters">fieldErrors,actionErrors,actionMessages</param>
+        		<param name="requestAuth.requiredPermission">superuser</param>
+        	</interceptor-ref>
+        </action>
+        
+        <action name="search" class="jpemailmarketingFormFinderAction">
+            <result type="tiles">jpemailmarketing.admin.Form.list</result>
+        	<interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">superuser</param></interceptor-ref>
+        </action>
+    	
+    	<!-- 
+        <action name="new" class="jpemailmarketingFormAction" method="newForm">
+            <result type="tiles">jpemailmarketing.admin.Form.entry</result>
+        	<interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">superuser</param></interceptor-ref>
+        </action>
+    	 -->
+    	
+    	<action name="edit" class="jpemailmarketingFormAction" method="edit">
+            <result type="tiles">jpemailmarketing.admin.Form.entry</result>
+            <!-- since the implementation handles only 1 element
+            <result name="input" type="redirectAction">list</result>
+             -->
+			<result name="input" type="redirectAction">
+				<param name="actionName">edit</param>
+				<param name="courseId">1</param>
+			</result>
+        	<interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">superuser</param></interceptor-ref>
+        </action>
+        
+    	<action name="save" class="jpemailmarketingFormAction" method="save">
+        	<result name="input" type="tiles">jpemailmarketing.admin.Form.entry</result>
+        	<result type="redirectAction">
+        		<param name="actionName">edit</param>
+        		<param name="parse">true</param>
+        		<param name="courseId">${courseId}</param>
+        	</result>
+        	<interceptor-ref name="fileUpload"/>
+        	<interceptor-ref name="entandoValidationStack"><param name="requestAuth.requiredPermission">superuser</param></interceptor-ref>
+        </action>
+
+    	<action name="deleteCover*" class="jpemailmarketingFormAction" method="deleteCover">
+        	<result name="input" type="tiles">jpemailmarketing.admin.Form.entry</result>
+        	<result name="success" type="tiles">jpemailmarketing.admin.Form.entry</result>
+        	<interceptor-ref name="fileUpload"/>
+        	<interceptor-ref name="entandoValidationStack"><param name="requestAuth.requiredPermission">superuser</param></interceptor-ref>
+        </action>
+
+    	<action name="deleteIncentive*" class="jpemailmarketingFormAction" method="deleteIncentive">
+        	<result name="input" type="tiles">jpemailmarketing.admin.Form.entry</result>
+        	<result name="success" type="tiles">jpemailmarketing.admin.Form.entry</result>
+        	<interceptor-ref name="fileUpload"/>
+        	<interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">superuser</param></interceptor-ref>
+        </action>
+        
+    	<action name="viewFile" class="jpemailmarketingFormAction" method="viewFile">
+            <result name="input" type="tiles">jpemailmarketing.admin.Form.entry</result>
+            <result type="stream">
+            	<param name="inputName">downloadInputStream</param>
+            	<param name="contentType">downloadContentType</param>
+            </result>
+        	<interceptor-ref name="fileUpload"/>
+        	<interceptor-ref name="entandoDefaultStack"></interceptor-ref>
+        </action>
+
+    	<action name="downloadFile" class="jpemailmarketingFormAction" method="viewFile">
+            <result name="input" type="tiles">jpemailmarketing.admin.Form.entry</result>
+            <result type="stream">
+            	<param name="inputName">downloadInputStream</param>
+            	<param name="contentType">downloadContentType</param>
+            	<param name="contentDisposition">attachment;filename="${downloadFileName}"</param> -->
+            </result>
+        	<interceptor-ref name="fileUpload"/>
+        	<interceptor-ref name="entandoDefaultStack"></interceptor-ref>
+        </action>
+        
+        <!-- 
+    	<action name="trash" class="jpemailmarketingFormAction" method="trash">
+            <result type="tiles">jpemailmarketing.admin.Form.trash</result>
+        	<result name="input" type="redirectAction">list</result>
+        	<interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">superuser</param></interceptor-ref>
+        </action>
+        
+    	<action name="delete" class="jpemailmarketingFormAction" method="delete">
+        	<result type="redirectAction">list</result>
+        	<interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">superuser</param></interceptor-ref>
+        </action>
+         -->
+    	
+    </package>
+   
+</struts>

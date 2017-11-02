@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	
+	<include file="org/entando/entando/plugins/jpmultisite/apsadmin/multisite/multisite.xml"/>
+	<include file="org/entando/entando/plugins/jpmultisite/apsadmin/portal/specialwidget/multisite/multisiteSpecialWidget.xml"/>
+	<include file="org/entando/entando/plugins/jpmultisite/apsadmin/portal/specialwidget/specialWidget.xml"/>
+	<include file="org/entando/entando/plugins/jpmultisite/aps/internalservlet/multisite/multisiteFront.xml"/>
+	<include file="org/entando/entando/plugins/jpmultisite/apsadmin/admin/baseAdmin.xml"/>
+	<include file="org/entando/entando/plugins/jpmultisite/apsadmin/user/user.xml"/>
+	<include file="org/entando/entando/plugins/jpmultisite/apsadmin/user/userprofile.xml"/>
+	
+	<include file="org/entando/entando/plugins/jpmultisite/apsadmin/common/currentuser/currentUserProfile.xml"/>
+	<include file="org/entando/entando/plugins/jpmultisite/apsadmin/common/common.xml"/>
+	<include file="org/entando/entando/plugins/jpmultisite/apsadmin/common/core.xml"/>
+	<include file="org/entando/entando/plugins/jpmultisite/apsadmin/common/widgetType.xml"/>
+	<include file="org/entando/entando/plugins/jpmultisite/apsadmin/content/content.xml"/>
+	<include file="org/entando/entando/plugins/jpmultisite/apsadmin/content/contentAttribute.xml"/>
+	<include file="org/entando/entando/plugins/jpmultisite/apsadmin/resource/resource.xml"/>
+	<include file="org/entando/entando/plugins/jpmultisite/apsadmin/portal/page.xml"/>
+	<include file="org/entando/entando/plugins/jpmultisite/apsadmin/category/category.xml"/>
+	<include file="org/entando/entando/plugins/jpmultisite/apsadmin/user/group/group.xml"/>
+	<include file="org/entando/entando/plugins/jpmultisite/apsadmin/sharedcontent/sharedContent.xml"/>
+	
+</struts>

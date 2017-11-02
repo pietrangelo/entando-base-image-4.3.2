@@ -1,0 +1,470 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+	
+	<definition name="layout.default" template="/WEB-INF/plugins/jpmultisite/apsadmin/jsp/common/layouts/default.jsp">
+        <put-attribute name="title" value="document.title.main" />
+        <put-attribute name="extraResources" value="/WEB-INF/apsadmin/jsp/common/layouts/assets-common.jsp" />
+        <put-attribute name="shortcuts-quickbar" value="/WEB-INF/apsadmin/jsp/common/tiles-inserts/shortcuts-quickbar.jsp" />
+        <put-attribute name="menu" value="/WEB-INF/apsadmin/jsp/common/tiles-inserts/menu.jsp" />
+        <put-attribute name="body" value="/WEB-INF/plugins/jpmultisite/apsadmin/jsp/common/template/mainBody.jsp" />
+        <put-attribute name="footer" value="/WEB-INF/apsadmin/jsp/common/tiles-inserts/footer.jsp" />
+    </definition>
+	
+    <definition extends="layout.default" name="jpmultisite.admin.Multisite.list">
+		<put-attribute name="title" value="jpmultisite.title.multisiteManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jpmultisite/apsadmin/jsp/multisite/multisite-list.jsp" />
+		<put-attribute name="extraResources" value="/WEB-INF/plugins/jpmultisite/apsadmin/jsp/common/layouts/assets-more/multisite-list-extras.jsp"/>
+	</definition>
+	
+    <definition extends="layout.default" name="jpmultisite.admin.Multisite.entry">
+		<put-attribute name="title" value="jpmultisite.title.multisiteManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jpmultisite/apsadmin/jsp/multisite/multisite-entry.jsp" />
+		<put-attribute name="extraResources" value="/WEB-INF/plugins/jpmultisite/apsadmin/jsp/common/layouts/assets-more/multisite-entry-extras.jsp"/>
+	</definition>
+	
+    <definition extends="layout.default" name="jpmultisite.admin.Multisite.trash">
+		<put-attribute name="title" value="jpmultisite.title.multisiteManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jpmultisite/apsadmin/jsp/multisite/multisite-trash.jsp" />
+		<put-attribute name="extraResources" value="/WEB-INF/plugins/jpmultisite/apsadmin/jsp/common/layouts/assets-more/multisite-trash-extras.jsp"/>
+	</definition>
+	
+    <definition extends="layout.default" name="jpmultisite.admin.page.widget.Multisite.entry">
+		<put-attribute name="title" value="jpmultisite.title.multisiteManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jpmultisite/apsadmin/jsp/portal/specialwidget/multisite/multisite-config.jsp" />
+	</definition>
+	
+	<!-- START BACKOFFICE TILES -->
+	
+	<definition extends="layout.default" name="multisite.layout.default">
+        <put-attribute name="shortcuts-quickbar" value="/WEB-INF/apsadmin/jsp/common/tiles-inserts/shortcuts-quickbar.jsp" />
+        <put-attribute name="menu" value="/WEB-INF/plugins/jpmultisite/apsadmin/jsp/common/tiles-inserts/menu.jsp" />
+    </definition>
+	
+	<definition extends="multisite.layout.default" name="multisite.admin.intro">
+        <put-attribute name="extraResources" value="/WEB-INF/plugins/jpmultisite/apsadmin/jsp/common/layouts/assets-more/startPage.jsp" />
+    </definition>
+	
+	<!-- category start -->
+	<definition extends="multisite.layout.default" name="multisite.admin.Category.viewTree">
+        <put-attribute name="title" value="title.categoryManagement" />
+        <put-attribute name="extraResources" value="/WEB-INF/apsadmin/jsp/common/layouts/assets-more/categoryTree.jsp" />
+        <put-attribute name="body" value="/WEB-INF/plugins/jpmultisite/apsadmin/jsp/category/categoryTree.jsp" />
+    </definition>
+	
+    <definition extends="multisite.layout.default" name="multisite.admin.Category.entry">
+        <put-attribute name="title" value="title.categoryManagement" />
+        <put-attribute name="body" value="/WEB-INF/plugins/jpmultisite/apsadmin/jsp/category/entryCategory.jsp" />
+    </definition>
+	
+    <definition extends="multisite.layout.default" name="multisite.admin.Category.references">
+        <put-attribute name="title" value="title.categoryManagement" />
+        <put-attribute name="body" value="/WEB-INF/plugins/jpmultisite/apsadmin/jsp/category/categoryReferences.jsp" />
+    </definition>
+	
+    <definition extends="multisite.layout.default" name="multisite.admin.Category.trash">
+        <put-attribute name="title" value="title.categoryManagement" />
+        <put-attribute name="body" value="/WEB-INF/plugins/jpmultisite/apsadmin/jsp/category/trashCategory.jsp" />
+    </definition>
+	
+    <definition extends="multisite.layout.default" name="multisite.admin.Category.detail">
+        <put-attribute name="title" value="title.categoryManagement" />
+        <put-attribute name="body" value="/WEB-INF/plugins/jpmultisite/apsadmin/jsp/category/categoryDetails.jsp" />
+    </definition>
+	
+	<!-- category end -->
+	
+	<!-- page start -->
+	
+	<definition extends="multisite.layout.default" name="multisite.admin.Page.viewTree">
+        <put-attribute name="title" value="title.pageManagement" />
+        <put-attribute name="extraResources" value="/WEB-INF/apsadmin/jsp/common/layouts/assets-more/pageTree.jsp" />
+        <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/portal/pageTree.jsp" />
+    </definition>
+    <definition extends="multisite.layout.default" name="multisite.admin.Page.entry">
+        <put-attribute name="title" value="title.pageManagement" />
+        <put-attribute name="body" value="/WEB-INF/plugins/jpmultisite/apsadmin/jsp/portal/entryPage.jsp" />
+    </definition>
+    <definition extends="multisite.layout.default" name="multisite.admin.Page.trash">
+        <put-attribute name="title" value="title.pageManagement" />
+        <put-attribute name="body" value="/WEB-INF/plugins/jpmultisite/apsadmin/jsp/portal/trashPage.jsp" />
+    </definition>
+    <definition extends="multisite.layout.default" name="multisite.admin.Page.references">
+        <put-attribute name="title" value="title.pageManagement" />
+        <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/portal/pageReferences.jsp" />
+    </definition>
+    <definition extends="multisite.layout.default" name="multisite.admin.Page.detail">
+        <put-attribute name="title" value="title.pageManagement" />
+        <put-attribute name="body" value="/WEB-INF/plugins/jpmultisite/apsadmin/jsp/portal/detailPage.jsp" />
+    </definition>
+    <definition extends="multisite.layout.default" name="multisite.admin.Page.searchResult">
+        <put-attribute name="title" value="title.pageManagement" />
+        <put-attribute name="extraResources" value="/WEB-INF/apsadmin/jsp/common/layouts/assets-more/pageSearchResult.jsp" />
+        <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/portal/pageSearchResult.jsp" />
+    </definition>
+
+    <definition extends="multisite.layout.default" name="multisite.admin.Page.configure">
+        <put-attribute name="title" value="title.pageManagement" />
+        <put-attribute name="body" value="/WEB-INF/plugins/jpmultisite/apsadmin/jsp/portal/configPage.jsp" />
+    </definition>
+    <definition extends="multisite.layout.default" name="multisite.admin.Page.showlet.trash">
+        <put-attribute name="title" value="title.pageManagement" />
+        <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/portal/position-clear-confirm.jsp" />
+    </definition>
+    <definition extends="multisite.layout.default" name="multisite.admin.Page.editFrame">
+        <put-attribute name="title" value="title.pageManagement" />
+        <put-attribute name="body" value="/WEB-INF/plugins/jpmultisite/apsadmin/jsp/portal/editFrame.jsp" />
+    </definition>
+	
+	<!-- page end -->
+	
+	<!-- group start -->
+	
+	<!-- ********* INIZIO Area Gestione Gruppi ********* -->
+
+    <definition extends="multisite.layout.default" name="multisite.admin.Group.list">
+        <put-attribute name="title" value="title.groupManagement" />
+        <put-attribute name="body" value="/WEB-INF/plugins/jpmultisite/apsadmin/jsp/user/group/groupFinding.jsp" />
+    </definition>
+    <definition extends="multisite.layout.default" name="multisite.admin.Group.entry">
+        <put-attribute name="title" value="title.groupManagement" />
+        <put-attribute name="body" value="/WEB-INF/plugins/jpmultisite/apsadmin/jsp/user/group/entryGroup.jsp" />
+    </definition>
+    <definition extends="multisite.layout.default" name="multisite.admin.Group.trash">
+        <put-attribute name="title" value="title.groupManagement" />
+        <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/user/group/trashGroup.jsp" />
+    </definition>
+    <definition extends="multisite.layout.default" name="multisite.admin.Group.references">
+        <put-attribute name="title" value="title.groupManagement" />
+        <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/user/group/groupReferences.jsp" />
+    </definition>
+    <definition extends="multisite.layout.default" name="multisite.admin.Group.detail">
+        <put-attribute name="title" value="title.groupManagement" />
+        <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/user/group/groupDetails.jsp" />
+    </definition>
+	<!--
+    <definition extends="multisite.layout.default" name="multisite.admin.AuthGroup.configure">
+        <put-attribute name="title" value="title.groupManagement" />
+        <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/user/group/configAuthority.jsp" />
+    </definition>
+	-->
+	<!-- group end --> 
+	
+	<!-- widget start -->
+    <definition extends="multisite.layout.default" name="multisite.admin.Portal.viewWidgets">
+        <put-attribute name="title" value="title.widgetManagement" />
+        <put-attribute name="body" value="/WEB-INF/plugins/jpmultisite/apsadmin/jsp/portal/showlet-list.jsp" />
+    </definition>
+
+    <definition extends="multisite.layout.default" name="multisite.admin.Portal.viewShowletUtilizers">
+        <put-attribute name="title" value="title.widgetManagement" />
+        <put-attribute name="body" value="/WEB-INF/plugins/jpmultisite/apsadmin/jsp/portal/showlet-list-using.jsp" />
+    </definition>
+
+    <definition extends="multisite.layout.default" name="multisite.admin.Portal.showletType.trash">
+        <put-attribute name="title" value="title.widgetManagement" />
+        <put-attribute name="body" value="/WEB-INF/plugins/jpmultisite/apsadmin/jsp/portal/showlet-delete-confirm.jsp" />
+    </definition>
+
+    <definition extends="multisite.layout.default" name="multisite.admin.Portal.showletType.entry">
+        <put-attribute name="title" value="title.widgetManagement" />
+        <put-attribute name="body" value="/WEB-INF/plugins/jpmultisite/apsadmin/jsp/portal/showlet-entry.jsp" />
+    </definition>
+	
+	<!-- content tiles -->
+	
+	<!-- ********* INIZIO Area Gestione Contenuti ********* -->
+
+    <definition extends="multisite.layout.default" name="multisite.admin.jacms.content.intro">
+		<put-attribute name="title" value="title.contentManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/content-intro.jsp" />
+	</definition>
+	
+    <definition extends="multisite.layout.default" name="multisite.admin.jacms.content.list">
+		<put-attribute name="title" value="title.contentManagement" />
+		<put-attribute name="extraResources" value="/WEB-INF/plugins/jacms/apsadmin/jsp/common/layouts/assets-more/content_contentFinding.jsp" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jpmultisite/apsadmin/jsp/content/contentFinding.jsp" />
+	</definition>
+	
+	<definition extends="multisite.layout.default" name="multisite.admin.jacms.content.trash">
+		<put-attribute name="title" value="title.contentManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jpmultisite/apsadmin/jsp/content/trashContent.jsp" />
+	</definition>
+	
+	<definition extends="multisite.layout.default" name="multisite.admin.jacms.content.inspect">
+		<put-attribute name="title" value="title.contentManagement" />
+		<put-attribute name="extraResources" value="/WEB-INF/plugins/jacms/apsadmin/jsp/common/layouts/assets-more/content.jsp" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jpmultisite/apsadmin/jsp/content/contentDetails.jsp" />
+	</definition>
+	
+	<definition extends="multisite.layout.default" name="multisite.admin.jacms.content.entry">
+		<put-attribute name="title" value="title.contentManagement" />
+		<put-attribute name="extraResources" value="/WEB-INF/plugins/jacms/apsadmin/jsp/common/layouts/assets-more/content.jsp" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jpmultisite/apsadmin/jsp/content/entryContent.jsp" />
+	</definition>
+	
+	<definition extends="multisite.layout.default" name="multisite.admin.jacms.content.references">
+		<put-attribute name="title" value="title.contentManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jpmultisite/apsadmin/jsp/content/contentReferences.jsp" />
+	</definition>
+
+	<!-- *** Inizio Area Gestione Risorse Contenuti *** -->
+	<definition extends="multisite.layout.default" name="multisite.admin.jacms.content.findResource.Image">
+		<put-attribute name="title" value="title.contentManagement" />
+		<put-attribute name="extraResources" value="/WEB-INF/plugins/jacms/apsadmin/jsp/common/layouts/assets-more/resource.jsp" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jpmultisite/apsadmin/jsp/resource/imageArchive.jsp" />
+	</definition>
+	<definition extends="multisite.layout.default" name="multisite.admin.jacms.content.findResource.Attach">
+		<put-attribute name="title" value="title.contentManagement" />
+		<put-attribute name="extraResources" value="/WEB-INF/plugins/jacms/apsadmin/jsp/common/layouts/assets-more/resource.jsp" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/resource/attachArchive.jsp" />
+	</definition>
+	<!-- *** Fine Area Gestione Risorse Contenuti *** -->
+
+	<!-- *** Inizio Area Gestione LINK *** -->
+	<definition extends="multisite.layout.default" name="multisite.admin.jacms.content.chooseLinkType">
+		<put-attribute name="title" value="title.contentManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/modules/include/linkAttribute/chooseLink.jsp" />
+	</definition>
+	<definition extends="multisite.layout.default" name="multisite.admin.jacms.content.link.configUrlLinkType">
+		<put-attribute name="title" value="title.contentManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/modules/include/linkAttribute/configUrlLinkType.jsp" />
+	</definition>
+	<definition extends="multisite.layout.default" name="multisite.admin.jacms.content.link.configPageLinkType">
+		<put-attribute name="title" value="title.contentManagement" />
+		<put-attribute name="extraResources" value="/WEB-INF/plugins/jacms/apsadmin/jsp/common/layouts/assets-more/pageTree.jsp" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/modules/include/linkAttribute/configPageLinkType.jsp" />
+	</definition>
+	<definition extends="multisite.layout.default" name="multisite.admin.jacms.content.link.configContentLinkType">
+		<put-attribute name="title" value="title.contentManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/modules/include/linkAttribute/configContentLinkType.jsp" />
+	</definition>
+	<!-- *** Fine Area Gestione LINK *** -->
+
+    <!-- ********* FINE Area Gestione Contenuti ********* -->
+
+    <!-- ********* INIZIO Area Gestione Modelli di Contenuto ********* -->
+    <definition extends="multisite.layout.default" name="multisite.admin.jacms.contentModel.list">
+		<put-attribute name="title" value="title.contentModels" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/model/modelFinding.jsp" />
+	</definition>
+    <definition extends="multisite.layout.default" name="multisite.admin.jacms.contentModel.entry">
+		<put-attribute name="title" value="title.contentModels" />
+		<put-attribute name="extraResources" value="/WEB-INF/plugins/jacms/apsadmin/jsp/common/layouts/assets-more/content_entryModel.jsp" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/model/entryModel.jsp" />
+	</definition>
+    <definition extends="multisite.layout.default" name="multisite.admin.jacms.contentModel.reference">
+		<put-attribute name="title" value="title.contentModels" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/model/modelReferences.jsp" />
+	</definition>
+    <definition extends="multisite.layout.default" name="multisite.admin.jacms.contentModel.trash">
+		<put-attribute name="title" value="title.contentModels" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/model/trashModel.jsp" />
+	</definition>
+
+    <!-- ********* INIZIO Area Gestione Modelli di Contenuto ********* -->
+
+    <!-- ********* INIZIO Area Gestione Risorse ********* -->
+
+    <definition extends="multisite.layout.default" name="multisite.admin.jacms.resource.Image.list">
+		<put-attribute name="title" value="title.resourceManagement" />
+		<put-attribute name="extraResources" value="/WEB-INF/plugins/jacms/apsadmin/jsp/common/layouts/assets-more/resource.jsp" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jpmultisite/apsadmin/jsp/resource/imageArchive.jsp" />
+	</definition>
+	<definition extends="multisite.layout.default" name="multisite.admin.jacms.resource.Attach.list">
+		<put-attribute name="title" value="title.resourceManagement" />
+		<put-attribute name="extraResources" value="/WEB-INF/plugins/jacms/apsadmin/jsp/common/layouts/assets-more/resource.jsp" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/resource/attachArchive.jsp" />
+	</definition>
+	<definition extends="multisite.layout.default" name="multisite.admin.jacms.resource.entry">
+		<put-attribute name="title" value="title.resourceManagement" />
+		<put-attribute name="extraResources" value="/WEB-INF/plugins/jacms/apsadmin/jsp/common/layouts/assets-more/resource.jsp" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jpmultisite/apsadmin/jsp/resource/entryResource.jsp" />
+	</definition>
+	<definition extends="multisite.layout.default" name="multisite.admin.jacms.resource.references">
+		<put-attribute name="title" value="title.resourceManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/resource/resourceReferences.jsp" />
+	</definition>
+	<definition extends="multisite.layout.default" name="multisite.admin.jacms.resource.trash">
+		<put-attribute name="title" value="title.resourceManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/resource/trashResource.jsp" />
+	</definition>
+
+	<definition extends="multisite.layout.default" name="multisite.admin.jacms.resource.porting22.intro">
+		<put-attribute name="title" value="title.resourceManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/resource/introPorting22.jsp" />
+	</definition>
+	<definition extends="multisite.layout.default" name="multisite.admin.jacms.resource.porting22.execute">
+		<put-attribute name="title" value="title.resourceManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/resource/executePorting22.jsp" />
+	</definition>
+
+	<!-- ********* FINE Area Gestione Risorse ********* -->
+
+    <!-- ********* INIZIO Area Amministrazione Contenuti ********* -->
+
+    <definition extends="multisite.layout.default" name="multisite.admin.jacms.content.contentIndexFunctions">
+		<put-attribute name="title" value="menu.reload.contents" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/contentIndexFunctions.jsp" />
+	</definition>
+
+	<!-- ********* FINE Area Amministrazione Contenuti ********* -->
+
+	<!-- INIZIO Area Gestione Configurazione Widget Speciali -->
+
+	<definition extends="multisite.layout.default" name="multisite.admin.jacms.page.widget.contentViewer.config">
+		<put-attribute name="title" value="title.pageManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jpmultisite/apsadmin/jsp/portal/specialwidget/contentViewer/configContentViewer.jsp" />
+	</definition>
+	<definition extends="multisite.layout.default" name="multisite.admin.jacms.page.widget.contentListViewer.config">
+		<put-attribute name="title" value="title.pageManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/portal/specialwidget/contentListViewer/configContentListViewer.jsp" />
+	</definition>
+	<definition extends="multisite.layout.default" name="multisite.admin.jacms.page.widget.contentListViewer.config.userfilter.category">
+		<put-attribute name="title" value="title.pageManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/portal/specialwidget/contentListViewer/userFilter/entryCategory.jsp" />
+	</definition>
+	<definition extends="multisite.layout.default" name="multisite.admin.jacms.page.widget.contentViewer.searchContents">
+		<put-attribute name="title" value="title.pageManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jpmultisite/apsadmin/jsp/portal/specialwidget/contentViewer/contentFinding.jsp" />
+	</definition>
+	<definition extends="multisite.layout.default" name="multisite.admin.jacms.page.widget.contentListViewer.entryFilter">
+		<put-attribute name="title" value="title.pageManagement" />
+		<put-attribute name="extraResources" value="/WEB-INF/apsadmin/jsp/common/layouts/assets-more/entryFilter.jsp" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/portal/specialwidget/contentListViewer/entryFilter.jsp" />
+	</definition>
+
+	<!-- FINE Area Gestione Configurazione Widget Speciali -->
+
+	<!-- ********* INIZIO Area Gestione Entità ********* -->
+	<definition extends="multisite.layout.default" name="admin.jacms.entityManagement.viewEntityTypes">
+		<put-attribute name="title" value="title.entityManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/entity/entity-type-list.jsp" />
+	</definition>
+
+    <definition extends="multisite.layout.default" name="admin.jacms.entityManagement.viewEntityType">
+		<put-attribute name="title" value="title.entityManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/entity/content-type-entry.jsp" />
+	</definition>
+    <!-- ********* FINE Area Gestione Entità ********* -->
+	
+	
+	<!-- end content tiles --> 
+	
+	<!-- shared content for multisites -->
+	
+	<definition extends="multisite.layout.default" name="jpmultisite.admin.SharedContent.list">
+		<put-attribute name="title" value="jpsharedcontent.title.sharedContentManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jpmultisite/apsadmin/jsp/sharedcontent/sharedContent-list.jsp" />
+		<put-attribute name="extraResources" value="/WEB-INF/plugins/jpmultisite/apsadmin/jsp/common/layouts/assets-more/sharedContent-list-extras.jsp"/>
+	</definition>
+    <definition extends="multisite.layout.default" name="jpmultisite.admin.SharedContent.entry">
+		<put-attribute name="title" value="jpsharedcontent.title.sharedContentManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jpmultisite/apsadmin/jsp/sharedcontent/sharedContent-entry.jsp" />
+		<put-attribute name="extraResources" value="/WEB-INF/plugins/jpmultisite/apsadmin/jsp/common/layouts/assets-more/sharedContent-entry-extras.jsp"/>
+	</definition>
+    <definition extends="multisite.layout.default" name="jpmultisite.admin.SharedContent.trash">
+		<put-attribute name="title" value="jpsharedcontent.title.sharedContentManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jpmultisite/apsadmin/jsp/sharedcontent/sharedContent-trash.jsp" />
+		<put-attribute name="extraResources" value="/WEB-INF/plugins/jpmultisite/apsadmin/jsp/common/layouts/assets-more/sharedContent-trash-extras.jsp"/>
+	</definition>
+
+    <definition extends="multisite.layout.default" name="jpmultisite.admin.page.widget.SharedContent.entry">
+		<put-attribute name="title" value="jpsharedcontent.title.sharedContentManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jpmultisite/apsadmin/jsp/portal/specialwidget/sharedcontent/sharedContent-config.jsp" />
+	</definition>
+	
+	<!-- end shared content for multisites-->
+	
+	
+	
+	<!-- END BACKOFFICE TILES -->
+	
+	
+    <definition extends="multisite.layout.default" name="multisite.admin.userNotAllowedMessage">
+        <put-attribute name="title" value="document.title.main" />
+        <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/common/userNotAllowedMessage.jsp" />
+    </definition>
+	
+	<!-- ADMIN -->
+    <definition extends="multisite.layout.default" name="multisite.admin.BaseAdmin.settings">
+        <put-attribute name="title" value="title.generalSettings.settings" />
+        <put-attribute name="body" value="/WEB-INF/plugins/jpmultisite/apsadmin/jsp/admin/settings.jsp" />
+    </definition>
+
+    <definition extends="multisite.layout.default" name="multisite.admin.BaseAdmin.reloadConfigResult">
+        <put-attribute name="title" value="menu.reload.config" />
+        <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/admin/reloadConfig.jsp" />
+    </definition>
+    <definition extends="multisite.layout.default" name="multisite.admin.BaseAdmin.reloadEntitiesReferencesResult">
+        <put-attribute name="title" value="menu.reload.entities" />
+        <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/entity/entity-type-references-reload-ok.jsp" />
+    </definition>
+	
+	
+	<!-- USER -->
+	
+	<!-- ********* INIZIO Area Gestione Utenti ********* -->
+
+    <definition extends="multisite.layout.default" name="multisite.admin.User.intro">
+        <put-attribute name="title" value="title.userManagement" />
+        <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/user/user-intro.jsp" />
+    </definition>
+	
+    <definition extends="multisite.layout.default" name="multisite.admin.User.list">
+        <put-attribute name="title" value="title.userManagement" />
+        <put-attribute name="extraResources" value="/WEB-INF/apsadmin/jsp/common/layouts/assets-more/user-list.jsp" />
+        <put-attribute name="body" value="/WEB-INF/plugins/jpmultisite/apsadmin/jsp/user/user-list.jsp" />
+    </definition>
+	
+    <definition extends="multisite.layout.default" name="multisite.admin.User.entry">
+        <put-attribute name="title" value="title.userManagement" />
+        <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/user/entryUser.jsp" />
+    </definition>
+	
+    <definition extends="multisite.layout.default" name="multisite.admin.User.trash">
+        <put-attribute name="title" value="title.userManagement" />
+        <put-attribute name="body" value="/WEB-INF/plugins/jpmultisite/apsadmin/jsp/user/trashUser.jsp" />
+    </definition>
+	
+    <definition extends="layout.settings" name="jpmultisite.admin.UserAuthorization.entry">
+        <put-attribute name="title" value="title.userManagement" />
+        <put-attribute name="body" value="/WEB-INF/plugins/jpmultisite/apsadmin/jsp/user/user-authorizations.jsp" />
+    </definition>
+	<!--
+    <definition extends="multisite.layout.default" name="multisite.admin.UserAuth.entry">
+        <put-attribute name="title" value="title.userManagement" />
+        <put-attribute name="body" value="/WEB-INF/plugins/jpmultisite/apsadmin/jsp/user/configUserAuthorities.jsp" />
+    </definition>
+	-->
+	<definition extends="multisite.layout.default" name="multisite.admin.UserProfile.view">
+        <put-attribute name="title" value="title.userManagement" />
+        <put-attribute name="body" value="/WEB-INF/plugins/jpmultisite/apsadmin/jsp/user/profile-view.jsp" />
+    </definition>
+	
+    <definition extends="multisite.layout.default" name="multisite.admin.UserProfile.chooseType">
+        <put-attribute name="title" value="title.userManagement" />
+        <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/user/profile-chooseType.jsp" />
+    </definition>
+	
+    <definition extends="multisite.layout.default" name="multisite.admin.UserProfile.entry">
+        <put-attribute name="title" value="title.userManagement" />
+        <put-attribute name="extraResources" value="/WEB-INF/apsadmin/jsp/common/layouts/assets-more/profile-entry.jsp" />
+        <put-attribute name="body" value="/WEB-INF/plugins/jpmultisite/apsadmin/jsp/user/profile-entry.jsp" />
+    </definition>
+	
+	<definition extends="multisite.layout.default" name="multisite.admin.common.profile.entry">
+        <put-attribute name="title" value="title.userManagement" />
+        <put-attribute name="extraResources" value="/WEB-INF/apsadmin/jsp/common/layouts/assets-more/profile-entry.jsp" />
+        <put-attribute name="body" value="/WEB-INF/plugins/jpmultisite/apsadmin/jsp/common/userProfile-entry.jsp" />
+    </definition>
+    <!-- ********* FINE Area Gestione Utenti ********* -->
+	
+	
+
+</tiles-definitions>
+
+

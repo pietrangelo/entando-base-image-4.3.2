@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC 
+	"-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+	<definition extends="main.layout"
+		name="admin.jppentaho5.simpleReportConfig">
+		<put-attribute name="title" value="title.pageManagement" />
+		<put-attribute name="body"
+			value="/WEB-INF/plugins/jppentaho/apsadmin/jsp/portal/specialwidget/report/legacyReportConfig.jsp" />
+	</definition>
+	
+	<definition extends="main.layout"
+		name="admin.jppentaho5.reportConfig">
+		<put-attribute name="title" value="title.pageManagement" />
+		<put-attribute name="body"
+			value="/WEB-INF/plugins/jppentaho/apsadmin/jsp/portal/specialwidget/report/reportConfig.jsp" />
+	</definition>
+	
+	<definition extends="main.layout"
+		name="admin.jppentaho5.downloadReportConfig">
+		<put-attribute name="title" value="title.pageManagement" />
+		<put-attribute name="body"
+			value="/WEB-INF/plugins/jppentaho/apsadmin/jsp/portal/specialwidget/report/downloadReportConfig.jsp" />
+	</definition>
+	
+	<definition extends="main.layout"
+		name="admin.jppentaho5.formReportConfig">
+		<put-attribute name="title" value="title.pageManagement" />
+		<put-attribute name="body"
+			value="/WEB-INF/plugins/jppentaho/apsadmin/jsp/portal/specialwidget/report/formReportConfig.jsp" />
+	</definition>
+	
+	<definition extends="main.layout"
+		name="admin.jppentaho5.displayReportConfig">
+		<put-attribute name="title" value="title.pageManagement" />
+		<put-attribute name="body"
+			value="/WEB-INF/plugins/jppentaho/apsadmin/jsp/portal/specialwidget/report/displayReportConfig.jsp" />
+	</definition>
+	
+	
+	<!-- START - Pentaho configuration -->
+	
+	<definition extends="main.layout" name="admin.jppentaho5.Config.entry">
+		<put-attribute name="title" value="title.jppentaho5.config" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jppentaho/apsadmin/jsp/config/entryConfig.jsp" />
+	</definition>
+	<definition extends="main.layout" name="admin.jppentaho5.Config.savedConfirmation">
+		<put-attribute name="title" value="title.jppentaho5.config" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jppentaho/apsadmin/jsp/config/savedConfirmation.jsp" />
+	</definition>
+	
+	<!-- END - Pentaho configuration -->
+
+</tiles-definitions>

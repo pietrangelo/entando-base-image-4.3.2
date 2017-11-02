@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	
+    <package name="jpsugarcrm_do/jpsugarcrm" namespace="/do/jpsugarcrm" extends="entando-front-default">
+    	
+    	<action name="introRedirect" class="jpsugarcrmSugarRedirectAction">
+    		<result>/WEB-INF/plugins/jpsugarcrm/aps/jsp/internalservlet/redirect_intro.jsp</result>
+        	<interceptor-ref name="entandoFrontEndFreeStack" />
+        </action>
+        
+    	<action name="executeRedirect" class="jpsugarcrmSugarRedirectAction" method="executeRedirect">
+    		<result name="failure">/WEB-INF/plugins/jpsugarcrm/aps/jsp/internalservlet/redirect_failure.jsp</result>
+        	<result type="redirect">${sugarRedirectUrl}</result>
+        	<interceptor-ref name="entandoFrontEndFreeStack" />
+        </action>
+        
+    </package>
+    
+</struts>

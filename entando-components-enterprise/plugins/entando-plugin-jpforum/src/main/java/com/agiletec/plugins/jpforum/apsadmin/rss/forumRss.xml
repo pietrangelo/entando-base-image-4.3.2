@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	
+	<package name="jpforum_do/jpforum/Rss" namespace="/do/jpforum/Rss" extends="entando-default">
+		
+		<result-types>
+			<result-type name="rss" class="com.agiletec.plugins.jpforum.apsadmin.rss.RomeResult"/>
+		</result-types>
+		
+		<action name="showSection" class="jpforumRssAction" method="showSection">
+			<result type="rss">
+				<!-- Required: the expression to find the SyndFeed object on the stack -->
+				<param name="feedName">syndFeed</param>
+				<!-- Optional: the encoding type -->
+				<param name="encoding">UTF-8</param>
+				<!-- Optional: mime type -->
+				<param name="mimeType">text/xml</param>
+			</result>
+		</action>
+		
+		<action name="showThread" class="jpforumRssAction" method="showThread">
+			<result type="rss">
+				<!-- Required: the expression to find the SyndFeed object on the stack -->
+				<param name="feedName">syndFeed</param>
+				<!-- Optional: the encoding type -->
+				<param name="encoding">UTF-8</param>
+				<!-- Optional: mime type -->
+				<param name="mimeType">text/xml</param>
+			</result>
+		</action>
+		
+	</package>
+	
+</struts>

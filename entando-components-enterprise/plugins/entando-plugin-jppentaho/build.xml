@@ -1,0 +1,32 @@
+<project name="entando-demo" default="Install-licensed" basedir=".">
+	<description>Tasks file</description>
+	
+	<!-- Properties definitions for Windows machines START -->
+	<!--
+	<property name="ant-contrib.jar.path" location="C:\ant-contrib\ant-contrib.jar" />
+	-->
+	<!-- Properties definitions for Windows machines END -->
+	
+	<!-- Properties definitions for *nix machines START -->
+	<property name="ant-contrib.jar.path" location="/usr/share/java/ant-contrib.jar" />	
+	<!-- Properties definitions for *nix machines END -->
+	
+	<taskdef resource="net/sf/antcontrib/antcontrib.properties">
+	  <classpath>
+	    <pathelement location="${ant-contrib.jar.path}"/>
+	  </classpath>
+	</taskdef>
+	
+	<target name="Install-licensed" description="Install the licensed Plugin">
+		<echo message="========================================================================" />
+		<echo message=".:[Maven] :: Install the licensed Plugin..." />
+		<echo message="========================================================================" />
+		<exec executable="mvn" dir="${basedir}">
+			<env key="MAVEN_WORKING_MODE" value="licensed"/>
+			<arg value="clean"/>
+			<arg value="install"/>
+			<arg line="-DskipTests"/>
+		</exec>
+	</target>
+	
+</project>

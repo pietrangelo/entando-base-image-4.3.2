@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xmlns:context="http://www.springframework.org/schema/context"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+
+
+	<bean id="jpjasperRedirectAction" scope="prototype" 
+			class="org.entando.entando.plugins.jpjasper.aps.internalservlet.JasperRedirectAction" parent="abstractBaseAction">
+		<property name="jasperServerManager" ref="jpjasperServerManager" />
+	</bean>
+
+	<bean id="jpjasperFrontReportAction" scope="prototype" 
+			class="org.entando.entando.plugins.jpjasper.aps.internalservlet.ViewReportAction" parent="abstractBaseAction">
+		<property name="jasperServerManager" ref="jpjasperServerManager" />
+		<property name="configService" ref="BaseConfigManager" />
+	</bean>
+
+	<bean id="jpjasperFrontReportDownloadAction" scope="prototype" 
+			class="org.entando.entando.plugins.jpjasper.aps.internalservlet.JasperDownloadAction" parent="abstractBaseAction">
+		<property name="jasperServerManager" ref="jpjasperServerManager" />
+		<property name="configService" ref="BaseConfigManager" />
+	</bean>
+
+</beans>

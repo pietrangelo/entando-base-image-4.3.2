@@ -1,0 +1,114 @@
+****************************************************************
+
+						Edo Report		
+								
+****************************************************************
+
+=== Command Line
+
+[Notify, payload:string-r, senddate:date-r, attempts:int, sent:int-1, sender:string-50, recipient:string-50]
+
+
+
+=== List of geneated files that MUST be merged:
+src\main\resources\change_me-jpnotify-notify-struts-plugin.xml
+src\main\resources\component\plugins\jpnotify\change_me-component.xml
+src\main\resources\sql\plugins\jpnotify\change_me-port_data_production.sql
+src\main\resources\sql\plugins\jpnotify\change_me-serv_data_production.sql
+src\test\resources\sql\plugins\jpnotify\change_me-port_data_test.sql
+src\test\resources\sql\plugins\jpnotify\change_me-serv_data_test.sql
+----------------------------------------------------------------
+Total files: 6
+Total lines: 448
+
+
+=== List of geneated files:
+src\main\java\org\entando\entando\plugins\jpnotify\aps\internalservlet\notify\NotifyFinderFrontEndAction.java
+src\main\java\org\entando\entando\plugins\jpnotify\aps\internalservlet\notify\NotifyFrontEndAction.java
+src\main\java\org\entando\entando\plugins\jpnotify\aps\internalservlet\notify\notifyFront.xml
+src\main\java\org\entando\entando\plugins\jpnotify\aps\system\init\servdb\Notify.java
+src\main\java\org\entando\entando\plugins\jpnotify\aps\system\services\notify\INotifyDAO.java
+src\main\java\org\entando\entando\plugins\jpnotify\aps\system\services\notify\INotifyManager.java
+src\main\java\org\entando\entando\plugins\jpnotify\aps\system\services\notify\Notify.java
+src\main\java\org\entando\entando\plugins\jpnotify\aps\system\services\notify\NotifyDAO.java
+src\main\java\org\entando\entando\plugins\jpnotify\aps\system\services\notify\NotifyManager.java
+src\main\java\org\entando\entando\plugins\jpnotify\aps\system\services\notify\api\JAXBNotify.java
+src\main\java\org\entando\entando\plugins\jpnotify\aps\system\services\notify\api\NotifyListResponse.java
+src\main\java\org\entando\entando\plugins\jpnotify\aps\system\services\notify\api\NotifyListResponseResult.java
+src\main\java\org\entando\entando\plugins\jpnotify\aps\system\services\notify\api\NotifyResponse.java
+src\main\java\org\entando\entando\plugins\jpnotify\aps\system\services\notify\api\NotifyResponseResult.java
+src\main\java\org\entando\entando\plugins\jpnotify\aps\system\services\notify\event\NotifyChangedEvent.java
+src\main\java\org\entando\entando\plugins\jpnotify\aps\system\services\notify\event\NotifyChangedObserver.java
+src\main\java\org\entando\entando\plugins\jpnotify\aps\tags\NotifyListTag.java
+src\main\java\org\entando\entando\plugins\jpnotify\aps\tags\NotifyTag.java
+src\main\java\org\entando\entando\plugins\jpnotify\apsadmin\global-messages_en.properties
+src\main\java\org\entando\entando\plugins\jpnotify\apsadmin\global-messages_it.properties
+src\main\java\org\entando\entando\plugins\jpnotify\apsadmin\notify\NotifyAction-conversion.properties
+src\main\java\org\entando\entando\plugins\jpnotify\apsadmin\notify\NotifyAction-validation.xml
+src\main\java\org\entando\entando\plugins\jpnotify\apsadmin\notify\NotifyAction.java
+src\main\java\org\entando\entando\plugins\jpnotify\apsadmin\notify\NotifyFinderAction-conversion.properties
+src\main\java\org\entando\entando\plugins\jpnotify\apsadmin\notify\NotifyFinderAction.java
+src\main\java\org\entando\entando\plugins\jpnotify\apsadmin\notify\notify.xml
+src\main\java\org\entando\entando\plugins\jpnotify\apsadmin\notify\package_en.properties
+src\main\java\org\entando\entando\plugins\jpnotify\apsadmin\notify\package_it.properties
+src\main\java\org\entando\entando\plugins\jpnotify\apsadmin\portal\specialwidget\notify\NotifyConfigAction.java
+src\main\java\org\entando\entando\plugins\jpnotify\apsadmin\portal\specialwidget\notify\notifySpecialWidget.xml
+src\main\java\org\entando\entando\plugins\jpnotify\apsadmin\portal\specialwidget\notify\package_en.properties
+src\main\java\org\entando\entando\plugins\jpnotify\apsadmin\portal\specialwidget\notify\package_it.properties
+src\main\resources\api\plugins\jpnotify\aps\apiMethods.xml
+src\main\resources\shortcuts\plugins\jpnotify\apsadmin\shortcuts.xml
+src\main\resources\spring\plugins\jpnotify\aps\managers\jpnotifyNotifyManagersConfig.xml
+src\main\resources\spring\plugins\jpnotify\apsadmin\jpnotifyNotifyActionsConfig.xml
+src\main\tld\plugins\jpnotify\jpnotify-core.tld
+src\main\webapp\WEB-INF\plugins\jpnotify\aps\jsp\internalservlet\notify\frontend-notify-entry.jsp
+src\main\webapp\WEB-INF\plugins\jpnotify\aps\jsp\internalservlet\notify\frontend-notify-error.jsp
+src\main\webapp\WEB-INF\plugins\jpnotify\aps\jsp\internalservlet\notify\frontend-notify-list.jsp
+src\main\webapp\WEB-INF\plugins\jpnotify\aps\jsp\internalservlet\notify\frontend-notify-trash.jsp
+src\main\webapp\WEB-INF\plugins\jpnotify\aps\jsp\widgets\jpnotifyNotify.jsp
+src\main\webapp\WEB-INF\plugins\jpnotify\apsadmin\jpnotify-tiles.xml
+src\main\webapp\WEB-INF\plugins\jpnotify\apsadmin\jsp\common\layouts\assets-more\notify-entry-extras.jsp
+src\main\webapp\WEB-INF\plugins\jpnotify\apsadmin\jsp\common\layouts\assets-more\notify-list-extras.jsp
+src\main\webapp\WEB-INF\plugins\jpnotify\apsadmin\jsp\common\layouts\assets-more\notify-trash-extras.jsp
+src\main\webapp\WEB-INF\plugins\jpnotify\apsadmin\jsp\common\layouts\subMenu.jsp
+src\main\webapp\WEB-INF\plugins\jpnotify\apsadmin\jsp\notify\notify-entry.jsp
+src\main\webapp\WEB-INF\plugins\jpnotify\apsadmin\jsp\notify\notify-list.jsp
+src\main\webapp\WEB-INF\plugins\jpnotify\apsadmin\jsp\notify\notify-trash.jsp
+src\main\webapp\WEB-INF\plugins\jpnotify\apsadmin\jsp\portal\specialwidget\notify\notify-config.jsp
+src\test\java\org\entando\entando\plugins\jpnotify\JpnotifyConfigTestUtils.java
+src\test\java\org\entando\entando\plugins\jpnotify\aps\JpnotifyBaseTestCase.java
+src\test\java\org\entando\entando\plugins\jpnotify\aps\system\services\TestNotifyManager.java
+src\test\java\org\entando\entando\plugins\jpnotify\apsadmin\JpnotifyApsAdminBaseTestCase.java
+src\test\java\org\entando\entando\plugins\jpnotify\apsadmin\notify\TestNotifyAction.java
+src\test\java\org\entando\entando\plugins\jpnotify\apsadmin\notify\TestNotifyFinderAction.java
+----------------------------------------------------------------
+Total files: 57
+Total lines: 3153
+
+
+
+
+
+=== Revert *port inserts
+
+DELETE FROM localstrings where keycode = 'jpnotify_NOTIFY_ID'; 
+DELETE FROM localstrings where keycode = 'jpnotify_NOTIFY_PAYLOAD'; 
+DELETE FROM localstrings where keycode = 'jpnotify_NOTIFY_SENDDATE_START'; 
+DELETE FROM localstrings where keycode = 'jpnotify_NOTIFY_SENDDATE_END'; 
+DELETE FROM localstrings where keycode = 'jpnotify_NOTIFY_SENDDATE'; 
+DELETE FROM localstrings where keycode = 'jpnotify_NOTIFY_ATTEMPTS'; 
+DELETE FROM localstrings where keycode = 'jpnotify_NOTIFY_SENT'; 
+DELETE FROM localstrings where keycode = 'jpnotify_NOTIFY_SENDER'; 
+DELETE FROM localstrings where keycode = 'jpnotify_NOTIFY_RECIPIENT'; 
+DELETE FROM localstrings where keycode = 'jpnotify_NOTIFY_ACTIONS'; 
+DELETE FROM localstrings where keycode = 'jpnotify_NOTIFY_NEW'; 
+DELETE FROM localstrings where keycode = 'jpnotify_NOTIFY_EDIT'; 
+DELETE FROM localstrings where keycode = 'jpnotify_NOTIFY_TRASH'; 
+DELETE FROM localstrings where keycode = 'jpnotify_NOTIFY_TRASH_CONFIRM'; 
+DELETE FROM localstrings where keycode = 'jpnotify_NOTIFY_SEARCH_NOTIFY'; 
+
+
+DELETE FROM widgetcatalog where code = 'jpnotifyNotify_list_form';
+DELETE FROM widgetcatalog where code = 'jpnotifyNotify';
+
+
+

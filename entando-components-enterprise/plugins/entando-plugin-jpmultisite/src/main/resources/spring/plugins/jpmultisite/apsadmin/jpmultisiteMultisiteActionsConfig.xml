@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:context="http://www.springframework.org/schema/context"
+		xmlns:aop="http://www.springframework.org/schema/aop" 
+        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
+	
+	<bean id="jpmultisiteMultisitePluginSubMenu" class="com.agiletec.apsadmin.system.plugin.PluginSubMenuContainer" >
+		<property name="subMenuFilePath"><value>/WEB-INF/plugins/jpmultisite/apsadmin/jsp/common/layouts/subMenu.jsp</value></property>
+	</bean>
+	
+	<bean id="jpmultisiteMultisiteFinderAction" scope="prototype" 
+			class="org.entando.entando.plugins.jpmultisite.apsadmin.multisite.MultisiteFinderAction" 
+			parent="abstractBaseAction" >
+		<property name="multisiteManager" ref="jpmultisiteMultisiteManager" />
+	</bean>
+	
+	<bean id="jpmultisiteMultisiteAction" scope="prototype"
+			class="org.entando.entando.plugins.jpmultisite.apsadmin.multisite.MultisiteAction" 
+			parent="abstractBaseAction" >
+		<property name="helper" ref="categoryActionHelper" />
+		<property name="categoryManager" ref="CategoryManager"/>
+		<property name="multisiteManager" ref="jpmultisiteMultisiteManager" />
+		<property name="langManager" ref="LangManager" />
+		<property name="userManager" ref="UserManager" />
+		<property name="storageManager" ref="StorageManager" />
+	</bean>
+	
+	<bean id="jpmultisiteMultisiteConfigAction" class="org.entando.entando.plugins.jpmultisite.apsadmin.portal.specialwidget.multisite.MultisiteConfigAction"
+		parent="simpleWidgetAction" scope="prototype">
+		<property name="multisiteManager" ref="jpmultisiteMultisiteManager" />
+	</bean>
+	
+	<!-- INTERNAL_SERVLET -->
+	<bean id="jpmultisiteMultisiteFinderFrontEndAction" scope="prototype" 
+			class="org.entando.entando.plugins.jpmultisite.aps.internalservlet.multisite.MultisiteFinderFrontEndAction" 
+			parent="abstractBaseAction" >
+		<property name="multisiteManager" ref="jpmultisiteMultisiteManager" />
+	</bean>
+	
+	<bean id="jpmultisiteMultisiteFrontEndAction" scope="prototype" 
+			class="org.entando.entando.plugins.jpmultisite.aps.internalservlet.multisite.MultisiteFrontEndAction" 
+			parent="abstractBaseAction" >
+		<property name="multisiteManager" ref="jpmultisiteMultisiteManager" />
+	</bean>
+	
+	<!-- COMMONS ACTIONS -->
+	<bean id="jpmultisiteCategoryAction" scope="prototype" 
+			class="org.entando.entando.plugins.jpmultisite.apsadmin.category.MultisiteCategoryAction" parent="categoryAction" >
+		<property name="categoryManager" ref="CategoryManager" />
+		<property name="treeHelper" ref="categoryActionHelper" />
+		<property name="multisiteManager" ref="jpmultisiteMultisiteManager" />
+	</bean>
+	
+	<bean id="jpmultisiteGroupAction" scope="prototype" 
+			class="org.entando.entando.plugins.jpmultisite.apsadmin.user.group.MultisiteGroupAction" parent="abstractBaseAction" >
+		<property name="helper" ref="groupActionHelper" />
+		<property name="groupManager" ref="GroupManager" />
+	</bean>
+	
+	<bean id="widgetsViewerAction" scope="prototype" 
+			class="org.entando.entando.plugins.jpmultisite.apsadmin.portal.MultisiteWidgetsViewerAction" parent="abstractPortalAction">
+		<property name="multisiteWidgetTypeManager" ref="jpMultisiteWidgetTypeManager" />
+	</bean>
+	
+	<bean id="pageFinderAction" scope="prototype"
+			class="org.entando.entando.plugins.jpmultisite.apsadmin.portal.MultisitePageFinderAction" parent="abstractPortalAction">
+		<property name="multisiteWidgetTypeManager" ref="jpMultisiteWidgetTypeManager" />
+	</bean>
+	
+	<bean id="pageAction" scope="prototype" 
+			class="org.entando.entando.plugins.jpmultisite.apsadmin.portal.MultisitePageAction" parent="abstractPortalAction">
+		<property name="pageModelManager" ref="PageModelManager" />
+		<property name="contentManager" ref="jacmsContentManager" />
+		<property name="helper" ref="pageActionHelper" />
+		<property name="viewerShowletCode"><value>${showlets.viewer}</value></property>
+		<property name="allowedMimeTypesCSV"><value>${page.mimeType.allowedValues}</value></property>
+		<property name="allowedCharsetsCSV"><value>${page.charset.allowedValues}</value></property>
+		<property name="multisiteWidgetTypeManager" ref="jpMultisiteWidgetTypeManager" />
+	</bean>
+	
+	<bean id="pageConfigAction" scope="prototype" 
+			class="org.entando.entando.plugins.jpmultisite.apsadmin.portal.MultisitePageConfigAction" parent="abstractPortalAction">
+		<property name="multisiteWidgetTypeManager" ref="jpMultisiteWidgetTypeManager" />
+	</bean>
+	
+	<bean id="jpmultisiteContentFinderAction" scope="prototype" 
+			class="org.entando.entando.plugins.jpmultisite.apsadmin.content.MultisiteContentFinderAction" 
+			parent="jacmsContentFinderAction">
+		<property name="sharedContentManager" ref="jpmultisiteSharedContentManager" />
+	</bean>
+	
+	<bean id="jpmultisiteContentAction" scope="prototype"
+		  class="org.entando.entando.plugins.jpmultisite.apsadmin.content.MultisiteContentAction" parent="jacmsContentAction">
+		<property name="contentManager" ref="jpmultisiteContentManager"/>
+		<property name="multisiteManager" ref="jpmultisiteMultisiteManager" />
+	</bean>
+	
+	<bean id="jpmultisiteContentCategoryAction" scope="prototype"
+			class="org.entando.entando.plugins.jpmultisite.apsadmin.content.MultisiteContentCategoryAction" 
+			parent="abstractBaseAction">
+		<property name="categoryManager" ref="CategoryManager"/>
+		<property name="contentActionHelper" ref="jacmsContentActionHelper"/>
+		<property name="treeHelper" ref="multisiteCategoryActionHelper"/>
+	</bean>
+	
+	<bean id="jpmultisiteIntroNewContentAction" scope="prototype" 
+		  class="org.entando.entando.plugins.jpmultisite.apsadmin.content.MultisiteIntroNewContentAction" parent="jacmsIntroNewContentAction" >
+		<property name="contentManager" ref="jpmultisiteContentManager"/>
+	</bean>
+	
+	
+	<bean id="multisiteCategoryActionHelper" parent="abstractBaseActionHelper" 
+			class="org.entando.entando.plugins.jpmultisite.apsadmin.category.helper.MultisiteCategoryActionHelper" >
+		<property name="categoryManager" ref="CategoryManager" />
+	</bean>
+	
+	
+	<bean id="jpmultisiteSharedContentFinderAction" scope="prototype" 
+			class="org.entando.entando.plugins.jpmultisite.apsadmin.sharedcontent.SharedContentFinderAction" 
+			parent="jacmsAbstractContentAction" >
+		<property name="sharedContentManager" ref="jpmultisiteSharedContentManager" />
+	</bean>
+
+	<bean id="jpmultisiteSharedContentAction" scope="prototype" 
+			class="org.entando.entando.plugins.jpmultisite.apsadmin.sharedcontent.SharedContentAction" 
+			parent="abstractBaseAction" >
+		<property name="sharedContentManager" ref="jpmultisiteSharedContentManager" />
+	</bean>
+	
+	<!-- end content -->
+
+	<bean id="jpMultisiteWidgetTypeAction" scope="prototype" 
+			class="org.entando.entando.plugins.jpmultisite.apsadmin.portal.MultisiteWidgetTypeAction" parent="widgetTypeAction">
+		<property name="multisiteWidgetTypeManager" ref="jpMultisiteWidgetTypeManager" />
+	</bean>
+	
+	<bean id="jpMultisiteSwitchAction" scope="prototype"
+		  class="org.entando.entando.plugins.jpmultisite.apsadmin.common.MultisiteSwitchAction">
+	</bean>
+	
+	<bean id="jpmultisiteAbstractResourceAction" abstract="true"
+			class="com.agiletec.plugins.jacms.apsadmin.resource.AbstractResourceAction" parent="abstractBaseAction" >
+		<property name="resourceActionHelper" ref="jacmsResourceActionHelper"/>
+		<property name="resourceManager" ref="jpmultisiteResourceManager"/>
+		<property name="categoryManager" ref="CategoryManager"/>
+		<property name="treeHelper" ref="categoryActionHelper"/>
+	</bean>
+	
+	<bean id="jpmultisiteResourceFinderAction" scope="prototype"
+			class="org.entando.entando.plugins.jpmultisite.apsadmin.resource.MultisiteResourceFinderAction"
+			parent="jpmultisiteAbstractResourceAction" >
+		<property name="resourceIconUtil" ref="jacmsResourceIconUtil" />
+		<property name="imageDimensionManager" ref="jacmsImageDimensionReader" />
+	</bean>
+	
+	<bean id="jpmultisiteResourceAction" scope="prototype"
+			class="org.entando.entando.plugins.jpmultisite.apsadmin.resource.MultisiteResourceAction"
+			parent="jpmultisiteAbstractResourceAction" >
+		<property name="groupManager" ref="GroupManager" />
+	</bean>
+	
+	<!--
+	-->
+	<!-- resource end -->
+	
+	<!-- user start -->
+	<bean id="jpmultisiteUserFinderAction" scope="prototype" 
+            class="org.entando.entando.plugins.jpmultisite.apsadmin.user.MultisiteUserFinderAction" 
+            parent="abstractBaseAction" >
+        <property name="userProfileManager" ref="UserProfileManager" />
+        <property name="userManager" ref="UserManager" />
+        <property name="entityActionHelper" ref="entityActionHelper" />
+    </bean>
+	
+	
+	<bean id="jpmultisiteUserAction" scope="prototype" 
+			class="org.entando.entando.plugins.jpmultisite.apsadmin.user.MultisiteUserAction" parent="abstractBaseAction" >
+		<property name="userManager" ref="UserManager" />
+		<property name="userProfileManager" ref="UserProfileManager" />
+	</bean>
+	<!--
+	<bean id="jpmultisiteUserToAuthoritiesAction" scope="prototype" 
+			class="org.entando.entando.plugins.jpmultisite.apsadmin.user.MultisiteUserToAuthoritiesAction" parent="abstractBaseAction" >
+		<property name="userManager" ref="UserManager" />
+		<property name="roleManager" ref="RoleManager" />
+		<property name="groupManager" ref="GroupManager" />
+	</bean>
+	-->
+	<bean id="jpmultisiteUserAuthorizationAction" scope="prototype" 
+			class="org.entando.entando.plugins.jpmultisite.apsadmin.user.MultisiteUserAuthorizationAction" 
+			parent="abstractBaseAction" >
+		<property name="userManager" ref="UserManager" />
+		<property name="roleManager" ref="RoleManager" />
+		<property name="groupManager" ref="GroupManager" />
+	</bean>
+    
+	<!-- user end --> 
+	
+	
+</beans>

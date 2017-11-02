@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+	<definition extends="layout.default" name="jpemailmarketing.admin.Course.list">
+		<put-attribute name="title" value="jpemailmarketing.title.courseManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jpemailmarketing/apsadmin/jsp/course/course-list.jsp" />
+		<put-attribute name="extraResources" value="/WEB-INF/plugins/jpemailmarketing/apsadmin/jsp/common/layouts/assets-more/course-list-extras.jsp" />
+	</definition>
+	<definition extends="layout.default" name="jpemailmarketing.admin.Course.prospect">
+		<put-attribute name="title" value="jpemailmarketing.title.courseManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jpemailmarketing/apsadmin/jsp/course/course-prospect.jsp" />
+		<put-attribute name="extraResources" value="/WEB-INF/plugins/jpemailmarketing/apsadmin/jsp/common/layouts/assets-more/course-prospect-extras.jsp" />
+	</definition>
+	<definition extends="layout.default" name="jpemailmarketing.admin.Course.configure">
+		<put-attribute name="title" value="jpemailmarketing.title.configure" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jpemailmarketing/apsadmin/jsp/course/course-entry.jsp" />
+		<put-attribute name="extraResources" value="/WEB-INF/plugins/jpemailmarketing/apsadmin/jsp/common/layouts/assets-more/course-entry-extras.jsp" />
+	</definition>
+	
+	<definition extends="layout.default" name="jpemailmarketing.admin.Course.active_references">
+		<put-attribute name="title" value="jpemailmarketing.title.configure" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jpemailmarketing/apsadmin/jsp/course/course-active-references.jsp" />
+		<put-attribute name="extraResources" value="/WEB-INF/plugins/jpemailmarketing/apsadmin/jsp/common/layouts/assets-more/course-entry-extras.jsp" />
+	</definition>
+	
+	
+	<definition extends="layout.default" name="jpemailmarketing.admin.Course.trash">
+		<put-attribute name="title" value="jpemailmarketing.title.courseManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jpemailmarketing/apsadmin/jsp/course/course-trash.jsp" />
+		<put-attribute name="extraResources" value="/WEB-INF/plugins/jpemailmarketing/apsadmin/jsp/common/layouts/assets-more/course-trash-extras.jsp" />
+	</definition>
+
+	<definition extends="layout.default" name="jpemailmarketing.admin.Course.statistics.email">
+		<put-attribute name="title" value="jpemailmarketing.title.courseManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jpemailmarketing/apsadmin/jsp/course/statistics/course-statisctic-email.jsp" />
+		<put-attribute name="extraResources" value="/WEB-INF/plugins/jpemailmarketing/apsadmin/jsp/common/layouts/assets-more/course-statisctic-email-extras.jsp" />
+	</definition>
+	<definition extends="layout.default" name="jpemailmarketing.admin.Course.statistics.subscribers">
+		<put-attribute name="title" value="jpemailmarketing.title.courseManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jpemailmarketing/apsadmin/jsp/course/statistics/course-statisctic-subscribers.jsp" />
+		<put-attribute name="extraResources" value="/WEB-INF/plugins/jpemailmarketing/apsadmin/jsp/common/layouts/assets-more/course-statisctic-subscribers-extras.jsp" />
+	</definition>
+	
+	<!--
+	<definition extends="layout.default" name="jpemailmarketing.admin.page.widget.Course.entry">
+		<put-attribute name="title" value="jpemailmarketing.title.courseManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jpemailmarketing/apsadmin/jsp/portal/specialwidget/course/course-config.jsp" />
+	</definition>
+	 -->
+
+    <definition extends="layout.default" name="jpemailmarketing.admin.Form.list">
+		<put-attribute name="title" value="jpemailmarketing.title.formManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jpemailmarketing/apsadmin/jsp/form/form-list.jsp" />
+		<put-attribute name="extraResources" value="/WEB-INF/plugins/jpemailmarketing/apsadmin/jsp/common/layouts/assets-more/form-list-extras.jsp"/>
+	</definition>
+    <definition extends="layout.default" name="jpemailmarketing.admin.Form.entry">
+		<put-attribute name="title" value="jpemailmarketing.title.formManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jpemailmarketing/apsadmin/jsp/form/form-entry.jsp" />
+		<put-attribute name="extraResources" value="/WEB-INF/plugins/jpemailmarketing/apsadmin/jsp/common/layouts/assets-more/form-entry-extras.jsp"/>
+	</definition>
+    <definition extends="layout.default" name="jpemailmarketing.admin.Form.trash">
+		<put-attribute name="title" value="jpemailmarketing.title.formManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jpemailmarketing/apsadmin/jsp/form/form-trash.jsp" />
+		<put-attribute name="extraResources" value="/WEB-INF/plugins/jpemailmarketing/apsadmin/jsp/common/layouts/assets-more/form-trash-extras.jsp"/>
+	</definition>
+    <definition extends="layout.default" name="jpemailmarketing.admin.page.widget.Form.entry">
+		<put-attribute name="title" value="jpemailmarketing.title.formManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jpemailmarketing/apsadmin/jsp/portal/specialwidget/form/form-config.jsp" />
+	</definition>
+
+    <definition extends="layout.default" name="jpemailmarketing.admin.CourseMail.list">
+		<put-attribute name="title" value="jpemailmarketing.title.courseMailManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jpemailmarketing/apsadmin/jsp/coursemail/courseMail-list.jsp" />
+		<put-attribute name="extraResources" value="/WEB-INF/plugins/jpemailmarketing/apsadmin/jsp/common/layouts/assets-more/courseMail-list-extras.jsp"/>
+	</definition>
+    <definition extends="layout.default" name="jpemailmarketing.admin.CourseMail.entry">
+		<put-attribute name="title" value="jpemailmarketing.title.courseMailManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jpemailmarketing/apsadmin/jsp/coursemail/courseMail-entry.jsp" />
+		<put-attribute name="extraResources" value="/WEB-INF/plugins/jpemailmarketing/apsadmin/jsp/common/layouts/assets-more/courseMail-entry-extras.jsp"/>
+	</definition>
+    <definition extends="layout.default" name="jpemailmarketing.admin.CourseMail.trash">
+		<put-attribute name="title" value="jpemailmarketing.title.courseMailManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jpemailmarketing/apsadmin/jsp/coursemail/courseMail-trash.jsp" />
+		<put-attribute name="extraResources" value="/WEB-INF/plugins/jpemailmarketing/apsadmin/jsp/common/layouts/assets-more/courseMail-trash-extras.jsp"/>
+	</definition>
+	<!--
+    <definition extends="layout.default" name="jpemailmarketing.admin.page.widget.CourseMail.entry">
+		<put-attribute name="title" value="jpemailmarketing.title.courseMailManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jpemailmarketing/apsadmin/jsp/portal/specialwidget/coursemail/courseMail-config.jsp" />
+	</definition>
+	 -->
+
+    <definition extends="layout.default" name="jpemailmarketing.admin.Subscriber.list">
+		<put-attribute name="title" value="jpemailmarketing.title.subscriberManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jpemailmarketing/apsadmin/jsp/subscriber/subscriber-list.jsp" />
+		<put-attribute name="extraResources" value="/WEB-INF/plugins/jpemailmarketing/apsadmin/jsp/common/layouts/assets-more/subscriber-list-extras.jsp"/>
+	</definition>
+    <definition extends="layout.default" name="jpemailmarketing.admin.Subscriber.entry">
+		<put-attribute name="title" value="jpemailmarketing.title.subscriberManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jpemailmarketing/apsadmin/jsp/subscriber/subscriber-entry.jsp" />
+		<put-attribute name="extraResources" value="/WEB-INF/plugins/jpemailmarketing/apsadmin/jsp/common/layouts/assets-more/subscriber-entry-extras.jsp"/>
+	</definition>
+    <definition extends="layout.default" name="jpemailmarketing.admin.Subscriber.trash">
+		<put-attribute name="title" value="jpemailmarketing.title.subscriberManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jpemailmarketing/apsadmin/jsp/subscriber/subscriber-trash.jsp" />
+		<put-attribute name="extraResources" value="/WEB-INF/plugins/jpemailmarketing/apsadmin/jsp/common/layouts/assets-more/subscriber-trash-extras.jsp"/>
+	</definition>
+    <definition extends="layout.default" name="jpemailmarketing.admin.page.widget.Subscriber.entry">
+		<put-attribute name="title" value="jpemailmarketing.title.subscriberManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jpemailmarketing/apsadmin/jsp/portal/specialwidget/subscriber/subscriber-config.jsp" />
+	</definition>
+
+</tiles-definitions>
+
+

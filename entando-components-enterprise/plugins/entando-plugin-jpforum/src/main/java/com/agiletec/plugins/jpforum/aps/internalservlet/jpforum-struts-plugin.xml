@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	
+	<package name="jpforum-default" extends="entando-front-default">
+		
+    	<interceptors>
+    		
+    		<interceptor name="jpforumRequestAuth" class="com.agiletec.plugins.jpforum.aps.internalservlet.system.JpforumInterceptor" />
+    		<interceptor name="jpforumSanctionInterceptor" class="com.agiletec.plugins.jpforum.aps.internalservlet.system.SanctionInterceptor" />
+    		<interceptor name="jpforumTokenInterceptor" class="com.agiletec.plugins.jpforum.aps.internalservlet.system.TokenInterceptor" />
+    		
+    		<interceptor-stack name="jpforumFrontFreeStack">
+				<interceptor-ref name="entandoFrontEndFreeStack"/>
+			</interceptor-stack>
+    		
+			<interceptor-stack name="jpforumDefaultStack">
+				<interceptor-ref name="jpforumRequestAuth"/>
+        		<interceptor-ref name="entandoFrontEndStack"/>
+        		<interceptor-ref name="jpforumSanctionInterceptor"/>
+			</interceptor-stack>
+			
+			<interceptor-stack name="jpforumValidationStack">
+				<interceptor-ref name="jpforumRequestAuth"/>
+        		<interceptor-ref name="entandoFrontEndStack"/>
+        		<interceptor-ref name="jpforumSanctionInterceptor"/>
+				<interceptor-ref name="validation">
+					<param name="excludeMethods">input,back,cancel</param>
+                </interceptor-ref>
+                <interceptor-ref name="workflow">
+                    <param name="excludeMethods">input,back,cancel</param>
+                </interceptor-ref>
+			</interceptor-stack>
+			
+    	</interceptors>
+    	
+    	<global-results>
+    		<result name="jpforumlogin" type="dispatcher">/WEB-INF/plugins/jpforum/aps/jsp/internalservlet/jpforumlogin.jsp</result>
+    		<result name="jpforumSuspended" type="dispatcher">/WEB-INF/plugins/jpforum/aps/jsp/internalservlet/jpforumSuspended.jsp</result>
+		</global-results>
+		
+	</package>
+	
+
+	
+</struts>

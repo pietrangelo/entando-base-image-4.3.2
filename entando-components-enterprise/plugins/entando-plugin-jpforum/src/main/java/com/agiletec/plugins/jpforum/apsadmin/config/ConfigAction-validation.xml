@@ -1,0 +1,39 @@
+<!DOCTYPE validators PUBLIC
+        "-//Apache Struts//XWork Validator 1.0.2//EN"
+        "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+
+<validators>
+
+	<field name="config.postsPerPage">
+		<field-validator type="required" short-circuit="true">
+			<message key="requiredstring"/>
+		</field-validator>
+		<field-validator type="int" short-circuit="true">
+			<param name="min">1</param>
+			<message key="config.postsPerPage.wrongValue" />
+		</field-validator>
+	</field>
+
+	<field name="config.attachsPerPost">
+		<field-validator type="required" short-circuit="true">
+			<message key="requiredstring"/>
+		</field-validator>
+		<field-validator type="int" short-circuit="true">
+			<param name="min">1</param>
+			<message key="jpforum.config.attachsPerPost.wrongValue" />
+		</field-validator>
+	</field>
+
+	<field name="config.profileTypecode">
+		<field-validator type="requiredstring" short-circuit="true">
+			<message key="requiredstring"/>
+		</field-validator>
+	</field>
+	
+	<field name="config.profileNickAttributeName">
+		<field-validator type="requiredstring" short-circuit="true">
+			<message key="requiredstring"/>
+		</field-validator>
+	</field>
+
+</validators>

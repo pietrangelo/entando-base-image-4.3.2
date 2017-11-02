@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+    <package name="jpalto_do/jpalto/AltoConfig" namespace="/do/jpalto/AltoConfig" extends="entando-default">
+
+        <action name="edit" class="jpaltofwAltoConfigAction" method="edit">
+            <result type="tiles">admin.jpaltofw.AltoConfig.entrySender</result>
+            <interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">superuser</param></interceptor-ref>
+        </action>
+
+        <action name="save" class="jpaltofwAltoConfigAction" method="save">
+            <result name="input" type="tiles">admin.jpaltofw.AltoConfig.entrySender</result>
+            <result type="redirectAction">edit</result>
+            <interceptor-ref name="entandoValidationStack"><param name="requestAuth.requiredPermission">superuser</param></interceptor-ref>
+        </action>
+
+    </package>
+</struts>

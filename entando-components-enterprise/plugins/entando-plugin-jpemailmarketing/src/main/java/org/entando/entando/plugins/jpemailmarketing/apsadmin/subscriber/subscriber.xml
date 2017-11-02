@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	
+    <package name="jpemailmarketing_do/jpemailmarketing/Subscriber" namespace="/do/jpemailmarketing/Subscriber" extends="entando-default">
+    	
+    	<action name="list" class="jpemailmarketingSubscriberFinderAction">
+            <result type="tiles">jpemailmarketing.admin.Subscriber.list</result>
+        	<interceptor-ref name="entandoDefaultStack">
+        		<param name="chain.includeParameters">fieldErrors,actionErrors,actionMessages</param>
+        		<param name="requestAuth.requiredPermission">superuser</param>
+        	</interceptor-ref>
+        </action>
+        
+        <action name="search" class="jpemailmarketingSubscriberFinderAction">
+            <result type="tiles">jpemailmarketing.admin.Subscriber.list</result>
+        	<interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">superuser</param></interceptor-ref>
+        </action>
+    	
+        <action name="new" class="jpemailmarketingSubscriberAction" method="newSubscriber">
+            <result type="tiles">jpemailmarketing.admin.Subscriber.entry</result>
+        	<interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">superuser</param></interceptor-ref>
+        </action>
+    	
+    	<action name="edit" class="jpemailmarketingSubscriberAction" method="edit">
+            <result type="tiles">jpemailmarketing.admin.Subscriber.entry</result>
+            <result name="input" type="redirectAction">list</result>
+        	<interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">superuser</param></interceptor-ref>
+        </action>
+        
+    	<action name="save" class="jpemailmarketingSubscriberAction" method="save">
+        	<result name="input" type="tiles">jpemailmarketing.admin.Subscriber.entry</result>
+        	<result type="redirectAction">list</result>
+        	<interceptor-ref name="entandoValidationStack"><param name="requestAuth.requiredPermission">superuser</param></interceptor-ref>
+        </action>
+        
+    	<action name="trash" class="jpemailmarketingSubscriberAction" method="trash">
+            <result type="tiles">jpemailmarketing.admin.Subscriber.trash</result>
+        	<result name="input" type="redirectAction">list</result>
+        	<interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">superuser</param></interceptor-ref>
+        </action>
+        
+    	<action name="delete" class="jpemailmarketingSubscriberAction" method="delete">
+        	<result type="redirectAction">list</result>
+        	<interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">superuser</param></interceptor-ref>
+        </action>
+    	
+    </package>
+   
+</struts>

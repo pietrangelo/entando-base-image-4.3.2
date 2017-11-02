@@ -1,0 +1,20 @@
+{
+"h1" : ["* ","\r"],
+"h2" : ["**  ","\r"],
+"h3" : ["*** ","\r"],
+"code" : ["[code]\r","\r[/code]"],
+"bold" : ["[b]","[/b]"],
+"italic" : ["[i]","[/i]","i"],
+"underline" : ["[u]","[/u]"],
+"link" : ["[a] http:// || "," [/a]"],
+"img" : ["[img]","[/img]"],
+"quote" : ["[quote]","[/quote]"],
+"small" : ["[size=10]","[/size]"],
+"big" : ["[size=24]","[/size]"],
+"red" : ["[color=red]","[/color]"],
+"green" : ["[color=green]","[/color]"],
+"blue" : ["[color=blue]","[/color]"],
+"ul" : ["- ","\r"],
+"ol" : ["+ ","\r"],
+"br" : [""," §§\r"]
+}

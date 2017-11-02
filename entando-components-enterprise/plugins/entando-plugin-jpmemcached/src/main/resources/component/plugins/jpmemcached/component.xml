@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component>
+	<code>jpmemcached</code>
+	<description>Entando Plugin: Memcached Connector</description>
+	<artifact>
+		<artifactId>${project.artifactId}</artifactId>
+		<groupId>${project.groupId}</groupId>
+		<version>${project.version}</version>
+	</artifact>
+</component>

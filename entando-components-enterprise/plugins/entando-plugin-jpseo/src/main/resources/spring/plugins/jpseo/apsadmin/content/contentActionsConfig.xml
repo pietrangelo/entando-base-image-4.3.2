@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+
+
+	<bean id="jpseoContentActionHelperAspect" scope="prototype"
+		class="org.entando.entando.plugins.jpseo.apsadmin.content.helper.ContentActionHelperAspect">
+		<property name="langManager" ref="LangManager" />
+		<property name="seoMappingManager" ref="jpseoSeoMappingManager" />
+	</bean>
+
+<!-- 
+	<bean id="jpseoContentActionHelper" parent="entityActionHelper"
+		class="org.entando.entando.plugins.jpseo.apsadmin.content.helper.ContentActionHelper">
+		<property name="contentManager" ref="jacmsContentManager" />
+		<property name="pageManager" ref="PageManager" />
+		<property name="contentAuthorizationHelper" ref="jacmsContentAuthorizationHelper" />
+		<property name="seoMappingManager" ref="jpseoSeoMappingManager" />
+	</bean>
+
+	<bean id="jacmsContentFinderAction" scope="prototype"
+		class="com.agiletec.plugins.jacms.apsadmin.content.ContentFinderAction"
+		parent="abstractBaseAction">
+		<property name="entityActionHelper" ref="jpseoContentActionHelper" />
+		<property name="contentManager" ref="jacmsContentManager" />
+		<property name="groupManager" ref="GroupManager" />
+		<property name="categoryManager" ref="CategoryManager" />
+	</bean>
+
+	<bean id="jacmsContentAction" scope="prototype"
+		class="com.agiletec.plugins.jacms.apsadmin.content.ContentAction"
+		parent="jacmsAbstractContentAction">
+		<property name="categoryManager" ref="CategoryManager" />
+		<property name="pageManager" ref="PageManager" />
+		<property name="configManager" ref="BaseConfigManager" />
+		<property name="resourceIconUtil" ref="jacmsResourceIconUtil" />
+		<property name="contentActionHelper" ref="jpseoContentActionHelper" />
+	</bean>
+ -->
+
+</beans>

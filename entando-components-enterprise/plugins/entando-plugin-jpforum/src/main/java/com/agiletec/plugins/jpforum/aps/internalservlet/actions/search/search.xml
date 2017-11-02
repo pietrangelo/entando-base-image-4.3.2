@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	
+    <package name="jpforum_do/jpforum/Front/Search" namespace="/do/jpforum/Front/Search" extends="jpforum-default">
+    	
+    	<action name="search" class="jpforumSearchAction" method="search">
+            <result type="dispatcher">/WEB-INF/plugins/jpforum/aps/jsp/internalservlet/search/search_results.jsp</result>
+        	<interceptor-ref name="jpforumFrontFreeStack" />
+        </action>
+        
+    </package>
+    
+</struts>

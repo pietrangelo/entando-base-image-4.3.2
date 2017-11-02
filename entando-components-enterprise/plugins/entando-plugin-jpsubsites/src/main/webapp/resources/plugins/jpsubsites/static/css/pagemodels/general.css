@@ -1,0 +1,59 @@
+#header {
+	width: 100%;
+	float: left;
+}
+
+#header_1 {
+	min-height: 39px; 
+}
+
+#header_1_1 {
+	width: 72px;
+	float: left;
+}
+
+#header_1_2 {
+	float: left;
+	width: 250px;
+	margin-top: 11px;
+	margin-left: 5px;
+}
+
+#header_1_3 {
+	margin: 0 0 0 300px;
+	text-align: right;
+}
+
+#header_1_3 h2 {
+	margin: 0;
+}
+
+#header_1_3 p.slogan {
+	margin: 0;
+}
+
+#subheader {
+	min-height: 2em;
+	clear: both;
+}
+
+#main {
+	width: 100%;
+	float: left;
+	margin-bottom: 1em;
+}
+
+#colonna1 {
+	width: 20%;
+	float: left;
+}
+
+#colonna2 {
+	margin-left: 22%;
+}
+
+#footer {
+	clear: both;
+	text-align: center;
+	margin-top: 2em;
+}

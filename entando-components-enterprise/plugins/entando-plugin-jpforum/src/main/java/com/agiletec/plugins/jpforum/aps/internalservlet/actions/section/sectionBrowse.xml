@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	
+    <package name="jpforum_do/jpforum/Front/Browse" namespace="/do/jpforum/Front/Browse" extends="jpforum-default">
+    	
+    	<action name="viewSection" class="jpforumSectionBrowseAction" method="viewSection">
+            <result type="dispatcher">/WEB-INF/plugins/jpforum/aps/jsp/internalservlet/section/viewSection.jsp</result>
+            <result name="viewPost" type="chain">
+            	<param name="actionName">viewPost</param>
+            	<param name="namespace">/do/jpforum/Front/Post</param>
+            </result>
+        	<interceptor-ref name="jpforumFrontFreeStack" />
+        </action>
+
+    </package>
+
+    <package name="jpforum_do/jpforum/Front/Sections" namespace="/do/jpforum/Front/Sections" extends="jpforum-default">
+    	
+    	<action name="tree" class="jpforumSectionTreeFrontAction">
+            <result type="dispatcher">/WEB-INF/plugins/jpforum/aps/jsp/internalservlet/section/frontSectionTree.jsp</result>
+        	<interceptor-ref name="jpforumFrontFreeStack" />
+        </action>
+     
+
+    </package>
+    
+</struts>

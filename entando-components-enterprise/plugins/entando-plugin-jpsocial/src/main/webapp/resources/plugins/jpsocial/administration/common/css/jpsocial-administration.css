@@ -1,0 +1,133 @@
+.jpsocial-contentshare {
+	display: inline;
+	vertical-align: top;
+}
+
+.jpsocial-contentshare .togg,
+.jpsocial-contentshare .togg:link,
+.jpsocial-contentshare .togg:visited
+	{
+	margin: 0;
+	padding: 0;
+	text-decoration: none;
+	border: 0;
+}
+
+.jpsocial-contentshare .togg,
+.jpsocial-contentshare .togg:hover,
+.jpsocial-contentshare .togg:active,
+.jpsocial-contentshare .togg:focus
+	{
+	cursor: pointer;
+}
+
+.jpsocial-contentshare button {
+	background-color: transparent;
+	border: 0;
+	padding: 0;
+	margin: 0;
+	height: 24px;
+	width: 24px;
+	vertical-align: middle;
+	cursor: pointer;
+}
+
+.contentAttributeBox {
+	position: relative;
+}
+
+.jpsocial-share-menu {
+	margin: 0;
+	padding: 0.5em;
+	background-color: #fafafa;
+	border: 3px solid #5A7B9C;
+	list-style-type: none;
+	list-style-position: inside;
+	z-index: 99;
+}
+
+.jpsocial-share-menu ul {
+	list-style-type: none;
+	list-style-position: inside;
+	margin: 0;
+	padding: 0;
+}
+
+.jpsocial-share-menu li {
+	padding: 0 0 0.5em 0;
+	margin: 0 0 0.5em 0;
+	border-bottom: 1px solid #949494;
+}
+
+.jpsocial-share-menu li.last {
+	padding: 0;
+	margin: 0;
+	border-bottom: 0;
+}
+
+.jpsocial-share-menu a:link,
+.jpsocial-share-menu a:visited {
+	border-bottom: 0;
+	display: block;
+	padding: 0.25em;
+}
+
+.jpsocial-share-menu a:hover,
+.jpsocial-share-menu a:active,
+.jpsocial-share-menu a:focus
+	{
+	color: #fff;;
+	background-color: #9F6304;
+}
+
+.jpsocial-contentshare .togg {
+	font-size: 1px;
+	line-height: 1px;
+	vertical-align: top;
+	height: 25px;
+	width: 25px;
+}
+
+.jpsocial-contentshare .togg img {
+	vertical-align: top;
+	margin: 0;
+	padding: 0;
+}
+
+.jpsocial-contentshare .share-list .jpsocial-status-icon {
+	width: 16px;
+	height: 16px;
+	margin-right: 0.25em;
+}
+
+.jpsocial-share-menu .jpsocial-title {
+	margin: 0 0 0.8em 0;
+	padding: 0 0.25em;
+	font-size: 0.9em;
+	text-align: center;
+}
+
+/*** client advanced ***/
+.client-advanced .jpsocial-share-menu {
+	min-width: 10em;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+}
+
+.client-advanced .contentAttributeBox textarea {
+	width: 630px;
+}
+
+.client-advanced .contentAttributeBox .jpsocial-share-menu ul {
+	width: 100%;
+}
+
+.client-advanced .contentAttributeBox .jpsocial-share-menu li {
+	background-color: transparent;
+	border: 0;
+	border-bottom: 1px solid #BFBFBF;
+}
+
+.client-advanced .contentAttributeBox .jpsocial-share-menu li.last {
+	border-bottom: 0;
+}

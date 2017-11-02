@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+	<package name="jppentaho5_do/pentaho/report" namespace="/do/pentaho/report"
+		extends="entando-front-default">
+		
+		<action name="intro*" class="jppentaho5Action" method="intro">
+			<result type="dispatcher">/WEB-INF/plugins/jppentaho/aps/jsp/internalservlet/report/report_form.jsp</result>
+			<result name="render" type="dispatcher">XXXX</result>
+			<interceptor-ref name="entandoFrontEndFreeStack">
+				<param name="chain.includeParameters">fieldErrors,actionErrors,actionMessages</param>
+			</interceptor-ref>
+		</action>
+		
+		<action name="render*" class="jppentaho5Action" method="render">
+			<result type="dispatcher">XXXX/render_report.jsp</result>
+			<result name="input" type="dispatcher">/WEB-INF/plugins/jppentaho/aps/jsp/internalservlet/report/report_form.jsp</result>
+			<result name="error" type="dispatcher">XXXX/error.jsp</result>
+			<interceptor-ref name="entandoFrontEndFreeValidationStack">
+				<param name="chain.includeParameters">fieldErrors,actionErrors,actionMessages</param>
+			</interceptor-ref>
+		</action>
+
+	</package>
+
+</struts>

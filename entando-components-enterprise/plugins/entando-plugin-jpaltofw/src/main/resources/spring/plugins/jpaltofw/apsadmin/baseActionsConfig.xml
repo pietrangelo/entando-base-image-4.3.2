@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+
+    <bean id="jpaltofwAltoSubMenu" class="com.agiletec.apsadmin.system.plugin.PluginSubMenuContainer">
+        <property name="subMenuFilePath">
+            <value>/WEB-INF/plugins/jpaltofw/apsadmin/jsp/common/template/subMenu.jsp</value>
+        </property>
+    </bean>
+
+    <bean id="jpaltofwAltoConfigAction" scope="prototype"
+          class="org.entando.entando.plugins.jpaltofw.apsadmin.AltoConfigAction"
+          parent="abstractBaseAction">
+        <property name="altoManager" ref="jpaltoAltoManager"/>
+    </bean>
+
+</beans>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+    
+    <bean id="jpconfigSubMenu" class="com.agiletec.apsadmin.system.plugin.PluginSubMenuContainer" >
+        <property name="subMenuFilePath"><value>/WEB-INF/plugins/jpconfig/apsadmin/jsp/common/template/subMenu.jsp</value></property>
+    </bean>
+    
+    <bean id="jpconfigAction" class="org.entando.entando.plugins.jpconfig.apsadmin.JpConfigAction" 
+          scope="prototype" parent="abstractBaseAction" >
+        <property name="items">
+            <map>
+                <entry key="jpremotenotify_sitesConfig">
+                    <value>Configurazione Servizio notifica eventi</value>
+                </entry>
+            </map>
+        </property>
+        <property name="baseConfigMnager" ref="BaseConfigManager" />
+    </bean>
+    
+</beans>

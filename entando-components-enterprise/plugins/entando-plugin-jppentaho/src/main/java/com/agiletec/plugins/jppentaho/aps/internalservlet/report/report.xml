@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+    <package name="jppentaho_do/jppentaho/Front/Pentaho" namespace="/do/jppentaho/Front/pentaho" extends="entando-front-default">
+        
+    	<global-results>
+    		<result name="error">/WEB-INF/plugins/jppentaho/aps/jsp/internalservlet/report/reportError.jsp</result>
+		</global-results>
+
+    	<action name="list" class="jppentahoOutputGeneration" >
+    		<result type="dispatcher">/WEB-INF/plugins/jppentaho/aps/jsp/internalservlet/report/solution-tree.jsp</result>
+        	<interceptor-ref name="entandoFrontEndFreeStack"></interceptor-ref>
+        </action>
+
+        <action name="singlereport" class="jppentahoOutputGeneration" method="initSingle" >
+    		<result type="dispatcher" >/WEB-INF/plugins/jppentaho/aps/jsp/internalservlet/report/report.jsp</result>
+    		<result name="config" type="chain">
+				<param name="namespace">/do/jppentaho/Front/pentahoConfig</param>
+    			<param name="actionName">configSingleReport</param>
+			</result>
+        	<interceptor-ref name="entandoFrontEndFreeStack"></interceptor-ref>
+        </action>
+
+    	<action name="report" class="jppentahoOutputGeneration" method="initList" >
+    		<result type="dispatcher" >/WEB-INF/plugins/jppentaho/aps/jsp/internalservlet/report/report.jsp</result>
+        	<interceptor-ref name="entandoFrontEndFreeStack"></interceptor-ref>
+        </action>
+        
+        <action name="generateDirectly" class="jppentahoOutputGeneration" method="generateDirectly" >
+    		<result name="include_html" type="dispatcher">/WEB-INF/plugins/jppentaho/aps/jsp/internalservlet/report/report_include_html.jsp</result>
+		<result name="xaction_include" type="dispatcher">/WEB-INF/plugins/jppentaho/aps/jsp/internalservlet/report/xaction_include_html.jsp</result>
+		<interceptor-ref name="entandoFrontEndFreeStack"></interceptor-ref>
+        </action>
+        
+        <action name="generateListDirectly" class="jppentahoOutputGeneration" method="getReportsParamForLockedList" >
+    		<result type="dispatcher">/WEB-INF/plugins/jppentaho/aps/jsp/internalservlet/report/reportLockedListDownload.jsp</result>
+			<interceptor-ref name="entandoFrontEndFreeStack"></interceptor-ref>
+        </action>
+
+        <action name="generateListDirectlyDet" class="jppentahoOutputGeneration" method="getReportsParamForLockedList" >
+    		<result type="dispatcher">/WEB-INF/plugins/jppentaho/aps/jsp/internalservlet/report/reportLockedListDetails.jsp</result>
+			<interceptor-ref name="entandoFrontEndFreeStack"></interceptor-ref>
+        </action>
+
+        <action name="generateFromList" class="jppentahoOutputGeneration" method="generateFromList" >
+    		<result type="redirectAction">
+				<param name="namespace">/do/jppentaho/Front/pentaho</param>
+    			<param name="actionName">download</param>
+    			<param name="reportPath">${reportPath}</param>
+    			<param name="nameFile">${nameFile}</param>
+			</result>
+			<result name="include_html" type="dispatcher">/WEB-INF/plugins/jppentaho/aps/jsp/internalservlet/report/report_include_html.jsp</result>
+			<interceptor-ref name="entandoFrontEndFreeStack"></interceptor-ref>
+        </action>
+
+        <action name="generate" class="jppentahoOutputGeneration" method="generate" >
+        	<result name="input" type="dispatcher">/WEB-INF/plugins/jppentaho/aps/jsp/internalservlet/report/report.jsp</result>
+        	<result name="include_html" type="dispatcher">/WEB-INF/plugins/jppentaho/aps/jsp/internalservlet/report/report_include_html.jsp</result>
+    		<result type="redirectAction">
+				<param name="namespace">/do/jppentaho/Front/pentaho</param>
+    			<param name="actionName">download</param>
+    			<param name="reportPath">${reportPath}</param>
+    			<param name="nameFile">${nameFile}</param>
+			</result>
+<!--			<interceptor-ref name="entandoFreeStack"></interceptor-ref>-->
+			<interceptor-ref name="entandoFrontEndFreeValidationStack"></interceptor-ref>
+        </action>
+
+        <action name="download" class="jppentahoOutputGeneration" >
+    		<result name="success" type="stream">
+				<param name="inputName">inputStream</param>
+				<param name="contentType">${mimeType}</param>
+				<param name="contentDisposition">attachment;filename="${nameFile}"</param>
+				<param name="bufferSize">4096</param>
+			</result>
+			<interceptor-ref name="entandoFreeStack"></interceptor-ref>
+        </action>
+
+        <!--  xaction :: start -->
+        <action name="xaction" class="jppentahoOutputGeneration" method="xaction">
+    		<result type="dispatcher" >/WEB-INF/plugins/jppentaho/aps/jsp/internalservlet/report/xaction_include_html.jsp</result>
+        	<interceptor-ref name="entandoFrontEndFreeStack"></interceptor-ref>
+        </action>
+        <!--  xaction :: end -->
+
+        <action name="preview" class="jppentahoReportViewAction" method="preview" >
+    		<result type="dispatcher" >/WEB-INF/plugins/jppentaho/aps/jsp/internalservlet/report/report_preview.jsp</result>
+<!--     		<result name="input" type="dispatcher" >/WEB-INF/plugins/jppentaho/aps/jsp/internalservlet/report/report_preview.jsp</result> -->
+    		<result name="input" type="dispatcher" >/WEB-INF/plugins/jppentaho/aps/jsp/internalservlet/report/report_preview_error.jsp</result>
+			<interceptor-ref name="entandoFrontEndFreeStack"></interceptor-ref>
+        </action>
+
+        <action name="view" class="jppentahoReportViewAction" method="view" >
+    		<result name="configure" type="dispatcher" >/WEB-INF/plugins/jppentaho/aps/jsp/internalservlet/report/report_configure.jsp</result>
+    		<result type="dispatcher">/WEB-INF/plugins/jppentaho/aps/jsp/internalservlet/report/report_view.jsp</result>
+			<result name="xaction" type="dispatcher">/WEB-INF/plugins/jppentaho/aps/jsp/internalservlet/report/report_xaction.jsp</result>
+			<interceptor-ref name="entandoFrontEndFreeStack"></interceptor-ref>
+        </action>
+
+        <action name="configure" class="jppentahoReportViewAction" method="configure" >
+    		<result name="input" type="dispatcher" >/WEB-INF/plugins/jppentaho/aps/jsp/internalservlet/report/report_configure.jsp</result>
+    		<result type="dispatcher" >/WEB-INF/plugins/jppentaho/aps/jsp/internalservlet/report/report_view.jsp</result>
+		<result name="xaction" type="dispatcher">/WEB-INF/plugins/jppentaho/aps/jsp/internalservlet/report/report_xaction.jsp</result>
+		<interceptor-ref name="entandoFrontEndFreeStack"></interceptor-ref>
+        </action>
+
+    </package>
+
+
+    <package name="jppentaho_do/jppentaho/Front/PentahoConfig" namespace="/do/jppentaho/Front/pentahoConfig" extends="japs-default">
+
+    	<action name="config" class="jppentahoConfigDynamicReports" method="config" >
+    		<result type="dispatcher" >/WEB-INF/plugins/jppentaho/aps/jsp/internalservlet/report/config.jsp</result>
+        	<interceptor-ref name="entandoFreeStack"></interceptor-ref>
+        </action>
+
+        <action name="configSingleReport" class="jppentahoConfigDynamicReports" method="config" >
+    		<result type="dispatcher" >/WEB-INF/plugins/jppentaho/aps/jsp/internalservlet/report/configSingleReport.jsp</result>
+        	<interceptor-ref name="entandoFreeStack"></interceptor-ref>
+        </action>
+
+        <action name="saveConfig" class="jppentahoConfigDynamicReports" method="saveConfig" >
+    		<result type="chain">
+				<param name="namespace">/do/jppentaho/Front/pentaho</param>
+    			<param name="actionName">list</param>
+			</result>
+        	<interceptor-ref name="entandoFreeStack"></interceptor-ref>
+        </action>
+
+        <action name="saveConfigSingleReport" class="jppentahoConfigDynamicReports" method="saveConfigSingleReport" >
+    		<result type="chain">
+				<param name="namespace">/do/jppentaho/Front/pentaho</param>
+    			<param name="actionName">singlereport</param>
+			</result>
+        	<interceptor-ref name="entandoFreeStack"></interceptor-ref>
+        </action>
+
+    </package>
+
+</struts>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xmlns:context="http://www.springframework.org/schema/context"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+	
+	<bean id="jpemailmarketingCoursePluginSubMenu"
+		class="com.agiletec.apsadmin.system.plugin.PluginSubMenuContainer">
+		<property name="subMenuFilePath">
+			<value>/WEB-INF/plugins/jpemailmarketing/apsadmin/jsp/common/layouts/subMenu.jsp</value>
+		</property>
+	</bean>
+
+	<bean id="jpemailmarketingCourseFinderAction" scope="prototype"
+		class="org.entando.entando.plugins.jpemailmarketing.apsadmin.course.CourseFinderAction"
+		parent="abstractBaseAction">
+		<property name="courseManager" ref="jpemailmarketingCourseManager" />
+	</bean>
+
+	<bean id="jpemailmarketingCourseAction" scope="prototype"
+		class="org.entando.entando.plugins.jpemailmarketing.apsadmin.course.CourseAction"
+		parent="abstractBaseAction">
+		<property name="courseManager" ref="jpemailmarketingCourseManager" />
+		<property name="courseMailManager" ref="jpemailmarketingCourseMailManager" />
+		<property name="courseQueueManager" ref="jpemailmarketingCourseQueueManager" />
+	</bean>
+
+	<bean id="jpemailmarketingCourseStatisticAction" scope="prototype"
+		class="org.entando.entando.plugins.jpemailmarketing.apsadmin.course.CourseStatisticAction"
+		parent="abstractBaseAction">
+		<property name="courseManager" ref="jpemailmarketingCourseManager" />
+		<property name="courseMailManager" ref="jpemailmarketingCourseMailManager" />
+		<property name="subscriberManager" ref="jpemailmarketingSubscriberManager" />
+		<property name="courseQueueManager" ref="jpemailmarketingCourseQueueManager" />
+	</bean>
+
+
+<!-- 
+	<bean id="jpemailmarketingCourseConfigAction"
+		class="org.entando.entando.plugins.jpemailmarketing.apsadmin.portal.specialwidget.course.CourseConfigAction"
+		parent="simpleWidgetAction" scope="prototype">
+		<property name="courseManager" ref="jpemailmarketingCourseManager" />
+	</bean>
+ -->
+
+
+	<!-- INTERNAL_SERVLET
+	<bean id="jpemailmarketingCourseFinderFrontEndAction" scope="prototype"
+		class="org.entando.entando.plugins.jpemailmarketing.aps.internalservlet.course.CourseFinderFrontEndAction"
+		parent="abstractBaseAction">
+		<property name="courseManager" ref="jpemailmarketingCourseManager" />
+	</bean>
+
+	<bean id="jpemailmarketingCourseFrontEndAction" scope="prototype"
+		class="org.entando.entando.plugins.jpemailmarketing.aps.internalservlet.course.CourseFrontEndAction"
+		parent="abstractBaseAction">
+		<property name="courseManager" ref="jpemailmarketingCourseManager" />
+	</bean>
+	 -->
+
+
+</beans>

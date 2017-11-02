@@ -1,0 +1,7 @@
+<roles>
+	<role>
+		<name>jpjasper:organization</name>
+		<description>The Attribute that contains the JasperServer Organization</description>
+		<allowedTypes>Text,Monotext</allowedTypes>
+	</role>
+</roles>

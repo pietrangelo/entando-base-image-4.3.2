@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xmlns:context="http://www.springframework.org/schema/context"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+	
+	<bean id="jpemailmarketingSubscriberDAO" class="org.entando.entando.plugins.jpemailmarketing.aps.system.services.subscriber.SubscriberDAO">
+		<property name="dataSource" ref="servDataSource" />
+		<property name="courseQueueDAO" ref="jpemailmarketingCourseQueueDAO"></property>
+	</bean>
+
+	<bean id="jpemailmarketingSubscriberManager" class="org.entando.entando.plugins.jpemailmarketing.aps.system.services.subscriber.SubscriberManager"
+		parent="abstractService">
+		<property name="keyGeneratorManager" ref="KeyGeneratorManager" />
+		<property name="subscriberDAO" ref="jpemailmarketingSubscriberDAO" />
+		<property name="formManager" ref="jpemailmarketingFormManager" />
+		<property name="mailgunManager" ref="jpmailgunMailgunManager" />
+		<property name="configManager" ref="BaseConfigManager" />
+		<property name="courseManager" ref="jpemailmarketingCourseManager" />
+		<property name="courseQueueManager" ref="jpemailmarketingCourseQueueManager" />
+	</bean>
+
+
+</beans>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component>
+	<code>jpforum</code>
+	<description>Forum</description>
+	<artifact>
+		<artifactId>${project.artifactId}</artifactId>
+		<groupId>${project.groupId}</groupId>
+		<version>${project.version}</version>
+	</artifact>
+	<dependencies>
+		<code>jpavatar</code>
+	</dependencies>
+	<installation>
+		<tableMapping>
+			<datasource name="servDataSource">
+				<class>org.entando.entando.plugins.jpforum.aps.system.init.servdb.Section</class>
+				<class>org.entando.entando.plugins.jpforum.aps.system.init.servdb.SectionGroup</class>
+				<class>org.entando.entando.plugins.jpforum.aps.system.init.servdb.Thread</class>
+				<class>org.entando.entando.plugins.jpforum.aps.system.init.servdb.Post</class>
+				<class>org.entando.entando.plugins.jpforum.aps.system.init.servdb.Statistic</class>
+				<class>org.entando.entando.plugins.jpforum.aps.system.init.servdb.Message</class>
+				<class>org.entando.entando.plugins.jpforum.aps.system.init.servdb.Sanction</class>
+				<class>org.entando.entando.plugins.jpforum.aps.system.init.servdb.UserStatistic</class>
+			</datasource>
+		</tableMapping>
+		<environment code="production">
+			<defaultSqlResources>
+				<datasource name="portDataSource">
+classpath:sql/plugins/jpforum/port_data_production.sql
+				</datasource>
+				<datasource name="servDataSource">
+classpath:sql/plugins/jpforum/serv_data_production.sql
+				</datasource>
+			</defaultSqlResources>
+		</environment>
+		<environment code="test">
+			<defaultSqlResources>
+				<datasource name="portDataSource">
+classpath:sql/plugins/jpforum/port_data_test.sql
+				</datasource>
+				<datasource name="servDataSource">
+classpath:sql/plugins/jpforum/serv_data_test.sql
+				</datasource>
+			</defaultSqlResources>
+		</environment>
+	</installation>
+</component>

@@ -1,0 +1,49 @@
+<apiMethodDefinitions>
+
+    
+    <resource name="report" namespace="jpjasper">
+        <description>The representation of the report</description>
+        <source pluginCode="jpjasper">plugins</source>
+        <method httpMethod="GET" active="true" canSpawnOthers="true">
+            <description>Return a report</description>
+            <springBean name="jpjasperApiReportInterface" method="getReport" />
+            <responseClass>org.entando.entando.plugins.jpjasper.aps.services.report.api.response.ReportResponse</responseClass>
+            <parameters>
+				<parameter key="uriString" required="true">
+					<description>The uriString of the report</description>
+				</parameter>
+				<parameter key="inputControls" required="false">
+					<description>inputControls expression</description>
+				</parameter>
+            </parameters>
+            <relatedWidget code="jpjasper_report">
+				<mapParameter widget="uriString" method="uriString" />
+				<mapParameter widget="inputControls" method="inputControls" />
+            </relatedWidget>
+        </method>
+    </resource>
+
+    
+    <resource name="reports" namespace="jpjasper">
+        <description>Returns a list of reports.</description>
+        <source pluginCode="jpjasper">plugins</source>
+		<method httpMethod="GET" active="true" canSpawnOthers="true">
+			<springBean name="jpjasperApiReportInterface" method="getReports" />
+			<responseClass>org.entando.entando.plugins.jpjasper.aps.services.report.api.response.ReportListResponse</responseClass>
+			<parameters>
+				<parameter key="folder" required="true">
+					<description>The uriString of the folder</description>
+				</parameter>
+				<parameter key="filter" required="false">
+					<description>Match only resources having the specified text in the name or description</description>
+				</parameter>
+			</parameters>
+			<relatedWidget code="jpjasper_reports_list">
+				<mapParameter widget="folder" method="folder" />
+				<mapParameter widget="filter" method="filter" />
+			</relatedWidget>
+		</method>
+    </resource>
+
+
+</apiMethodDefinitions>

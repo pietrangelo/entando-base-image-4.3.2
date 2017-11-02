@@ -1,0 +1,1 @@
+[img]http://www.japsportal.org/jAPSPortal/resources/static/img/headerLogo_background.jpg[/img]	- [quote]lorem ipsum[/quote] - [size=12]help [color=red]me[/color][/size]

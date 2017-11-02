@@ -1,0 +1,15 @@
+<shortcut-def>
+	<shortcuts>
+		<shortcut id="jpsocial.SocialPost.shortCut" requiredPermission="superuser" menusection="plugins" source="jpsocial">
+			<description key="jpsocial.SocialPost.shortCut.list.shortDesc">SocialPost list</description>
+			<longdesc key="jpsocial.SocialPost.shortCut.list.longDesc">
+				<![CDATA[SocialPost shortCut longDesc ]]>
+			</longdesc>
+			<url>
+				<param name="namespace">/do/jpsocial/SocialPost</param>
+				<param name="actionName">list</param>
+			</url>
+		</shortcut>
+	</shortcuts>
+	
+</shortcut-def>

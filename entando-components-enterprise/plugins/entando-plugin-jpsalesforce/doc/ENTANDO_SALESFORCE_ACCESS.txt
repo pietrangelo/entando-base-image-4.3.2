@@ -1,0 +1,12 @@
+MATTEO's PRIVATE ACCESS:
+
+OID: 00Di0000000jKC3
+LOGIN ENPOINT: https://login.salesforce.com/services/oauth2/authorize
+TOKEN ENDPOINT: https://login.salesforce.com/services/oauth2/token
+
+client ID:3MVG9A2kN3Bn17htd307SdloDBZPd.Yba1VWnxMMUwf3I0gjyqfO7QIN2RY7917ujwhJ23mGj4TFPdXuezPzI
+client secret: 3802050252582592051
+userid: info4sales-sforce@yahoo.it
+security token: 2OOY4liHAhUt6eZQuul57c18m
+password: Admin2Admin2
+version: 24.0

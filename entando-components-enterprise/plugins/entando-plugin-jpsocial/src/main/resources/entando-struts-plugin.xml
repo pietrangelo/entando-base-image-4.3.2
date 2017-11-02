@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	
+	<!-- ### entando-plugin-jpsocial ### -->
+	<include file="org/entando/entando/plugins/jpsocial/aps/internalservlet/post/social.xml" />
+  	<include file="org/entando/entando/plugins/jpsocial/apsadmin/social/social.xml" />
+ 	<include file="org/entando/entando/plugins/jpsocial/apsadmin/core/socialCommon.xml" />
+	
+	
+	<include file="org/entando/entando/plugins/jpsocial/apsadmin/socialpost/socialPost.xml"/>
+
+</struts>

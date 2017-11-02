@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+    "http://struts.apache.org/dtds/struts-2.1.dtd">
+
+<struts>
+    
+    <package name="jpconfig_do/jpconfig" namespace="/do/jpconfig" extends="entando-default">
+    	
+        <action name="entryPoint" class="jpconfigAction">
+            <result type="tiles">admin.jpconfig.entry</result>
+            <interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">superuser</param></interceptor-ref>
+        </action>
+        
+        <action name="viewItem" class="jpconfigAction" method="viewItem">
+            <result type="tiles">admin.jpconfig.viewItem</result>
+            <interceptor-ref name="entandoValidationStack"><param name="requestAuth.requiredPermission">superuser</param></interceptor-ref>
+        </action>
+        
+        <action name="saveItem" class="jpconfigAction" method="saveItem">
+            <result type="redirectAction">entryPoint</result>
+            <interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">superuser</param></interceptor-ref>
+        </action>
+        
+    </package>
+    
+</struts>

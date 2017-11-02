@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC 
+	"-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+	
+	<!-- ## sections ## -->
+    <definition extends="main.layout" name="jpforum.admin.section.sectionTree" >
+		<put-attribute name="title" value="jpforum.title.sectionTree" />
+		<put-attribute name="extraResources" value="/WEB-INF/plugins/jpforum/apsadmin/jsp/common/template/extraresources/sectionTree_extraResources.jsp" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jpforum/apsadmin/jsp/section/sectionTree.jsp" />
+	</definition>
+	
+    <definition extends="main.layout" name="jpforum.admin.section.entry" >
+		<put-attribute name="title" value="jpforum.title.section" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jpforum/apsadmin/jsp/section/entrySection.jsp" />
+	</definition>
+	
+    <definition extends="main.layout" name="jpforum.admin.section.trash" >
+		<put-attribute name="title" value="jpforum.title.section" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jpforum/apsadmin/jsp/section/trashSection.jsp" />
+	</definition>
+	
+    <definition extends="main.layout" name="jpforum.admin.section.references" >
+		<put-attribute name="title" value="jpforum.title.section" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jpforum/apsadmin/jsp/section/sectionReferences.jsp" />
+	</definition>
+
+
+	<!-- ## config ## -->
+    <definition extends="main.layout" name="jpforum.admin.config.view" >
+		<put-attribute name="title" value="jpforum.title.config" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jpforum/apsadmin/jsp/config/configView.jsp" />
+	</definition>
+
+    <definition extends="main.layout" name="jpforum.admin.config.entry" >
+		<put-attribute name="title" value="jpforum.title.config" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jpforum/apsadmin/jsp/config/entryConfig.jsp" />
+	</definition>
+	
+</tiles-definitions>

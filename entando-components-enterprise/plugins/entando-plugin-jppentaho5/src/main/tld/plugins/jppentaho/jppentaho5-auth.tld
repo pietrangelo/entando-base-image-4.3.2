@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd">
+  <description><![CDATA["jproom core tag library"]]></description>
+  <display-name>"jproom core tag library"</display-name>
+  <tlib-version>2.2</tlib-version>
+  <short-name>pentaho5</short-name>
+  <uri>/jppentaho5-core</uri>
+
+
+	<tag>
+		<description>Generate the address of a report</description>
+		<name>reportUrl</name>
+		<tag-class>org.entando.entando.plugins.jppentaho5.aps.tags.PentahoReportTag</tag-class>
+		<body-content>empty</body-content>
+		<attribute>
+			<description>Path of the report on the Pentaho server(eg. /public/bi-developers/legacy-steel-wheels/steel-wheels-3.0/Sales_by_Supplier.xaction) </description>
+			<name>path</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<description>Additional arguments (eg. type=html,run_as_background=No)</description>
+			<name>csvArgs</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<description>Pentaho server instance (eg. http://localhost:8080/pentaho)</description>
+			<name>baseUrl</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<description>The name of the variable set in the pagecontext</description>
+			<name>var</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+	<tag>
+		<description>Render a PRPT report</description>
+		<name>report</name>
+		<tag-class>org.entando.entando.plugins.jppentaho5.aps.tags.ReportTag</tag-class>
+		<body-content>scriptless</body-content>
+		<attribute>
+			<description>Path of the report on the Pentaho server(eg. /public/bi-developers/legacy-steel-wheels/steel-wheels-3.0/Sales_by_Supplier.xaction) </description>
+			<name>path</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<description>Additional arguments (eg. type=html,run_as_background=No)</description>
+			<name>csvArgs</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<description>Pentaho server instance (eg. http://localhost:8080/pentaho)</description>
+			<name>baseUrl</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<description>The name of the variable set in the pagecontext containing the report parameters</description>
+			<name>paramVar</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<description>The name of the variable set in the pagecontext containing the Pentaho</description>
+			<name>urlVar</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<description>The CSV list of the parameters needed to render the report</description>
+			<name>paramNames</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<description>Override the automatic generation of the prefix of the form parameters; option supported is 'title'</description>
+			<name>customPrefix</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+	<tag>
+		<description>Download a PRPT report</description>
+		<name>downloadReport</name>
+		<tag-class>org.entando.entando.plugins.jppentaho5.aps.tags.ReportDownloadTag</tag-class>
+		<body-content>scriptless</body-content>
+		<attribute>
+			<description>Path of the report on the Pentaho server(eg. /public/bi-developers/legacy-steel-wheels/steel-wheels-3.0/Sales_by_Supplier.xaction) </description>
+			<name>path</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<description>Additional arguments (eg. type=html,run_as_background=No)</description>
+			<name>csvArgs</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<description>Pentaho server instance (eg. http://localhost:8080/pentaho)</description>
+			<name>baseUrl</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<description>The name of the variable set in the pagecontext containing the report parameters</description>
+			<name>paramVar</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<description>The name of the variable set in the pagecontext containing the Pentaho</description>
+			<name>urlVar</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<description>The CSV list of the parameters needed to render the report</description>
+			<name>paramNames</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+	<tag>
+		<description>Display a PRPT report (no parameter form!)</description>
+		<name>displayReport</name>
+		<tag-class>org.entando.entando.plugins.jppentaho5.aps.tags.DisplayReportTag</tag-class>
+		<body-content>scriptless</body-content>
+		<attribute>
+			<description>Path of the report on the Pentaho server(eg. /public/bi-developers/legacy-steel-wheels/steel-wheels-3.0/Sales_by_Supplier.xaction) </description>
+			<name>path</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<description>Additional arguments (eg. type=html,run_as_background=No)</description>
+			<name>csvArgs</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<description>Pentaho server instance (eg. http://localhost:8080/pentaho)</description>
+			<name>baseUrl</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<description>The name of the variable set in the pagecontext containing the report parameters</description>
+			<name>paramVar</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<description>The name of the variable set in the pagecontext containing the Pentaho</description>
+			<name>urlVar</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<description>The CSV list of the parameters needed to render the report</description>
+			<name>paramNames</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<description>Override the automatic generation of the prefix of the form parameters; option supported is 'title'</description>
+			<name>customPrefix</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+	<tag>
+		<description>Login to pentaho</description>
+		<name>pentahoAuth</name>
+		<tag-class>org.entando.entando.plugins.jppentaho5.aps.tags.PentahoAuthTag</tag-class>
+		<body-content>scriptless</body-content>
+	</tag>
+
+</taglib>

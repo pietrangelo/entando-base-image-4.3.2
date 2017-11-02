@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+    
+    <bean id="jpaltofwInstancesManager" class="org.entando.entando.plugins.jpaltofw.aps.system.service.client.GokibiInstancesManager" 
+              parent="abstractService" >
+        <property name="widgetTypeManager" ref="WidgetTypeManager" />
+    </bean>
+    
+    <bean id="UserManager" class="org.entando.entando.plugins.jpaltofw.aps.system.service.user.AltoUserManager" 
+             parent="abstractService" >
+        <property name="userDAO" ref="UserDAO" />
+        <property name="configManager" ref="BaseConfigManager"/>
+        <property name="altoInstancesManager" ref="jpaltofwInstancesManager"/>
+    </bean>
+
+    <bean id="jpaltoAltoManager" class="org.entando.entando.plugins.jpaltofw.aps.services.AltoManager"
+          parent="abstractService" >
+        <property name="configManager" ref="BaseConfigManager"/>
+    </bean>
+
+</beans>

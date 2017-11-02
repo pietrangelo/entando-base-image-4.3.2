@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	
+    <package name="jpjasper_do/jpjasper/Page/SpecialWidget" namespace="/do/Page/SpecialWidget" extends="core_do/Page/SpecialWidget">
+    	
+    	<!-- ##### WIDGET jpjasperReportListViewerConfig   **** ENTRY POINT ##### -->
+    	<action name="jpjasperReportListViewerConfig" class="jpjasperReportListViewerWidgetAction" method="init">
+        	<result type="tiles">admin.jpjasper.page.widget.reportListView.entry</result>
+            <interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">managePages</param></interceptor-ref>
+        </action>
+        
+    	<!-- ##### WIDGET jpjasperReportViewerConfig   **** ENTRY POINT ##### -->
+    	<action name="jpjasperReportViewerConfig" class="jpjasperReportViewerWidgetAction" method="init">
+        	<result type="tiles">admin.jpjasper.page.widget.reportView.entryReport</result>
+            <interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">managePages</param></interceptor-ref>
+        </action>
+
+    	<!-- ##### WIDGET jpjasperReportPreviewViewerConfig   **** ENTRY POINT ##### -->
+    	<action name="jpjasperReportPreviewViewerConfig" class="jpjasperReportPreviewViewerWidgetAction" method="init">
+        	<result type="tiles">admin.jpjasper.page.widget.reportPreview.entryReport</result>
+            <interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">managePages</param></interceptor-ref>
+        </action>
+        
+        
+    	<!-- ##### WIDGET jpjasperEmbeddedConfigViewerConfig  **** ENTRY POINT ##### -->
+    	<action name="jpjasperEmbeddedConfigViewerConfig" class="jpjasperEmbeddedConfigWidgetAction" method="init">
+        	<result type="tiles">admin.jpjasper.page.widget.embeddedConfig.entryConfig</result>
+            <interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">managePages</param></interceptor-ref>
+        </action>
+
+    	<!-- ##### WIDGET jpjasperEmbeddedNewReportViewerConfig   **** ENTRY POINT ##### -->
+    	<action name="jpjasperEmbeddedNewReportViewerConfig" class="jpjasperEmbeddedNewReportWidgetAction" method="init">
+        	<result type="tiles">admin.jpjasper.page.widget.embeddedConfig.entryConfig</result>
+            <interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">managePages</param></interceptor-ref>
+        </action>
+                
+    	<!-- ##### WIDGET jpjasperEmbeddedDashboardViewerConfig   **** ENTRY POINT ##### -->
+    	<action name="jpjasperEmbeddedDashboardViewerConfig" class="jpjasperEmbeddedDashboardWidgetAction" method="init">
+        	<result type="tiles">admin.jpjasper.page.widget.embeddedDashboard.entryConfig</result>
+            <interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">managePages</param></interceptor-ref>
+        </action>
+        
+    </package>
+   
+	<package name="jpjasper_do/jpjasper/Page/SpecialWidget/ReportPreviewConfig" namespace="/do/jpjasper/Page/SpecialWidget/ReportPreviewConfig" extends="entando-default">
+		
+		<global-results>
+    		<result name="pageTree" type="chain">
+    			<param name="namespace">/do/Page</param>
+    			<param name="actionName">viewTree</param>
+    		</result>
+    		<result name="configure" type="chain">
+            	<param name="namespace">/do/Page</param>
+    			<param name="actionName">configure</param>
+            </result>
+		</global-results>
+
+		<action name="search*" class="jpjasperReportPreviewViewerWidgetAction" method="searchReport">
+    		<result type="tiles" name="input">admin.jpjasper.page.widget.reportPreview.entryReport</result>
+    		<result type="tiles" >admin.jpjasper.page.widget.reportView.searchReport</result>
+        	<interceptor-ref name="entandoValidationStack"><param name="requestAuth.requiredPermission">managePages</param></interceptor-ref>
+        </action>	
+	
+		<action name="entryReportConfig*" class="jpjasperReportPreviewViewerWidgetAction" method="entryReportConfig">
+    		<result type="tiles">admin.jpjasper.page.widget.reportPreview.configReport</result>
+    		<result type="tiles" name="input">admin.jpjasper.page.widget.reportPreview.entryReport</result>
+        	<interceptor-ref name="entandoValidationStack"><param name="requestAuth.requiredPermission">managePages</param></interceptor-ref>
+        </action>
+        
+		<action name="configReportUriString" class="jpjasperReportPreviewViewerWidgetAction" method="configReportUriString">
+    		<result type="chain">entryReportConfig</result>
+    		<result type="tiles" name="input">admin.jpjasper.page.widget.reportView.searchReport</result>
+        	<interceptor-ref name="entandoValidationStack"><param name="requestAuth.requiredPermission">managePages</param></interceptor-ref>
+        </action>
+
+		<action name="saveReportConfig" class="jpjasperReportPreviewViewerWidgetAction" method="saveReportConfig">
+    		<result type="tiles" name="input">admin.jpjasper.page.widget.reportPreview.configReport</result>
+    		<result type="tiles">admin.jpjasper.page.widget.reportPreview.entryReport</result>
+        	<interceptor-ref name="entandoValidationStack"><param name="requestAuth.requiredPermission">managePages</param></interceptor-ref>
+        </action>
+
+		<action name="trashDetailReportConfig*" class="jpjasperReportPreviewViewerWidgetAction" method="refreshWidget">
+    		<result type="tiles">admin.jpjasper.page.widget.reportPreview.deleteDetail</result>
+    		<result type="tiles" name="input">admin.jpjasper.page.widget.reportPreview.entryReport</result>
+        	<interceptor-ref name="entandoValidationStack"><param name="requestAuth.requiredPermission">managePages</param></interceptor-ref>
+        </action>
+        
+		<action name="deleteDetailReportConfig*" class="jpjasperReportPreviewViewerWidgetAction" method="deleteDetailReportConfig" >
+    		<result type="tiles">admin.jpjasper.page.widget.reportPreview.entryReport</result>
+    		<result type="tiles" name="input">admin.jpjasper.page.widget.reportPreview.deleteDetail</result>
+        	<interceptor-ref name="entandoValidationStack"><param name="requestAuth.requiredPermission">managePages</param></interceptor-ref>
+        </action>
+		<action name="entryReport*" class="jpjasperReportPreviewViewerWidgetAction" method="refreshWidget" >
+    		<result type="tiles">admin.jpjasper.page.widget.reportPreview.entryReport</result>
+        	<interceptor-ref name="entandoValidationStack"><param name="requestAuth.requiredPermission">managePages</param></interceptor-ref>
+        </action>
+
+		<action name="saveConfig" class="jpjasperReportPreviewViewerWidgetAction" method="save">
+    		<result type="tiles" name="input">admin.jpjasper.page.widget.reportPreview.entryReport</result>
+        	<interceptor-ref name="entandoValidationStack"><param name="requestAuth.requiredPermission">managePages</param></interceptor-ref>
+        </action>
+
+		<action name="refreshInputControls*" class="jpjasperReportPreviewViewerWidgetAction" method="refreshInputControls">
+    		<result type="tiles">admin.jpjasper.page.widget.reportPreview.configReport</result>
+        	<interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">managePages</param></interceptor-ref>
+        </action>
+
+	</package>
+	
+	<package name="jpjasper_do/jpjasper/Page/SpecialWidget/ReportConfig" namespace="/do/jpjasper/Page/SpecialWidget/ReportConfig" extends="entando-default">
+		
+		<global-results>
+    		<result name="pageTree" type="chain">
+    			<param name="namespace">/do/Page</param>
+    			<param name="actionName">viewTree</param>
+    		</result>
+    		<result name="configure" type="chain">
+            	<param name="namespace">/do/Page</param>
+    			<param name="actionName">configure</param>
+            </result>
+		</global-results>
+
+		<action name="search" class="jpjasperReportViewerWidgetAction" method="searchReport" >
+    		<result type="tiles" >admin.jpjasper.page.widget.reportView.searchReport</result>
+        	<interceptor-ref name="entandoValidationStack"><param name="requestAuth.requiredPermission">managePages</param></interceptor-ref>
+        </action>	
+
+		<action name="entryReportConfig*" class="jpjasperReportViewerWidgetAction" method="entryReportConfig">
+    		<result type="tiles">admin.jpjasper.page.widget.reportView.configReport</result>
+    		<result type="tiles" name="input">admin.jpjasper.page.widget.reportView.entryReport</result>
+        	<interceptor-ref name="entandoValidationStack"><param name="requestAuth.requiredPermission">managePages</param></interceptor-ref>
+        </action>
+        
+		<action name="configReportUriString" class="jpjasperReportViewerWidgetAction" method="configReportUriString">
+    		<result type="chain">entryReportConfig</result>
+    		<result type="tiles" name="input">admin.jpjasper.page.widget.reportView.searchReport</result>
+        	<interceptor-ref name="entandoValidationStack"><param name="requestAuth.requiredPermission">managePages</param></interceptor-ref>
+        </action>		
+
+<!-- 
+		<action name="entryConfig" class="jpjasperReportViewerWidgetAction" method="entryConfig">
+    		<result type="tiles">admin.jpjasper.page.widget.reportView.configReport</result>
+    		<result type="tiles" name="input">admin.jpjasper.page.widget.reportView.entryReport</result>
+        	<interceptor-ref name="entandoValidationStack"><param name="requestAuth.requiredPermission">managePages</param></interceptor-ref>
+        </action>		
+ -->
+		
+		<action name="saveConfig" class="jpjasperReportViewerWidgetAction" method="save">
+    		<result type="tiles" name="input">admin.jpjasper.page.widget.reportView.configReport</result>
+        	<interceptor-ref name="entandoValidationStack"><param name="requestAuth.requiredPermission">managePages</param></interceptor-ref>
+        </action>
+
+		<action name="refreshInputControls*" class="jpjasperReportViewerWidgetAction" method="refreshInputControls">
+    		<result type="tiles">admin.jpjasper.page.widget.reportView.configReport</result>
+        	<interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">managePages</param></interceptor-ref>
+        </action>
+
+	</package>
+
+	<package name="jpjasper_do/jpjasper/Page/SpecialWidget/ReportListViewerConfig" namespace="/do/jpjasper/Page/SpecialWidget/ReportListViewerConfig" extends="entando-default">
+		
+		<global-results>
+    		<result name="pageTree" type="chain">
+    			<param name="namespace">/do/Page</param>
+    			<param name="actionName">viewTree</param>
+    		</result>
+    		<result name="configure" type="chain">
+            	<param name="namespace">/do/Page</param>
+    			<param name="actionName">configure</param>
+            </result>
+		</global-results>
+
+		<action name="saveConfig" class="jpjasperReportListViewerWidgetAction" method="save">
+    		<result type="tiles" name="input">admin.jpjasper.page.widget.reportListView.entry</result>
+        	<interceptor-ref name="entandoValidationStack"><param name="requestAuth.requiredPermission">managePages</param></interceptor-ref>
+        </action>
+
+	</package>
+
+	<package name="jpjasper_do/jpjasper/Page/SpecialWidget/EmbeddedConfigViewerConfig" namespace="/do/jpjasper/Page/SpecialWidget/EmbeddedConfigViewerConfig" extends="entando-default">
+		
+		<global-results>
+    		<result name="pageTree" type="chain">
+    			<param name="namespace">/do/Page</param>
+    			<param name="actionName">viewTree</param>
+    		</result>
+    		<result name="configure" type="chain">
+            	<param name="namespace">/do/Page</param>
+    			<param name="actionName">configure</param>
+            </result>
+		</global-results>
+
+		<action name="saveConfig" class="jpjasperEmbeddedConfigWidgetAction" method="save">
+    		<result type="tiles" name="input">admin.jpjasper.page.widget.embeddedConfig.entryConfig</result>
+        	<interceptor-ref name="entandoValidationStack"><param name="requestAuth.requiredPermission">managePages</param></interceptor-ref>
+        </action>
+
+	</package>
+
+	<package name="jpjasper_do/jpjasper/Page/SpecialWidget/EmbeddedNewReportViewerConfig" namespace="/do/jpjasper/Page/SpecialWidget/EmbeddedNewReportViewerConfig" extends="entando-default">
+		
+		<global-results>
+    		<result name="pageTree" type="chain">
+    			<param name="namespace">/do/Page</param>
+    			<param name="actionName">viewTree</param>
+    		</result>
+    		<result name="configure" type="chain">
+            	<param name="namespace">/do/Page</param>
+    			<param name="actionName">configure</param>
+            </result>
+		</global-results>
+
+		<action name="saveConfig" class="jpjasperEmbeddedNewReportWidgetAction" method="save">
+    		<result type="tiles" name="input">admin.jpjasper.page.widget.embeddedNewReport.entryConfig</result>
+        	<interceptor-ref name="entandoValidationStack"><param name="requestAuth.requiredPermission">managePages</param></interceptor-ref>
+        </action>
+
+	</package>
+
+	<package name="jpjasper_do/jpjasper/Page/SpecialWidget/EmbeddedDashboardViewerConfig" namespace="/do/jpjasper/Page/SpecialWidget/EmbeddedDashboardViewerConfig" extends="entando-default">
+		
+		<global-results>
+    		<result name="pageTree" type="chain">
+    			<param name="namespace">/do/Page</param>
+    			<param name="actionName">viewTree</param>
+    		</result>
+    		<result name="configure" type="chain">
+            	<param name="namespace">/do/Page</param>
+    			<param name="actionName">configure</param>
+            </result>
+		</global-results>
+
+		<action name="saveConfig" class="jpjasperEmbeddedDashboardWidgetAction" method="save">
+    		<result type="tiles" name="input">admin.jpjasper.page.widget.embeddedDashboard.entryConfig</result>
+        	<interceptor-ref name="entandoValidationStack"><param name="requestAuth.requiredPermission">managePages</param></interceptor-ref>
+        </action>
+
+	</package>
+	
+	
+</struts>

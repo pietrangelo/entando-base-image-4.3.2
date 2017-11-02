@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	
+	<package name="jpmultisite_do/jpmultisite/Portal/WidgetType" namespace="/do/jpmultisite/Portal/WidgetType" extends="core_do/Portal/WidgetType">
+		
+		<interceptors>
+			<interceptor name="multisiteCode" class="org.entando.entando.plugins.jpmultisite.apsadmin.multisite.interceptor.MultisiteInterceptor" />
+			<interceptor name="multisiteAuth" class="org.entando.entando.plugins.jpmultisite.apsadmin.multisite.interceptor.MultisiteAuthorizationInterceptor" />
+			
+			<interceptor-stack name="multisiteStack">
+				<interceptor-ref name="multisiteCode" />
+				<interceptor-ref name="multisiteAuth" />
+			</interceptor-stack>
+		</interceptors>
+		
+		<action name="viewWidgets" class="widgetsViewerAction" method="viewWidgets">
+			<result type="tiles">multisite.admin.Portal.viewWidgets</result>
+			<interceptor-ref name="entandoDefaultStack">
+				<param name="chain.includeParameters">fieldErrors,actionErrors,actionMessages</param>
+				<param name="requestAuth.requiredPermission">managePages</param>
+			</interceptor-ref>
+			<interceptor-ref name="multisiteAuth" />
+		</action>
+		
+		<action name="viewWidgetUtilizers" class="widgetsViewerAction" method="viewWidgetUtilizers">
+			<result name="input" type="tiles">multisite.admin.Portal.viewWidgets</result>
+			<result type="tiles">multisite.admin.Portal.viewShowletUtilizers</result>
+			<interceptor-ref name="entandoValidationStack"><param name="requestAuth.requiredPermission">managePages</param></interceptor-ref>
+			<interceptor-ref name="multisiteAuth" />
+		</action>
+		
+		<action name="trashWidgetFromPage" class="pageConfigAction" method="trashWidget">
+			<result type="tiles">multisite.admin.Page.showlet.trash</result>
+			<interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">managePages</param></interceptor-ref>
+			<interceptor-ref name="multisiteAuth" />
+		</action>
+		
+		<action name="deleteWidgetFromPage" class="pageConfigAction" method="deleteWidget">
+			<result type="redirectAction">
+				<param name="actionName">viewWidgetUtilizers</param>
+				<param name="showletTypeCode">${showletTypeCode}</param>
+			</result>
+			<interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">managePages</param></interceptor-ref>
+			<interceptor-ref name="multisiteAuth" />
+		</action>
+		
+		<!-- edit/create/delete widget Type - start section -->
+		
+		<action name="edit" class="jpMultisiteWidgetTypeAction" method="edit">
+			<result type="tiles">multisite.admin.Portal.showletType.entry</result>
+			<interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">managePages</param></interceptor-ref>
+			<interceptor-ref name="multisiteAuth" />
+		</action>
+		
+		<action name="new" class="jpMultisiteWidgetTypeAction" method="newUserWidget">
+			<result type="tiles">multisite.admin.Portal.showletType.entry</result>
+			<interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">superuser</param></interceptor-ref>
+			<interceptor-ref name="multisiteAuth" />
+		</action>
+		
+		<action name="copy" class="jpMultisiteWidgetTypeAction" method="copy">
+			<result type="tiles">multisite.admin.Portal.showletType.entry</result>
+			<interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">superuser</param></interceptor-ref>
+			<interceptor-ref name="multisiteAuth" />
+		</action>
+		
+		<action name="save*" class="jpMultisiteWidgetTypeAction" method="save">
+			<result name="input" type="tiles">multisite.admin.Portal.showletType.entry</result>
+			<result name="replaceOnPage" type="redirectAction">
+				<param name="namespace">/do/jpmultisite/Page</param>
+				<param name="actionName">configure</param>
+				<param name="pageCode">${pageCode}</param>
+			</result>
+			<result type="redirectAction">viewWidgets</result>
+			<interceptor-ref name="entandoValidationStack"><param name="requestAuth.requiredPermission">managePages</param></interceptor-ref>
+			<interceptor-ref name="multisiteAuth" />
+		</action>
+		
+		<action name="trash" class="jpMultisiteWidgetTypeAction" method="trash">
+			<result type="tiles">multisite.admin.Portal.showletType.trash</result>
+			<interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">superuser</param></interceptor-ref>
+			<interceptor-ref name="multisiteAuth" />
+		</action>
+		
+		<action name="delete" class="jpMultisiteWidgetTypeAction" method="delete">
+			<result type="redirectAction">
+				<param name="actionName">viewWidgets</param>
+			</result>
+			<interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">superuser</param></interceptor-ref>
+			<interceptor-ref name="multisiteAuth" />
+		</action>
+
+	</package>
+	
+</struts>

@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	
+	<package name="jpsocial_do/jacms/Content" namespace="/do/jacms/Content" extends="jacms_do/jacms/Content">
+		
+		<action name="entryContent*" class="jpsocialSocialAction" method="forwardToEntryContent">
+            <result type="tiles">admin.jacms.content.entry</result>
+        	<interceptor-ref name="entandoDefaultStack"><param name="requestAuth.requiredPermission">editContents</param></interceptor-ref>
+        </action>
+		
+		<action name="edit" class="jpsocialSocialAction" method="edit">
+			<result type="tiles">admin.jacms.content.entry</result>
+			<interceptor-ref name="entandoDefaultStack">
+				<param name="requestAuth.requiredPermission">editContents</param>
+				<param name="chain.includeParameters">fieldErrors,actionErrors,actionMessages,contentOnSessionMarker</param>
+			</interceptor-ref>
+		</action>
+		
+		<action name="reenter*" class="jpsocialSocialAction" method="reenter">
+			<result type="redirectAction">
+				<param name="actionName">signedIn</param>
+				<param name="contentOnSessionMarker">${contentOnSessionMarker}</param>
+			</result>
+			<interceptor-ref name="entandoDefaultStack">
+				<param name="requestAuth.requiredPermission">editContents</param>
+			</interceptor-ref>
+		</action>
+		
+		<action name="postContentFromList*" class="jpsocialSocialAction" method="postContentFromList">
+			<result name="editQueue" type="redirectAction">
+				<param name="actionName">editQueue</param>
+				<param name="contentOnSessionMarker">${contentOnSessionMarker}</param>
+			</result>
+			<result name="redirectUrlFromList" type="chain">redirectUrlFromList</result>
+			<result name="input" type="chain">list</result>
+			<interceptor-ref name="entandoDefaultStack">
+				<param name="requestAuth.requiredPermission">jpsocial_post</param>
+			</interceptor-ref>
+		</action>
+		
+		<action name="addAttribute*" class="jpsocialSocialAction" method="addAttribute">
+			<result type="chain">editAndDisplay</result>
+			<result name="redirectUrlFromEdit" type="redirectAction">
+				<param name="actionName">redirectUrlToEdit</param>
+				<param name="contentId">${contentId}</param>
+				<param name="queueId">${queueId}</param>
+				<param name="contentOnSessionMarker">${contentOnSessionMarker}</param>
+			</result>
+			<result name="input" type="chain">editAndDisplay</result>
+			<interceptor-ref name="entandoDefaultStack">
+				<param name="requestAuth.requiredPermission">jpsocial_post</param>
+				<param name="chain.includeParameters">fieldErrors,actionErrors,actionMessages</param>
+			</interceptor-ref>
+		</action>
+		
+		<action name="postContent*" class="jpsocialSocialAction" method="postContent">
+			<result type="chain">editQueue</result>
+			<result name="edit" type="chain">editAndDisplay</result>
+			<result name="input" type="tiles">admin.jacms.content.entry</result>
+			<interceptor-ref name="entandoDefaultStack">
+				<param name="requestAuth.requiredPermission">jpsocial_post</param>
+			</interceptor-ref>
+		</action>
+		
+		<action name="tweetContent*" class="jpsocialSocialAction" method="tweetContent">
+			<result type="chain">editQueue</result>
+			<result name="notLogged" type="chain">redirectUrlFromList</result>
+			<result name="input" type="tiles">admin.jacms.content.entry</result>
+			<interceptor-ref name="entandoDefaultStack">
+				<param name="requestAuth.requiredPermission">jpsocial_post</param>
+			</interceptor-ref>
+		</action>
+		
+		<action name="editQueue" class="jpsocialSocialAction" method="editQueue">
+			<result type="tiles">jpsocial.admin.editQueue</result>
+			<result name="input" type="chain">list</result>
+			<interceptor-ref name="entandoDefaultStack">
+				<param name="chain.includeParameters">fieldErrors,actionErrors,actionMessages,contentOnSessionMarker</param>
+				<param name="requestAuth.requiredPermission">jpsocial_post</param>
+			</interceptor-ref>
+		</action>
+		
+		<action name="postQueue*" class="jpsocialSocialAction" method="postQueue">
+			<result type="chain">list</result><!-- chain to display messages -->
+			<result name="postError" type="chain">list</result>
+			<result name="input" type="tiles">jpsocial.admin.editQueue</result>
+			<result name="emptyQueue" type="tiles">jpsocial.admin.editQueue</result>
+			<interceptor-ref name="entandoValidationStack">
+				<param name="requestAuth.requiredPermission">jpsocial_post</param>
+			</interceptor-ref>
+		</action>
+		
+		<action name="cancelPost*" class="jpsocialSocialAction" method="cancelPost">
+			<result type="redirectAction">
+				<param name="actionName">edit</param>
+				<param name="contentId">${contentId}</param>
+				<param name="origin">${origin}</param>
+				<param name="contentOnSessionMarker">${contentOnSessionMarker}</param>
+			</result>
+			<result name="list" type="redirectAction">
+				<param name="actionName">list</param>
+				<param name="contentOnSessionMarker">${contentOnSessionMarker}</param>
+			</result>
+			<result name="input" type="redirectAction">
+				<param name="actionName">list</param>
+				<param name="contentOnSessionMarker">${contentOnSessionMarker}</param>
+			</result>
+			<interceptor-ref name="entandoFreeStack">
+				<param name="requestAuth.requiredPermission">editContents</param>
+			</interceptor-ref>
+		</action>
+		
+		<action name="backToContentEdit*" class="jpsocialSocialAction" method="backToContentEdit">
+			<result type="redirectAction">
+				<param name="actionName">editAndDisplay</param>
+				<param name="contentOnSessionMarker">${contentOnSessionMarker}</param>
+			</result>
+			<interceptor-ref name="entandoDefaultStack">
+				<param name="requestAuth.requiredPermission">jpsocial_post</param>
+			</interceptor-ref>
+		</action>
+		
+		<action name="revokeCredentials*" class="jpsocialSocialAction" method="revokeCredentials">
+			<result type="chain">editQueue</result>
+			<interceptor-ref name="entandoDefaultStack">
+				<param name="requestAuth.requiredPermission">jpsocial_post</param>
+				<param name="chain.includeParameters">fieldErrors,actionErrors,actionMessages</param>
+			</interceptor-ref>
+		</action>
+		
+		<action name="editAndDisplay" class="jpsocialSocialAction">
+			<result type="tiles">admin.jacms.content.entry</result>
+			<interceptor-ref name="entandoDefaultStack">
+				<param name="requestAuth.requiredPermission">editContents</param>
+				<param name="chain.includeParameters">fieldErrors,actionErrors,actionMessages,contentOnSessionMarker</param>
+			</interceptor-ref>
+		</action>
+		
+		<action name="redirectUrlFromList*" class="jpsocialSocialAction" method="redirectUrlFromList">
+			<result type="redirect">${redirUrl}</result>
+			<result name="input" type="chain">list</result>
+			<interceptor-ref name="entandoDefaultStack">
+				<param name="requestAuth.requiredPermission">jpsocial_post</param>
+				<param name="chain.includeParameters">contentOnSessionMarker</param>
+			</interceptor-ref>
+		</action>
+		
+		<action name="redirectUrlToEdit*" class="jpsocialSocialAction" method="redirectUrlToEdit">
+			<result name="redirect" type="redirect">${redirUrl}</result>
+			<result name="input" type="tiles">admin.jacms.content.entry</result>
+			<interceptor-ref name="entandoDefaultStack">
+				<param name="requestAuth.requiredPermission">jpsocial_post</param>
+			</interceptor-ref>
+		</action>
+		
+		<action name="signedIn*" class="jpsocialSocialAction" method="signedIn">
+			<result type="tiles">jpsocial.admin.signedIn</result>
+			<interceptor-ref name="entandoDefaultStack">
+				<param name="requestAuth.requiredPermission">jpsocial_post</param>
+			</interceptor-ref>
+		</action>
+		
+	</package>
+	
+</struts>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xmlns:context="http://www.springframework.org/schema/context"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+	
+	<bean id="jpemailmarketingCourseQueueDAO" class="org.entando.entando.plugins.jpemailmarketing.aps.system.services.coursequeue.CourseQueueDAO">
+		<property name="dataSource" ref="servDataSource" />
+	</bean>
+
+	<bean id="jpemailmarketingCourseQueueManager" class="org.entando.entando.plugins.jpemailmarketing.aps.system.services.coursequeue.CourseQueueManager"
+		parent="abstractService">
+		<property name="keyGeneratorManager" ref="KeyGeneratorManager" />
+		<property name="courseQueueDAO" ref="jpemailmarketingCourseQueueDAO" />
+		<property name="courseManager" ref="jpemailmarketingCourseManager" />
+		<property name="subscriberManager" ref="jpemailmarketingSubscriberManager" />
+		<property name="courseMailManager" ref="jpemailmarketingCourseMailManager" />
+		<property name="mailgunManager" ref="jpmailgunMailgunManager" />
+		<property name="configManager" ref="BaseConfigManager" />
+	</bean>
+
+</beans>

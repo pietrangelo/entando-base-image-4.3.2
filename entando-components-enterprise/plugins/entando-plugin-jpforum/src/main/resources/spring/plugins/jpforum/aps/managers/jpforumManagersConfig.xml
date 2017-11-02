@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xmlns:context="http://www.springframework.org/schema/context"
+		xmlns:aop="http://www.springframework.org/schema/aop"
+		xmlns:jee="http://www.springframework.org/schema/jee"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+			http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.0.xsd">
+	
+	<aop:aspectj-autoproxy />
+
+	<bean id="jpforumSectionManager" class="com.agiletec.plugins.jpforum.aps.system.services.section.SectionManager" 
+			parent="abstractService">
+		<property name="langManager" ref="LangManager" />
+		<property name="authorizationManager" ref="AuthorizationManager" />
+		<property name="searchManager" ref="jpforumSearchManager" />
+		<property name="sectionDAO">
+			<bean class="com.agiletec.plugins.jpforum.aps.system.services.section.SectionDAO">
+				<property name="dataSource" ref="servDataSource" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="jpforumThreadManager" class="com.agiletec.plugins.jpforum.aps.system.services.thread.ThreadManager" 
+			parent="abstractService">
+		<property name="keyGeneratorManager" ref="KeyGeneratorManager" />
+		<property name="markupParser" ref="jpforumMarkupParser" />
+		<property name="threadDAO">
+			<bean class="com.agiletec.plugins.jpforum.aps.system.services.thread.ThreadDAO">
+				<property name="dataSource" ref="servDataSource" />
+			</bean>
+		</property>
+		<property name="attachManager" ref="jpforumAttachManager" />
+	</bean>
+	
+	<bean id="jpforumAttachManager" class="com.agiletec.plugins.jpforum.aps.system.services.thread.attach.AttachManager" 
+			parent="abstractService">
+		<property name="configManager" ref="BaseConfigManager" />
+		<property name="threadManager" ref="jpforumThreadManager" />
+		<!-- <property name="attachDiskFolder"><jee:jndi-lookup jndi-name="java:comp/env/jpforumAttachDiskFolder" /></property> -->
+		<!-- default value of "attachDiskFolder" : under resource default system folder and "plugins/jpforum/attachs/" subfolder -->
+		<property name="attachFolderMaxSize"><value>1048576</value></property>
+		<!-- <property name="attachFolderMaxSize"><jee:jndi-lookup jndi-name="java:comp/env/jpforumAttachFolderMaxSize" /></property> -->
+	</bean>	
+	
+
+	<bean id="jpforumStatisticManager" class="com.agiletec.plugins.jpforum.aps.system.services.statistics.StatisticManager" 
+			parent="abstractService">
+		<property name="statisticDAO">
+			<bean class="com.agiletec.plugins.jpforum.aps.system.services.statistics.StatisticDAO">
+				<property name="dataSource" ref="servDataSource" />
+			</bean>
+		</property>
+		<property name="authorizationManager" ref="AuthorizationManager" />
+	</bean>
+	
+	
+	<bean id="jpforumMarkupParser" class="com.agiletec.plugins.jpforum.aps.system.services.markup.MarkupParser" 
+			parent="abstractService">
+		<property name="markupLanguage" ref="jpforumMarkupDiodati"/>
+	</bean>
+
+	<bean id="jpforumMessageManager" class="com.agiletec.plugins.jpforum.aps.system.services.message.MessageManager" 
+			parent="abstractService">
+		<property name="keyGeneratorManager" ref="KeyGeneratorManager" />
+		<property name="messageDAO">
+			<bean class="com.agiletec.plugins.jpforum.aps.system.services.message.MessageDAO">
+				<property name="dataSource" ref="servDataSource" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="jpforumSanctionManager" class="com.agiletec.plugins.jpforum.aps.system.services.sanction.SanctionManager" 
+			parent="abstractService">
+		<property name="keyGeneratorManager" ref="KeyGeneratorManager" />
+		<property name="sanctionDAO">
+			<bean class="com.agiletec.plugins.jpforum.aps.system.services.sanction.SanctionDAO">
+				<property name="dataSource" ref="servDataSource" />
+			</bean>
+		</property>
+	</bean>
+	
+	<bean id="jpforumConfigManager" class="com.agiletec.plugins.jpforum.aps.system.services.config.ConfigManager" 
+			parent="abstractService">
+		<property name="configManager" ref="BaseConfigManager" />
+	</bean>
+
+<!--
+	#################### 
+	Search Engine
+	#################### 
+-->
+
+	<bean id="jpforumIndexerDAO" class="com.agiletec.plugins.jpforum.aps.system.services.searchengine.ForumIndexerDAO" scope="prototype">
+		<property name="markupParser" ref="jpforumMarkupParser" />
+		<property name="sectionManager" ref="jpforumSectionManager" />
+		<property name="threadManager" ref="jpforumThreadManager" />
+	</bean>
+	
+	<bean id="jpforumSearcherDAO" 
+			class="com.agiletec.plugins.jpforum.aps.system.services.searchengine.ForumSearcherDAO" scope="prototype">
+	</bean>
+	
+	<bean id="jpforumSearchDAOFactory" init-method="init"
+			class="com.agiletec.plugins.jpforum.aps.system.services.searchengine.ForumSearchDAOFactory" >
+		<property name="indexDiskRootFolder"><jee:jndi-lookup jndi-name="java:comp/env/indexDiskRootFolder" /></property>
+		<property name="configManager" ref="BaseConfigManager"/>
+	</bean>
+	
+	<bean id="jpforumSearchManager" class="com.agiletec.plugins.jpforum.aps.system.services.searchengine.ForumSearchManager" 
+			parent="abstractService" >
+		<property name="factory" ref="jpforumSearchDAOFactory" />
+		<property name="threadManager" ref="jpforumThreadManager" />
+	</bean>
+</beans>

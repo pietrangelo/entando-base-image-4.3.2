@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+	<package name="jpsalesforcePublication_do/Page/SpecialWidget" namespace="/do/Page/SpecialWidget"
+		extends="entando-default">
+
+		<global-results>
+			<result name="pageTree" type="chain">
+				<param name="namespace">/do/Page</param>
+				<param name="actionName">viewTree</param>
+			</result>
+			<result name="configure" type="chain">
+				<param name="namespace">/do/Page</param>
+				<param name="actionName">configure</param>
+			</result>
+		</global-results>
+
+		<!-- ##### WIDGET JPSALESFORM CREATE AND PUBLISH FORM **** ENTRY POINT ##### -->
+		<action name="salesforceFormChoose" class="jpsalesforcePublicationConfig" method="init">
+			<result type="tiles">admin.jpsalesforce.Page.Widget.publication.intro.config</result>
+			<interceptor-ref name="entandoDefaultStack">
+				<param name="requestAuth.requiredPermission">managePages</param>
+			</interceptor-ref>
+		</action>
+
+	</package>
+
+	<package name="jpsalesforce_do/jpsalesforce/Page/SpecialWidget/publication" 
+				namespace="/do/jpsalesforce/Page/SpecialWidget/publication" extends="entando-default">
+	
+		<global-results>
+			<result name="pageTree" type="chain">
+				<param name="namespace">/do/Page</param>
+				<param name="actionName">viewTree</param>
+			</result>
+			<result name="configure" type="chain">
+				<param name="namespace">/do/Page</param>
+				<param name="actionName">configure</param>
+			</result>
+		</global-results>
+	
+		<action name="saveConfig" class="jpsalesforcePublicationConfig" method="save">
+			<result type="tiles" name="input">admin.jpsalesforce.Page.Widget.publication.config</result>
+			<interceptor-ref name="entandoValidationStack">
+				<param name="requestAuth.requiredPermission">managePages</param>
+			</interceptor-ref>
+		</action>
+		
+		<action name="chooseCampaign" class="jpsalesforcePublicationConfig" method="chooseCampaign">
+			<result type="tiles" name="input">admin.jpsalesforce.Page.Widget.publication.intro.config</result>
+			<result type="tiles" >admin.jpsalesforce.Page.Widget.publication.config</result>
+			<interceptor-ref name="entandoValidationStack">
+				<param name="requestAuth.requiredPermission">managePages</param>
+			</interceptor-ref>
+		</action>
+
+	</package>
+
+</struts>

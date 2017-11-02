@@ -1,0 +1,60 @@
+<apiMethodDefinitions>
+	<method name="getReport" active="true" canSpawnOthers="true">
+		<source pluginCode="jppentaho">plugins</source>
+		<description>Return a Pentaho Report</description>
+		<springBean name="jppentahoPentahoDynamicReport" method="getReport" />
+		<responseClass>com.agiletec.plugins.jppentaho.aps.system.services.report.api.ReportResponse</responseClass>
+                <parameters>
+			<parameter key="solution" required="true">
+				<description>Solution</description>
+			</parameter>
+			<parameter key="pathPreview" required="false">
+				<description>Path Preview</description>
+			</parameter>
+			<parameter key="namePreview" required="true">
+				<description>Name Preview</description>
+			</parameter>
+			<parameter key="pathDetail" required="false">
+				<description>Path Detail</description>
+			</parameter>
+			<parameter key="nameDetail" required="true">
+				<description>Name Detail</description>
+			</parameter>
+			<parameter key="queryString" required="false">
+				<description>queryString</description>
+			</parameter>
+			<parameter key="profileParams" required="false">
+				<description>Profile Params</description>
+			</parameter>
+			<parameter key="reportDetail" required="false">
+				<description>Report Detail</description>
+			</parameter>
+			<parameter key="username" required="false">
+				<description>user</description>
+			</parameter>
+			<parameter key="pwd" required="false">
+				<description>Password</description>
+			</parameter>
+			<parameter key="refreshPeriod" required="false">
+				<description>Refresh period</description>
+			</parameter>
+			<parameter key="refreshPeriodUnitsOfMeasurement" required="false">
+				<description>Units of measurement of refresh period. Can be m (minutes), h (hours), d (days), M (months), y (years)</description>
+			</parameter>
+		</parameters>
+		<relatedWidget code="jppentahoReportPreview">
+			<mapParameter widget="solution" method="solution" />
+			<mapParameter widget="previewPath" method="pathPreview" />
+			<mapParameter widget="previewName" method="namePreview" />
+			<mapParameter widget="detailPath" method="pathDetail" />
+			<mapParameter widget="detailName" method="nameDetail" />
+			<mapParameter widget="queryString" method="queryString" />
+			<!-- <mapParameter widget="reportDetail" method="reportDetail" /> -->
+			<!-- <mapParameter widget="username" method="username" /> -->
+			<mapParameter widget="profileParams" method="profileParams" />
+			<mapParameter widget="refreshPeriod" method="refreshPeriod" />
+			<mapParameter widget="refreshPeriodUnitsOfMeasurement" method="refreshPeriodUnitsOfMeasurement" />
+		</relatedWidget>
+	</method>
+        
+</apiMethodDefinitions>

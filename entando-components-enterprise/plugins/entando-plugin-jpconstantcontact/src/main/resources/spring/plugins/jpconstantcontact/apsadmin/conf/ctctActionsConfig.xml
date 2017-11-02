@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+
+    
+    <bean id="constantcontactPluginSubMenu" class="com.agiletec.apsadmin.system.plugin.PluginSubMenuContainer" >
+        <property name="subMenuFilePath">
+            <value>/WEB-INF/plugins/jpconstantcontact/apsadmin/jsp/common/template/subMenu.jsp</value>
+        </property>
+    </bean>
+
+    <bean id="jpconstantContactLogin" class="org.entando.entando.plugins.jpconstantcontact.aps.internalservlet.login.LoginConstantContactAction" 
+         parent="abstractBaseAction" scope="prototype">
+        <property name="pageManager" ref="PageManager"/>
+        <property name="urlManager" ref="URLManager"/> 
+        <property name="configManager" ref="BaseConfigManager" />
+        <property name="ctctManager" ref="jpconstantcontactConstantContactManager" /> 
+    </bean>
+  
+    <bean id="ctctAction" class="org.entando.entando.plugins.jpconstantcontact.apsadmin.ctct.ConstantContactAction" 
+        parent="abstractBaseAction" scope="prototype">
+        <property name="ctctManager" ref="jpconstantcontactConstantContactManager" /> 
+        <property name="loginCtctAction" ref="jpconstantContactLogin"/>  
+    </bean>
+  
+    <bean id="ctctContact" class="org.entando.entando.plugins.jpconstantcontact.aps.system.services.ConstantContact_Contact" 
+         parent="abstractBaseAction" scope="prototype">
+        <property name="ctctManager" ref="jpconstantcontactConstantContactManager" /> 
+        <property name="loginCtctAction" ref="jpconstantContactLogin"/>  
+    </bean>
+  
+    <bean id="ctctList" class="org.entando.entando.plugins.jpconstantcontact.aps.system.services.ConstantContact_List" 
+         parent="abstractBaseAction" scope="prototype">
+        <property name="ctctManager" ref="jpconstantcontactConstantContactManager" /> 
+        <property name="loginCtctAction" ref="jpconstantContactLogin"/>  
+    </bean>
+  
+    <bean id="ctctCampaign" class="org.entando.entando.plugins.jpconstantcontact.aps.system.services.ConstantContact_Campaign" 
+        parent="abstractBaseAction" scope="prototype">
+        <property name="ctctManager" ref="jpconstantcontactConstantContactManager" /> 
+        <property name="loginCtctAction" ref="jpconstantContactLogin"/>  
+    </bean>
+  
+    <bean id="ctctEvent" class="org.entando.entando.plugins.jpconstantcontact.aps.system.services.ConstantContact_Event" 
+        parent="abstractBaseAction" scope="prototype">
+        <property name="ctctManager" ref="jpconstantcontactConstantContactManager" /> 
+        <property name="loginCtctAction" ref="jpconstantContactLogin"/>  
+    </bean>
+  
+  
+</beans>

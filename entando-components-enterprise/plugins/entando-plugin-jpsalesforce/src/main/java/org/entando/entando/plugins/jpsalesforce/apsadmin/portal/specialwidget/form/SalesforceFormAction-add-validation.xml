@@ -1,0 +1,28 @@
+<!DOCTYPE validators PUBLIC
+        "-//Apache Struts//XWork Validator 1.0.2//EN"
+        "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+
+<validators>
+
+	<field name="bindLeadField">
+		<field-validator type="required">
+			<message key="jpsalesforce.error.field.required" />
+		</field-validator>
+	</field>
+	
+<!-- 	<field name="bindProfileField"> -->
+<!-- 		<field-validator type="required"> -->
+<!-- 			<message key="jpsalesforce.error.field.required" /> -->
+<!-- 		</field-validator> -->
+<!-- 	</field> -->
+	
+	<field name="bindingId">
+<!-- 		<field-validator type="required" short-circuit="true"> -->
+<!-- 			<message key="jpsalesforce.error.field.required" /> -->
+<!-- 		</field-validator> -->
+		<field-validator type="int" short-circuit="true">
+			<message key="jpsalesforce.error.field.numeric" />
+		</field-validator>
+	</field>
+
+</validators>

@@ -1,0 +1,117 @@
+.jpforum .jpforum_section_open_true {
+	background-repeat: no-repeat;
+	background-position: left top;
+	padding: 0.5em 0.5em 0.5em 26px;
+	line-height: 175%;
+	background-image: url(../../img/icons/section_open.png);
+}
+
+.jpforum .jpforum_section_open_false {
+	background-repeat: no-repeat;
+	background-position: left top;
+	padding: 0.5em 0.5em 0.5em 26px;
+	line-height: 175%;
+	background-image: url(../../img/icons/section_closed.png);
+}
+
+.jpforum .jpforum_tools_container .jpforum_user_profile {
+	background-image: url(../../img/icons/user_profile.png);
+}
+
+.jpforum .jpforum_tools_container .jpforum_user_panel {
+	background-image: url(../../img/icons/user_panel.png);
+}
+
+.jpforum .jpforum_tools_container .jpforum_attach_manage {
+	background-image: url(../../img/icons/attach.png);
+}
+
+.jpforum .jpforum_tools_container .jpforum_post_list {
+	background-image: url(../../img/icons/thread.png);
+}
+
+.jpforum .jpforum_tools_container .jpforum_thread_list {
+	background-image: url(../../img/icons/thread_new.png);
+}
+
+.jpforum .jpforum_tools_container .jpforum_message_new {
+	background-image: url(../../img/icons/message_new.png);
+}
+
+.jpforum .jpforum_tools_container .jpforum_user_messages {
+	background-image: url(../../img/icons/message_new.png);
+}
+
+.jpforum .jpforum_tools_container .jpforum_warning {
+	background-image: url(../../img/icons/warning.png);
+}
+
+.jpforum .jpforum_tools_container .jpforum_sanction {
+	background-image: url(../../img/icons/sanction.png);
+}
+
+.jpforum .jpforum_tools_container .jpforum_goto {
+	background-image: url(../../img/icons/go_to.png);
+}
+
+.jpforum .jpforum_threads .jpforum_tools_container .jpforum_new_thread {
+	background-image: url(../../img/icons/thread_new.png);
+	background-repeat: no-repeat;
+	background-position: left top;
+	min-height: 24px;
+	line-height: 24px;
+	padding-left: 30px;
+}
+
+.jpforum_tools_container .jpforum_thread_close {
+	background-image: url(../../img/icons/thread_close.png);
+}
+
+.jpforum_tools_container .jpforum_thread_open {
+	background-image: url(../../img/icons/thread_new.png);
+}
+
+.jpforum_tools_container .jpforum_thread_pin {
+	background-image: url(../../img/icons/thread_do_sticky.png);
+}
+
+.jpforum_tools_container .jpforum_thread_unpin {
+	background-image: url(../../img/icons/thread_undo_sticky.png);
+}
+
+.jpforum_tools_container .jpforum_thread_trash {
+	background-image: url(../../img/icons/thread_trash.png);
+}
+
+.jpforum .jpforum_post_container .jpforum_tools_container .jpforum_post_reply,.jpforum .jpforum_tools_container .jpforum_message_reply
+	{
+	background-image: url(../../img/icons/post_reply.png);
+}
+
+.jpforum .jpforum_post_container .jpforum_tools_container .jpforum_post_quote,.jpforum .jpforum_tools_container .jpforum_message_quote
+	{
+	background-image: url(../../img/icons/post_quote.png);
+}
+
+.jpforum .jpforum_post_container .jpforum_tools_container .jpforum_post_edit
+	{
+	background-image: url(../../img/icons/post_edit.png);
+}
+
+.jpforum .jpforum_post_container .jpforum_tools_container .jpforum_post_trash
+	{
+	background-image: url(../../img/icons/post_trash.png);
+}
+
+.jpforum .thread_list .thread_title {
+	margin: 0 0 0 0;
+	background-image: url(../../img/icons/thread.png);
+	background-repeat: no-repeat;
+	background-position: left 2px;
+	min-height: 24px;
+	line-height: 24px;
+}
+
+.jpforum .thread_list .thread_open_false .thread_title {
+	background-image: url(../../img/icons/thread_closed.png);
+}

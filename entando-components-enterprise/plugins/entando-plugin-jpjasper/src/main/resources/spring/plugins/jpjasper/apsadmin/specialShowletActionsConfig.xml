@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:context="http://www.springframework.org/schema/context"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+
+
+	<bean id="jpjasperAbstractReportConfigAction" abstract="true" scope="prototype"
+			class="org.entando.entando.plugins.jpjasper.apsadmin.portal.specialwidget.AbstractReportConfigAction" parent="simpleWidgetAction" >
+		<property name="jasperServerManager" ref="jpjasperServerManager" />
+	</bean>
+
+	<bean id="jpjasperReportPreviewViewerWidgetAction" scope="prototype"
+			class="org.entando.entando.plugins.jpjasper.apsadmin.portal.specialwidget.ReportPreviewViewerConfigAction" parent="jpjasperAbstractReportConfigAction" >
+	</bean>
+
+	<bean id="jpjasperReportViewerWidgetAction" scope="prototype"
+			class="org.entando.entando.plugins.jpjasper.apsadmin.portal.specialwidget.ReportViewerConfigAction" parent="jpjasperAbstractReportConfigAction" >
+	</bean>
+
+	<bean id="jpjasperReportListViewerWidgetAction" scope="prototype"
+			class="org.entando.entando.plugins.jpjasper.apsadmin.portal.specialwidget.ReportListViewerConfigAction" parent="jpjasperAbstractReportConfigAction" >
+	</bean>
+
+
+	<!--
+		= = = = = = = = = = = = = = = = = = = = = = = 
+			Actions for jasperserver embedded
+		= = = = = = = = = = = = = = = = = = = = = = = 
+	 -->
+	
+	<bean id="jpjasperAbstractEmbeddedAction" scope="prototype" abstract="true"
+			class="org.entando.entando.plugins.jpjasper.apsadmin.portal.specialwidget.embedded.AbstractEmbeddedJasperConfigAction" parent="simpleWidgetAction" >
+		<property name="jasperServerManager" ref="jpjasperServerManager" />
+	</bean>
+	
+	<bean id="jpjasperEmbeddedConfigWidgetAction" scope="prototype"
+			class="org.entando.entando.plugins.jpjasper.apsadmin.portal.specialwidget.embedded.EmbeddedConfigWidgetAction" parent="jpjasperAbstractEmbeddedAction" >
+	</bean>
+
+	<bean id="jpjasperEmbeddedNewReportWidgetAction" scope="prototype"
+			class="org.entando.entando.plugins.jpjasper.apsadmin.portal.specialwidget.embedded.EmbeddedNewReportWidgetAction" parent="jpjasperAbstractEmbeddedAction" >
+	</bean>
+
+	<bean id="jpjasperEmbeddedDashboardWidgetAction" scope="prototype"
+			class="org.entando.entando.plugins.jpjasper.apsadmin.portal.specialwidget.embedded.EmbeddedDashboardWidgetAction" parent="jpjasperAbstractEmbeddedAction" >
+	</bean>
+
+</beans>
+
+
+
