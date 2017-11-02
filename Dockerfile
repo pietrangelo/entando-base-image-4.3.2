@@ -37,3 +37,4 @@ RUN cd /home/entando \
 && cd entando-components && mvn install -DskipTests && mvn clean && cd .. \
 && cd entando-components-enterprise && mvn install -DskipTests && mvn clean && cd .. \
 && cd entando-archetypes && mvn install -DskipTests && mvn clean && cd .. 
+&& rm -rf entando-*
